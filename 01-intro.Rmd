@@ -1,22 +1,5 @@
 # Introduction {#intro}
 
-Planned chapters
-
-1. Aim of this book
-1. Step through a simple example of process of mapmaking [cake first, show achievable]
-1. R recap - help ensure readers know foundations, data structures and manipulation
-1. Spatial data focusing on real examples : cities, roads, admin boundaries, surfaces  (points lines polygons grids, sf & raster)
-1. Visualising spatial data part 1 : sf, mapview, tmap
-1. Shiny interactive map applications
-1. Sources of data, what is open data (could combine with chap 4)
-1. Join non-spatial data onto spatial
-1. Raster manipulation, e.g. summarising data by areas
-1. OpenStreetMap data, what they are and how to use
-1. Creating and editing spatial data
-1. Visualising spatial data part 2, more advanced techniques
-1. Case study 1 : health facility locations
-1. Case study 2 ...
-
 
 You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
 
