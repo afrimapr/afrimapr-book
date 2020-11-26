@@ -1,12 +1,7 @@
-# Methods
+# R recap {#rrecap} 
 
-We describe our methods in this chapter.
+Recap of R basics, objects, dataframes, functions just to make sure all are on same page.
 
+Maybe that we don't need this.
 
-```{r}
-library(tmap)
-data("World")
-plot(World)
-qtm(World)
-```
 
