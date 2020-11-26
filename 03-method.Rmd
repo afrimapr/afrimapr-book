@@ -1,3 +1,12 @@
 # Methods
 
 We describe our methods in this chapter.
+
+
+```{r}
+library(tmap)
+data("World")
+plot(World)
+qtm(World)
+```
+
