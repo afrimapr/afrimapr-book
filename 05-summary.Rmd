@@ -1,4 +1,5 @@
 # Final Words
+Changes for conficts.
 Auto-updates check.
 Work completed.
 We have finished a nice book.
