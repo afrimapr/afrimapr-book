@@ -120,6 +120,7 @@ jobs:
           Rscript -e "tic::before_deploy()"
 
       - name: "[Stage] Deploy"
+        run: Rscript -e "remotes::install_github('afrimapr/book')"
         run: Rscript -e "tic::deploy()"
 
       - name: "[Stage] After Deploy"
