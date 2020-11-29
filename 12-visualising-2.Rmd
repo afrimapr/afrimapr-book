@@ -1,0 +1,3 @@
+# Visualising spatial data part 2
+
+More advanced techniques of visualising of spatial data
