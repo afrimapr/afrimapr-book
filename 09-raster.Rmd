@@ -1,0 +1,3 @@
+# Raster manipulation
+
+e.g. summarising data by areas
