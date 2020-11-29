@@ -1,0 +1,3 @@
+#  Join non-spatial data onto spatial
+
+This chapter demonstrated how to join non-spatial data from different sources into spatial
