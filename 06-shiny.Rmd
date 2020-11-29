@@ -1,0 +1,3 @@
+# Shiny interactive map applications
+
+Use of shiny package
