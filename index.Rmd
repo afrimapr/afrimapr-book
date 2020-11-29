@@ -12,7 +12,7 @@ github-repo: rstudio/bookdown-demo
 description: "This book aims to provide an introduction to mapping with open data, with a focus on open access administrative and health data in Africa."
 ---
 
-# Preface
+# Preface {-}
 
 Planned chapters
 
