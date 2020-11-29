@@ -1,4 +1,4 @@
-# Initial step through {#steps1} 
+# Step through a simple example of process of mapmaking {#steps1} 
 
 Step through a simple example of process of mapmaking.
 
