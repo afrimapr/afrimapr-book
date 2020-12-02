@@ -1,7 +1,15 @@
 # R recap {#rrecap} 
-
 Recap of R basics, objects, dataframes, functions just to make sure all are on same page.
 
 Maybe that we don't need this.
+
+## Creating, naming and saving a new R script
+## Setting wd
+## Install & load packages
+## Formats of spatial data (content, extensions) 
+## Objects & dataframes
+## Load data
+## Saving dataset
+## Saving & exporting maps to the file
 
 
