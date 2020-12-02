@@ -1,3 +1,3 @@
-# Raster manipulation
+# Raster manipulation {#raster}
 
 e.g. summarising data by areas
