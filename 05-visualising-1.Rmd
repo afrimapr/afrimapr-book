@@ -1,3 +1,29 @@
-# Visualising spatial data part 1: sf, mapview, tmap
+# Visualising spatial data part 1: sf, mapview, tmap {#visualising-1}
 
-Here tutorial on how to visualise spatial data with the packages above
+[A general description of these visualization packages to be here]
+
+## tmap package
+### Basics (this step can be removed if the basic steps can be put in ch.3 'R recap', since they repeat for all packages)
+Set up the working directory 
+```{}
+setwd("path to your directory")
+```
+Install required packages
+```{}
+install.packages("tmap")
+```
+Load the packages
+```{}
+library(tmap)
+```
+Read data into R
+
+### Static maps
+### Layers
+### Interactive maps
+
+## sf package 
+
+## mapview package
+Mapview package allows for an interactive viewing of spatial objects in R.
+
