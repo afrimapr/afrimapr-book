@@ -19,6 +19,13 @@ library(tmap)
 Read data into R
 
 ### Static maps
+Ordered and unordered lists
+1. Map 1
+  * Map 1 in blue
+  * Map 1 in red 
+2. Map 2
+3. Map 3 
+
 ### Layers
 ### Interactive maps
 
