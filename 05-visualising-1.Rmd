@@ -19,12 +19,13 @@ library(tmap)
 Read data into R
 
 ### Static maps
-Ordered and unordered lists
-1. Map 1
-  * Map 1 in blue
-  * Map 1 in red 
-2. Map 2
-3. Map 3 
+Ordered and unordered list (list requires an empty line before, to work properly)
+
+1. Map one
+    + Map one in blue
+    + Map one in red 
+2. Map two
+3. Map three
 
 ### Layers
 ### Interactive maps
