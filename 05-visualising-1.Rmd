@@ -19,13 +19,20 @@ library(tmap)
 Read data into R
 
 ### Static maps
-Ordered and unordered list (list requires an empty line before, to work properly)
+Ordered and unordered list:
 
 1. Map one
     + Map one in blue
     + Map one in red 
 2. Map two
 3. Map three
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+**Hint**: In order to work properly a list requires an empty line beforehand.
+</div>
 
 ### Layers
 ### Interactive maps
