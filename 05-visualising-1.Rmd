@@ -36,17 +36,7 @@ Create a dataset
 africa = ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
 ### Static maps
-Below we will see how to fill the map with colours based on the continuous and categorical variables. First, it is useful to check the class of *last census* variable.
-```{r}
-class(africa$lastcensus)
-```
-```{r map1-fig, fig.cap='Africa with continuous colour fill', out.width='80%', fig.asp=.75, fig.align='center'}
-ggplot(africa) + 
-  geom_sf(aes(fill=lastcensus)) + 
-  coord_sf(datum = NA) + 
-  labs(fill = "Last census")+
-  theme_minimal()
-```
+
 ### Layers
 ### Interactive maps
 
