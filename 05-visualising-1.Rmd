@@ -20,11 +20,11 @@ Set up the working directory
 setwd("path to your directory")
 ```
 Install required packages
-```{r results='hide', message=FALSE, warning=FALSE}
+```{r results='hide'}
 install.packages(c("ggplot2","sf", "rnaturalearth", "rnaturalearthdata"))
 ```
 Load the packages
-```{r results='hide', message=FALSE, warning=FALSE}
+```{r results='hide'}
 library("ggplot2")
 library("sf")
 library("rnaturalearth")
@@ -32,7 +32,7 @@ library("rnaturalearthdata")
 library("dplyr")
 ```
 Create a dataset
-```{r results='hide', message=FALSE, warning=FALSE}
+```{r results='hide'}
 africa = ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
 ### Static maps
