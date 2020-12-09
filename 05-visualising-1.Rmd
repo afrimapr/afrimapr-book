@@ -17,25 +17,24 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 ## tmap package
 ### Basics (this step can be removed if the basic steps can be put in ch.3 'R recap', since they repeat for all packages)
 Set up the working directory 
-
-```{r }
+```{}
 setwd("path to your directory")
 ```
 
 Install required packages
 
-```{r }
+```{r}
 install.packages(c("ggplot2","sf", "rnaturalearth", "rnaturalearthdata"))
 ```
 
 Load the packages
 
-```{r }
-library("ggplot2")
-library("sf")
-library("rnaturalearth")
-library("rnaturalearthdata")
-library("dplyr")
+```{r}
+library(ggplot2)
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(dplyr)
 ```
 
 ### Static maps
