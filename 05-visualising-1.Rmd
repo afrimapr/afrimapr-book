@@ -13,6 +13,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <div class = "blue">
 **Hint**: In order to work properly a list requires an empty line beforehand.
 </div>
+
 ## tmap package
 ### Basics (this step can be removed if the basic steps can be put in ch.3 'R recap', since they repeat for all packages)
 Set up the working directory 
@@ -32,9 +33,7 @@ library("rnaturalearthdata")
 library("dplyr")
 ```
 Create a dataset
-```{r results='hide'}
-africa = ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
-```
+
 ### Static maps
 
 ### Layers
