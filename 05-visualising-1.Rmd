@@ -3,8 +3,8 @@
 In this section we will learn:
 
 1. How to create a static map 
-    + Filling with colours based on the categorical variable
-    + Filling with colours based on the continuous variable
+    + Filled with colours based on the categorical variable
+    + Filled with colours based on the continuous variable
 2. How to create an ordered and unordered list
 
 <style>
