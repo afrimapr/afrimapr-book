@@ -1,6 +1,5 @@
 # Visualising spatial data part 1: sf, mapview, tmap {#visualising-1}
 
-[A general description of these visualization packages to be here]
 In this section we will learn:
 
 1. How to create a static map 
@@ -14,8 +13,6 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <div class = "blue">
 **Hint**: In order to work properly a list requires an empty line beforehand.
 </div>
-
-
 ## tmap package
 ### Basics (this step can be removed if the basic steps can be put in ch.3 'R recap', since they repeat for all packages)
 Set up the working directory 
@@ -40,9 +37,15 @@ africa = ne_countries(continent = 'africa', scale = "medium", returnclass = "sf"
 ```
 ### Static maps
 Below we will see how to fill the map with colours based on the continuous and categorical variables. First, it is useful to check the class of *last census* variable.
-
 ```{r}
 class(africa$lastcensus)
+```
+```{r map1-fig, fig.cap='Africa with continuous colour fill', out.width='80%', fig.asp=.75, fig.align='center'}
+ggplot(africa) + 
+  geom_sf(aes(fill=lastcensus)) + 
+  coord_sf(datum = NA) + 
+  labs(fill = "Last census")+
+  theme_minimal()
 ```
 ### Layers
 ### Interactive maps
