@@ -1,6 +1,20 @@
 # Visualising spatial data part 1: sf, mapview, tmap {#visualising-1}
 
 [A general description of these visualization packages to be here]
+In this section we will learn:
+
+1. How to create a static map 
+    + Filling with colours based on the categorical variable
+2. How to create an ordered and unordered list
+3. TBD
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+**Hint**: In order to work properly a list requires an empty line beforehand.
+</div>
+
 
 ## tmap package
 ### Basics (this step can be removed if the basic steps can be put in ch.3 'R recap', since they repeat for all packages)
@@ -10,29 +24,59 @@ setwd("path to your directory")
 ```
 Install required packages
 ```{}
-install.packages("tmap")
+install.packages(c("ggplot2","sf", "rnaturalearth", "rnaturalearthdata"))
 ```
 Load the packages
 ```{}
-library(tmap)
+library("ggplot2")
+library("sf")
+library("rnaturalearth")
+library("rnaturalearthdata")
+library("dplyr")
 ```
-Read data into R
-
+Create a dataset
+```{}
+africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
+```
 ### Static maps
-Ordered and unordered list:
+Below we will see how to fill the map with colours based on the continuous and categorical variables.\
 
-1. Map one
-    + Map one in blue
-    + Map one in red 
-2. Map two
-3. Map three
+First, let's check the class of last census variable
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-**Hint**: In order to work properly a list requires an empty line beforehand.
-</div>
+```{r}
+class(africa$lastcensus)
+```
+
+```{r map1-fig, fig.cap='Africa with continuous colour fill', out.width='80%', fig.asp=.75, fig.align='center'}
+ggplot(africa) + 
+  geom_sf(aes(fill=lastcensus)) + 
+  coord_sf(datum = NA) + 
+  labs(fill = "Last census")+
+  theme_minimal()
+```
+Let's now create a categorical variable based on years in which census was done.
+```{}
+africa <- africa %>%
+  mutate(cuts = case_when(
+    lastcensus <= 1970 ~ "1970 or earlier",
+    lastcensus > 1970 & lastcensus <= 2002 ~ "between 1970 and 2002",
+    lastcensus > 2002 & lastcensus <= 2008 ~ "between 2002 and 2008",
+    lastcensus > 2008 & lastcensus <= 2010 ~ "between 2008 and 2010",
+    lastcensus > 2010 & lastcensus <= 2012 ~ "between 2010 and 2012"))
+```
+Double-check the class of the new variable
+```{r}
+class(africa$cuts)
+```
+Now let's show these on the map
+```{r map2-fig, fig.cap='Africa with categorical colour fill', out.width='80%', fig.asp=.75, fig.align='center'}
+ggplot(africa) + 
+  geom_sf(aes(fill=cuts)) + 
+  coord_sf(datum = NA) + 
+  theme_minimal() +
+  labs(fill = "Last census") +
+  scale_fill_manual(values = c("red4", "red1", "tomato1", "gold","darkolivegreen2"))
+```
 
 ### Layers
 ### Interactive maps
