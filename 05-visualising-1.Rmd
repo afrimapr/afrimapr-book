@@ -43,12 +43,17 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 library(dplyr)
 ```
+
 Create a dataset
+
 ```{r}
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
+
 ### Static maps
+
 Map with colour fill based on the continuous variable
+
 ```{r}
 ggplot(africa) + 
   geom_sf(aes(fill=lastcensus)) + 
@@ -58,6 +63,7 @@ ggplot(africa) +
 ```
 
 Crate a categorical variable
+
 ```{r}
 africa <- africa %>%
   mutate(cuts = case_when(
@@ -67,7 +73,9 @@ africa <- africa %>%
     lastcensus > 2008 & lastcensus <= 2010 ~ "between 2008 and 2010",
     lastcensus > 2010 & lastcensus <= 2012 ~ "between 2010 and 2012"))
 ```
+
 Map with colour fill based on the categorical variable
+
 ```{r}
 ggplot(africa) + 
   geom_sf(aes(fill=cuts)) + 
@@ -76,11 +84,14 @@ ggplot(africa) +
   labs(fill = "Last census") +
   scale_fill_manual(values = c("red4", "red1", "tomato1", "gold","darkolivegreen2"))
 ```
+
 ### Layers
+
 ### Interactive maps
 
-## sf package 
+## sf 
 
-## mapview package
+## mapview 
+
 Mapview package allows for an interactive viewing of spatial objects in R.
 
