@@ -8,7 +8,8 @@ Imports:
   afrihealthsites,
   afriadmin,
   rnaturalearth,
-  rnaturalearthdata
+  rnaturalearthdata,
+  rgeos
 Remotes:
   afrimapr/afrihealthsites,
   afrimapr/afriadmin
