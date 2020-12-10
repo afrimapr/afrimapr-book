@@ -29,7 +29,7 @@ install.packages(c("ggplot2","sf", "rnaturalearth", "rnaturalearthdata"))
 
 Load the packages
 
-```{r, results=FALSE, message=FALSE}
+```{}
 library(ggplot2)
 library(sf)
 library(rnaturalearth)
