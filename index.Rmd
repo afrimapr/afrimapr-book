@@ -9,12 +9,22 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: rstudio/bookdown-demo
-description: "This book aims to provide an introduction to mapping with open data, with a focus on open access administrative and health data in Africa."
+description: "An introduction to making maps from African data in R."
 ---
+
+# Welcome {-}
+This is the in-progress book introducing map making in R using African data.
+
+It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project running in 2020-21.
+
+We welcome contributions, and will make avenues for contribution clearer soon.
+
+In the meantime, do [get in touch](https://afrimapr.github.io/afrimapr.website/get-involved/).
+
 
 # Preface {-}
 
-Planned chapters
+In-progress chapters
 
 1. Intro : aims of this book \@ref(intro)
 1. Step through a simple example of process of mapmaking \@ref(steps1)
@@ -31,14 +41,6 @@ Planned chapters
 1. Case study 1 : health facility locations
 1. Case study 2 ...
 
-
-
-
-- What the project is
-
-- Link to main afrimapr website
-
-- Who the book is for...
 
 The version of the book you are currently reading was last updated at:
 
