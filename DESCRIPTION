@@ -1,6 +1,12 @@
-Package: placeholder
-Title: Does not matter.
+Package: afrimaprBook
+Title: Open source book teaching geographic data science for the afrimapr project.
 Version: 0.0.1
 Imports:
   bookdown,
-  tmap
+  tmap,
+  tidyverse,
+  afrihealthsites,
+  afriadmin
+Remotes:
+  afrimapr/afrihealthsites,
+  afrimapr/afriadmin
