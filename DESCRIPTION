@@ -6,7 +6,9 @@ Imports:
   tmap,
   tidyverse,
   afrihealthsites,
-  afriadmin
+  afriadmin,
+  rnaturalearth,
+  rnaturalearthdata
 Remotes:
   afrimapr/afrihealthsites,
   afrimapr/afriadmin

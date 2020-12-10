@@ -16,20 +16,27 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 
 ## tmap package
 ### Basics (this step can be removed if the basic steps can be put in ch.3 'R recap', since they repeat for all packages)
-Set up the working directory 
-```{}
-setwd("path to your directory")
+Set up the working directory with the command `setwd("path to your directory")` or with the `openProject` function as follows (recommended):
+
+```{r, eval=FALSE}
+rstudioapi::openProject("path to your directory")
 ```
 
 Install required packages
 
-```{}
-install.packages(c("ggplot2","sf", "rnaturalearth", "rnaturalearthdata"))
+```{r, eval=FALSE}
+cran_packages_to_install <- c(
+  "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
+  "sf",                # package for working with spatial data
+  "rnaturalearth",     # data package
+  "rnaturalearthdata"  # data package
+  )
+install.packages(cran_packages_to_install)
 ```
 
 Load the packages
 
-```{}
+```{r}
 library(ggplot2)
 library(sf)
 library(rnaturalearth)
@@ -37,12 +44,12 @@ library(rnaturalearthdata)
 library(dplyr)
 ```
 Create a dataset
-```{}
+```{r}
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
 ### Static maps
 Map with colour fill based on the continuous variable
-```{}
+```{r}
 ggplot(africa) + 
   geom_sf(aes(fill=lastcensus)) + 
   coord_sf(datum = NA) + 
@@ -51,7 +58,7 @@ ggplot(africa) +
 ```
 
 Crate a categorical variable
-```{}
+```{r}
 africa <- africa %>%
   mutate(cuts = case_when(
     lastcensus <= 1970 ~ "1970 or earlier",
@@ -61,7 +68,7 @@ africa <- africa %>%
     lastcensus > 2010 & lastcensus <= 2012 ~ "between 2010 and 2012"))
 ```
 Map with colour fill based on the categorical variable
-```{}
+```{r}
 ggplot(africa) + 
   geom_sf(aes(fill=cuts)) + 
   coord_sf(datum = NA) + 
