@@ -10,5 +10,5 @@ Imports:
   rgeos
 Remotes:
   afrimapr/afrihealthsites,
-  afrimapr/afriadmin
+  afrimapr/afriadmin,
   afrimapr/afrilearndata 
