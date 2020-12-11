@@ -11,7 +11,7 @@ Authors@R:
            comment = c(ORCID = "0000-0003-4051-6135")),
     person(given = "Martyna",
            family = "Bogacz",
-           role = c("aut")
+           role = c("aut"),
            email = "martyna.bogacz@boku.ac.at",
            comment = c(ORCID = "0000-0001-8927-3387")),
     person(given = "Robin",
@@ -36,6 +36,7 @@ Remotes:
   afrimapr/afrihealthsites,
   afrimapr/afriadmin,
   afrimapr/afrilearndata 
+  afrimapr/afrimaprbook 
 License: CC BY-NC-ND 4.0
 Encoding: UTF-8
 LazyData: true
