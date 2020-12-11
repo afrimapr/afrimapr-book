@@ -32,6 +32,8 @@ Imports:
   rnaturalearth,
   rnaturalearthdata,
   rgeos
+  afrimaprbook 
+  afrilearndata 
 Remotes:
   afrimapr/afrihealthsites,
   afrimapr/afriadmin,
