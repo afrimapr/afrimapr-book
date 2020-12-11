@@ -12,7 +12,8 @@ Authors@R:
     person(given = "Martyna",
            family = "Bogacz",
            role = c("aut")
-           ),
+           email = "martyna.bogacz@boku.ac.at",
+           comment = c(ORCID = "0000-0001-8927-3387")),
     person(given = "Robin",
            family = "Lovelace",
            role = c("aut")
