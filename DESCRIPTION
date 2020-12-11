@@ -31,14 +31,14 @@ Imports:
   tidyverse,
   rnaturalearth,
   rnaturalearthdata,
-  rgeos
-  afrimaprbook 
+  rgeos,
+  afrimaprbook,
   afrilearndata 
 Remotes:
   afrimapr/afrihealthsites,
   afrimapr/afriadmin,
-  afrimapr/afrilearndata 
-  afrimapr/afrimaprbook 
+  afrimapr/afrimaprbook,
+  afrimapr/afrilearndata
 License: CC BY-NC-ND 4.0
 Encoding: UTF-8
 LazyData: true
