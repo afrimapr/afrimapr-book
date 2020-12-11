@@ -11,39 +11,32 @@ We will start by looking at these spatial data for Africa, shown in the map belo
 1. Country boundaries (polygons)
 1. Population density (gridded or raster data)
 
-```{r tmap-first-view, echo=FALSE}
-# #echo=FALSE to not show code in first version 
-# 
-# # tmap_mode("view") to set to tmap interactive viewing mode
-# 
-# # getting error on deploying to shinyapps
-# #Error in value[3L] :OGRCreateCoordinateTransformation() returned NULL: PROJ available?
-# #potential solution
+```{r tmap-first-view, echo=FALSE, warning=FALSE, message=FALSE}
+#echo=FALSE to not show code in first version 
+ 
+# #temporary fix for potential rgdal issue
 # #https://stackoverflow.com/questions/61286108/error-in-cpl-transformx-crs-aoi-pipeline-reverse-ogrcreatecoordinatetrans
 # #If you save an sf-dataframe with a newer version of GDAL, and then try on a system with an older version of GDAL, the projection info cannot be read properly.
 # #The solution is to re-set the projection:
-# #st_crs(data) <- 4326
-# 
 # sf::st_crs(africapitals) <- 4326
 # sf::st_crs(afrihighway) <- 4326
 # sf::st_crs(africountries) <- 4326
 # sf::st_crs(africontinent) <- 4326 #not used yet but just in case
-# 
-# #not the raster layer
-# #st_crs(afripop2020) <- 4326
-# 
-# tmap::tm_shape(afripop2020) +
-#     tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
-# tm_shape(africountries) +
-#     tm_borders("white", lwd = .5) +
-#     #tm_text("iso_a3", size = "AREA") +
-# tm_shape(afrihighway) +
-#     tm_lines(col = "red") + 
-# tm_shape(africapitals) +
-#     tm_symbols(col = "blue", alpha=0.4, scale = .6 )+
-# tm_legend(show = FALSE)
- ```
 
+library(tmap)
+library(afrilearndata)
+
+tmap::tm_shape(afripop2020) +
+    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
+tm_shape(africountries) +
+    tm_borders("white", lwd = .5) +
+    #tm_text("iso_a3", size = "AREA") +
+tm_shape(afrihighway) +
+    tm_lines(col = "red") +
+tm_shape(africapitals) +
+    tm_symbols(col = "blue", alpha=0.4, scale = .6 )+
+tm_legend(show = FALSE)
+ ```
 
 Cities, highways and boundaries are examples of point, line and polygon data termed **vector data**. 
 

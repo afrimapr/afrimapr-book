@@ -5,11 +5,10 @@ Imports:
   bookdown,
   tmap,
   tidyverse,
-  afrihealthsites,
-  afriadmin,
   rnaturalearth,
   rnaturalearthdata,
   rgeos
 Remotes:
   afrimapr/afrihealthsites,
   afrimapr/afriadmin
+  afrimapr/afrilearndata 
