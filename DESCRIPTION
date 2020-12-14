@@ -32,12 +32,12 @@ Imports:
   rnaturalearth,
   rnaturalearthdata,
   rgeos,
-  afrimaprbook,
+  afrihealthsites,
+  afriadmin,
   afrilearndata 
 Remotes:
   afrimapr/afrihealthsites,
   afrimapr/afriadmin,
-  afrimapr/afrimaprbook,
   afrimapr/afrilearndata
 License: CC BY-NC-ND 4.0
 Encoding: UTF-8
