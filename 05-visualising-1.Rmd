@@ -54,14 +54,11 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 
 ### Static maps
 
-Map with colour fill based on the continuous variable
+Create an empty contour map of the continent
 
 ```{r}
-ggplot(africa) + 
-  geom_sf(aes(fill=lastcensus)) + 
-  coord_sf(datum = NA) + 
-  labs(fill = "Last census") +
-  theme_minimal()
+tm_shape(africa)+
+  tm_borders()
 ```
 
 Crate a categorical variable
