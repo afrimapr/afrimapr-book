@@ -1,11 +1,11 @@
 # Visualising spatial data part 1: sf, mapview, tmap {#visualising-1}
 
-In this section we will learn:
+In this section we use tmap, sf and mapview packages to visualise spatial data. In particular this section focuses on:
 
-1. How to create a static map 
-    + Filled with colours based on the categorical variable
-    + Filled with colours based on the continuous variable
-2. How to create an ordered and unordered list
+1. Creating static maps
+2. Add layers to the maps
+3. Creating interactive maps
+
 
 <style>
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
@@ -14,7 +14,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 **Hint**: In order to work properly a list requires an empty line beforehand.
 </div>
 
-## tmap package
+## Static maps
 ### Basics (this step can be removed if the basic steps can be put in ch.3 'R recap', since they repeat for all packages)
 Set up the working directory with the command `setwd("path to your directory")` or with the `openProject` function as follows (recommended):
 
@@ -52,8 +52,6 @@ Create a dataset
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
 
-### Static maps
-
 Create an empty contour map of the continent
 
 ```{r}
@@ -61,7 +59,9 @@ tm_shape(africa)+
   tm_borders()
 ```
 
-Add fill based on last census data and add labels for country names
+### Layers
+
+Fill map using data on last census data and add labels for country names
 
 ```{r, warning=FALSE}
 tm_shape(africa)+
@@ -71,13 +71,7 @@ tm_shape(africa)+
 
 ```
 
-### Layers
-
 ### Interactive maps
-
-## sf 
-
-## mapview 
 
 Mapview package allows for an interactive viewing of spatial objects in R.
 
