@@ -63,7 +63,7 @@ tm_shape(africa)+
 
 Add fill based on last census data and add labels for country names
 
-```{r}
+```{r, warning=FALSE}
 tm_shape(africa)+
   tm_fill(col="lastcensus", title="Year of last census", legend.format = list(format="s"))+
   tm_borders()+
