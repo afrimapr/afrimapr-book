@@ -26,6 +26,7 @@ Install required packages
 
 ```{r, eval=FALSE}
 cran_packages_to_install <- c(
+  "tmap"
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
@@ -37,7 +38,7 @@ install.packages(cran_packages_to_install)
 Load the packages
 
 ```{r, results='hide', warning=FALSE, message=FALSE}
-library(ggplot2)
+library(tmap)
 library(sf)
 library(rnaturalearth)
 library(rnaturalearthdata)
