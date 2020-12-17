@@ -84,7 +84,7 @@ Load package
 library(mapview)
 ```
 Basics
-```{r, results='hide', warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE}
 mapview(africa)
 ```
 
