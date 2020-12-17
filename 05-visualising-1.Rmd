@@ -61,27 +61,14 @@ tm_shape(africa)+
   tm_borders()
 ```
 
-Crate a categorical variable
+Add fill based on last census data and add labels for country names
 
 ```{r}
-africa <- africa %>%
-  mutate(cuts = case_when(
-    lastcensus <= 1970 ~ "1970 or earlier",
-    lastcensus > 1970 & lastcensus <= 2002 ~ "between 1970 and 2002",
-    lastcensus > 2002 & lastcensus <= 2008 ~ "between 2002 and 2008",
-    lastcensus > 2008 & lastcensus <= 2010 ~ "between 2008 and 2010",
-    lastcensus > 2010 & lastcensus <= 2012 ~ "between 2010 and 2012"))
-```
+tm_shape(africa)+
+  tm_fill(col="lastcensus", title="Year of last census", legend.format = list(format="s"))+
+  tm_borders()+
+  tm_text("admin", size = 0.52,  fontface="bold", auto.placement = TRUE)
 
-Map with colour fill based on the categorical variable
-
-```{r}
-ggplot(africa) + 
-  geom_sf(aes(fill=cuts)) + 
-  coord_sf(datum = NA) + 
-  theme_minimal() +
-  labs(fill = "Last census") +
-  scale_fill_manual(values = c("red4", "red1", "tomato1", "gold","darkolivegreen2"))
 ```
 
 ### Layers
