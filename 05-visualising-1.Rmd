@@ -59,7 +59,7 @@ tm_shape(africa)+
   tm_borders()
 ```
 
-## Layers
+## Layers for the static maps
 
 Fill map using data on last census data and add labels for country names
 
@@ -88,4 +88,8 @@ Basics
 mapview(africa)
 ```
 
+## Layers for the interactive maps
+```{r, warning=FALSE, message=FALSE}
+mapview(africa, zcol="pop_est")
+```
 
