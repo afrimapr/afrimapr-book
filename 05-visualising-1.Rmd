@@ -87,9 +87,5 @@ Basics
 ```{r, warning=FALSE, message=FALSE}
 mapview(africa)
 ```
-
 ## Layers for the interactive maps
-```{r, warning=FALSE, message=FALSE}
-mapview(africa, zcol="pop_est")
-```
 
