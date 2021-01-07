@@ -76,16 +76,22 @@ tm_shape(africa)+
 Mapview package allows for an interactive viewing of spatial objects in R.
 
 Install mapview package
-```{r, results='hide', warning=FALSE, message=FALSE}
+
+```{r, eval=FALSE}
 install.packages("mapview")
 ```
+
 Load package
+
 ```{r, results='hide', warning=FALSE, message=FALSE}
 library(mapview)
 ```
+
 Basics
+
 ```{r, warning=FALSE, message=FALSE}
-mapview(africa)
+# mapview(africa)
 ```
+
 ## Layers for the interactive maps
 

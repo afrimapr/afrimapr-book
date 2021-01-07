@@ -26,15 +26,16 @@ Authors@R:
     )
 Description: The package that supports the afrimapr book.    
 Imports:
-  bookdown,
-  tmap,
-  tidyverse,
-  rnaturalearth,
-  rnaturalearthdata,
-  rgeos,
-  afrihealthsites,
-  afriadmin,
-  afrilearndata 
+    bookdown,
+    tmap,
+    tidyverse,
+    rnaturalearth,
+    rnaturalearthdata,
+    rgeos,
+    afrihealthsites,
+    afriadmin,
+    afrilearndata,
+    mapview
 Remotes:
   afrimapr/afrihealthsites,
   afrimapr/afriadmin,
