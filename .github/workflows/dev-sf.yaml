@@ -21,7 +21,7 @@ jobs:
             Rscript -e 'bookdown::render_book("index.Rmd")'
             
       - name: Commit results
-        if: github.repository == 'robinlovelace/geocompr'
+        if: github.repository == 'afrimapr/afrimapr-book'
         run: |
           cd _book
           git init
