@@ -23,20 +23,20 @@ We will start by looking at these spatial data for Africa, shown in the map belo
 # sf::st_crs(africountries) <- 4326
 # sf::st_crs(africontinent) <- 4326 #not used yet but just in case
 
-library(tmap)
-library(afrilearndata)
-
-tmap::tm_shape(afripop2020) +
-    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
-tm_shape(africountries) +
-    tm_borders("white", lwd = .5) +
-    #tm_text("iso_a3", size = "AREA") +
-tm_shape(afrihighway) +
-    tm_lines(col = "red") +
-tm_shape(africapitals) +
-    tm_symbols(col = "blue", alpha=0.4, scale = .6 )+
-tm_legend(show = FALSE)
- ```
+# library(tmap)
+# library(afrilearndata)
+# 
+# tm_shape(afripop2020) +
+#     tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
+# tm_shape(africountries) +
+#     tm_borders("white", lwd = .5) +
+#     #tm_text("iso_a3", size = "AREA") +
+# tm_shape(afrihighway) +
+#     tm_lines(col = "red") +
+# tm_shape(africapitals) +
+#     tm_symbols(col = "blue", alpha=0.4, scale = .6 )+
+# tm_legend(show = FALSE)
+```
 
 Cities, highways and boundaries are examples of point, line and polygon data termed **vector data**. 
 
