@@ -97,7 +97,11 @@ jobs:
 
       - name: "[Stage] [Linux] Install system libs for pkgdown"
         if: runner.os == 'Linux' && matrix.config.pkgdown != ''
-        run: sudo apt install libharfbuzz-dev libfribidi-dev 
+        run: sudo apt install libharfbuzz-dev libfribidi-dev
+        
+      - name: "[Stage] [Linux] Install system libs for book"
+        if: runner.os == 'Linux' && matrix.config.pkgdown != ''
+        run: sudo apt install libgit2-dev
 
       - name: "[Stage] Install"
         if: matrix.config.os != 'macOS-latest' || matrix.config.r != 'devel'
