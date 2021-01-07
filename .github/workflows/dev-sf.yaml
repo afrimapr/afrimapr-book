@@ -19,7 +19,8 @@ jobs:
             Rscript -e 'remotes::install_github("afrimapr/afrimapr-book")'
             Rscript -e 'remotes::install_github("r-spatial/sf")'
             Rscript -e 'bookdown::render_book("index.Rmd")'
-            
+
+
       - name: Commit results
         if: github.repository == 'afrimapr/afrimapr-book'
         run: |
