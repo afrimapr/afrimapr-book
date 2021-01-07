@@ -22,7 +22,7 @@ jobs:
       matrix:
         config:
           # use a different tic template type if you do not want to build on all listed platforms
-          - { os: macOS-latest, r: "release", pkgdown: "true" }
+          - { os: ubuntu-latest, r: "release", pkgdown: "true" }
     env:
       # otherwise remotes::fun() errors cause the build to fail. Example: Unavailability of binaries
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -63,6 +63,15 @@ jobs:
         if: runner.os != 'Windows'
         id: date
         run: echo "::set-output name=date::$(date '+%d-%m')"
+
+      # uncomment the following lines to automatically check for system dependencies and try to install them        
+      - name: Install linux system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          while read -r cmd
+          do
+            eval sudo $cmd
+          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
 
       - name: "[Cache] Cache R packages"
         if: runner.os != 'Windows'
