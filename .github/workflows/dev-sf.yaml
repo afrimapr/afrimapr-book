@@ -16,6 +16,7 @@ jobs:
 
         - name: Build book
           run: |
+            Rscript -e 'remotes::install_github("afrimapr/afrimapr-book")'
             Rscript -e 'remotes::install_github("r-spatial/sf")'
             Rscript -e 'bookdown::render_book("index.Rmd")'
           
