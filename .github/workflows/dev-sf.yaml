@@ -19,6 +19,20 @@ jobs:
             Rscript -e 'remotes::install_github("afrimapr/afrimapr-book")'
             Rscript -e 'remotes::install_github("r-spatial/sf")'
             Rscript -e 'bookdown::render_book("index.Rmd")'
+            
+      - name: Commit results
+        if: github.repository == 'robinlovelace/geocompr'
+        run: |
+          cd _book
+          git init
+          git config user.name "Robin Lovelace"
+          git config user.email "rob00x@gmail.com"
+          git config --global push.default simple
+          git add .
+          git status
+          git commit -m 'update book'
+          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:gh-pages --force
+
           
 # 
 # 
