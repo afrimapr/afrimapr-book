@@ -7,10 +7,10 @@ The R script is a plain text file that allows you to save the R code containing 
 You can crate a new R script by clicking the **New File** icon in the top right corner of the RStudio toolbar, which will open a list with different file options. Choose the **R Script** from the menu and the blank script will open in the main RStudio window.
 
 <style>
-div.blue { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
+div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "yellow">
-**Shortcut**: New R script can also be opened by *Shift+Ctrl+N*
+**Shortcut**: New R script can also be opened by *Shift+Ctrl+N*.
 </div>
 
 
