@@ -16,6 +16,7 @@ setwd("path to your directory")
 ```
 
 While the former option will set up and open the working directory for your project, the latter simply determines the default folder for each specific R script. 
+
 ## Creating, naming and saving a new R script
 
 The R script is a plain text file that allows you to save the R code containing both, commands and comments. Saving the R script allows you to reuse your R code and creates a reproducible record of your work. Therefore, it is a good practice to create, name and save it at the very beginning of your project. <br/><br/>
@@ -50,7 +51,7 @@ div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 If you do not select any code and press **Run**, RStudio will run the line of code where the cursor is located. The code which has been exectued will appear in the **Console**, usually located at the bottom part of the window.
 
 In RStudio it is also possible to add comments next to your commands simply using a hashtag (#) beforehand. This will stop R from executing this specific part:
-```{r, eval=FALSE}
+```{r}
 3+6
 
 #3+6
