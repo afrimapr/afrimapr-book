@@ -1,3 +1,7 @@
-# Sources of data {#data_sources}
+# Sources of data {#data-sources}
 
-Sources of data, what is open data (could combine with chap 4)
+See also [https://rspatialdata.github.io/](https://rspatialdata.github.io/)
+
+R packages, Web APIs, OpenStreetMap intro, HDX
+
+### HDX

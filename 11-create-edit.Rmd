@@ -1,3 +1,6 @@
-# Creating and editing spatial data {#data_editing}
+# Creating and editing spatial data {#data-editing}
 
-Tutorial on how to create and edit spatial data with examples
+
+How to create and edit spatial data with examples
+
+## Create a vector file from scratch

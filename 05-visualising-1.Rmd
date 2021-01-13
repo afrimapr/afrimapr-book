@@ -1,4 +1,4 @@
-# Visualising spatial data part 1: sf, mapview, tmap {#visualising-1}
+# Visualising spatial data part 1: sf, mapview, tmap {#visualising1}
 
 In this section we use tmap, sf and mapview packages to visualise spatial data. In particular this section focuses on:
 
