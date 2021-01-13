@@ -1,8 +1,21 @@
 # R recap {#rrecap} 
 This section provides a brief recap of the basic steps that are required or useful to do before staring on the project.
 
-## Setting wd
+## Setting working directory
+At the beginning of each project it is crucial to determine the working directory for your project. A working directory is a folder where all your files associated with the project will be stored. For example, original datasets, saved datasets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing datasets into the RStudio.<br/><br/>
 
+You can set up the working directory with the `openProject` function as follows (recommended):
+
+```{r, eval=FALSE}
+rstudioapi::openProject("path to your directory")
+```
+
+Alternatively, you can use the following command:
+```{r, eval=FALSE}
+setwd("path to your directory")
+```
+
+While the former option will set up and open the working directory for your project, the latter simply determines the default folder for each specific R script. 
 
 ## Creating, naming and saving a new R script
 
@@ -24,7 +37,9 @@ div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 <div class = "yellow">
 **Shortcut**: As you work along your R script document, you can quickly save changes by pressing *Ctrl+S*.
 </div>
- 
+
+##Executing code
+
 
 ## Install & load packages
 ## Formats of spatial data (content, extensions) 
