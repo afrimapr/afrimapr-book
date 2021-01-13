@@ -1,8 +1,16 @@
 # R recap {#rrecap} 
-Recap of R basics, objects, dataframes, functions just to make sure all are on same page.
-
-
+This section provides a brief recap of the basic steps that are required or useful to do before staring on the project.
 ## Creating, naming and saving a new R script
+The R script is a plain text file that allows you to save the R code containing both, command and comments. Saving the R script allows you to reuse your R code and creates a reproducible record of your work. Therefore, it is a good practice to create, name and save it at the very beginning of your project. 
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+**Hint**: To add comments next to your commands simply write a hashtag (#) beforehand. This will stop R from executing this specific part.
+</div>
+ 
+
 ## Setting wd
 ## Install & load packages
 ## Formats of spatial data (content, extensions) 
