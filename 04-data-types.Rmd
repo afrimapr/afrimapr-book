@@ -1,0 +1,9 @@
+# Spatial data types focusing on real examples: cities, roads, admin boundaries, surfaces {#data_types}
+
+
+1. Capital city locations (points)
+1. A highway network (lines)
+1. Country boundaries (polygons)
+1. Population density (gridded or raster data)
+
+

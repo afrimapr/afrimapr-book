@@ -1,7 +1,0 @@
-# Spatial data types focusing on real examples: cities, roads, admin boundaries, surfaces {#applications}
-
-Some _significant_ applications are demonstrated in this chapter.
-
-## Example one
-
-## Example two
