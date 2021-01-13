@@ -1,4 +1,4 @@
-# Introduction
+# Introduction {#intro}
 
 This first chapter is an entry level introduction to spatial data in R using examples from Africa. It is aimed at those with a little knowledge of R.
 

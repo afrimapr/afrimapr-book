@@ -1,3 +1,3 @@
-# OpenStreetMap data {#osm}
+# OpenStreetMap data {#openstreetmap}
 
 what they are and how to use them?
