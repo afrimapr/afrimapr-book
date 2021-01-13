@@ -1,6 +1,9 @@
 # R recap {#rrecap} 
 This section provides a brief recap of the basic steps that are required or useful to do before staring on the project.
 
+## Setting wd
+
+
 ## Creating, naming and saving a new R script
 
 The R script is a plain text file that allows you to save the R code containing both, commands and comments. Saving the R script allows you to reuse your R code and creates a reproducible record of your work. Therefore, it is a good practice to create, name and save it at the very beginning of your project. <br/><br/>
@@ -13,12 +16,16 @@ div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 **Shortcut**: New R script can also be opened by *Shift+Ctrl+N*.
 </div>
 
+You can now save your R script by clicking on the Save icon at the top of the **Script Editor**, this will prompt a *Save File* window where you can change the name of your script. Note that the file extension for R scripts is **.R**. At this point you can also choose a folder where to save your new file. By default, RStudio will try to save your new script in the current working directory. Once the name and file location are chosen, simply click the **Save** button.
 
-
-
+<style>
+div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "yellow">
+**Shortcut**: As you work along your R script document, you can quickly save changes by pressing *Ctrl+S*.
+</div>
  
 
-## Setting wd
 ## Install & load packages
 ## Formats of spatial data (content, extensions) 
 ## Objects & dataframes
