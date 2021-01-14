@@ -60,24 +60,36 @@ In RStudio it is also possible to add comments next to your commands simply usin
 ## Install and load packages
 
 ## Load data
-There are different approaches that can be used to import your datasets, depending on where the data is located and in what file type it is stored. The easiest case is when the dataset is already part of the R package, as it will be automatically read in when the package is installed and loaded into R. For example:
+There are different approaches that can be used to import your datasets, depending on where the data is located and in what file type it is stored. The easiest case is when the dataset is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
+For example, install packages containing dataset:
 ```{r, eval=FALSE}
 packages_to_install <- c(
-  "rnaturalearth",     # data package
+  "rnaturalearth",     
   "rnaturalearthdata"  # data package
   )
 install.packages(packages_to_install)
 ```
-
+Load them:
 ```{r, results='hide', warning=FALSE, message=FALSE}
 library(rnaturalearth)
 library(rnaturalearthdata)
 ```
-Create dataset called *africa*, provided in the package:
+To view what datasets are available in a given package:
+```{r, warning=FALSE, message=FALSE}
+data(package="rnaturalearthdata")
+```
+
+Create spatial dataset called  *africa*, provided in the package:
 ```{r, warning=FALSE, message=FALSE}
 africa = ne_countries(continent="africa", returnclass="sf")
 ```
-here describe elements of the function
+Please note, the function *ne_countries* is specific for this package and different packages may use other functions to load the dataset into clobal environment.
+
+You can view and explore the dataset:
+```{r, warning=FALSE, message=FALSE}
+head(africa)
+```
+
 
 ## Formats of spatial data (content, extensions) 
 ## Objects & dataframes
