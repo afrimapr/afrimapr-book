@@ -60,19 +60,7 @@ In RStudio it is also possible to add comments next to your commands simply usin
 ## Install and load packages
 
 ## Load data
-There are different approaches that can be used to import your datasets, depending on where the data is located. Here we consider two possibilities:
-
-1. Dataset is included in the R package.<br/>
-If the dataset is already part of the R package, it will be automatically read in when the package is installed and loaded into R. 
-For example:
-
-```{r, eval=FALSE}
-install.packages(afrilearndata) #data package
-library(afrilearndata)
-```
-
-2. Dataset is stored as a separate .txt or .csv file.
-
+There are different approaches that can be used to import your datasets, depending on where the data is located and in what file type it is stored. The easiest case is when the dataset is already part of the R package, as it will be automatically read in when the package is installed and loaded into R. For example:
 
 ## Formats of spatial data (content, extensions) 
 ## Objects & dataframes
