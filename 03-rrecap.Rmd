@@ -52,17 +52,30 @@ If you do not select any code and press **Run**, RStudio will run the line of co
 
 In RStudio it is also possible to add comments next to your commands simply using a hashtag (#) beforehand. This will stop R from executing this specific part:
 ```{r}
-3+6 #Using R as a calculator
+3+6 # Using R as a calculator
 
-#3+6
+# 3+6
 ```
 
+## Install and load packages
+
+## Load data
+There are different approaches that can be used to import your datasets, depending on where the data is located. Here we consider two possibilities:
+
+1. Dataset is included in the R package.<br/>
+If the dataset is already part of the R package, it will be automatically read in when the package is installed and loaded into R. 
+For example:
+
+```{r, eval=FALSE}
+install.packages(afrilearndata) #data package
+library(afrilearndata)
+```
+
+2. Dataset is stored as a separate .txt or .csv file.
 
 
-## Install & load packages
 ## Formats of spatial data (content, extensions) 
 ## Objects & dataframes
-## Load data
 ## Saving dataset
 ## Saving & exporting maps to the file
 
