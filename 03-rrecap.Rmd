@@ -61,6 +61,23 @@ In RStudio it is also possible to add comments next to your commands simply usin
 
 ## Load data
 There are different approaches that can be used to import your datasets, depending on where the data is located and in what file type it is stored. The easiest case is when the dataset is already part of the R package, as it will be automatically read in when the package is installed and loaded into R. For example:
+```{r, eval=FALSE}
+packages_to_install <- c(
+  "rnaturalearth",     # data package
+  "rnaturalearthdata"  # data package
+  )
+install.packages(packages_to_install)
+```
+
+```{r, results='hide', warning=FALSE, message=FALSE}
+library(rnaturalearth)
+library(rnaturalearthdata)
+```
+Create dataset called *africa*, provided in the package:
+```{r, warning=FALSE, message=FALSE}
+africa = ne_countries(continent="africa", returnclass="sf")
+```
+here describe elements of the function
 
 ## Formats of spatial data (content, extensions) 
 ## Objects & dataframes
