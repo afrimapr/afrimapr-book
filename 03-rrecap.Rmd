@@ -85,8 +85,8 @@ africa = ne_countries(continent="africa", returnclass="sf")
 ```
 Please note, the function *ne_countries* is specific for this package and different packages may use other functions to load the dataset into clobal environment.
 
-You can view and explore the dataset:
-```{r, warning=FALSE, message=FALSE}
+You can view and explore the dataset using:
+```{r, warning=FALSE, message=FALSE, results='hide'}
 head(africa)
 ```
 
