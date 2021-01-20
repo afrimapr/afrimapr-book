@@ -70,14 +70,13 @@ Load them:
 library(afrilearndata)
 ```
 To view what datasets are available in a given package:
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE}
 data(package="afrilearndata")
 ```
 You can view and explore the 'africapitals' dataset using:
 ```{r, warning=FALSE, message=FALSE}
 head(africapitals)
 ```
-
 
 ## Formats of spatial data (content, extensions) 
 ## Objects & dataframes
