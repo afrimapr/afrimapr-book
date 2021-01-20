@@ -63,27 +63,22 @@ In RStudio it is also possible to add comments next to your commands simply usin
 There are different approaches that can be used to import your datasets, depending on where the data is located and in what file type it is stored. The easiest case is when the dataset is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
 For example, install packages containing dataset:
 ```{r, eval=FALSE}
-packages_to_install <- c(
-  "rnaturalearth",     
-  "rnaturalearthdata"  # data package
-  )
-install.packages(packages_to_install)
+remotes::install_github("afrimapr/afrilearndata")
 ```
 Load them:
 ```{r, results='hide', warning=FALSE, message=FALSE}
-library(rnaturalearth)
-library(rnaturalearthdata)
+library(afrilearndata)
 ```
 To view what datasets are available in a given package:
 ```{r, warning=FALSE, message=FALSE}
-data(package="rnaturalearthdata")
+data(package="afrilearndata")
 ```
 
 Create spatial dataset called  *africa*, provided in the package:
 ```{r, warning=FALSE, message=FALSE}
 africa = ne_countries(continent="africa", returnclass="sf")
 ```
-Please note, the function *ne_countries* is specific for this package and different packages may use other functions to load the dataset into clobal environment.
+Please note, the function *ne_countries* is specific for this package and different packages may use other functions to load the dataset into global environment.
 
 You can view and explore the dataset using:
 ```{r, warning=FALSE, message=FALSE, results='hide'}
