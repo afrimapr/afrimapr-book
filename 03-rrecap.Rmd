@@ -73,16 +73,9 @@ To view what datasets are available in a given package:
 ```{r, warning=FALSE, message=FALSE}
 data(package="afrilearndata")
 ```
-
-Create spatial dataset called  *africa*, provided in the package:
+You can view and explore the 'africapitals' dataset using:
 ```{r, warning=FALSE, message=FALSE}
-africa = ne_countries(continent="africa", returnclass="sf")
-```
-Please note, the function *ne_countries* is specific for this package and different packages may use other functions to load the dataset into global environment.
-
-You can view and explore the dataset using:
-```{r, warning=FALSE, message=FALSE, results='hide'}
-head(africa)
+head(africapitals)
 ```
 
 
