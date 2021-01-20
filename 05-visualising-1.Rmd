@@ -33,6 +33,8 @@ cran_packages_to_install <- c(
   "rnaturalearthdata"  # data package
   )
 install.packages(cran_packages_to_install)
+
+remotes::install_github("afrimapr/afrilearndata")
 ```
 
 Load the packages
@@ -41,6 +43,7 @@ Load the packages
 library(tmap)
 library(ggplot2)
 library(sf)
+library(afrilearndata)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(dplyr)
