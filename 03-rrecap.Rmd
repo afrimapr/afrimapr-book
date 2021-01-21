@@ -187,7 +187,7 @@ Vector is a one dimensional structure which contains elements of the same type. 
 ```{r, warning=FALSE, message=FALSE}
 a <- c(1:10)
 ```
-It is also possible to create a vector with text-based obejcts, for example with capitals from our `afrilearndata`:
+It is also possible to create a vector with text-based objects, for example with capitals from our `afrilearndata`:
 ```{r, warning=FALSE, message=FALSE}
 capitals <- africapitals$capitalname
 ```
@@ -199,9 +199,21 @@ Another important feature is to see what types of objects the vector stores. We 
 ```{r, warning=FALSE, message=FALSE}
 typeof(capitals)
 ```
-### List
-List can be though of as a container where various types of objects can be stored at the same type (unlike in vector). 
+
 ### Matrix
+Matrix can be though of as an upgraded version of a vector, where vector is an one-dimensional array and two-dimensional array. We can create a matrix that has three columns and five rows with the following:
+```{r, warning=FALSE, message=FALSE}
+matrix(1:15, ncol=3, nrow=5, byrow = TRUE)
+```
+By default, the elements in the matrix will be arranged by column, so `byrow=TRUE` segregates the elements in the matrix row-wise.<br/>
+
+We can also exploit the fact that matrix is an upgraded vector by binding them column- or row-wise, as long as they have the same length:
+```{r, warning=FALSE, message=FALSE}
+vector1 <- c("water", "milk", "juice")
+vector2 <- (1:3)
+cbind(vector1, vector2) #for row-wise binding we would use rbind()
+```
+
 
 ### Dataframe
 
