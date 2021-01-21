@@ -86,13 +86,61 @@ In this section we explore a basic set of possible data types that you can encou
 - Logical (so-called Boolean): containing `TRUE/FALSE` values
 - Factor: containing categorical variables
 
+In R the type of data is referred to as `class` of an object and this function can be used to learn what data types the object contains. 
+```{r, warning=FALSE, message=FALSE}
+x <- 11 #we create a vector that stores value 11
+class(x)
+```
+
+It is useful because each data class has different properties and can be used in a different way. For example, intuitively we can perform the mathematical operations on numeric data such that:
+```{r, warning=FALSE, message=FALSE}
+x <- 11 
+y <- 52
+x*y # multiply them
+```
+
 We will look at these in turns.
 
 ### Numeric and integer
+*Numeric data* stores real (decimal) numbers. This means that the `x` from above is in fact 11.000000, where the zeros are not printed, by default. It is also possible to store number as whole number in a class object called `integer`. An integer can be crated from a `numeric` object in the following way:
+```{r, warning=FALSE, message=FALSE}
+x <- 13.5
+z <- as.integer(x)
+```
+Please note, even though the numeric value is a decimal number the integer by default rounds downwards, hence both *13.1* and *13.9* will result in integer equal *13*.
 
 ### Characters
+In general, character variables store text, usually referred to as a `string`. String can be a letter, word or even a sentence. 
+```{r, warning=FALSE, message=FALSE}
+x <- "adult" 
+y <- "A"
+y <- "I have a bicycle."
 
+```
+In fact, a character can also contain a number, however it will be stored as a text and will not have the same properties as a `numeric` or `integer`. 
+```{r, warning=FALSE, message=FALSE}
+x <- "5" 
+y <- "7"
+class(x)
+x+y #let"s try to perform a mathematical operation on a characters containing numbers
+```
+As you could see above, it is not possible to perform calculation on character types objects, even if they contain number. Therefore, it is a good to check the `class` of the objects. 
+```{r, warning=FALSE, message=FALSE}
+x <- "5" 
+y <- 7
+class(x)
+class(y)
+```
+It is also possible to convert character variables into numeric:
+```{r, warning=FALSE, message=FALSE}
+x <- "5" 
+class(x)
+z <- as.numeric(x)
+class(z)
+print(z)
+```
 ### Logical
+
 ### Factors
 
 
