@@ -113,6 +113,7 @@ x*y # multiplication
 ```{r, warning=FALSE, message=FALSE}
 x <- 13.5
 z <- as.integer(x)
+class(z)
 ```
 
 Please note, even though the numeric value is a decimal number the integer by default rounds downwards, hence both *13.1* and *13.9* will result in integer equal *13*.
@@ -147,7 +148,20 @@ print(z)
 ```
 
 ### Logical
-Logical objects can take values `TRUE` or `FALSE`
+Logical objects can take values `TRUE` or `FALSE`, where `TRUE` is an equivalent of 1 whereas `FALSE` is an equivalent of 0. In these sense, they can be thought of as numerical values.
+```{r, warning=FALSE, message=FALSE}
+x <- TRUE
+y <- 3+TRUE
+print(y)
+```
+
+Typically, logical objects are results of a condition. For example, if we want to test if object `a` is larger than 100.
+
+```{r, warning=FALSE, message=FALSE}
+a <- 76 #create object a
+a > 100 # condition 1
+a < 80 # condition 2
+```
 
 ### Factors
 
