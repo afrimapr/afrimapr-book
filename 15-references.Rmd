@@ -1,1 +1,3 @@
 `r if (knitr:::is_html_output()) '# References {-}'`
+
+Hijmans, R., J.(2020) *Spatial Data Science.* https://rspatial.org/intr/ 

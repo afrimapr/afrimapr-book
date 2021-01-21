@@ -78,8 +78,27 @@ You can view and explore the `africapitals` dataset using:
 head(africapitals)
 ```
 
+## Basic data types
+In this section we explore a basic set of possible data types that you can encounter in a dataframe. The division presented below is based on the types of values that data stores. The most popular data types are:
+
+- Numeric: containing numbers
+- Character: containing text
+- Logical (so-called Boolean): containing `TRUE/FALSE` values
+- Factor: containing categorical variables
+
+We will look at these in turns.
+
+### Numeric and integer
+
+### Characters
+
+### Logical
+### Factors
+
+
+## Basic objects and data structures
+
 ## Formats of spatial data (content, extensions) 
-## Objects & dataframes
 ## Saving dataset
 ## Saving & exporting maps to the file
 
