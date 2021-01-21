@@ -73,9 +73,13 @@ To view what datasets are available in a given package:
 ```{r}
 data(package="afrilearndata")
 ```
-You can view and explore the `africapitals` dataset using:
+We can view and explore the `africapitals` dataset using:
 ```{r, warning=FALSE, message=FALSE}
 head(africapitals)
+```
+We can also create a dataframe from `africapitals` in the global environment:
+```{r, warning=FALSE, message=FALSE}
+dataset <- africapitals
 ```
 
 ## Basic data types
@@ -92,13 +96,6 @@ x <- 11 #we create a vector that stores value 11
 class(x)
 ```
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-**Hint**: To assign a value to an object two operators can be used interchangeably: `<-` or `=`.
-</div>
-
 It is useful because each class has different properties and can be used in a different way. For example, intuitively we can perform the mathematical operations on numeric objects such that:
 
 ```{r, warning=FALSE, message=FALSE}
@@ -107,6 +104,12 @@ y <- 52
 x*y # multiplication
 ```
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+**Hint**: To assign a value to an object two operators can be used interchangeably: `<-` or `=`.
+</div>
 ### Numeric and integer
 *Numeric data* stores real numbers. This means that the object `x` from above is in fact 11.000000, where the zeros are not printed, by default. It is also possible to store value as whole number in a class object called `integer`. An integer can be created from a `numeric` object in the following way:
 
@@ -141,10 +144,8 @@ It is also possible to convert character variables into numeric:
 
 ```{r, warning=FALSE, message=FALSE}
 x <- "5" 
-class(x)
 z <- as.numeric(x)
 class(z)
-print(z)
 ```
 
 ### Logical
@@ -164,8 +165,19 @@ a < 80 # condition 2
 ```
 
 ### Factors
-
-
+Factors are categorical variables with associated `levels`. They can store both, numbers:
+```{r, warning=FALSE, message=FALSE}
+a <- rep(1:3, times=3) # create a vector of numbers from 1 to 3, repeated 3 times
+a <- as.factor(a)
+a
+```
+and strings:
+```{r, warning=FALSE, message=FALSE}
+b <- c("A", "B", "B", "C", "D", "C", "C")
+b <- as.factor(b)
+b
+```
+The numbers as well as strings in the example above serve as labels of different levels.
 ## Basic objects and data structures
 
 ## Formats of spatial data (content, extensions) 
