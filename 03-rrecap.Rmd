@@ -100,6 +100,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </div>
 
 It is useful because each class has different properties and can be used in a different way. For example, intuitively we can perform the mathematical operations on numeric objects such that:
+
 ```{r, warning=FALSE, message=FALSE}
 x <- 11 
 y <- 52
@@ -108,14 +109,17 @@ x*y # multiplication
 
 ### Numeric and integer
 *Numeric data* stores real numbers. This means that the object `x` from above is in fact 11.000000, where the zeros are not printed, by default. It is also possible to store value as whole number in a class object called `integer`. An integer can be created from a `numeric` object in the following way:
+
 ```{r, warning=FALSE, message=FALSE}
 x <- 13.5
 z <- as.integer(x)
 ```
+
 Please note, even though the numeric value is a decimal number the integer by default rounds downwards, hence both *13.1* and *13.9* will result in integer equal *13*.
 
 ### Characters
 Character objects store text, usually referred to as a `string`. String can be a letter, word or even a sentence. 
+
 ```{r, warning=FALSE, message=FALSE}
 x <- "adult" 
 y <- "A"
@@ -123,14 +127,8 @@ y <- "I have a bicycle."
 
 ```
 
-Interestingly, a character can also contain a number, however it will be stored as a text and will not have the same properties as a `numeric` or `integer` object. 
-```{r, warning=FALSE, message=FALSE}
-x <- "5" 
-y <- "7"
-class(x)
-x+y #let"s try to perform a mathematical operation on characters containing numbers
-```
-It results, it is not possible to perform calculation on character objects, even if they contain number. This is when `class` function becomes helpful.
+Interestingly, a character can also contain a number, however it will be stored as a text and will not have the same properties as a `numeric` or `integer` object. As a  results, it will not be possible to perform calculation on character objects, even if they contain numbers. This is when `class` function becomes helpful.
+
 ```{r, warning=FALSE, message=FALSE}
 x <- "5" 
 y <- 7
@@ -139,6 +137,7 @@ class(y)
 ```
 
 It is also possible to convert character variables into numeric:
+
 ```{r, warning=FALSE, message=FALSE}
 x <- "5" 
 class(x)
@@ -146,8 +145,10 @@ z <- as.numeric(x)
 class(z)
 print(z)
 ```
+
 ### Logical
 Logical objects can take values `TRUE` or `FALSE`
+
 ### Factors
 
 
