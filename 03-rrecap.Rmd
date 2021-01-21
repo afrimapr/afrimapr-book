@@ -177,8 +177,33 @@ b <- c("A", "B", "B", "C", "D", "C", "C")
 b <- as.factor(b)
 b
 ```
-The numbers as well as strings in the example above serve as labels of different levels.
+The numbers and strings, in the example above, serve as labels of different levels.
+
 ## Basic objects and data structures
+In this section we explain the basic data structures that we often work with in R. These include a vector, list, matrix and a dataframe.
+
+### Vector
+Vector is a one dimensional structure which contains elements of the same type. Usually a `combine` function is used to create a vector such that:
+```{r, warning=FALSE, message=FALSE}
+a <- c(1:10)
+```
+It is also possible to create a vector with text-based obejcts, for example with capitals from our `afrilearndata`:
+```{r, warning=FALSE, message=FALSE}
+capitals <- africapitals$capitalname
+```
+We can `print` content of our vector to see what it contains:
+```{r, warning=FALSE, message=FALSE}
+print(capitals)
+```
+Another important feature is to see what types of objects the vector stores. We can see that our text-based objects are *characters* using `typeof` function:
+```{r, warning=FALSE, message=FALSE}
+typeof(capitals)
+```
+### List
+List can be though of as a container where various types of objects can be stored at the same type (unlike in vector). 
+### Matrix
+
+### Dataframe
 
 ## Formats of spatial data (content, extensions) 
 ## Saving dataset
