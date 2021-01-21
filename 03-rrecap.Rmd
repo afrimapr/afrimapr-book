@@ -86,6 +86,13 @@ In this section we explore a basic set of possible data types that you can encou
 - Logical (so-called Boolean): containing `TRUE/FALSE` values
 - Factor: containing categorical variables
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+**Hint**: To assign a value to an object two operators can be used interchangeably: `<-` or `=`.
+</div>
+
 In R the type of data is referred to as `class` of an object and this function can be used to learn what data types the object contains. 
 ```{r, warning=FALSE, message=FALSE}
 x <- 11 #we create a vector that stores value 11
