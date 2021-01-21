@@ -70,7 +70,7 @@ Load them:
 library(afrilearndata)
 ```
 To view what datasets are available in a given package:
-```{r, warning=FALSE}
+```{r}
 data(package="afrilearndata")
 ```
 You can view and explore the 'africapitals' dataset using:
