@@ -215,11 +215,11 @@ cbind(vector1, vector2) #for row-wise binding we would use rbind()
 ```
 
 ### Data frame
-Data frame is a two dimensional array, similar to a matrix. You can create a simple data frame from vectors above, using `data.frame` function: function:
+Data frame is a two dimensional array, similar to a matrix. However, it can contain different data types and columns as well as rows within the data frame are named. You can create a simple data frame from vectors above, using `data.frame` function:
 ```{r, warning=FALSE, message=FALSE}
-data.frame(vector1, vector2) #for row-wise binding we would use rbind()
+data.frame(vector1, vector2)
 ```
-
+If you compare the output of the example above where we used the `cbind` function to create a matrix, to the result of the `data.frame` function, we can clearly see the difference between a matrix and a data frame. Where matrix is homogeneous and data frame is heterogeneous in terms of data type. All the values in the matrix are characters while the first column in data frame contains factors and the second one integers.
 ## Formats of spatial data (content, extensions) 
 ## Saving dataset
 ## Saving & exporting maps to the file
