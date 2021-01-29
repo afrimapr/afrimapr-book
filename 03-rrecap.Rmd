@@ -214,8 +214,11 @@ vector2 <- (1:3)
 cbind(vector1, vector2) #for row-wise binding we would use rbind()
 ```
 
-
-### Dataframe
+### Data frame
+Data frame is a two dimensional array, similar to a matrix. You can create a simple data frame from vectors above, using `data.frame` function: function:
+```{r, warning=FALSE, message=FALSE}
+data.frame(vector1, vector2) #for row-wise binding we would use rbind()
+```
 
 ## Formats of spatial data (content, extensions) 
 ## Saving dataset
