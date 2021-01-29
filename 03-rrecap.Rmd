@@ -215,18 +215,18 @@ cbind(vector1, vector2) #for row-wise binding we would use rbind()
 ```
 
 ### Data frame
-Data frame is a two dimensional array, similar to a matrix. However, it can contain different data types. Beyond, columns as well as rows within the data frame are named. You can create a simple data frame with two columns and three rows, using vectors above, with `data.frame` function:
+Data frame is a two dimensional array, similar to a matrix. However, it can contain different data types, unlike matrix. Beyond, columns as well as rows within the data frame are named. In a data frame a column is a variable and row is an observation. You can create a simple data frame with two columns and three rows, using vectors above, with `data.frame` function:
 ```{r, warning=FALSE, message=FALSE}
 data.frame(vector1, vector2)
 ```
 If you compare the output of the example above where we used the `cbind` function to create a matrix, to the result of the `data.frame` function, we can clearly see the difference between a matrix and a data frame. Where matrix is homogeneous and data frame is heterogeneous in terms of data type. All the values in the matrix are characters while the first column in data frame contains factors and the second one integers. <br/>
 
-To view a specific column in a data frame we can use *$* such that:
+To address a specific column in a data frame we can use *$* such that:
 ```{r, warning=FALSE, message=FALSE}
 df_1 = data.frame(vector1, vector2) #create data frame called df_1
-df_1$vector1
+df_1$vector1 #view column called vector1
 ```
-We can see that columns in the *df_1* adapted names of the vectors. 
+At the moment columns in the *df_1* adapted names of the vectors:
 ```{r, warning=FALSE, message=FALSE}
 colnames(df_1)
 ```
@@ -234,16 +234,11 @@ We can change the column headers by their *names* or their *index* such that:
 ```{r, warning=FALSE, message=FALSE}
 names(df_1)[names(df_1) == "vector1"] <- "drinks"
 names(df_1)[2] <- "amount"
-
 colnames(df_1)
 
 ```
 
 
 ## Formats of spatial data (content, extensions) 
-
-## Saving dataset
-
-## Saving & exporting maps to the file
 
 
