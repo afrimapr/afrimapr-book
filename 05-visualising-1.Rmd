@@ -4,15 +4,14 @@ In this section we will visualise spatial data, in particular we will use `tmap`
 
 ```{r, eval=FALSE}
 cran_packages_to_install <- c(
-  "mapview"            # map-making package
-  "tmap"               # map-making package
+  "mapview"            # map-making package for interactive maps
+  "tmap"               # map-making package for static and interactive maps
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
   "rnaturalearthdata"  # data package
   )
 install.packages(cran_packages_to_install)
-
 remotes::install_github("afrimapr/afrilearndata")
 ```
 
@@ -29,10 +28,14 @@ library(rnaturalearthdata)
 library(dplyr)
 ```
 
-
-
 ## Quick interactive maps with mapview
-Mapview package allows for an interactive viewing of spatial objects in R.
+Mapview package allows quickly and easily create interactive maps of spatial data. Therefore, it is useful when we want to quickly explore the data visually without excessive care about the quality of the presentation. However, if we need static maps or interactive maps which are more elaborate we might want to consider other options such as `tmap package` which will be presented later in this chapter.<br/>
+
+The typical spatial objects types supported by `mapview` package are: 
+
+*sf
+*raster
+*sp
 
 ```{r, warning=FALSE, message=FALSE}
 #mapview(africa)
