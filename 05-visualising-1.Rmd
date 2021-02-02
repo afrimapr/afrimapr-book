@@ -1,31 +1,10 @@
-# Visualising spatial data part 1: sf, mapview, tmap {#visualising1}
+# Visualising spatial data part 1: tmap and mapview {#visualising1}
 
-In this section we use tmap, sf and mapview packages to visualise spatial data. In particular this section focuses on:
-
-1. Creating static maps
-2. Add layers to the maps
-3. Creating interactive maps
-
-
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-**Hint**: In order to work properly a list requires an empty line beforehand.
-</div>
-
-## Static maps
-### Basics (this step can be removed if the basic steps can be put in ch.3 'R recap', since they repeat for all packages)
-Set up the working directory with the command `setwd("path to your directory")` or with the `openProject` function as follows (recommended):
-
-```{r, eval=FALSE}
-rstudioapi::openProject("path to your directory")
-```
-
-Install required packages
+In this section we will visualise spatial data, in particular we will use `tmap` and `mapview` to crate both static and interactive maps. This chapter requires the following packages (some of them we used already):
 
 ```{r, eval=FALSE}
 cran_packages_to_install <- c(
+  "mapview"            # map-making package
   "tmap"               # map-making package
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
@@ -37,10 +16,11 @@ install.packages(cran_packages_to_install)
 remotes::install_github("afrimapr/afrilearndata")
 ```
 
-Load the packages
+Next, we need to load the packages:
 
 ```{r, results='hide', warning=FALSE, message=FALSE}
 library(tmap)
+library(mapview)
 library(ggplot2)
 library(sf)
 library(afrilearndata)
@@ -49,8 +29,18 @@ library(rnaturalearthdata)
 library(dplyr)
 ```
 
-Create a dataset
 
+
+## Quick interactive maps with mapview
+Mapview package allows for an interactive viewing of spatial objects in R.
+
+```{r, warning=FALSE, message=FALSE}
+#mapview(africa)
+```
+
+## Layers for the interactive maps
+## Static maps with tmap
+Create a dataset
 ```{r}
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
@@ -74,27 +64,6 @@ tm_shape(africa)+
 
 ```
 
-## Interactive maps
+## Interactive maps with tmap
 
-Mapview package allows for an interactive viewing of spatial objects in R.
-
-Install mapview package
-
-```{r, eval=FALSE}
-install.packages("mapview")
-```
-
-Load package
-
-```{r, results='hide', warning=FALSE, message=FALSE}
-library(mapview)
-```
-
-Basics
-
-```{r, warning=FALSE, message=FALSE}
-#mapview(africa)
-```
-
-## Layers for the interactive maps
 

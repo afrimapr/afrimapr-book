@@ -240,5 +240,4 @@ colnames(df_1)
 
 
 ## Formats of spatial data (content, extensions) 
-
 Given that spatial data is more varied, and each type is specific and usually requires its own package I wonder if we should include it here at all?
