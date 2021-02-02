@@ -37,11 +37,14 @@ The typical spatial objects types supported by `mapview` package are:
 *raster
 *sp
 
+
+
 ```{r, warning=FALSE, message=FALSE}
 #mapview(africa)
 ```
 
 ## Layers for the interactive maps
+
 ## Static maps with tmap
 Create a dataset
 ```{r}
@@ -66,6 +69,8 @@ tm_shape(africa)+
   tm_text("admin", size = 0.52,  fontface="bold", auto.placement = TRUE)
 
 ```
+
+colour pallet TBD
 
 ## Interactive maps with tmap
 
