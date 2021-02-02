@@ -33,9 +33,9 @@ Mapview package allows quickly and easily create interactive maps of spatial dat
 
 The typical spatial objects types supported by `mapview` package are: 
 
-*sf
-*raster
-*sp
+- sf
+- raster
+- sp
 
 
 ```{r, warning=FALSE, message=FALSE}
@@ -55,7 +55,7 @@ tm_shape(africa)+
   tm_borders()
 ```
 
-## Layers for the static maps
+### Layers for the static maps
 
 Fill map using data on last census data and add labels for country names
 
@@ -67,7 +67,7 @@ tm_shape(africa)+
 
 ```
 
-colour pallet TBD
+### Colour pallet
 
 ## Interactive maps with tmap
 
