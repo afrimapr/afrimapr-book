@@ -29,7 +29,7 @@ library(dplyr)
 ```
 
 ## Quick interactive maps with mapview
-Mapview package allows quickly and easily create interactive maps of spatial data. Therefore, it is useful when we want to quickly explore the data visually without excessive care about the quality of the presentation. However, if we need static maps or interactive maps which are more elaborate we might want to consider other options such as `tmap package` which will be presented later in this chapter.<br/>
+`Mapview package` allows quickly and easily create interactive maps of spatial data. Therefore, it is useful when we want to quickly explore the data visually without excessive care about the quality of the presentation. However, if we need static maps or interactive maps which are more elaborate we might want to consider other options such as `tmap package` which will be presented later in this chapter.<br/>
 
 The typical spatial objects types supported by `mapview` package are: 
 
