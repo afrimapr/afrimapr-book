@@ -38,12 +38,9 @@ The typical spatial objects types supported by `mapview` package are:
 *sp
 
 
-
 ```{r, warning=FALSE, message=FALSE}
 #mapview(africa)
 ```
-
-## Layers for the interactive maps
 
 ## Static maps with tmap
 Create a dataset
