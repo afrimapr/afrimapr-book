@@ -4,8 +4,8 @@ In this section we will visualise spatial data, in particular we will use `tmap`
 
 ```{r, eval=FALSE}
 cran_packages_to_install <- c(
-  "mapview"            # map-making package for interactive maps
-  "tmap"               # map-making package for static and interactive maps
+  "mapview",            # map-making package for interactive maps
+  "tmap",               # map-making package for static and interactive maps
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
