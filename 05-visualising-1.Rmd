@@ -12,7 +12,7 @@ cran_packages_to_install <- c(
   "rnaturalearthdata"  # data package
   )
 install.packages(cran_packages_to_install)
-#remotes::install_github("afrimapr/afrilearndata")
+remotes::install_github("afrimapr/afrilearndata")
 ```
 
 Next, we need to load the packages:
@@ -39,7 +39,7 @@ The typical spatial objects types supported by `mapview` package are:
 
 
 ```{r, warning=FALSE, message=FALSE}
-#mapview(africountries)
+mapview(africountries)
 ```
 
 ## Static maps with tmap
@@ -56,7 +56,6 @@ Create an empty contour map of the continent
 ```{r}
 tm_shape(africa)+
   tm_borders()
-
 ```
 
 ### Layers for the static maps
