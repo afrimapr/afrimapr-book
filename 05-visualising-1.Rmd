@@ -39,8 +39,7 @@ The typical spatial objects types supported by `mapview` package are:
 
 
 ```{r, warning=FALSE, message=FALSE}
-#data(africountries)
-#mapview(africountries)
+mapview(africountries)
 ```
 
 ## Static maps with tmap
