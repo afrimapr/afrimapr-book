@@ -10,6 +10,7 @@ cran_packages_to_install <- c(
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
   "rnaturalearthdata"  # data package
+  "rlang"
   )
 install.packages(cran_packages_to_install)
 #remotes::install_github("afrimapr/afrilearndata")
@@ -26,6 +27,7 @@ library(afrilearndata)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(dplyr)
+library(rlang)
 ```
 
 ## Quick interactive maps with mapview
