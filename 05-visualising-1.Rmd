@@ -56,8 +56,6 @@ Create an empty contour map of the continent
 
 ```{r}
 tm_shape(africa)
-#+
-#  tm_borders()
 ```
 
 ### Layers for the static maps
