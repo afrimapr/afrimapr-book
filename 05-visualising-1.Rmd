@@ -39,11 +39,14 @@ The typical spatial objects types supported by `mapview` package are:
 
 
 ```{r, warning=FALSE, message=FALSE}
-data(africountries)
-mapview(africountries)
+#data(africountries)
+#mapview(africountries)
 ```
 
 ## Static maps with tmap
+In this section we will explore the possibilities of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. It will be demonstrated below, where we will start off with a simple contour map and then we will add more 
+
+
 Create a dataset
 ```{r}
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
@@ -52,8 +55,9 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 Create an empty contour map of the continent
 
 ```{r}
-tm_shape(africa)+
-  tm_borders()
+tm_shape(africa)
+#+
+#  tm_borders()
 ```
 
 ### Layers for the static maps
@@ -72,4 +76,5 @@ tm_shape(africa)+
 
 ## Interactive maps with tmap
 
+`tmap` offers versatility not only for creating static maps as we see above but it also allows us to make customised interactive maps conveniently by simply changing the mode of operation from static to dynamic using `tmap_mode()`
 
