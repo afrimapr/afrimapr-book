@@ -16,7 +16,7 @@ In this section we will describe what is the overall aim of this chapter, includ
     - What are the goals of the audience
 
 ## Episode 1 (topic 1)
-Each episode developed within the chapter should contain a narrative to give a bit of a context and again demonstrate the target audience. Beyond it should provide examples and intertwine them with so-called *self-check exercises* which will allow the reader to assess his comprehension of the topic so far. 
+Each episode developed within the chapter should contain a narrative to give a bit of a context and again demonstrate the target audience. Beyond it should provide episode-specific learning objectives and examples, which are to be intertwined with so-called *self-check exercises* which will allow the reader to assess his comprehension of the topic so far. 
 
 ## Episode 2 (topic 2)
 
