@@ -1,5 +1,6 @@
-# R recap {#rrecap} 
-This section provides a brief recap of the basic steps that are required or useful to do before staring on the project.
+# R recap {#rrecap}
+
+Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. In contrast, this section summarises basic steps that are required (or useful) to do before starting the project and provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R software and provide basic background knowledge that the reader can build on while progressing through the further chapters of this book. This chapter will be particularly useful to beginners, who have minimal knowledge of R. Therefore, more advanced readers an move on to the next chapter where spatial data types are looked into.
 
 ## Setting working directory
 At the beginning of each project it is crucial to determine the working directory for your project. A working directory is a folder where all your files associated with the project will be stored. For example, original datasets, saved datasets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing datasets into the RStudio.<br/><br/>
@@ -237,7 +238,3 @@ names(df_1)[2] <- "amount"
 colnames(df_1)
 
 ```
-
-
-## Formats of spatial data (content, extensions) 
-Given that spatial data is more varied, and each type is specific and usually requires its own package I wonder if we should include it here at all?
