@@ -1,5 +1,8 @@
 # Template chapter {#template}
 
+## Linking section 1
+This initial section of each lesson (chapter) should build a link with the previous section of the book by providing a recap of what has been previously done. It will help with placing each chapter within the context of the entire book. 
+
 ## Overall goal of the chapter
 In this section we will describe what is the overall aim of this chapter, including:
 
@@ -22,4 +25,6 @@ Each episode developed within the chapter should contain a narrative to give a b
 
 ## Episode 3 (topic 3)
 
+## Linking section 2
+This closing section should show the reader what has been done in this chapter and how it links with the topics provided in the next chapter by a brief introduction to next topic.
 ## Feedback request on what was useful to the reader (learner) and what can be improved
