@@ -284,10 +284,26 @@ colnames(df_1)
 
 ```
 
-### Getting help with R
-R is a very powerful software with many different packages and functions which are continuously being developed and added. Therefore, it is difficult, if not impossible, to be familiar with all the packages and functions that are currently available. Hence, in order to learn more about 
-To get help with different functions and packages 
-R provides an extensive documentation `help()` function in R provides ex
+## Getting help with R Help
+R is a powerful software with many different packages and functions which are continuously developed and added. Therefore, it is difficult, if not impossible, to be familiar with all the functions that are currently available. Hence, in order to learn more about them R provides extensive documentation which can be accessed with `help()` function, `? operator` or by clicking in *Help* panel in the bottom-right corner. For example, to learn what is matrix:
+```{r, warning=FALSE, message=FALSE}
+help(matrix)
+```
 
-### Wrap up
+Alternatively, it is possible to use `?` in front of the searched item and the R documentation will appear in right-bottom pane. For example, to read more on how to use help function itself we can use: 
+```{r, warning=FALSE, message=FALSE}
+?help
+```
+
+Importantly, in order to get help regarding objects with unusual names such as the operators, it is necessary to use quotation marks:
+```{r, warning=FALSE, message=FALSE}
+?"&"
+
+help("!")
+```
+
+Finally, the Internet also provides several reliable sources such as official [R website](r-project.org) or [documentation pages](rdocumentation.org) where you can find help. 
+
+
+## Wrap up
 
