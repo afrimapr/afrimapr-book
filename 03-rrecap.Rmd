@@ -304,9 +304,9 @@ Importantly, in order to get help regarding objects with unusual names such as t
 help("!")
 ```
 
-R documentation for functions frequently offers a working example of the function which can be accessed with:
+R documentation for functions frequently offers a working example which can be accessed with:
 ```{r, warning=FALSE, message=FALSE}
-example("&")
+example(data.frame)
 ```
 
 Finally, the Internet also provides several reliable sources such as official [R website](r-project.org) or [documentation pages](rdocumentation.org) where you can find help. 
