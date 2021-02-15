@@ -81,7 +81,7 @@ library(rnaturalearth)
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
-**Hint**: Please note the presence of the quotation mark *""* in case of the first function and their lack in case of the second one. 
+Please note the presence of the quotation mark *" "* in case of the first function and its lack in case of the second fucntion. 
 </div>
 
 ## Load data
