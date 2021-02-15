@@ -27,4 +27,5 @@ Each episode developed within the chapter should contain a narrative to give a b
 
 ## Linking section 2
 This closing section should show the reader what has been done in this chapter and how it links with the topics provided in the next chapter by a brief introduction to next topic.
+
 ## Feedback request on what was useful to the reader (learner) and what can be improved
