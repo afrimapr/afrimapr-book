@@ -11,6 +11,7 @@ This chapter proposes several learning objectives. In particular, at the end of 
 - import data set into R space
 - identify and characterise different data types
 - classify and contrast various data structures
+- accessing and using `help` within R 
 
 ## Setting working directory
 At the beginning of each project it is crucial to determine the working directory for your project. A working directory is a folder where all your files associated with the project will be stored. For example, original data sets, saved data sets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing data sets into the RStudio.<br/><br/>
@@ -85,11 +86,14 @@ Please note the presence of the quotation mark *" "* in case of the first functi
 </div>
 
 To download and install packages directly from remote repositories such as GitHub, we can use previously loaded `remote` package and load them as usual:
+
 ```{r, eval=FALSE}
 remotes::install_github("afrimapr/afrilearndata")
 library(afrilearndata)
 ```
-In the example, above we use double-colon operator *::* to call function `install_github` from name space *remotes*. Only functions which are included in the packages can be retrieved in this manner. 
+
+In the example, above we use double-colon operator *::* to call function `install_github` from name space`remotes`. Only functions which are included in the packages can be retrieved in this manner. 
+
 ## Load data
 There are different approaches that can be used to import your data sets, depending on where the data is located and in what file type it is stored. The easiest case is when the data set is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
 For example, install packages containing data set:
@@ -268,3 +272,11 @@ names(df_1)[2] <- "amount"
 colnames(df_1)
 
 ```
+
+### Getting help with R
+R is a very powerful software with many different packages and functions which are continuously being developed and added. Therefore, it is difficult, if not impossible, to be familiar with all the packages and functions that are currently available. 
+To get help with different functions and packages 
+R provides an extensive documentation `help()` function in R provides ex
+
+### Wrap up
+
