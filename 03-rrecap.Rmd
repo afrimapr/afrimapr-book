@@ -1,9 +1,20 @@
 # R recap {#rrecap}
 
-Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. In contrast, this section summarises basic steps that are required (or useful) to do before starting the project and provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R software and provide basic background knowledge that the reader can build on while progressing through the further chapters of this book. This chapter will be particularly useful to beginners, who have minimal knowledge of R. Therefore, more advanced readers an move on to the next chapter where spatial data types are looked into.
+Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. In contrast, this section presents basic steps that are required (or simply a good practice) to take before starting the project where it provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R and provide basic background knowledge that the reader can build on, while progressing through the further chapters of this book. It will be particularly useful to beginners, who have minimal knowledge of R. Therefore, more advanced readers can move forward to the next chapter where spatial data types are looked into. <br/>
+
+This chapter proposes several **learning objectives**. In particular, at the end of this chapter, the reader will be able to:
+
+- create a working directory for his/her project
+- create, name and save a new R script
+- execute R code
+- install and load an R package
+- import data set into R space
+- identify and characterise different data types
+- classify and contrast various data structures
+- accessing and using `help` within R 
 
 ## Setting working directory
-At the beginning of each project it is crucial to determine the working directory for your project. A working directory is a folder where all your files associated with the project will be stored. For example, original datasets, saved datasets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing datasets into the RStudio.<br/><br/>
+At the beginning of each project it is crucial to determine the working directory for your project. A working directory is a folder where all your files associated with the project will be stored. For example, original data sets, saved data sets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing data sets into the RStudio.<br/><br/>
 
 You can set up the working directory with the `openProject` function as follows (recommended):
 
@@ -59,10 +70,35 @@ In RStudio it is also possible to add comments next to your commands simply usin
 ```
 
 ## Install and load packages
+Before being able to use a specific package in R, it is necessary to firstly install and then load it. In this example we install package *remotes* using `install.packages()`:
+```{r, eval=FALSE}
+install.packages("remotes")
+```
+Further, we have to load it into R using `library()` function:
+```{r, eval=FALSE}
+library(remotes)
+```
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+Please note the presence of the quotation mark *" "* in case of the first function and its lack in case of the second function. 
+</div>
+
+To download and install packages directly from remote repositories such as GitHub, we can use previously loaded `remote` package and load them as usual:
+
+```{r, eval=FALSE}
+remotes::install_github("afrimapr/afrilearndata")
+library(afrilearndata)
+```
+
+In the example, above we use double-colon operator *::* to call function `install_github` from name space`remotes`. Only functions which are included in the packages can be retrieved in this manner. 
 
 ## Load data
-There are different approaches that can be used to import your datasets, depending on where the data is located and in what file type it is stored. The easiest case is when the dataset is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
-For example, install packages containing dataset:
+There are different approaches that can be used to import your data sets, depending on where the data is located and in what file type it is stored. The easiest case is when the data set is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
+
+For example, install packages containing data set:
 ```{r, eval=FALSE}
 remotes::install_github("afrimapr/afrilearndata")
 ```
@@ -70,11 +106,11 @@ Load them:
 ```{r, results='hide', warning=FALSE, message=FALSE}
 library(afrilearndata)
 ```
-To view what datasets are available in a given package:
+To view what data sets are available in a given package:
 ```{r}
 data(package="afrilearndata")
 ```
-We can view and explore the `africapitals` dataset using:
+We can view and explore the `africapitals` data set using:
 ```{r, warning=FALSE, message=FALSE}
 head(africapitals)
 ```
@@ -111,6 +147,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <div class = "blue">
 **Hint**: To assign a value to an object two operators can be used interchangeably: `<-` or `=`.
 </div>
+
 ### Numeric and integer
 *Numeric data* stores real numbers. This means that the object `x` from above is in fact 11.000000, where the zeros are not printed, by default. It is also possible to store value as whole number in a class object called `integer`. An integer can be created from a `numeric` object in the following way:
 
@@ -178,24 +215,28 @@ b <- c("A", "B", "B", "C", "D", "C", "C")
 b <- as.factor(b)
 b
 ```
+
 The numbers and strings, in the example above, serve as labels of different levels.
 
 ## Basic objects and data structures
-In this section we explain the basic data structures that we often work with in R. These include a vector, list, matrix and a dataframe.
+In this section we explain the basic data structures that we often work with in R. These include a vector, list, matrix and a data frame.
 
 ### Vector
 Vector is a one dimensional structure which contains elements of the same type. Usually a `combine` function is used to create a vector such that:
 ```{r, warning=FALSE, message=FALSE}
 a <- c(1:10)
 ```
+
 It is also possible to create a vector with text-based objects, for example with capitals from our `afrilearndata`:
 ```{r, warning=FALSE, message=FALSE}
 capitals <- africapitals$capitalname
 ```
+
 We can `print` content of our vector to see what it contains:
 ```{r, warning=FALSE, message=FALSE}
 print(capitals)
 ```
+
 Another important feature is to see what types of objects the vector stores. We can see that our text-based objects are *characters* using `typeof` function:
 ```{r, warning=FALSE, message=FALSE}
 typeof(capitals)
@@ -206,6 +247,7 @@ Matrix can be though of as an upgraded version of a vector, where vector is an o
 ```{r, warning=FALSE, message=FALSE}
 matrix(1:15, ncol=3, nrow=5, byrow = TRUE)
 ```
+
 By default, the elements in the matrix will be arranged by column, so `byrow=TRUE` segregates the elements in the matrix row-wise.<br/>
 
 We can also exploit the fact that matrix is an upgraded vector by binding them column- or row-wise, as long as they have the same length:
@@ -220,6 +262,7 @@ Data frame is a two dimensional array, similar to a matrix. However, it can cont
 ```{r, warning=FALSE, message=FALSE}
 data.frame(vector1, vector2)
 ```
+
 If you compare the output of the example above where we used the `cbind` function to create a matrix, to the result of the `data.frame` function, we can clearly see the difference between a matrix and a data frame. Where matrix is homogeneous and data frame is heterogeneous in terms of data type. All the values in the matrix are characters while the first column in data frame contains factors and the second one integers. <br/>
 
 To address a specific column in a data frame we can use *$* such that:
@@ -227,10 +270,12 @@ To address a specific column in a data frame we can use *$* such that:
 df_1 = data.frame(vector1, vector2) #create data frame called df_1
 df_1$vector1 #view column called vector1
 ```
+
 At the moment columns in the *df_1* adapted names of the vectors:
 ```{r, warning=FALSE, message=FALSE}
 colnames(df_1)
 ```
+
 We can change the column headers by their *names* or their *index* such that:
 ```{r, warning=FALSE, message=FALSE}
 names(df_1)[names(df_1) == "vector1"] <- "drinks"
@@ -238,3 +283,34 @@ names(df_1)[2] <- "amount"
 colnames(df_1)
 
 ```
+
+## Getting help with R Help
+R is a powerful software with many different packages and functions which are continuously developed and added. Therefore, it is difficult, if not impossible, to be familiar with all the functions that are currently available. Hence, in order to learn more about them R provides extensive documentation which can be accessed with `help()` function, `? operator` or by clicking in *Help* panel in the bottom-right corner. For example:
+```{r, warning=FALSE, message=FALSE}
+help(matrix)
+
+help(package="remotes")
+```
+
+Alternatively, it is possible to use `?` in front of the searched item and the R documentation will appear in right-bottom pane. For example, to read more on how to use help function itself we can use: 
+```{r, warning=FALSE, message=FALSE}
+?help
+```
+
+Importantly, in order to get help regarding objects with unusual names such as the operators, it is necessary to use quotation marks:
+```{r, warning=FALSE, message=FALSE}
+?"&"
+
+help("!")
+```
+
+R documentation for functions frequently offers a working example which can be accessed with:
+```{r, warning=FALSE, message=FALSE}
+example(data.frame)
+```
+
+Finally, the Internet also provides several reliable sources such as official [R website](r-project.org) or [documentation pages](rdocumentation.org) where you can find help. 
+
+## Wrap up
+In this chapter we learned several R commands which prepared the reader for starting with his own project. Moreover, we familiarised with a number of data type and R objects. Moreover, we looked at how to obtain help and access R documentation. The material covered in this section aimed at building a base for the reader to allow him?her successfully progress through the book. 
+
