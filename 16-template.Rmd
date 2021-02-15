@@ -12,7 +12,7 @@ In this section we will describe what is the overall aim of this chapter, includ
     - What you will not learn & what to read instead
     - Where to go from here
     
-- List of 'episodes' in this chapter that will help achieve set goal with their short description and an explanation of links between them
+- List of 'episodes' in this chapter that will help achieve set goal with their short description and an explanation of links between them.
 
 - Targeted audience
     - What they are expected to already know (their previous knowledge)

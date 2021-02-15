@@ -1,9 +1,19 @@
 # R recap {#rrecap}
 
-Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. In contrast, this section summarises basic steps that are required (or useful) to do before starting the project and provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R software and provide basic background knowledge that the reader can build on while progressing through the further chapters of this book. This chapter will be particularly useful to beginners, who have minimal knowledge of R. Therefore, more advanced readers an move on to the next chapter where spatial data types are looked into.
+Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. In contrast, this section presents basic steps that are required (or simply a good practice) to take before starting the project where it provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R and provide basic background knowledge that the reader can build on, while progressing through the further chapters of this book. It will be particularly useful to beginners, who have minimal knowledge of R. Therefore, more advanced readers can move forward to the next chapter where spatial data types are looked into. <br/>
+
+This chapter proposes several learning objectives. In particular, at the end of this chapter, the reader will be able to:
+
+- create a working directory for his/her project
+- create, name and save a new R script
+- execute R code
+- install and load an R package
+- import data set into R space
+- identify and characterise different data types
+- classify and contrast various data structures
 
 ## Setting working directory
-At the beginning of each project it is crucial to determine the working directory for your project. A working directory is a folder where all your files associated with the project will be stored. For example, original datasets, saved datasets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing datasets into the RStudio.<br/><br/>
+At the beginning of each project it is crucial to determine the working directory for your project. A working directory is a folder where all your files associated with the project will be stored. For example, original data sets, saved data sets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing data sets into the RStudio.<br/><br/>
 
 You can set up the working directory with the `openProject` function as follows (recommended):
 
@@ -59,10 +69,24 @@ In RStudio it is also possible to add comments next to your commands simply usin
 ```
 
 ## Install and load packages
+Before being able to use a specific package in R, it is necessary to firstly install it and then load it. To install the package `install.packages()` function is used:
+```{r, eval=FALSE}
+install.packages("rnaturalearth")
+```
+Further, we have to load it into R using `library()` function:
+```{r, eval=FALSE}
+library(rnaturalearth)
+```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+**Hint**: Please note the presence of the quotation mark *""* in case of the first function and their lack in case of the second one. 
+</div>
 
 ## Load data
-There are different approaches that can be used to import your datasets, depending on where the data is located and in what file type it is stored. The easiest case is when the dataset is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
-For example, install packages containing dataset:
+There are different approaches that can be used to import your data sets, depending on where the data is located and in what file type it is stored. The easiest case is when the data set is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
+For example, install packages containing data set:
 ```{r, eval=FALSE}
 remotes::install_github("afrimapr/afrilearndata")
 ```
@@ -181,7 +205,7 @@ b
 The numbers and strings, in the example above, serve as labels of different levels.
 
 ## Basic objects and data structures
-In this section we explain the basic data structures that we often work with in R. These include a vector, list, matrix and a dataframe.
+In this section we explain the basic data structures that we often work with in R. These include a vector, list, matrix and a data frame.
 
 ### Vector
 Vector is a one dimensional structure which contains elements of the same type. Usually a `combine` function is used to create a vector such that:
