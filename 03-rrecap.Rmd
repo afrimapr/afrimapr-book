@@ -312,5 +312,5 @@ example(data.frame)
 Finally, the Internet also provides several reliable sources such as official [R website](r-project.org) or [documentation pages](rdocumentation.org) where you can find help. 
 
 ## Wrap up
-In this chapter we learned several R commands which prepared the reader for starting with his own project. Moreover, we familiarised with a number of data type and R objects. Moreover, we looked at how to obtain help and access R documentation. The material covered in this section aimed at building a base for the reader to allow him?her successfully progress through the book. 
+In this chapter we learned several R commands which prepared the reader for starting with his own project. Moreover, we familiarised with a number of data type and R objects. Moreover, we looked at how to obtain help and access R documentation. The material covered in this section aimed at building a base for the reader to allow him/her successfully progress through the book. 
 
