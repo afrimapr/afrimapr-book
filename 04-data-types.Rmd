@@ -52,13 +52,14 @@ library(afrilearndata) #load afrilearndata package
 data(africountries) #In case data isn't loaded into your R environment
 data(africapitals)
 data(afrihighway)
+data(afripop2000)
 
 ```
 
 Download and load the sf package (if this hasn’t been done before)
 ```{r, warning=FALSE, message=FALSE}
 
-install.packages("sf") #install sf package
+#install.packages("sf") #install sf package
 library(sf) #load sf package
 
 ```
@@ -104,11 +105,11 @@ Can you find the mistakes?
 Answer: (need to add errors)
 ```{r, warning=FALSE, message=FALSE}
 
-africapitals_ex1=africapitals %>%
-  filter(as.numeric(`pop`) >= 1400000)
+#africapitals_ex1=africapitals %>%
+#  filter(as.numeric(`pop`) >= 1400000)
 
-tm_shape(africapitals_ex2) +
-  tm_dots("green", shape = 22, size=0.5)# details of how to specify values can be found in '?tm_dots
+#tm_shape(africapitals_ex1) +
+#  tm_dots("green", shape = 22, size=0.5)# details of how to specify values can be found in '?tm_dots
 
 ```
 
@@ -219,10 +220,10 @@ An example of a multipolygon where areas are excluded is the country border of S
 
 ```{r, warning=FALSE, message=FALSE}
 
-africountries_ex=africountries %>%
-  filter(`name` == "South Africa")
+#africountries_ex=africountries %>%
+#  filter(`name` == "South Africa")
 
-plot(st_geometry(africountries_ex), col = "lightblue") 
+#plot(st_geometry(africountries_ex), col = "lightblue") 
 
 ```
 
@@ -323,7 +324,7 @@ Visualise the Malawi country border in black and district borders in green.
 To read in raster data, we need to install and load the 'raster' package. 
 ```{r, warning=FALSE, message=FALSE}
 
-install.packages("raster") #install sf package
+#install.packages("raster") #install sf package
 library(raster) # load raster package
 
 ```
@@ -332,7 +333,7 @@ library(raster) # load raster package
 To show raster data, in this example we use population data from 2000 and 2020. 
 ```{r, warning=FALSE, message=FALSE}
 
-print(afripop2000) #printing information on the raster data file
+#print(afripop2000) #printing information on the raster data file
 
 ```
 The population raster data from 2000 contains 434 rows, 413 columns and a total of 179242 grid cells with geometry type **RasterLayer **.
@@ -340,7 +341,7 @@ The population raster data from 2000 contains 434 rows, 413 columns and a total 
 If we print the first 6 rows of data, we can see how each country border is stored in the database
 ```{r, warning=FALSE, message=FALSE}
 
-head(afripop2000) #First 6 rows of data are printed
+#head(afripop2000) #First 6 rows of data are printed
 
 ```
 
@@ -349,7 +350,7 @@ Why do you think the first 6 data points are empty?
 Better to see a few more grid cells in the raster layer.
 ```{r, warning=FALSE, message=FALSE}
 
-getValues(afripop2000)
+#getValues(afripop2000)
 
 ```
 
@@ -358,10 +359,10 @@ The raster layer consists of a matrix with values. The grid cells can be empty i
 Lets visualise the population data with the country borders (example from [afrilearnr](https://andysouth.shinyapps.io/afrilearnr-crash-course/#section-tmap-map-vector-and-raster-data). 
 ```{r, warning=FALSE, message=FALSE}
 
-tm_shape(afripop2020) +
-    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
-tm_shape(africountries) +
-    tm_borders() 
+#tm_shape(afripop2020) +
+#    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
+#tm_shape(africountries) +
+#    tm_borders() 
 
 ```
 Note: Population density data are highly skewed. To ensure both high and low density areas are clearly visible, we have to specify the data breaks manually. 
@@ -369,15 +370,15 @@ Note: Population density data are highly skewed. To ensure both high and low den
 Now we can add the capitals and highways from previous episodes
 ```{r, warning=FALSE, message=FALSE}
 
-tmap::tm_shape(afripop2020) +
-    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
-tm_shape(africountries) +
-    tm_borders("white", lwd = .5) +
-tm_shape(afrihighway) +
-    tm_lines(col = "red") + 
-tm_shape(africapitals) +
-    tm_symbols(col = "blue", alpha=0.4, scale = .6 )+
-tm_legend(show = FALSE)
+#tm_shape(afripop2020) +
+#    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
+#tm_shape(africountries) +
+#    tm_borders("white", lwd = .5) +
+#tm_shape(afrihighway) +
+#    tm_lines(col = "red") + 
+#tm_shape(africapitals) +
+#    tm_symbols(col = "blue", alpha=0.4, scale = .6 )+
+#tm_legend(show = FALSE)
 
 ```
 
