@@ -390,7 +390,6 @@ Now we can add the capitals and highways from previous episodes
 
 
 
-
 ## Summary/key points
 - Points are ..
 - Lines are ..
