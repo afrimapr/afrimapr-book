@@ -1,5 +1,6 @@
 # Chapter 4 Spatial data types focusing on real examples: cities, roads, admin boundaries, surfaces {#data-types}
 
+**checking**
 ## Overall goal of the chapter
 - Short recap of chapter 3
 
