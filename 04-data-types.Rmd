@@ -1,7 +1,8 @@
+
 # Chapter 4 Spatial data types focusing on real examples: cities, roads, admin boundaries, surfaces {#data-types}
 
-**checking**
 ## Overall goal of the chapter
+
 - Short recap of chapter 3
 
 - The goal of spatial maps is to model reality. Spatial data types are the information that the R-software needs to visualise spatial data in a digital format. This section presents the four main data types used for spatial mapping and their visualisation: points, lines, polygons and rasters. 
@@ -14,15 +15,23 @@
 
 - It is important to keep in mind that all spatial data types require a spatial reference frame/coordinate system identification. The spatial reference frame consists of an origin and axes, so that coordinates can be placed at the right location. 
 
-- Reading in of these files: In R, the [sf](https://r-spatial.github.io/sf/) package provides an interface to OGR (explanation necessary?). The package provides classes and methods for dealing with spatial data in R with a geometry list-column. . A similar (but more outdated) package is [sp](https://cran.r-project.org/web/packages/sp/vignettes/intro_sp.pdf). 
+- Reading in files: In R, the [sf](https://r-spatial.github.io/sf/) package provides an interface to OGR (explanation necessary?). The package provides classes and methods for dealing with spatial data in R with a geometry list-column. . A similar (but more outdated) package is [sp](https://cran.r-project.org/web/packages/sp/vignettes/intro_sp.pdf). 
 
-#Learning objectives: 
-*Describe the difference between points, lines, polygons and raster data types
-*Identify data files from the four different spatial data types
-*Open data files from the four different spatial data types in R
-*Visualise data files from the four different spatial data types in R
+<style>
+div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "yellow">
+### Learning objectives
 
-#The Episodes (with a link to the different episodes)
+- Describe the difference between points, lines, polygons and raster data types
+- Identify data files from the four different spatial data types
+- Open data files from the four different spatial data types in R
+- Visualise data files from the four different spatial data types in R
+
+</div>
+
+
+### The Episodes
 1. Points (cities)
 2. Lines (roads)
 3. Polygons (country boundaries)
@@ -33,11 +42,19 @@
 
 
 ## Episode 1: points (cities)
-#Learning objectives
+<style>
+div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "yellow">
+### Learning objectives
+
 *Identify point data files 
 *Open point data files 
 *Visualise point data files
 
+</div>
+
+-sighting of animals: health centres. 
 - Let’s take an imaginary walk outside. What do you see? Houses, cars, trees…  All these things have unique coordinates that can be used to identify their exact location. On a map, instead of drawing an entire house or tree, these can be visualised as points with their latitude and longitude coordinates. 
 
 -->image of houses, cars and trees with dots inside (with coordinates scale)
@@ -46,6 +63,9 @@
 **What your points represent is dependent on the scale of your map.**
 
 #Example (need more than one example?)
+
+
+
 Reminder of necessary packages 
 ```{r, warning=FALSE, message=FALSE}
 
@@ -98,7 +118,7 @@ tm_shape(africapitals) +
 
 ```
 
-###Exercise  (still need to work on these)
+### Exercise  (still need to work on these)
 -example using same capital data
 -We have visualised all capitals with 1.400.000 people or over using green squares. However, the code isn't working.
 Can you find the mistakes? 
@@ -114,17 +134,24 @@ Answer: (need to add errors)
 
 ```
 
-###Exercise 2 (using different data: health centres? )
+### Exercise 2 (using different data: health centres? )
 
 
 
 
 
 ## Episode 2: Lines e.g. roads
-#Learning objectives
-*Identify line data files 
-*Open line data files 
-*Visualise line data files
+<style>
+div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "yellow">
+### Learning objectives
+
+- Identify line data files 
+- Open line data files 
+- Visualise line data files
+
+</div>
 
 - The capitals visualised in previous episode are a group of dots accross a white page. Not very informative. 
 
@@ -167,7 +194,7 @@ tm_shape(afrihighway) +
 
 ```
 
-###Exercise 1
+### Exercise 1
 We have visualised all the capitals and only the roads that start with the letter 'b'... Couldnt really think of another way to play around with the highway data)
 
 -Rearrange code in the correct order (still need to mix it up)
@@ -184,7 +211,7 @@ tm_shape(africapitals) + #important that capitals are visualised first
 ```
 
 
-###Exercise 2 (different data: rivers in Africa?)
+### Exercise 2 (different data: rivers in Africa?)
 - make this slightly more complicated by selecting rivers than are at least xx km long? 
 
 
@@ -194,10 +221,19 @@ tm_shape(africapitals) + #important that capitals are visualised first
 
 
 ## Episode 3: Polygons e.g. admin boundaries
-#Learning objectives
-*Identify polygon data files 
-*Open polygon data files 
-*Visualise polygon data files
+<style>
+div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "yellow">
+### Learning objectives
+
+- Identify polygon data files 
+- Open polygon data files 
+- Visualise polygon data files
+
+</div>
+
+
 
 - If a line has the same first and last coordinate, this creates a closed figure: a polygon. Similar to lines, depending on the detail of the map, more or less points can be used to create a polygon. 
 
@@ -231,7 +267,7 @@ An example of a multipolygon where areas are excluded is the country border of S
 - As you can see in the image above, when the border lines of South Africa are visualised, a white area is visible inside the country (representing Lesotho), which is not part of South Africa. 
 
 
-#Example
+# Example
 ```{r, warning=FALSE, message=FALSE}
 
 print(st_geometry(africountries)) #printing information on the geometry
@@ -271,7 +307,7 @@ tm_shape(afrihighway) +
 
 ```
 
-###Exercise 1
+### Exercise 1
 Multiple choice to identify if datafiles contain point, line or multipolygon geometry
 -need to identify two different datafiles to use. 
 --> list of data : the students need to identify what kind of geometry type the data file contains
@@ -285,7 +321,7 @@ d All of the above
 If wrong: go back (explain why wrong)
 
 
-###Exercise 2 (different data: districts in Malawi?)
+### Exercise 2 (different data: districts in Malawi?)
 Visualise the Malawi country border in black and district borders in green. 
 
 ```{r, warning=FALSE, message=FALSE}
@@ -300,11 +336,18 @@ Visualise the Malawi country border in black and district borders in green.
 
 
 ## Episode 4: Raster e.g. modelled population estimates
-#Learning objectives
-*Explain the difference between vector and raster data
-*Identify raster data files 
-*Open raster data files 
-*Visualise raster data files
+<style>
+div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "yellow">
+### Learning objectives
+
+- Explain the difference between vector and raster data
+- Identify raster data files 
+- Open raster data files 
+- Visualise raster data files
+
+</div>
 
 - Episode 1 to 3 are focussed on vector data. Vector data uses points, lines, polygons to model the real world. 
 
@@ -330,7 +373,7 @@ library(raster) # load raster package
 
 ```
 
-##Example 
+## Example 
 To show raster data, in this example we use population data from 2000 and 2020. 
 ```{r, warning=FALSE, message=FALSE}
 
@@ -366,7 +409,13 @@ Lets visualise the population data with the country borders (example from [afril
 #    tm_borders() 
 
 ```
-Note: Population density data are highly skewed. To ensure both high and low density areas are clearly visible, we have to specify the data breaks manually. 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+Please note that population density data are highly skewed. To ensure both high and low density areas are clearly visible, we have to specify the data breaks manually.  
+</div>
+
 
 Now we can add the capitals and highways from previous episodes
 ```{r, warning=FALSE, message=FALSE}
@@ -383,11 +432,11 @@ Now we can add the capitals and highways from previous episodes
 
 ```
 
-###Exercise 1
+### Exercise 1
 
 
 
-###Exercise 2 (different data: elevation data?)
+### Exercise 2 (different data: elevation data?)
 
 
 
@@ -397,20 +446,26 @@ Now we can add the capitals and highways from previous episodes
 - Polygons are ..
 - Rasters are ..
 
-##Final Exercises (to be done)
-###1 Visualise 
+## Final Exercises (to be done)
+
+### 1 Visualise 
 
 
-###2 
+### 2 User story
 
 
 
 ## Further resources
 If you are interested in learning more about the different spatial data types, please visit: 
+
 - [Geospatial workshop](https://datacarpentry.org/geospatial-workshop/)
+
 - [Geospatial data organization](https://datacarpentry.org/organization-geospatial/)
+
 - [Introduction to geospatial data](https://datacarpentry.org/r-intro-geospatial/)
+
 - [Raster and vector data](https://datacarpentry.org/r-raster-vector-geospatial/)
 
+
 ## Feedback
-- request on what was useful to the reader (learner) and what can be improved
+- Request on what was useful to the reader (learner) and what can be improved
