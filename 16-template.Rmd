@@ -10,7 +10,8 @@ In this section we will describe what is the overall aim of this chapter, includ
 div.green { background-color:#e9ffe6; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
-**Learning objectives**: 
+**Learning objectives** 
+
     - What will you learn?
     - What you will be able to do at the end of this chapter
     - What you will not learn & what to read instead
@@ -31,7 +32,7 @@ Each episode developed within the chapter should contain a narrative to give a b
 div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "yellow">
-**Shortcut**: Shortcuts to be included in yellow box.
+**Shortcut**: Shortcuts to be in a yellow box.
 </div>    
 
 ## Episode 3 (topic 3)
@@ -40,7 +41,7 @@ div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
-**Hints**: Hints to be included in a blue box.
+**Hints**: Hints to be in a blue box.
 </div>
 ## Linking section 2
 This closing section should show the reader what has been done in this chapter and how it links with the topics provided in the next chapter by a brief introduction to next topic.
