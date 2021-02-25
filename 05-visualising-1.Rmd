@@ -1,5 +1,7 @@
 # Visualising spatial data part 1: tmap and mapview {#visualising1}
 
+
+
 In this section we will visualise spatial data, in particular we will use `tmap` and `mapview` to crate both static and interactive maps. This chapter requires the following packages (some of them we used already):
 
 ```{r, eval=FALSE}

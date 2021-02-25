@@ -7,17 +7,19 @@ This initial section of each lesson (chapter) should build a link with the previ
 In this section we will describe what is the overall aim of this chapter, including:
 
 <style>
-div.green { background-color:#e9ffe6; border-radius: 5px; padding: 20px;}
+div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
-**Learning objectives** 
+## Learning objectives {-}
 
     - What you will learn
     - What you will be able to do at the end of this chapter
     - What you will not learn & what to read instead
     - Where to go from here
+
 </div>
 
+## List of episodes
 - List of 'episodes' in this chapter that will help achieve set goal with their short description and an explanation of links between them.
 
 - Targeted audience
