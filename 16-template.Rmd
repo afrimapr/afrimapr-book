@@ -21,15 +21,18 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 
 ### List of episodes {-}
 - List of 'episodes' in this chapter that will help achieve set goal with their short description and an explanation of links between them.
+1. [Episode 1](#episode_1_template)
+2. [Episode 2](#episode_2_template)
+3. [Episode 3](#episode_3_template)
 
 - Targeted audience
     - What they are expected to already know (their previous knowledge)
     - What are the goals of the audience
 
-## Episode 1 (topic 1)
+## Episode 1 (topic 1) {#episode_1_template}
 Each episode developed within the chapter should contain a narrative to give a bit of a context and again demonstrate the target audience. Beyond it should provide episode-specific learning objectives and examples, which are to be intertwined with so-called *self-check exercises* which will allow the reader to assess his comprehension of the topic so far. 
 
-## Episode 2 (topic 2)
+## Episode 2 (topic 2) {#episode_2_template}
 <style>
 div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 </style>
@@ -37,7 +40,7 @@ div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 **Shortcut**: Shortcuts to be in a yellow box.
 </div>    
 
-## Episode 3 (topic 3)
+## Episode 3 (topic 3) {#episode_3_template}
 
 <style>
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}

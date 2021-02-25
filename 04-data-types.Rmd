@@ -29,16 +29,16 @@ div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 </div>
 
 ### The Episodes
-1. [Points (cities)](## Episode 1: points)
-2. [Lines (roads)](## Episode 2: Lines)
-3. [Polygons (country boundaries)](## Episode 3: Polygons)
-4. [Rasters (population density)](## Episode 4: Raster)
+1. [Points (cities)](#episode_1_points)
+2. [Lines (roads)](#episode_2_lines)
+3. [Polygons (country boundaries)](#episode_3_polygons)
+4. [Rasters (population density)](#episode_4_raster)
 
 
 
 
 
-## Episode 1: points
+## Episode 1: points {#episode_1_points}
 <style>
 div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 </style>
@@ -59,7 +59,7 @@ div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 - Depending on the scale of your map, larger surfaces (cities) can also be visualised with points. 
 **What your points represent is dependent on the scale of your map.**
 
-#Example
+### Example
 
 <style>
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
@@ -150,7 +150,7 @@ Answer: (need to add errors)
 
 
 
-## Episode 2: Lines
+## Episode 2: Lines {#episode_2_lines}
 <style>
 div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 </style>
@@ -169,7 +169,7 @@ div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 
 - Lines are one dimension data with are drawn using points which are connected to eachother in a set order.Depending on the detail of the map, more or less points can be used. These become networks
 
-#Example
+### Example
 ```{r, warning=FALSE, message=FALSE}
 
 print(st_geometry(afrihighway)) #printing information on the geometry
@@ -230,7 +230,7 @@ tm_shape(africapitals) + #important that capitals are visualised first
 
 
 
-## Episode 3: Polygons
+## Episode 3: Polygons {#episode_3_polygons}
 <style>
 div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 </style>
@@ -277,7 +277,7 @@ An example of a multipolygon where areas are excluded is the country border of S
 - As you can see in the image above, when the border lines of South Africa are visualised, a white area is visible inside the country (representing Lesotho), which is not part of South Africa. 
 
 
-# Example
+### Example
 ```{r, warning=FALSE, message=FALSE}
 
 print(st_geometry(africountries)) #printing information on the geometry
@@ -345,7 +345,7 @@ Visualise the Malawi country border in black and district borders in green.
 
 
 
-## Episode 4: Raster
+## Episode 4: Raster {#episode_4_raster}
 <style>
 div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 </style>
