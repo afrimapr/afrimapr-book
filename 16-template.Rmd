@@ -12,10 +12,10 @@ div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 <div class = "green">
 ### Learning objectives {-}
 
-    - What you will learn
-    - What you will be able to do at the end of this chapter
-    - What you will not learn & what to read instead
-    - Where to go from here
+- What you will learn
+- What you will be able to do at the end of this chapter
+- What you will not learn & what to read instead
+- Where to go from here
 
 </div>
 
