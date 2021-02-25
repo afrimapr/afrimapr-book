@@ -2,7 +2,12 @@
 
 Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. In contrast, this section presents basic steps that are required (or simply a good practice) to take before starting the project where it provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R and provide basic background knowledge that the reader can build on, while progressing through the further chapters of this book. It will be particularly useful to beginners, who have minimal knowledge of R. Therefore, more advanced readers can move forward to the next chapter where spatial data types are looked into. <br/>
 
-This chapter proposes several **learning objectives**. In particular, at the end of this chapter, the reader will be able to:
+
+<style>
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+### Learning objectives {-}
 
 - create a working directory for his/her project
 - create, name and save a new R script
@@ -12,6 +17,8 @@ This chapter proposes several **learning objectives**. In particular, at the end
 - identify and characterise different data types
 - classify and contrast various data structures
 - accessing and using `help` within R 
+
+</div>
 
 ## Setting working directory
 At the beginning of each project it is crucial to determine the working directory for your project. A working directory is a folder where all your files associated with the project will be stored. For example, original data sets, saved data sets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing data sets into the RStudio.<br/><br/>
