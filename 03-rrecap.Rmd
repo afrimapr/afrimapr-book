@@ -2,7 +2,6 @@
 
 Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. In contrast, this section presents basic steps that are required (or simply a good practice) to take before starting the project where it provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R and provide basic background knowledge that the reader can build on, while progressing through the further chapters of this book. It will be particularly useful to beginners, who have minimal knowledge of R. Therefore, more advanced readers can move forward to the next chapter where spatial data types are looked into. <br/>
 
-
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
@@ -20,7 +19,18 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 
 </div>
 
-## Setting working directory
+### List of episodes {-}
+
+1. [Working directory](#wd)
+2. [New script](#new_script)
+3. [Executing code](#executing)
+4. [Install packages](#install_packages)
+5. [Load data](#load_data)
+6. [Basic data types](#data_basics)
+7. [Basic objects](#objects_basics)
+8. [Getting help](#help)
+
+## Setting working directory {#wd}
 At the beginning of each project it is crucial to determine the working directory for your project. A working directory is a folder where all your files associated with the project will be stored. For example, original data sets, saved data sets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing data sets into the RStudio.<br/><br/>
 
 You can set up the working directory with the `openProject` function as follows (recommended):
@@ -36,7 +46,7 @@ setwd("path to your directory")
 
 While the former option will set up and open the working directory for your project, the latter simply determines the default folder for each specific R script. 
 
-## Creating, naming and saving a new R script
+## Creating, naming and saving a new R script {#new_script}
 
 The R script is a plain text file that allows you to save the R code containing both, commands and comments. Saving the R script allows you to reuse your R code and creates a reproducible record of your work. Therefore, it is a good practice to create, name and save it at the very beginning of your project. <br/><br/>
 You can crate a new R script by clicking the **New File** icon in the top right corner of the RStudio toolbar, which will open a list with different file options. Choose the **R Script** from the menu and the blank script will open in the main RStudio window.
@@ -57,7 +67,7 @@ div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 **Shortcut**: As you work along your R script document, you can quickly save changes by pressing *Ctrl+S*.
 </div>
 
-## Executing the code
+## Executing the code {#executing}
 Now, as you set up the working directory for your project and created your first R script file, we will look into ways of executing (also known as running) the code. You can execute selected chunk of code by clicking **Run** button at the top right corner of the **Script Editor**. 
 
 <style>
@@ -76,7 +86,7 @@ In RStudio it is also possible to add comments next to your commands simply usin
 # 3+6
 ```
 
-## Install and load packages
+## Install and load packages {#install_packages}
 Before being able to use a specific package in R, it is necessary to firstly install and then load it. In this example we install package *remotes* using `install.packages()`:
 ```{r, eval=FALSE}
 install.packages("remotes")
@@ -102,7 +112,7 @@ library(afrilearndata)
 
 In the example, above we use double-colon operator *::* to call function `install_github` from name space`remotes`. Only functions which are included in the packages can be retrieved in this manner. 
 
-## Load data
+## Load data {#load_data}
 There are different approaches that can be used to import your data sets, depending on where the data is located and in what file type it is stored. The easiest case is when the data set is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
 
 For example, install packages containing data set:
@@ -126,7 +136,7 @@ We can also create a dataframe from `africapitals` in the global environment:
 dataset <- africapitals
 ```
 
-## Basic data types
+## Basic data types {#data_basics}
 In this section we explore a basic set of possible object types that you can encounter in a dataframe. The division presented below is based on the types of values that data (object) stores. The most popular data types are:
 
 - Numeric
@@ -225,7 +235,7 @@ b
 
 The numbers and strings, in the example above, serve as labels of different levels.
 
-## Basic objects and data structures
+## Basic objects and data structures {#objects_basics}
 In this section we explain the basic data structures that we often work with in R. These include a vector, list, matrix and a data frame.
 
 ### Vector
@@ -291,7 +301,7 @@ colnames(df_1)
 
 ```
 
-## Getting help with R Help
+## Getting help with R Help {#help}
 R is a powerful software with many different packages and functions which are continuously developed and added. Therefore, it is difficult, if not impossible, to be familiar with all the functions that are currently available. Hence, in order to learn more about them R provides extensive documentation which can be accessed with `help()` function, `? operator` or by clicking in *Help* panel in the bottom-right corner. For example:
 ```{r, warning=FALSE, message=FALSE}
 help(matrix)
