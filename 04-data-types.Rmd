@@ -35,9 +35,6 @@ div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 4. [Rasters (population density)](#episode_4_raster)
 
 
-
-
-
 ## Episode 1: points {#episode_1_points}
 <style>
 div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
@@ -383,7 +380,7 @@ library(raster) # load raster package
 
 ```
 
-## Example 
+### Example 
 To show raster data, in this example we use population data from 2000 and 2020. 
 ```{r, warning=FALSE, message=FALSE}
 

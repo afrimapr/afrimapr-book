@@ -16,7 +16,7 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 - import data set into R space
 - identify and characterise different data types
 - classify and contrast various data structures
-- accessing and using `help` within R 
+- accessing and using *Help* within R 
 
 </div>
 
