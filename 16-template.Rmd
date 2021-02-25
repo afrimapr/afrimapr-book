@@ -7,7 +7,7 @@ This initial section of each lesson (chapter) should build a link with the previ
 In this section we will describe what is the overall aim of this chapter, including:
 
 <style>
-div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
+div.green { background-color:#d3ffbf; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
 ### Learning objectives {-}
