@@ -1,8 +1,23 @@
 # Visualising spatial data part 1: tmap and mapview {#visualising1}
 
+## Overall goal of the chapter
+In the previous section we explored different types of spatial data and looked at what we can do with them. Whereas in this section we will visualise them, in particular we will use `tmap` and `mapview` to crate both static and interactive maps. In particular, we will focus on the goals presented below.
+In this section we will describe what is the overall aim of this chapter, including:
+
+<style>
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+### Learning objectives {-}
+
+- Create a static and interactive maps using different packages
+- Learn function structure to build more advanced maps
+- Analyse the differences between used packages and identify their applicability for various purposes
+
+</div>
 
 
-In this section we will visualise spatial data, in particular we will use `tmap` and `mapview` to crate both static and interactive maps. This chapter requires the following packages (some of them we used already):
+This chapter requires the following packages (some of them we used already):
 
 ```{r, eval=FALSE}
 cran_packages_to_install <- c(
