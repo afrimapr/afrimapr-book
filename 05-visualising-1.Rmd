@@ -26,8 +26,7 @@ cran_packages_to_install <- c(
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
-  "rnaturalearthdata"  # data package
-)
+  "rnaturalearthdata"  # data package)
 install.packages(cran_packages_to_install)
 #remotes::install_github("afrimapr/afrilearndata")
 ```
