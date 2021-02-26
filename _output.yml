@@ -6,6 +6,7 @@ bookdown::gitbook:
         <li><a href="./">The afrimapr book</a></li>
       after: |
         <li><a href="https://github.com/afrimapr/book" target="blank">Published with bookdown</a></li>
+      toc_depth: 1
     edit: https://github.com/afrimapr/book-demo/edit/master/%s
     # download: ["pdf", "epub"]
 bookdown::pdf_book:

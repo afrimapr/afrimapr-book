@@ -30,7 +30,7 @@ cran_packages_to_install <- c(
   "remotes"
   )
 install.packages(cran_packages_to_install)
-remotes::install_github("afrimapr/afrilearndata")
+#remotes::install_github("afrimapr/afrilearndata")
 ```
 
 Next, we need to load the packages:
