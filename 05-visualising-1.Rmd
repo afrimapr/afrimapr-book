@@ -29,7 +29,6 @@ cran_packages_to_install <- c(
   "rnaturalearthdata"  # data package
   )
 install.packages(cran_packages_to_install)
-#remotes::install_github("afrimapr/afrilearndata")
 ```
 
 Next, we need to load the packages:
