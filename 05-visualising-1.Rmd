@@ -20,7 +20,6 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 This chapter requires the following packages (some of them we used already):
 
 ```{r, eval=FALSE}
-remove.packages("remotes")
 cran_packages_to_install <- c(
   "mapview",            # map-making package for interactive maps
   "tmap",               # map-making package for static and interactive maps
