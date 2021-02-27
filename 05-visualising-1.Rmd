@@ -27,7 +27,6 @@ cran_packages_to_install <- c(
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
   "rnaturalearthdata"  # data package
-  "remotes"
   )
 install.packages(cran_packages_to_install)
 ```
@@ -35,7 +34,6 @@ install.packages(cran_packages_to_install)
 Next, we need to load the packages:
 
 ```{r, results='hide', warning=FALSE, message=FALSE}
-library(remotes)
 library(tmap)
 library(mapview)
 library(ggplot2)
