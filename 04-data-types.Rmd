@@ -1,5 +1,5 @@
 
-# Chapter 4 Spatial data types focusing on real examples: cities, roads, admin boundaries, surfaces {#data-types}
+# Chapter 4 Spatial data types with focus on real examples {#data-types}
 
 ## Overall goal of the chapter
 
@@ -16,7 +16,7 @@ It is important to keep in mind that all spatial data types require a spatial re
 This chapter is written for beginners, who have basic knowledge of R and no experience with spatial data. More advanced readers can move to the next chapter where visualisation of data types are explained in more detail. <br/>
 
 <style>
-div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
 ### Learning objectives
@@ -28,14 +28,14 @@ div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 
 </div>
 
-### The Episodes
+### List of episodes
 1. [Points (cities)](#episode_1_points)
 2. [Lines (roads)](#episode_2_lines)
 3. [Polygons (country boundaries)](#episode_3_polygons)
 4. [Rasters (population density)](#episode_4_raster)
 
 
-## Episode 1: points {#episode_1_points}
+## 4.1 Points {#episode_1_points}
 <style>
 div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 </style>
@@ -147,9 +147,9 @@ Answer: (need to add errors)
 
 
 
-## Episode 2: Lines {#episode_2_lines}
+## 4.2 Lines {#episode_2_lines}
 <style>
-div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
 ### Learning objectives
@@ -227,9 +227,9 @@ afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
 
 
 
-## Episode 3: Polygons {#episode_3_polygons}
+## 4.3 Polygons {#episode_3_polygons}
 <style>
-div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
 ### Learning objectives
@@ -342,9 +342,9 @@ Visualise the Malawi country border in black and district borders in green.
 
 
 
-## Episode 4: Raster {#episode_4_raster}
+## 4.4 Rasters {#episode_4_raster}
 <style>
-div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
 ### Learning objectives
@@ -453,8 +453,11 @@ Now we can add the capitals and highways from previous episodes
 - Polygons are ..
 - Rasters are ..
 
-## Final Exercises (to be done)
+## 4.5 Wrap up with final exercises
 
+In this chapter we learned xxxx
+
+Try to solve the exercises below tp 
 ### 1 Visualise 
 
 
@@ -462,7 +465,7 @@ Now we can add the capitals and highways from previous episodes
 
 
 
-## Further resources
+## 4.6 Further resources
 If you are interested in learning more about the different spatial data types, please visit: 
 
 - [Geospatial workshop](https://datacarpentry.org/geospatial-workshop/)
@@ -474,5 +477,5 @@ If you are interested in learning more about the different spatial data types, p
 - [Raster and vector data](https://datacarpentry.org/r-raster-vector-geospatial/)
 
 
-## Feedback
-- Request on what was useful to the reader (learner) and what can be improved
+## 4.7 Feedback
+- Request on what was useful to the reader (learner) and what can be improved: Is this necessary after each chapter? Feels slightly repetitive. 
