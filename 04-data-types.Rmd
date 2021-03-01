@@ -3,17 +3,24 @@
 
 ## Overall goal of the chapter
 
-Focus on functional use of spatial data types! 
--->Short recap of chapter 3
-The goal of spatial maps is to model reality. Spatial data types are the information that the R-software needs to visualise spatial data in a digital format. This section presents the four main data types used for spatial mapping and their visualisation: points, lines, polygons and rasters. 
+Previous chapter provided a short recap of the R basics that are necessary to succesfully work through the geospatial training that has been drawn up in this book. This section will start with the very basics of geospatial mapping: the 4 different types of spatial data types that you will encounter. 
 
---> interactive image with a different layer for points, lines, polygons and rasters (great to already have a simple visualisation of the topics to be discussed in this chapter
+The goal of any spatial map is to model reality, whether this is on the scale of a house, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools and so on. The opportunities are endless. All the R software needs is information to visualise spatial data in a digital format. This is achieved by loading different spatial data types, which together form a model of reality. This section presents the four main data types: points, lines, polygons and rasters. 
 
-There are two groups of spatial data: vector and raster. Vector data consist of points, lines and polygones, which are visualised using coordinates. Raster data is made up of a grid of pixels each containing data. 
-Spatial data can be stored in many different formats: Shapefile (.shp + .dbf + .prj + …), GeoPackage (.gpkg), GeoJSON (.json), GML (.gml), SpatiaLite (.db), and many more (.gpx, .csv). The most common is Shapefile, which consists of at least three files (geometry, attribute data, CRS). Another standard is the GeoPackage, which is just one fil. It can store multiple vector data layers, as well as non-vector data such as satellite images and tables of metadata. 
-It is important to keep in mind that all spatial data types require a spatial reference frame/coordinate system identification. The spatial reference frame consists of an origin and axes, so that coordinates can be placed at the right location. 
--->Reading in files: In R, the [sf](https://r-spatial.github.io/sf/) package provides an interface to OGR (explanation necessary?). The package provides classes and methods for dealing with spatial data in R with a geometry list-column. . A similar (but more outdated) package is [sp](https://cran.r-project.org/web/packages/sp/vignettes/intro_sp.pdf). 
-This chapter is written for beginners, who have basic knowledge of R and no experience with spatial data. More advanced readers can move to the next chapter where visualisation of data types are explained in more detail. <br/>
+--> interactive image with a different layer for points, lines, polygons and rasters (need help doing this, without the need to load data first..)
+
+All spatial data types require a spatial reference frame or coordinate system identification to place data in the correct location in space. We will discuss this in more detail in chapter xxx. For now, just be aware that apart from your data file, additional data is necessary to place your points, lines, polygons and rasters in the correct location. 
+
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+Please note that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to GeoJSON (.json), to CSV files (.csv) and many more. It can be overwhelming sometimes to identify their format and how to open them in R software. In these situations don't hesitate to contact the owner of the data or use google! 
+</div>
+
+This chapter is written for beginners, who have basic knowledge of R and no experience with spatial data. If you are familiar with the basic spatial data types, you can move on to the next chapter where visualisation of data types are explained in more detail. 
+<br/>
 
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
@@ -48,12 +55,10 @@ div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 
 </div>
 
--sighting of animals: health centres. 
-- Let’s take an imaginary walk outside. What do you see? Houses, cars, trees…  All these things have unique coordinates that can be used to identify their exact location. On a map, instead of drawing an entire house or tree, these can be visualised as points with their latitude and longitude coordinates. 
 
--->image of houses, cars and trees with dots inside (with coordinates scale)
+Let’s take an imaginary walk outside. What do you see? Houses, cars, trees…  All these things have unique coordinates that can be used to identify their exact location. On a map, the objects can be drawn as points with their latitude and longitude coordinates indicating their location in relation to other objects and locations. Depending on the scale of your map, larger surfaces (cities) can also be visualised with points. 
+HIER
 
-- Depending on the scale of your map, larger surfaces (cities) can also be visualised with points. 
 **What your points represent is dependent on the scale of your map.**
 
 ### Example
@@ -78,6 +83,8 @@ data(afripop2000)
 ```
 
 Download and load the sf package (if this hasn’t been done before)
+
+Before we start with the visualisation of data, we need to load ->Reading in files: In R, the [sf](https://r-spatial.github.io/sf/) package provides an interface to OGR (explanation necessary?). The package provides classes and methods for dealing with spatial data in R with a geometry list-column. . A similar (but more outdated) package is [sp](https://cran.r-project.org/web/packages/sp/vignettes/intro_sp.pdf). 
 ```{r, warning=FALSE, message=FALSE}
 
 #install.packages("sf") #install sf package
@@ -143,7 +150,7 @@ Answer: (need to add errors)
 
 ### Exercise 2 (using different data: museums, universities? )
 
-
+sighting of animals: health centres. 
 
 
 
@@ -339,7 +346,7 @@ Visualise the Malawi country border in black and district borders in green.
 ```
 
 
-
+Points, lines and polygons are grouped together as vector data. Several points together can form a line and several lines together form a polygon. They are all dependent on coordinates and their datafiles look very similar. Rasters are a group of their own. They are made up of a grid of pixels, with each grid containing values. 
 
 
 ## 4.4 Rasters {#episode_4_raster}
