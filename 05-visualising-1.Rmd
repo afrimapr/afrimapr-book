@@ -87,6 +87,7 @@ Fill map using data on last census data and add labels for country names
 
 ### Colour pallet
 
+
 ## Interactive maps with tmap
 
 `tmap` offers versatility not only for creating static maps as we see above but it also allows us to make customised interactive maps conveniently by simply changing the mode of operation from static to dynamic using `tmap_mode()`
