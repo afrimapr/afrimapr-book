@@ -113,15 +113,15 @@ Please note that this database also includes the population of the capital as a 
 Lets visualise the African capitals by plotting their geometry. 
 ```{r, warning=FALSE, message=FALSE}
 
-library(tmap) #Do they already know how to use this? Or do we focus on simple plotting? 
-
-tm_shape(africapitals) +
-  tm_dots("red") # displaying the point geometry as red dots
-
-#Labels can be added to name the capital, although this can become messy when capitals are closely situated
-tm_shape(africapitals) +
-  tm_dots("red")+ # displaying the point geometry as red dots
-    tm_text("capitalname", size=0.7 ) #adding the name 
+# library(tmap) #Do they already know how to use this? Or do we focus on simple plotting? 
+# 
+# tm_shape(africapitals) +
+#   tm_dots("red") # displaying the point geometry as red dots
+# 
+# #Labels can be added to name the capital, although this can become messy when capitals are closely situated
+# tm_shape(africapitals) +
+#   tm_dots("red")+ # displaying the point geometry as red dots
+#     tm_text("capitalname", size=0.7 ) #adding the name 
 
 ```
 
@@ -186,18 +186,18 @@ The geometry of the line data is stored as *LINESTRING(Latitude1, Longitude1, La
 Lets visualise these linestrings in red
 ```{r, warning=FALSE, message=FALSE}
 
-tm_shape(afrihighway) +
-  tm_lines("red") # displaying the point geometry as red dots
+# tm_shape(afrihighway) +
+#   tm_lines("red") # displaying the point geometry as red dots
 
 ```
 
 Now we add the capitals from previous episode in blue
 ```{r, warning=FALSE, message=FALSE}
 
-tm_shape(africapitals) +
-  tm_dots("blue", size=0.5)+
-tm_shape(afrihighway) +
-  tm_lines("red") # displaying the point geometry as red dots
+# tm_shape(africapitals) +
+#   tm_dots("blue", size=0.5)+
+# tm_shape(afrihighway) +
+#   tm_lines("red") # displaying the point geometry as red dots
 
 ```
 
@@ -209,10 +209,10 @@ We have visualised all the capitals and only the roads that start with the lette
 ```{r, warning=FALSE, message=FALSE}
 afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
 
-tm_shape(africapitals) + #important that capitals are visualised first 
-  tm_dots("blue", size=0.5)+
-    tm_shape(afrihighway_ex1)+
-  tm_lines("blue") 
+# tm_shape(africapitals) + #important that capitals are visualised first 
+#   tm_dots("blue", size=0.5)+
+#     tm_shape(afrihighway_ex1)+
+#   tm_lines("blue") 
 
 
 ```
@@ -294,23 +294,23 @@ The geometry of the multipolygon data is stored as *MULTIPOLYGON (((Latitude1, L
 Lets visualise these multipolygons in black
 ```{r, warning=FALSE, message=FALSE}
 
-tm_shape(africountries) +
-  tm_borders() #if only borders need to be visualised
-
-tm_shape(africountries) +
-  tm_polygons() #if you want the image to specify the multipologon area
+# tm_shape(africountries) +
+#   tm_borders() #if only borders need to be visualised
+# 
+# tm_shape(africountries) +
+#   tm_polygons() #if you want the image to specify the multipologon area
 
 ```
 
 Now we can add the capitals and highways from previous episodes
 ```{r, warning=FALSE, message=FALSE}
 
-tm_shape(africountries) +
-  tm_borders()+
-tm_shape(africapitals) +
-  tm_dots("blue", size=0.5)+
-tm_shape(afrihighway) +
-  tm_lines("red") # displaying the point geometry as red dots
+# tm_shape(africountries) +
+#   tm_borders()+
+# tm_shape(africapitals) +
+#   tm_dots("blue", size=0.5)+
+# tm_shape(afrihighway) +
+#   tm_lines("red") # displaying the point geometry as red dots
 
 ```
 
