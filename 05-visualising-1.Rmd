@@ -22,7 +22,7 @@ This chapter requires the following packages (some of them we used already):
 ```{r, eval=FALSE}
 cran_packages_to_install <- c(
   "mapview",            # map-making package for interactive maps
-  "tmap",               # map-making package for static and interactive maps
+ # "tmap",               # map-making package for static and interactive maps
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
@@ -34,7 +34,7 @@ install.packages(cran_packages_to_install)
 Next, we need to load the packages:
 
 ```{r, results='hide', warning=FALSE, message=FALSE}
-library(tmap)
+#library(tmap)
 library(mapview)
 library(ggplot2)
 library(sf)
@@ -61,7 +61,6 @@ The typical spatial objects types supported by `mapview` package are:
 ## Static maps with tmap
 In this section we will explore the possibilities of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. It will be demonstrated below, where we will start off with a simple contour map and then we will add more 
 
-
 Create a dataset
 ```{r}
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
@@ -70,8 +69,8 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 Create an empty contour map of the continent
 
 ```{r}
-tm_shape(africa)+
- tm_borders()
+# tm_shape(africa)+
+#  tm_borders()
 ```
 
 ### Layers for the static maps
@@ -79,10 +78,10 @@ tm_shape(africa)+
 Fill map using data on last census data and add labels for country names
 
 ```{r, warning=FALSE}
-tm_shape(africa)+
- tm_fill(col="lastcensus", title="Year of last census", legend.format = list(format="s"))+
- tm_borders()+
- tm_text("admin", size = 0.52,  fontface="bold", auto.placement = TRUE)
+# tm_shape(africa)+
+#  tm_fill(col="lastcensus", title="Year of last census", legend.format = list(format="s"))+
+#  tm_borders()+
+#  tm_text("admin", size = 0.52,  fontface="bold", auto.placement = TRUE)
 
 ```
 
