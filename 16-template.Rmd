@@ -50,9 +50,12 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </div>
 
 ## Further resources
-In this section we provide links to additional websites and sources that are useful in a given topic or package.
+In this section we provide links to additional websites and sources that are useful in a given topic or package in the following way:
 
-## Linking section 2
+- [Introduction to geospatial data](https://datacarpentry.org/r-intro-geospatial/)
+- [Raster and vector data](https://datacarpentry.org/r-raster-vector-geospatial/)
+
+## Wrap up
 This closing section should show the reader what has been done in this chapter and how it links with the topics provided in the next chapter by a brief introduction to next topic.
 
 ## Feedback 
