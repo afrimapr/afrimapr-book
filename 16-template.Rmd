@@ -58,6 +58,18 @@ In this section we provide links to additional websites and sources that are use
 ## Wrap up
 This closing section should show the reader what has been done in this chapter and how it links with the topics provided in the next chapter by a brief introduction to next topic.
 
+## Exercise solutions
+
+- Exercise 1
+```{r, results='hide'}
+#code to exercise 1 only, results hidden 
+```
+
+- Exercise 2
+```{r, results='hide'}
+#code to exercise 2 only, results hidden
+```
+
 ## Feedback 
 
 Feedback section aims at learning what was useful to the reader (learner) and what can be improved. It gives the reader an opportunity to reflect on what he/she learned and evaluate the book in this this context.

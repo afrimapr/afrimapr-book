@@ -21,7 +21,7 @@ This chapter requires the following packages (some of them we used already):
 ```{r, eval=FALSE}
 cran_packages_to_install <- c(
   "mapview",            # map-making package for interactive maps
- # "tmap",               # map-making package for static and interactive maps
+  "tmap",               # map-making package for static and interactive maps
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
@@ -33,7 +33,7 @@ install.packages(cran_packages_to_install)
 Next, we need to load the packages:
 
 ```{r, results='hide', warning=FALSE, message=FALSE}
-#library(tmap)
+library(tmap)
 library(mapview)
 library(ggplot2)
 library(sf)
@@ -76,7 +76,7 @@ We can further develop our map by adjusting the colour, width, types and transpa
 # tm_shape(africa)+
 #  tm_borders(col = "green", lwd = 1.5, lty = "dotted", alpha = 0.6)
 ```
-- Exercise: change the settings to the map to obtain blue, solid and non-transparent borders such as showed below: 
+- Exercise 1: change the settings to the map to obtain blue, solid and non-transparent borders such as showed below: 
 
 ```{r, echo=FALSE}
 # tm_shape(africa)+
@@ -113,4 +113,10 @@ Fill map using data on last census data and add labels for country names
 
 ## Further resources
 
+## Exercise solutions
 
+- Exercise 1
+```{r, results='hide'}
+tm_shape(africa)+
+ tm_borders(col = "blue", lwd = 1.5, lty = "solid", alpha = 1)
+```
