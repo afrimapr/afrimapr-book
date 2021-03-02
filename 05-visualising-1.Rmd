@@ -25,7 +25,8 @@ cran_packages_to_install <- c(
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
-  "rnaturalearthdata"  # data package
+  "rnaturalearthdata",  # data package
+  "tmaptools"              # map building package
   )
 install.packages(cran_packages_to_install)
 ```
@@ -41,6 +42,7 @@ library(afrilearndata)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(dplyr)
+library(tmaptools)
 ```
 
 ## Quick interactive maps with mapview
@@ -67,7 +69,7 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 ```
 Create an empty contour map of the continent, where `tm_shape()` function contains shape object (our spatial dataset) and `tm_borders()` defines the borders of the polygons. 
 ```{r, results='hide'}
-tmap_mode("plot")
+tmap_mode("plot") #activates static map viewing mode
 tm_shape(africa)+
  tm_borders()
 ```
@@ -108,7 +110,7 @@ tm_shape(africa)+
 
 
 
-As we already know a basic structure required to build a static map we can proceed to a more advanced (and useful) example where we fill the polygons using data on last census, add relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
+As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example where we fill the polygons using data on last census, add relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
 
 ```{r, warning=FALSE}
 tm_shape(africa)+
@@ -134,12 +136,13 @@ tm_shape(africa)+
  tm_borders()
 ```
 
-Instead, we might want to use `breaks` function to set them up manually to provide more differentiation. It is important to keep breaks values between minimum and maximum value in the data.
+Instead, we might want to use `breaks` argument to set them up manually to provide more differentiation visually. 
 ```{r, warning=FALSE}
 tm_shape(africa)+
  tm_fill(col="pop_est", title="Population", breaks = c(1000000, 4000000, 8000000, 12000000, 16000000, 20000000, 24000000, 28000000,32000000))+
  tm_borders()
 ```
+
 - **Exercise 3**: create a map with polygons filled with gross domestic product, black borders, legend titled *GDP* and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000, such as seen below.
 ```{r, echo=FALSE}
 tm_shape(africa)+
@@ -148,13 +151,25 @@ tm_shape(africa)+
 ```
 
 ### Colour pallet
+An important aspect of the maps, as in every visual representation, are the colours. In `tmap` we can change the default colours using `palette` argument. 
+```{r, warning=FALSE, results='hide'}
+tm_shape(africa)+
+ tm_fill(col="lastcensus", title="Year of last census", palette = "Set1", legend.format = list(format="s"))+
+ tm_borders()
 
+```
 
+In the example above we used palette called *Set1*. To view possible options, run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow selecting a number of colours.
 
 ### Layers for the static maps
+```{r, warning=FALSE}
+#data(africountries)
+#data(africapitals)
+# tmap_mode("view") #switches to interactive mode
+# tm_shape(africa)+  #creates a map from previous chapter in an interactive mode
+#   tm_borders()
 
-put two maps together
-
+```
 
 
 
