@@ -1,8 +1,7 @@
 # Visualising spatial data part 1: tmap and mapview {#visualising1}
 
 ## Overall goal of the chapter
-In the previous section we explored different types of spatial data and looked at what we can do with them. Whereas in this section we will visualise them, in particular we will use `tmap` and `mapview` to crate both static and interactive maps. In particular, we will focus on the goals presented below.
-In this section we will describe what is the overall aim of this chapter, including:
+In the previous section we explored different types of spatial data and looked at how these can be used to create a map. In this section we will use `tmap` and `mapview` packages to crate both static and interactive maps. In particular, we will focus on the goals presented below.
 
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
@@ -10,7 +9,7 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 <div class = "green">
 ### Learning objectives {-}
 
-- Create a static and interactive maps using different packages
+- Create static and interactive maps using different packages
 - Learn function structure to build more advanced maps
 - Analyse the differences between used packages and identify their applicability for various purposes
 
@@ -55,23 +54,35 @@ The typical spatial objects types supported by `mapview` package are:
 
 
 ```{r, warning=FALSE, message=FALSE}
-#mapview(africountries)
+data(africountries)
+mapview(africountries)
 ```
 
 ## Static maps with tmap
-In this section we will explore the possibilities of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. It will be demonstrated below, where we will start off with a simple contour map and then we will add more 
+In this section we will explore the possibilities of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. It will be demonstrated below, where we will start off with a simple contour map.
 
-Create a dataset
+Create a dataset:
 ```{r}
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
-
-Create an empty contour map of the continent
-
+Create an empty contour map of the continent, where `tm_shape()` function contains shape object (our spatial dataset) and `tm_borders()` defines the borders of the polygons. 
 ```{r}
 # tm_shape(africa)+
 #  tm_borders()
 ```
+We can further develop our map by adjusting the colour, width, types and transparency of the border lines. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
+```{r}
+# tmap_mode("plot")
+# tm_shape(africa)+
+#  tm_borders(col = "green", lwd = 1.5, lty = "dotted", alpha = 0.6)
+```
+- Exercise: change the settings to the map above to obtain blue, solid and non-transparent borders.
+<div class="fold s ">
+```{r}
+# tm_shape(africa)+
+#  tm_borders(col = "blue", lwd = 1.5, lty = "solid", alpha = 1)
+```
+</div>
 
 ### Layers for the static maps
 
@@ -90,5 +101,16 @@ Fill map using data on last census data and add labels for country names
 
 ## Interactive maps with tmap
 
-`tmap` offers versatility not only for creating static maps as we see above but it also allows us to make customised interactive maps conveniently by simply changing the mode of operation from static to dynamic using `tmap_mode()`
+`tmap` offers versatility not only for creating static maps as we have seen above but it also allows us to make customised interactive maps conveniently by simply changing the mode of operation from static *plot* to dynamic *view* using `tmap_mode()`
+
+```{r, warning=FALSE}
+# tmap_mode("view") #switches to interactive mode
+# tm_shape(africa)+  #creates a map from previous chapter in an interactive mode
+#   tm_borders()
+
+```
+
+
+## Further resources
+
 
