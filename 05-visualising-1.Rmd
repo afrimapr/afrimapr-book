@@ -70,19 +70,28 @@ Create an empty contour map of the continent, where `tm_shape()` function contai
 tm_shape(africa)+
  tm_borders()
 ```
+Create an empty shape map of the continent, where `tm_shape()` function contains shape object (our spatial dataset) and `tm_fill()` defines the fill of the polygons. 
+```{r}
+tm_shape(africa)+
+ tm_fill()
+```
+We can also create a map with both ofthese features in one go using `tm_polygons()` function:
+```{r}
+tm_shape(africa)+
+ tm_polygons()
+```
 
-
-We can further develop our map by adjusting the colour, width, types and transparency of the border lines. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
+We can further develop our map by adjusting different features of the map such as colour, width, types and transparency of the border lines etc. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
 ```{r}
 tmap_mode("plot")
 tm_shape(africa)+
- tm_borders(col = "green", lwd = 1.5, lty = "dotted", alpha = 0.6)
+ tm_polygons(col = "green", lwd = 1.5, lty = "dotted", alpha = 0.3)
 ```
-- Exercise 1: change the settings to the map to obtain blue, solid and non-transparent borders such as showed below: 
+- Exercise 1: Change the settings to the map to obtain yellow, non-transparent map with solid line borders as showed below. (The solution to the exercises are provided at the end of the chapter [click here](#solutions_ch5))
 
 ```{r, echo=FALSE}
 tm_shape(africa)+
- tm_borders(col = "blue", lwd = 1.5, lty = "solid", alpha = 1)
+ tm_polygons(col = "yellow", lwd = 1.5, lty = "solid", alpha = 1)
 ```
 
 
@@ -115,10 +124,10 @@ tm_shape(africa)+
 
 ## Further resources
 
-## Exercise solutions
+## Exercise solutions {#solutions_ch5}
 
 - Exercise 1
 ```{r, results='hide', fig.show='hide'}
 tm_shape(africa)+
- tm_borders(col = "blue", lwd = 1.5, lty = "solid", alpha = 1)
+ tm_polygons(col = "yellow", lwd = 1.5, lty = "solid", alpha = 1)
 ```
