@@ -66,38 +66,58 @@ Create a dataset:
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
 Create an empty contour map of the continent, where `tm_shape()` function contains shape object (our spatial dataset) and `tm_borders()` defines the borders of the polygons. 
-```{r}
+```{r, results='hide'}
+tmap_mode("plot")
 tm_shape(africa)+
  tm_borders()
 ```
-Create an empty shape map of the continent, where `tm_shape()` function contains shape object (our spatial dataset) and `tm_fill()` defines the fill of the polygons. 
+
+You can also create an empty shape map using `tm_fill()` which defines the fill of the polygons. 
 ```{r}
 tm_shape(africa)+
  tm_fill()
 ```
-We can also create a map with both ofthese features in one go using `tm_polygons()` function:
+
+You can also create a map with both these features in one go using `tm_polygons()` function:
 ```{r}
 tm_shape(africa)+
  tm_polygons()
 ```
 
-We can further develop our map by adjusting different features of the map such as colour, width, types and transparency of the border lines etc. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
+We can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
+
 ```{r}
-tmap_mode("plot")
 tm_shape(africa)+
- tm_polygons(col = "green", lwd = 1.5, lty = "dotted", alpha = 0.3)
+ tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
 ```
-- Exercise 1: Change the settings to the map to obtain yellow, non-transparent map with solid line borders as showed below. (The solution to the exercises are provided at the end of the chapter [click here](#solutions_ch5))
+
+- **Exercise 1**: Change the settings to the map to obtain yellow, non-transparent map with solid line borders of width 3, as showed below. (The solution to the exercises are provided at the end of the chapter [click here](#solutions_ch5))
 
 ```{r, echo=FALSE}
 tm_shape(africa)+
- tm_polygons(col = "yellow", lwd = 1.5, lty = "solid", alpha = 1)
+ tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 1)
+```
+
+- **Exercise 2**: create a blue map with transparency of 0.3, dotted, non-transparent, red borders, such as one below:   
+```{r, echo=FALSE}
+tm_shape(africa)+
+ tm_fill(col="blue",alpha = 0.3)+
+ tm_borders(col = "red", lty = "dotted", alpha = 1)
+
 ```
 
 
-### Layers for the static maps
 
-Fill map using data on last census data and add labels for country names
+As we already know a basic structure required to build a static map we can proceed to a more advanced (and useful) example where we fill the polygons using data on last census, add relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
+
+```{r, warning=FALSE}
+tm_shape(africa)+
+ tm_fill(col="lastcensus", title="Year of last census", legend.format = list(format="s"))+
+ tm_borders()
+
+```
+
+We build on the previous map by adding labels for country names with `tm_text` function.
 
 ```{r, warning=FALSE}
 tm_shape(africa)+
@@ -107,7 +127,35 @@ tm_shape(africa)+
 
 ```
 
+Another useful function in `tmap` is adjusting the intervals of the legend, in case the default scale does not provide enough variety. For example, when we try to see the populations of African countries on the map using default intervals stemming from the data we see:
+```{r, warning=FALSE}
+tm_shape(africa)+
+ tm_fill(col="pop_est", title="Population")+
+ tm_borders()
+```
+
+Instead, we might want to use `breaks` function to set them up manually to provide more differentiation. It is important to keep breaks values between minimum and maximum value in the data.
+```{r, warning=FALSE}
+tm_shape(africa)+
+ tm_fill(col="pop_est", title="Population", breaks = c(1000000, 4000000, 8000000, 12000000, 16000000, 20000000, 24000000, 28000000,32000000))+
+ tm_borders()
+```
+- **Exercise 3**: create a map with polygons filled with gross domestic product, black borders, legend titled *GDP* and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000, such as seen below.
+```{r, echo=FALSE}
+tm_shape(africa)+
+ tm_fill(col="gdp_md_est", title="GDP", breaks = c(0, 20000, 30000, 40000, 50000, 100000,200000, 300000, 500000))+
+ tm_borders()
+```
+
 ### Colour pallet
+
+
+
+### Layers for the static maps
+
+put two maps together
+
+
 
 
 ## Interactive maps with tmap
@@ -129,5 +177,19 @@ tm_shape(africa)+
 - Exercise 1
 ```{r, results='hide', fig.show='hide'}
 tm_shape(africa)+
- tm_polygons(col = "yellow", lwd = 1.5, lty = "solid", alpha = 1)
+ tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 1)
+```
+
+- Exercise 2
+```{r, results='hide', fig.show='hide'}
+tm_shape(africa)+
+ tm_fill(col="blue",alpha = 0.3)+
+ tm_borders(col = "red", lty = "dotted", alpha = 1)
+```
+
+- Exercise 3
+```{r, results='hide', fig.show='hide'}
+tm_shape(africa)+
+ tm_fill(col="gdp_md_est", title="GDP",  breaks = c(0, 20000, 30000, 40000, 50000, 100000,200000, 300000, 500000))+
+ tm_borders()
 ```

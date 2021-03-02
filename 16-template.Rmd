@@ -61,12 +61,12 @@ This closing section should show the reader what has been done in this chapter a
 ## Exercise solutions
 
 - Exercise 1
-```{r, results='hide'}
+```{r, results='hide', fig.show='hide'}
 #code to exercise 1 only, results hidden 
 ```
 
 - Exercise 2
-```{r, results='hide'}
+```{r, results='hide', fig.show='hide'}
 #code to exercise 2 only, results hidden
 ```
 
