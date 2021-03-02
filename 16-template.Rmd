@@ -1,10 +1,13 @@
 # Template chapter {#template}
 
 ## Linking section 1
-This initial section of each lesson (chapter) should build a link with the previous section of the book by providing a recap of what has been previously done. It will help with placing each chapter within the context of the entire book. 
+This initial section of each lesson (chapter) should build a link with the previous section of the book by providing a recap of what has been previously done. It will help with locating each chapter within the context of the entire book. 
 
 ## Overall goal of the chapter
-In this section we will describe what is the overall aim of this chapter, including:
+In this section we will describe what the overall aim of this chapter and target audience including:
+
+- What they are already expected to know (their previous knowledge)
+- What are the goals of the audience
 
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
@@ -20,17 +23,14 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </div>
 
 ### List of episodes {-}
-- List of 'episodes' in this chapter that will help achieve set goal with their short description and an explanation of links between them.
+List of 'episodes' in this chapter that will help achieve set goal with their short description and an explanation of links between them.
+
 1. [Episode 1](#episode_1_template)
 2. [Episode 2](#episode_2_template)
 3. [Episode 3](#episode_3_template)
 
-- Targeted audience
-    - What they are expected to already know (their previous knowledge)
-    - What are the goals of the audience
-
 ## Episode 1 (topic 1) {#episode_1_template}
-Each episode developed within the chapter should contain a narrative to give a bit of a context and again demonstrate the target audience. Beyond it should provide episode-specific learning objectives and examples, which are to be intertwined with so-called *self-check exercises* which will allow the reader to assess his comprehension of the topic so far. 
+Each episode developed within the chapter should contain a narrative to give a bit of a context and again demonstrate the target audience (if needed). Beyond it should provide episode-specific learning objectives and examples, which are to be intertwined with so-called *self-check exercises* which will allow the reader to assess his comprehension of the topic so far. 
 
 ## Episode 2 (topic 2) {#episode_2_template}
 <style>
@@ -48,7 +48,13 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <div class = "blue">
 **Hints**: Hints to be in a blue box.
 </div>
+
+## Further resources
+In this section we provide links to additional websites and sources that are useful in a given topic or package.
+
 ## Linking section 2
 This closing section should show the reader what has been done in this chapter and how it links with the topics provided in the next chapter by a brief introduction to next topic.
 
-## Feedback request on what was useful to the reader (learner) and what can be improved
+## Feedback 
+
+Feedback section aims at learning what was useful to the reader (learner) and what can be improved. It gives the reader an opportunity to reflect on what he/she learned and evaluate the book in this this context.
