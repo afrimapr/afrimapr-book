@@ -67,14 +67,16 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 ```
 Create an empty contour map of the continent, where `tm_shape()` function contains shape object (our spatial dataset) and `tm_borders()` defines the borders of the polygons. 
 ```{r}
-# tm_shape(africa)+
-#  tm_borders()
+tm_shape(africa)+
+ tm_borders()
 ```
+
+
 We can further develop our map by adjusting the colour, width, types and transparency of the border lines. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
 ```{r}
-# tmap_mode("plot")
-# tm_shape(africa)+
-#  tm_borders(col = "green", lwd = 1.5, lty = "dotted", alpha = 0.6)
+tmap_mode("plot")
+tm_shape(africa)+
+ tm_borders(col = "green", lwd = 1.5, lty = "dotted", alpha = 0.6)
 ```
 - Exercise 1: change the settings to the map to obtain blue, solid and non-transparent borders such as showed below: 
 
@@ -89,10 +91,10 @@ tm_shape(africa)+
 Fill map using data on last census data and add labels for country names
 
 ```{r, warning=FALSE}
-# tm_shape(africa)+
-#  tm_fill(col="lastcensus", title="Year of last census", legend.format = list(format="s"))+
-#  tm_borders()+
-#  tm_text("admin", size = 0.52,  fontface="bold", auto.placement = TRUE)
+tm_shape(africa)+
+ tm_fill(col="lastcensus", title="Year of last census", legend.format = list(format="s"))+
+ tm_borders()+
+ tm_text("admin", size = 0.52,  fontface="bold", auto.placement = TRUE)
 
 ```
 
