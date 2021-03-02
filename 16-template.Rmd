@@ -52,8 +52,8 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 ## Further resources
 In this section we provide links to additional websites and sources that are useful in a given topic or package in the following way:
 
-- [Introduction to geospatial data](https://datacarpentry.org/r-intro-geospatial/)
-- [Raster and vector data](https://datacarpentry.org/r-raster-vector-geospatial/)
+- [R website](r-project.org)
+- [Documentation pages](rdocumentation.org)
 
 ## Wrap up
 This closing section should show the reader what has been done in this chapter and how it links with the topics provided in the next chapter by a brief introduction to next topic.
