@@ -116,7 +116,7 @@ Fill map using data on last census data and add labels for country names
 ## Exercise solutions
 
 - Exercise 1
-```{r, results="FALSE"}
+```{r, results='hide', fig.show='hide'}
 tm_shape(africa)+
  tm_borders(col = "blue", lwd = 1.5, lty = "solid", alpha = 1)
 ```
