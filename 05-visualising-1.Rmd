@@ -162,13 +162,21 @@ tm_shape(africa)+
 In the example above we used palette called *Set1*. To view possible options, run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow selecting a number of colours.
 
 ### Layers for the static maps
+`tmap` not only allows us to add extra layers to a single map by building on a basic structure, but it also enables us to join maps from different datasets. We first create an object called *countries* which is a single map with African countries:
 ```{r, warning=FALSE}
-#data(africountries)
-#data(africapitals)
-# tmap_mode("view") #switches to interactive mode
-# tm_shape(africa)+  #creates a map from previous chapter in an interactive mode
-#   tm_borders()
+data(africountries)
 
+countries = tm_shape(africountries)+  
+  tm_polygons(col="lightblue")
+```
+
+Then we use it as an argument to merge it with a map containing the location of capitals.
+```{r, warning=FALSE}
+data(africapitals)
+
+countries+
+  tm_shape(africapitals)+  #uses dataset with capitals
+  tm_dots(size=0.15)       #adds dots on the map
 ```
 
 
