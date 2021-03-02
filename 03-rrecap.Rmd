@@ -1,6 +1,6 @@
 # R recap {#rrecap}
 
-Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. In contrast, this section presents basic steps that are required (or simply a good practice) to take before starting the project where it provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R and provide basic background knowledge that the reader can build on, while progressing through the further chapters of this book. It will be particularly useful to beginners, who have minimal knowledge of R. Therefore, more advanced readers can move forward to the next chapter where spatial data types are looked into. <br/>
+Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. This section presents basic steps that are required (or simply a good practice) before starting the project. It provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R and provide a basic background knowledge that the reader can build on, while progressing through the further chapters of this book. It will be particularly useful for beginners, who have minimal knowledge of R. Therefore, more advanced readers can move forward to the next chapter where spatial data types are looked into. <br/>
 
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
@@ -302,19 +302,19 @@ colnames(df_1)
 ```
 
 ## Getting help with R Help {#help}
-R is a powerful software with many different packages and functions which are continuously developed and added. Therefore, it is difficult, if not impossible, to be familiar with all the functions that are currently available. Hence, in order to learn more about them R provides extensive documentation which can be accessed with `help()` function, `? operator` or by clicking in *Help* panel in the bottom-right corner. For example:
+R is a powerful software with many different packages and functions which are continuously developed and added. Therefore, it is difficult, if not impossible, to be familiar with all the functions that are currently available. Hence, in order to learn more about them, R provides extensive documentation which can be accessed with `help()` function, `? operator` or by clicking in *Help* panel in the bottom-right corner. For example:
 ```{r, warning=FALSE, message=FALSE}
-help(matrix)
+help(matrix) #to find out what matrix is
 
-help(package="remotes")
+help(package="remotes") #to get help with remotes package
 ```
 
 Alternatively, it is possible to use `?` in front of the searched item and the R documentation will appear in right-bottom pane. For example, to read more on how to use help function itself we can use: 
 ```{r, warning=FALSE, message=FALSE}
-?help
+?help 
 ```
 
-Importantly, in order to get help regarding objects with unusual names such as the operators, it is necessary to use quotation marks:
+Importantly, in order to get help regarding objects with unusual names such as the logical operators, it is necessary to use quotation marks:
 ```{r, warning=FALSE, message=FALSE}
 ?"&"
 
@@ -323,12 +323,12 @@ help("!")
 
 R documentation for functions frequently offers a working example which can be accessed with:
 ```{r, warning=FALSE, message=FALSE}
-example(data.frame)
+example(vector) #to see an example of a vector
 ```
 
 Finally, the Internet also provides several reliable sources such as official [R website](r-project.org) or [documentation pages](rdocumentation.org) where you can find help. 
 
 ## Wrap up
-In this chapter we learned several R commands which prepared the reader for starting with his own project. Moreover, we familiarised with a number of data type and R objects. Moreover, we looked at how to obtain help and access R documentation. The material covered in this section aimed at building a base for the reader to allow him/her successfully progress through the book. 
+In this chapter we learned several R commands which prepared the reader for starting with his/her own project. Moreover, we familiarised with a number of data types and R objects. Moreover, we looked at how to obtain help and access R documentation. The material covered in this section aimed at building a base for the reader to allow him/her successfully progress through the book. 
 
 ## Feedback
