@@ -22,7 +22,7 @@ All spatial data types require a spatial reference frame or coordinate system id
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
-Please note that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to GeoJSON (.json), to CSV files (.csv) and many more. It can be overwhelming sometimes to identify their format and how to open them in R software. In these situations don't hesitate to contact the owner of the data or use google! 
+Please note that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming sometimes. Don't hesitate to contact the owner of the data or use google to find out more! 
 </div>
 
 This chapter is written for beginners, who have basic knowledge of R and no experience with spatial data. If you are familiar with the basic spatial data types, you can move on to the next chapter where visualisation of data types are explained in more detail. 
@@ -55,9 +55,9 @@ div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 <div class = "green">
 ### Learning objectives
 
-*Identify point data files 
-*Open point data files 
-*Visualise point data files
+- Identify point data files 
+- Open point data files 
+- Visualise point data files
 
 </div>
 
@@ -128,7 +128,7 @@ Let's now visualise the African capitals by plotting their geometry using the tm
 #   tm_dots() # displaying the point geometry
 
 ```
-The tmap package works similar to the ggplot package. You need to first specify the data file you want to visualise using 'tm_shape()', after which the exact format of the spatial data can be specified. As we are working with point data in this example, the 'tm_dots()' function is used. As with ggplot, there is a lot of flexibility in the colouring, shapes and sizes of the dots. For example, the dots can be turned red and labelled with the name of the city. 
+The `tmap` package works similar to the ggplot package. You need to first specify the data file you want to visualise using `tm_shape()`, after which the exact format of the spatial data can be specified. As we are working with point data in this example, the `tm_dots()` function is used. As with ggplot, there is a lot of flexibility in the colouring, shapes and sizes of the dots. For example, the dots can be turned red and labelled with the name of the city. 
 ```{r, warning=FALSE, message=FALSE}
 
 # tm_shape(africapitals) +
@@ -155,9 +155,9 @@ Below, We have visualised all capitals with > 1.400.000 people using green squar
 ```
 
 Answer:
-*In the initial filter, 'as.factor' needs to be changed to 'as.numeric'
+*In the initial filter, `as.factor` needs to be changed to `as.numeric`
 *Dots in 1.400.000 need to be removed
-*The shape of the dots need to be specified as squares using 'shape=22'
+*The shape of the dots need to be specified as squares using `shape=22`
 *The size of the points needs to be 1. 
 ```{r, warning=FALSE, message=FALSE}
 
@@ -191,38 +191,42 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 
 </div>
 
-- The capitals visualised in previous episode are a group of dots accross a white page. Not very informative. 
-
-- Usefull to know how these cities are linked to one another using the trans african highway network (afrihighway).
-
-- Lines are one dimension data with are drawn using points which are connected to eachother in a set order.Depending on the detail of the map, more or less points can be used. These become networks
+In previous episode we looked at point data on a map. We are often interested in how these different points on a map are connect to eachother. Roads, rivers and flight pathes are just a few of the many ways that lines are used. Lines are one dimensional data which are drawn using points (and thus point data) connected to eachother in a set order. Depending on the detail of the lines, more or less points can be used. 
 
 ### Example
+For this example, we will look at the trans african highway network.
+Let's start by looking at a quick summary of the spatial aspects (geometry).
 ```{r, warning=FALSE, message=FALSE}
 
 print(st_geometry(afrihighway)) #printing information on the geometry
 
 ```
-The file contains 100 lines with geometry type **LINESTRING**.
+The results show that the African highway network contains 100 lines with geometry type **LINESTRING**.
 
-If we print the first 6 rows of data, we can see how each highway is stored in the database
+Let's now print the first 6 rows of data to see how line data is stored.
 ```{r, warning=FALSE, message=FALSE}
 
 head(afrihighway) #First 6 rows of data are printed
 
 ```
-Line data contain a whole string of data points with latitude and longitude. These points are connected to form a line. 
-The geometry of the line data is stored as *LINESTRING(Latitude1, Longitude1, Latitude2, Longitude2, Latitude3, Longitude3,.. )*. 
+Line data contain a string of data points with latitude and longitude: *LINESTRING(Latitude1, Longitude1, Latitude2, Longitude2, Latitude3, Longitude3,.. )*. During mapping, these points are connected to form a line. 
 
-Lets visualise these linestrings in red
+Lets visualise these linestrings in red by plotting their geometry using the tmap package.
 ```{r, warning=FALSE, message=FALSE}
 
 # tm_shape(afrihighway) +
-#   tm_lines("red") # displaying the point geometry as red dots
+#   tm_lines("red") #similar to tm_dots colour of the lines can be specified.
 
 ```
 
-Now we add the capitals from previous episode in blue
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+Please check out the help section to familiarise yourself with the many layout options available. 
+</div>
+
+Now we can add the capitals from previous episode in blue
 ```{r, warning=FALSE, message=FALSE}
 
 # tm_shape(africapitals) +
@@ -231,29 +235,30 @@ Now we add the capitals from previous episode in blue
 #   tm_lines("red") # displaying the point geometry as red dots
 
 ```
+When both points and lines are mapped, datasets need to be identified seperately in `tm_shape()` before the use of `tm_dots()` and `tm_lines()`. 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+Please note that the order of `tm_dots()` and `tm_lines()` matters. If you want the points overlaying the lines, it should be placed *after* the lines coding and visa versa.
+</div>
 
 ### Exercise 1
-We have visualised all the capitals and only the roads that start with the letter 'b'... Couldnt really think of another way to play around with the highway data)
-
--Rearrange code in the correct order (still need to mix it up)
-
+In the below exercise we have tried to visualise all the capitals and *only* the roads starting with the letter 'b'.
+However, we have messed up the order of the code. Can you rearrange the code? 
 ```{r, warning=FALSE, message=FALSE}
-afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
 
+#need to check the code before rearranging it
+afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
 # tm_shape(africapitals) + #important that capitals are visualised first 
 #   tm_dots("blue", size=0.5)+
 #     tm_shape(afrihighway_ex1)+
 #   tm_lines("blue") 
 
-
 ```
 
-
-### Exercise 2 (different data: rivers in Africa?)
-- make this slightly more complicated by selecting rivers than are at least xx km long? 
-
-
-
+### Exercise 2 (rivers in Africa, flight paths?)
+- make this slightly more complicated by selecting rivers than are at least 100 km long? 
 
 
 
