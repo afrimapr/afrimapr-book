@@ -68,27 +68,27 @@ Create a dataset:
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
 Create an empty contour map of the continent, where `tm_shape()` function contains shape object (our spatial dataset) and `tm_borders()` defines the borders of the polygons. 
-```{r, results='hide'}
+```{r, results='hide', out.width="75%"}
 tmap_mode("plot") #activates static map viewing mode
 tm_shape(africa)+
  tm_borders()
 ```
 
 You can also create an empty shape map using `tm_fill()` which defines the fill of the polygons. 
-```{r}
+```{r, out.width="75%"}
 tm_shape(africa)+
  tm_fill()
 ```
 
 You can also create a map with both these features in one go using `tm_polygons()` function:
-```{r}
+```{r, out.width="75%"}
 tm_shape(africa)+
  tm_polygons()
 ```
 
 We can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
 
-```{r}
+```{r, out.width="75%"}
 tm_shape(africa)+
  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
 ```
@@ -105,7 +105,7 @@ tm_shape(africa)+
 ```
 </div>   
 
-The solution to the exercises are provided at the [end of the chapter](#solutions_ch5)
+The solution to the exercises are provided at the [end of the chapter](#solutions_ch5).
 
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
@@ -123,7 +123,7 @@ tm_shape(africa)+
 
 As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example where we fill the polygons using data on last census, add relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, out.width="75%"}
 tm_shape(africa)+
  tm_fill(col="lastcensus", title="Year of last census", legend.format = list(format="s"))+
  tm_borders()
@@ -132,7 +132,7 @@ tm_shape(africa)+
 
 We build on the previous map by adding labels for country names with `tm_text` function.
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, out.width="75%"}
 tm_shape(africa)+
  tm_fill(col="lastcensus", title="Year of last census", legend.format = list(format="s"))+
  tm_borders()+
@@ -141,14 +141,14 @@ tm_shape(africa)+
 ```
 
 Another useful function in `tmap` is adjusting the intervals of the legend, in case the default scale does not provide enough variety. For example, when we try to see the populations of African countries on the map using default intervals stemming from the data we see:
-```{r, warning=FALSE}
+```{r, warning=FALSE, out.width="75%"}
 tm_shape(africa)+
  tm_fill(col="pop_est", title="Population")+
  tm_borders()
 ```
 
 Instead, we might want to use `breaks` argument to set them up manually to provide more differentiation visually. 
-```{r, warning=FALSE}
+```{r, warning=FALSE, out.width="75%"}
 tm_shape(africa)+
  tm_fill(col="pop_est", title="Population", breaks = c(1000000, 4000000, 8000000, 12000000, 16000000, 20000000, 24000000, 28000000,32000000))+
  tm_borders()
@@ -169,7 +169,7 @@ tm_shape(africa)+
 
 ### Colour pallet
 An important aspect of the maps, as in every visual representation, are the colours. In `tmap` we can change the default colours using `palette` argument. 
-```{r, warning=FALSE, results='hide'}
+```{r, warning=FALSE, results='hide', out.width="75%"}
 tm_shape(africa)+
  tm_fill(col="lastcensus", title="Year of last census", palette = "Set1", legend.format = list(format="s"))+
  tm_borders()
@@ -180,7 +180,7 @@ In the example above we used palette called *Set1*. To view possible options, ru
 
 ### Layers for the static maps
 `tmap` not only allows us to add extra layers to a single map by building on a basic structure, but it also enables us to join maps from different datasets. We first create an object called *countries* which is a single map with African countries:
-```{r, warning=FALSE}
+```{r, warning=FALSE, out.width="75%"}
 data(africountries)
 
 countries = tm_shape(africountries)+  
@@ -190,7 +190,7 @@ countries
 ```
 
 Then we use it as an argument to merge it with a map containing the location of capitals.
-```{r, warning=FALSE}
+```{r, warning=FALSE, out.width="75%"}
 data(africapitals)
 
 countries+
