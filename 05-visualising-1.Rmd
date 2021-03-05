@@ -93,15 +93,24 @@ tm_shape(africa)+
  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
 ```
 
-- **Exercise 1**: Change the settings to the map to obtain yellow, non-transparent map with solid line borders of width 3, as showed below. (The solution to the exercises are provided at the end of the chapter [click here](#solutions_ch5))
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 1**: Change the settings to obtain a yellow, non-transparent map with solid line borders of width 3, as showed below. 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, out.width="25%"}
 tm_shape(africa)+
  tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 1)
 ```
+</div>   
+
+(The solution to the exercises are provided at the [end of the chapter](#solutions_ch5))
+
+
 
 - **Exercise 2**: create a blue map with transparency of 0.3, dotted, non-transparent, red borders, such as one below:   
-```{r, echo=FALSE}
+```{r, echo=FALSE, out.width="25%"}
 tm_shape(africa)+
  tm_fill(col="blue",alpha = 0.3)+
  tm_borders(col = "red", lty = "dotted", alpha = 1)
@@ -144,7 +153,7 @@ tm_shape(africa)+
 ```
 
 - **Exercise 3**: create a map with polygons filled with gross domestic product, black borders, legend titled *GDP* and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000, such as seen below.
-```{r, echo=FALSE}
+```{r, echo=FALSE, out.width="25%"}
 tm_shape(africa)+
  tm_fill(col="gdp_md_est", title="GDP", breaks = c(0, 20000, 30000, 40000, 50000, 100000,200000, 300000, 500000))+
  tm_borders()
@@ -168,6 +177,8 @@ data(africountries)
 
 countries = tm_shape(africountries)+  
   tm_polygons(col="lightblue")
+
+countries
 ```
 
 Then we use it as an argument to merge it with a map containing the location of capitals.

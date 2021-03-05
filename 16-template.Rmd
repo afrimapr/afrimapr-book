@@ -33,7 +33,7 @@ List of 'episodes' in this chapter that will help achieve set goal with their sh
 Each episode developed within the chapter should contain a narrative to give a bit of a context and again demonstrate the target audience (if needed). Beyond it should provide episode-specific learning objectives and examples, which are to be intertwined with so-called *self-check exercises* which will allow the reader to assess his comprehension of the topic so far. 
 
 <style>
-div.yellow { background-color:#c58ede; border-radius: 5px; padding: 20px;}
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
 **Exercise 1**: The exercise description to be in the coloured box. 
