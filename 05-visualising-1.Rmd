@@ -160,7 +160,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 <div class = "purple">
 **Exercise 3**: Create a map with polygons filled with gross domestic product, black borders, legend titled *GDP* and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000, such as seen below.
 
-```{r, echo=FALSE, out.width="25%"}
+```{r, echo=FALSE, out.width="50%"}
 tm_shape(africa)+
  tm_fill(col="gdp_md_est", title="GDP", breaks = c(0, 20000, 30000, 40000, 50000, 100000,200000, 300000, 500000))+
  tm_borders()
