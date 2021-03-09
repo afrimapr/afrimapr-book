@@ -98,28 +98,29 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
 **Exercise 1**: Change the settings to obtain a yellow, non-transparent map with solid line borders of width 3, as showed below. 
-
-```{r, echo=FALSE, out.width="25%"}
-tm_shape(africa)+
- tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 1)
-```
 </div>   
 
 The solution to the exercises are provided at the [end of the chapter](#solutions_ch5).
+
+
+```{r, echo=FALSE, out.width="40%"}
+tm_shape(africa)+
+ tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 1)
+```
 
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 2**: Create a blue map with transparency of 0.3, dotted, non-transparent, red borders, such as the one below.
+**Exercise 2**: Create a blue map with transparency of 0.3, dotted, non-transparent, red borders, as demonstrated below.
+</div>  
 
-```{r, echo=FALSE, out.width="25%"}
+```{r, echo=FALSE, out.width="40%"}
 tm_shape(africa)+
  tm_fill(col="blue",alpha = 0.3)+
  tm_borders(col = "red", lty = "dotted", alpha = 1)
 
 ```
-</div>  
 
 As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example where we fill the polygons using data on last census, add relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
 
@@ -159,13 +160,13 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
 **Exercise 3**: Create a map with polygons filled with gross domestic product, black borders, legend titled *GDP* and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000, such as seen below.
+</div>  
 
-```{r, echo=FALSE, out.width="50%"}
+```{r, echo=FALSE, out.width="40%"}
 tm_shape(africa)+
  tm_fill(col="gdp_md_est", title="GDP", breaks = c(0, 20000, 30000, 40000, 50000, 100000,200000, 300000, 500000))+
  tm_borders()
 ```
-</div>  
 
 ### Colour pallet
 An important aspect of the maps, as in every visual representation, are the colours. In `tmap` we can change the default colours using `palette` argument. 
