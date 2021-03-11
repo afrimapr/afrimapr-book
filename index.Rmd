@@ -13,11 +13,15 @@ description: "An introduction to making maps from African data in R."
 ---
 
 # Welcome {-}
-This is the in-progress book introducing map making in R using African data.
+This is the in-progress book introducing map making in R using African data. We aim to make a first version available in summer 2021.
 
 It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project running in 2020-21.
 
-The principle intended audience of the book are data analysts that need/want to make maps from data as a part of their routine work. We expect that readers will have had some limited experience of R and/or spatial data but this is not strictly required. We will take you step-by-step through code to obtain, manipulate and visualise spatial data. We focus on routine tasks and developing confidence and resilience in applying them, rather than starying to more advanced analyses. 
+The book is aimed principally at analysts who want to make maps from African data as a part of their routine work. We expect that readers will have had some limited experience of R and/or spatial data but this is not strictly required. We will take you step-by-step through code to obtain, manipulate and visualise spatial data. We focus on routine tasks and developing confidence and resilience in applying them, rather than moving to more advanced analyses.
+
+For those that are interested in spatial analyses we refer you to the excellent recent book [Geocomputation with R](https://geocompr.robinlovelace.net/). The afrimapr book, in comparison, will cover fewer processes but do so in more detail and assuming less prior knowledge of R and spatial data. We see the two books as being complementary. Those that wish to take their work further after this afrimapr book should find the geocompr book useful. Those that have been through the geocompr book and would like more detail on visualising varied data sources in R should find this afrimapr book useful. 
+
+
 
 The book is compiled from this [repository.](https://github.com/afrimapr/afrimapr-book)
 
