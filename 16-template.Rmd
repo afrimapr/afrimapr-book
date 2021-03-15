@@ -36,7 +36,7 @@ Each episode developed within the chapter should contain a narrative to give a b
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 1**: The exercise description to be in the coloured box. 
+**Exercise 1**: The exercise description to be in the coloured box & the small, control exercises should be placed at the end of the subsection.
 </div>    
 
 
@@ -81,3 +81,7 @@ This closing section should show the reader what has been done in this chapter a
 ## Feedback 
 
 Feedback section aims at learning what was useful to the reader (learner) and what can be improved. It gives the reader an opportunity to reflect on what he/she learned and evaluate the book in this this context.
+
+## Putting into practice
+
+This final section is aimed at consolidating the knowledge and skills learned throughout the whole chapter, where the reader can put them into practice in a more complex working example with a new context. 

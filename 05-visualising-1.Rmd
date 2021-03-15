@@ -93,35 +93,6 @@ tm_shape(africa)+
  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
 ```
 
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 1**: Change the settings to obtain a yellow, non-transparent map with solid line borders of width 3, as showed below. 
-</div>   
-
-The solution to the exercises are provided at the [end of the chapter](#solutions_ch5).
-
-
-```{r, echo=FALSE, out.width="40%"}
-tm_shape(africa)+
- tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 1)
-```
-
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 2**: Create a blue map with transparency of 0.3, dotted, non-transparent, red borders, as demonstrated below.
-</div>  
-
-```{r, echo=FALSE, out.width="40%"}
-tm_shape(africa)+
- tm_fill(col="blue",alpha = 0.3)+
- tm_borders(col = "red", lty = "dotted", alpha = 1)
-
-```
-
 As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example where we fill the polygons using data on last census, add relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
 
 ```{r, warning=FALSE, out.width="75%"}
@@ -152,19 +123,6 @@ Instead, we might want to use `breaks` argument to set them up manually to provi
 ```{r, warning=FALSE, out.width="75%"}
 tm_shape(africa)+
  tm_fill(col="pop_est", title="Population", breaks = c(1000000, 4000000, 8000000, 12000000, 16000000, 20000000, 24000000, 28000000,32000000))+
- tm_borders()
-```
-
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 3**: Create a map with polygons filled with gross domestic product, black borders, legend titled *GDP* and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000, such as seen below.
-</div>  
-
-```{r, echo=FALSE, out.width="40%"}
-tm_shape(africa)+
- tm_fill(col="gdp_md_est", title="GDP", breaks = c(0, 20000, 30000, 40000, 50000, 100000,200000, 300000, 500000))+
  tm_borders()
 ```
 
@@ -199,7 +157,47 @@ countries+
   tm_dots(size=0.15)       #adds dots on the map
 ```
 
+### Exercises
+The solution to the exercises are provided at the [end of the chapter](#solutions_ch5).
 
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 1**: Change the settings to obtain a yellow, non-transparent map with solid line borders of width 3, as showed below. 
+</div>   
+
+```{r, echo=FALSE, out.width="40%"}
+tm_shape(africa)+
+ tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 1)
+```
+
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 2**: Create a blue map with transparency of 0.3, dotted, non-transparent, red borders, as demonstrated below.
+</div>  
+
+```{r, echo=FALSE, out.width="40%"}
+tm_shape(africa)+
+ tm_fill(col="blue",alpha = 0.3)+
+ tm_borders(col = "red", lty = "dotted", alpha = 1)
+
+```
+
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 3**: Create a map with polygons filled with gross domestic product, black borders, legend titled *GDP* and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000, such as seen below.
+</div>  
+
+```{r, echo=FALSE, out.width="40%"}
+tm_shape(africa)+
+ tm_fill(col="gdp_md_est", title="GDP", breaks = c(0, 20000, 30000, 40000, 50000, 100000,200000, 300000, 500000))+
+ tm_borders()
+```
 
 ## Interactive maps with tmap
 
