@@ -67,21 +67,21 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 
 tmap_mode("plot") #activates static map viewing mode
 ```
-Next, we create an empty contour map of the continent, where `tm_shape()` function serves as a basic component containing the shape object i.e. our spatial dataset. On top of this basic building block we can then add more layers such as `tm_borders()` which defines the borders of the polygons. 
+Next, we create an empty contour map of the continent, where `tm_shape()` function serves as a basic component containing the shape object i.e. our spatial dataset. On top of this basic element we can then add more layers using `+` operator. The advantage of `tmap` package is that it offers a large variety layers and these are named relatively intuitively to make the search and use easier. For example, we will now use layer called `tm_borders()` which defines the borders of the polygons. 
 ```{r, results='hide', out.width="75%"}
 tm_shape(africa)+
  tm_borders()
 ```
 
-Further, can also create an empty shape map using `tm_fill()` which defines the fill of the polygons. 
+Further, we create an empty, borderless map using `tm_fill()` which defines the fill of the polygons. 
 ```{r, out.width="75%"}
 tm_shape(africa)+
  tm_fill()
 ```
 
-Intuitively to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows us to achieve exactly the same result more efficiently. 
-```{r,fig.show="hold", out.width="50%"}
-tm_shape(africa)+
+Intuitively to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows us to achieve exactly the same result more efficiently. It draws the polygons borders and fills them.
+```{r,fig.show="hold", out.width="40%"}
+tm_shape(africa)+ #more layers are added on top of one another
  tm_borders()+
   tm_fill()
 
@@ -97,7 +97,7 @@ tm_shape(africa)+
  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
 ```
 
-As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example where we fill the polygons using data on last census, add relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
+As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example, where we fill the polygons using data on *last census* and adding relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
 
 ```{r, warning=FALSE, out.width="75%"}
 tm_shape(africa)+
@@ -106,17 +106,17 @@ tm_shape(africa)+
 
 ```
 
-We build on the previous map by adding labels for country names with `tm_text` function.
+Further, we can build on the previous map by adding labels for country names with `tm_text` function.
 
 ```{r, warning=FALSE, out.width="75%"}
 tm_shape(africa)+
  tm_fill(col="lastcensus", title="Year of last census", legend.format = list(format="s"))+
  tm_borders()+
- tm_text("admin", size = 0.52,  fontface="bold", auto.placement = TRUE)
+ tm_text("admin", size = 0.52, fontface="bold", auto.placement = TRUE)
 
 ```
 
-Another useful function in `tmap` is adjusting the intervals of the legend, in case the default scale does not provide enough variety. For example, when we try to see the populations of African countries on the map using default intervals stemming from the data we see:
+Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to to much clustering of information.
 ```{r, warning=FALSE, out.width="75%"}
 tm_shape(africa)+
  tm_fill(col="pop_est", title="Population")+
