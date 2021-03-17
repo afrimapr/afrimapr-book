@@ -81,7 +81,7 @@ tm_shape(africa)+
 
 Intuitively to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows us to achieve exactly the same result more efficiently. It draws the polygons borders and fills them.
 ```{r,fig.show="hold", out.width="40%"}
-tm_shape(africa)+ #more layers are added on top of one another
+tm_shape(africa)+ 
  tm_borders()+
   tm_fill()
 
@@ -116,25 +116,28 @@ tm_shape(africa)+
 
 ```
 
-Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to to much clustering of information.
-```{r, warning=FALSE, out.width="75%"}
-tm_shape(africa)+
+Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to to much clustering of information. Instead, we might want to use `breaks` argument to set them up manually to provide more differentiation visually. For calrity, I set up the customised breaks outside of the map-making function.
+
+```{r, warning=FALSE, fig.show="hold", fig.cap = "Africa's population with default breaks (left) and customised breaks (right)", out.width="50%"}
+tm_shape(africa)+                                
  tm_fill(col="pop_est", title="Population")+
  tm_borders()
-```
 
-Instead, we might want to use `breaks` argument to set them up manually to provide more differentiation visually. 
-```{r, warning=FALSE, out.width="75%"}
-tm_shape(africa)+
- tm_fill(col="pop_est", title="Population", breaks = c(1000000, 4000000, 8000000, 12000000, 16000000, 20000000, 24000000, 28000000,32000000))+
+#set up breaks manually
+custom_breaks = c(10, 40, 80, 120, 160, 200, 240, 280, 320) * 100000
+
+tm_shape(africa)+                               
+ tm_fill(col="pop_est", title="Population", breaks = custom_breaks)+
  tm_borders()
+
 ```
 
 ### Colour pallet
 An important aspect of the maps, as in every visual representation, are the colours. In `tmap` we can change the default colours using `palette` argument. 
 ```{r, warning=FALSE, results='hide', out.width="75%"}
 tm_shape(africa)+
- tm_fill(col="lastcensus", title="Year of last census", palette = "Set1", legend.format = list(format="s"))+
+ tm_fill(col="lastcensus", title="Year of last census", 
+         palette = "Set1", legend.format = list(format="s"))+
  tm_borders()
 
 ```
@@ -198,8 +201,10 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </div>  
 
 ```{r, echo=FALSE, out.width="40%"}
+custom_breaks = c(0, 2, 3, 4, 5, 10,20, 30, 50) * 10000
+
 tm_shape(africa)+
- tm_fill(col="gdp_md_est", title="GDP", breaks = c(0, 20000, 30000, 40000, 50000, 100000,200000, 300000, 500000))+
+ tm_fill(col="gdp_md_est", title="GDP",  breaks = custom_breaks) +
  tm_borders()
 ```
 
@@ -234,7 +239,10 @@ tm_shape(africa)+
 
 - Exercise 3
 ```{r, results='hide', fig.show='hide'}
+
+custom_breaks = c(0, 2, 3, 4, 5, 10,20, 30, 50) * 10000
+
 tm_shape(africa)+
- tm_fill(col="gdp_md_est", title="GDP",  breaks = c(0, 20000, 30000, 40000, 50000, 100000,200000, 300000, 500000))+
+ tm_fill(col="gdp_md_est", title="GDP",  breaks = custom_breaks)+
  tm_borders()
 ```
