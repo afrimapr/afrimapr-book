@@ -20,13 +20,13 @@ This chapter requires the following packages (some of them we used already):
 
 ```{r, eval=FALSE}
 cran_packages_to_install <- c(
-  "mapview",            # map-making package for interactive maps
-  "tmap",               # map-making package for static and interactive maps
+  "mapview",           # map-making package for interactive maps
+  "tmap",              # map-making package for static and interactive maps
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
-  "rnaturalearthdata",  # data package
-  "tmaptools"              # map building package
+  "rnaturalearthdata", # data package
+  "tmaptools"          # map building package
   )
 install.packages(cran_packages_to_install)
 ```
@@ -61,29 +61,33 @@ The typical spatial objects types supported by `mapview` package are:
 ```
 
 ## Static maps with tmap
-In this section we will explore the possibilities of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. It will be demonstrated below, where we will start off with a simple contour map.
-
-Create a dataset:
-```{r}
+In this section we explore the potential of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. Before we plot the first maps we need to create a dataset called *africa* and activate static map viewing mode.
+```{r, message=FALSE}
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
-```
-Create an empty contour map of the continent, where `tm_shape()` function contains shape object (our spatial dataset) and `tm_borders()` defines the borders of the polygons. 
-```{r, results='hide', out.width="75%"}
+
 tmap_mode("plot") #activates static map viewing mode
+```
+Next, we create an empty contour map of the continent, where `tm_shape()` function serves as a basic component containing the shape object i.e. our spatial dataset. On top of this basic building block we can then add more layers such as `tm_borders()` which defines the borders of the polygons. 
+```{r, results='hide', out.width="75%"}
 tm_shape(africa)+
  tm_borders()
 ```
 
-You can also create an empty shape map using `tm_fill()` which defines the fill of the polygons. 
+Further, can also create an empty shape map using `tm_fill()` which defines the fill of the polygons. 
 ```{r, out.width="75%"}
 tm_shape(africa)+
  tm_fill()
 ```
 
-You can also create a map with both these features in one go using `tm_polygons()` function:
-```{r, out.width="75%"}
+Intuitively to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows us to achieve exactly the same result more efficiently. 
+```{r,fig.show="hold", out.width="50%"}
+tm_shape(africa)+
+ tm_borders()+
+  tm_fill()
+
 tm_shape(africa)+
  tm_polygons()
+
 ```
 
 We can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
