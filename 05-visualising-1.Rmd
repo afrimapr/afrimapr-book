@@ -26,6 +26,7 @@ cran_packages_to_install <- c(
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
   "rnaturalearthdata", # data package
+  "remotes",
   "tmaptools"          # map building package
   )
 install.packages(cran_packages_to_install)
@@ -43,6 +44,7 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 library(dplyr)
 library(tmaptools)
+library(remotes)
 ```
 
 ## Quick interactive maps with mapview
@@ -101,7 +103,7 @@ tm_shape(africa)+
  tm_polygons(col = "lastcensus", title = "Year of last census", legend.format = list(format="s"))
 ```
 
-Further, we can build on the previous map by adding labels for country names with `tm_text` function.
+Further, we can build on the previous map by adding labels for country names with `tm_text` function. In a similar manner a variety of different layers can be added. 
 
 ```{r, warning=FALSE, out.width="75%"}
 tm_shape(africa)+
