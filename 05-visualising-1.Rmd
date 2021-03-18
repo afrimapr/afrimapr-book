@@ -114,6 +114,7 @@ tm_shape(africa)+
 Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to to much clustering of information. Instead, we might want to use `breaks` argument to set them up manually to provide more differentiation visually. For clarity, I set up the customised breaks outside of the map-making function. Alternatively, we can control number of so-called `bins` (groups) into which the *Population* is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons` function.
 
 ```{r, warning=FALSE, fig.show="hold", fig.cap = "Africa's population with default breaks (left), customised breaks (middle) and divided in bins (right).", out.width="33%"}
+#default settings
 tm_shape(africa)+                                
  tm_polygons(col = "pop_est", title = "Population")
 
