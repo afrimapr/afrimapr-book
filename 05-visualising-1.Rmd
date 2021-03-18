@@ -140,8 +140,6 @@ tm_shape(africa)+
 
 ```
 
-
-
 ### Different layers for the static maps
 `tmap` not only allows us to add extra layers to a single map by building on a basic structure, but it also enables us to join maps from different datasets. We first create an object called *countries* which is a single map with African countries:
 ```{r, warning=FALSE, out.width="75%"}
