@@ -133,11 +133,11 @@ tm_shape(africa)+
 An important aspect of the maps, as in every visual representation, are the colours. In `tmap` we can change the default colours using `palette` argument. In the example below, we used palette called **Set1** and **plasma** and there are many other option to choose from. To view them, we run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow selecting a number of colours. 
 
 ```{r, warning=FALSE, results='hide',fig.show="hold", out.width="50%"}
-tm_shape(africa)+
- tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1", legend.format = list(format="s"))
-
-tm_shape(africa)+
- tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma", legend.format = list(format="s"))
+# tm_shape(africa)+
+#  tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1", legend.format = list(format="s"))
+# 
+# tm_shape(africa)+
+#  tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma", legend.format = list(format="s"))
 ```
 
 ### Different layers for the static maps
