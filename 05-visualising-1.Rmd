@@ -63,69 +63,68 @@ The typical spatial objects types supported by `mapview` package are:
 ## Static maps with tmap
 In this section we explore the potential of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. Before we plot the first maps we need to create a dataset called *africa* and activate static map viewing mode.
 ```{r, message=FALSE}
-africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
-
-tmap_mode("plot") #activates static map viewing mode
+# africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
+# tmap_mode("plot") #activates static map viewing mode
 ```
 Next, we create an empty contour map of the continent, where `tm_shape()` function serves as a basic component containing the shape object i.e. our spatial dataset. On top of this basic element we can then add more layers using `+` operator. The advantage of `tmap` package is that it offers a large variety layers and these are named relatively intuitively to make the search and use easier. For example, we will now use layer called `tm_borders()` which defines the borders of the polygons. 
 ```{r, results='hide', out.width="75%"}
-tm_shape(africa)+
- tm_borders()
+# tm_shape(africa)+
+#  tm_borders()
 ```
 
 Further, we create an empty, borderless map using `tm_fill()` which defines the fill of the polygons. 
 ```{r, out.width="75%"}
-tm_shape(africa)+
- tm_fill()
+# tm_shape(africa)+
+#  tm_fill()
 ```
 
 Intuitively to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows us to achieve exactly the same result more efficiently. It draws the polygons borders and fills them.
 ```{r,fig.show="hold", out.width="40%"}
-tm_shape(africa)+ 
- tm_borders()+
-  tm_fill()
-tm_shape(africa)+
- tm_polygons()
+# tm_shape(africa)+ 
+#  tm_borders()+
+#   tm_fill()
+# tm_shape(africa)+
+#  tm_polygons()
 
 ```
 
 We can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
 
 ```{r, out.width="75%"}
-tm_shape(africa)+
- tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
+# tm_shape(africa)+
+#  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
 ```
 
 As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and adding relevant title to the legend. In this case, we also use `legend.format` option to format the legend numbers to be treated as years.
 
 ```{r, warning=FALSE, out.width="75%"}
-tm_shape(africa)+
- tm_polygons(col = "lastcensus", title = "Year of last census", legend.format = list(format="s"))
+# tm_shape(africa)+
+#  tm_polygons(col = "lastcensus", title = "Year of last census", legend.format = list(format="s"))
 ```
 
 We can further build on the previous map by adding labels for country names with `tm_text` function. In a similar manner a variety of different layers can be added. 
 
 ```{r, warning=FALSE, out.width="75%"}
-tm_shape(africa)+
- tm_polygons(col = "lastcensus", title = "Year of last census", legend.format = list(format="s"))+
- tm_text("admin", size = 0.52, fontface = "bold", auto.placement = TRUE)
+# tm_shape(africa)+
+#  tm_polygons(col = "lastcensus", title = "Year of last census", legend.format = list(format="s"))+
+#  tm_text("admin", size = 0.52, fontface = "bold", auto.placement = TRUE)
 ```
 
 Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to to much clustering of information. Instead, we might want to use `breaks` argument to set them up manually to provide more differentiation visually. For clarity, I set up the customised breaks outside of the map-making function. Alternatively, we can control number of so-called `bins` (groups) into which the **Population** is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons` function.
 
 ```{r, warning=FALSE, fig.show="hold", fig.cap = "Africa's population with default breaks (left), customised breaks (middle) and divided in bins (right).", out.width="33%"}
-#default settings
-tm_shape(africa)+                                
- tm_polygons(col = "pop_est", title = "Population")
-
-#set up breaks manually
-custom_breaks = c(10, 40, 80, 120, 160, 200, 240, 280, 320) * 100000
-tm_shape(africa)+                               
- tm_polygons(col = "pop_est", title = "Population", breaks = custom_breaks)
-
-#set up a number of bins
-tm_shape(africa)+                                
- tm_polygons(col = "pop_est", title = "Population", n = 15)
+# #default settings
+# tm_shape(africa)+                                
+#  tm_polygons(col = "pop_est", title = "Population")
+# 
+# #set up breaks manually
+# custom_breaks = c(10, 40, 80, 120, 160, 200, 240, 280, 320) * 100000
+# tm_shape(africa)+                               
+#  tm_polygons(col = "pop_est", title = "Population", breaks = custom_breaks)
+# 
+# #set up a number of bins
+# tm_shape(africa)+                                
+#  tm_polygons(col = "pop_est", title = "Population", n = 15)
 ```
 
 
@@ -143,18 +142,18 @@ An important aspect of the maps, as in every visual representation, are the colo
 ### Different layers for the static maps
 `tmap` not only allows us to add extra layers to a single map by building on a basic structure, but it also enables us to join maps from different datasets. We first create an object called *countries* which is a single map with African countries:
 ```{r, warning=FALSE, out.width="75%"}
-data(africountries)
-countries = tm_shape(africountries)+  
-  tm_polygons(col = "lightblue")
-countries #view object "countries"
+# data(africountries)
+# countries = tm_shape(africountries)+  
+#   tm_polygons(col = "lightblue")
+# countries #view object "countries"
 ```
 
 Then we use it as an argument to merge it with a map containing the location of capitals.
 ```{r, warning=FALSE, out.width="75%"}
-data(africapitals)
-countries+
-  tm_shape(africapitals)+  #uses dataset with capitals
-  tm_dots(size = 0.15)       #adds dots on the map
+# data(africapitals)
+# countries+
+#   tm_shape(africapitals)+  #uses dataset with capitals
+#   tm_dots(size = 0.15)       #adds dots on the map
 ```
 
 ### Exercises
@@ -188,9 +187,9 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 ## Interactive maps with tmap
 `tmap`package offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently by simply changing the mode of operation from static *plot* to dynamic *view* using `tmap_mode()`. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.  
 ```{r, warning=FALSE}
-tmap_mode("view")
-tm_shape(africa)+  
-tm_polygons()
+# tmap_mode("view")
+# tm_shape(africa)+  
+# tm_polygons()
 ```
 
 
