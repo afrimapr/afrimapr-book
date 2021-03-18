@@ -167,12 +167,14 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </div>   
 
 
+
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
 **Exercise 2**: Create a blue map with transparency of 0.3, dotted, non-transparent, red borders, as demonstrated below.
 </div>  
+
 
 
 <style>
