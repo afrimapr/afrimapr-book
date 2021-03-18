@@ -201,25 +201,25 @@ To return to static maps mode, we need to set the `tmap_mode` back to `plot`. As
 
 ## Exercise solutions {#solutions_ch5}
 ```{r, include = FALSE}
-tmap_mode("plot")
+#tmap_mode("plot")
 ```
 
 - Exercise 1
 ```{r, out.width="60%"}
-tm_shape(africa)+
- tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 1)
+# tm_shape(africa)+
+#  tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 1)
 ```
 
 - Exercise 2
 ```{r, out.width="60%"}
-tm_shape(africa)+
- tm_fill(col = "blue",alpha = 0.3)+
- tm_borders(col = "red", lty = "dotted", alpha = 1)
+# tm_shape(africa)+
+#  tm_fill(col = "blue",alpha = 0.3)+
+#  tm_borders(col = "red", lty = "dotted", alpha = 1)
 ```
 
 - Exercise 3
 ```{r, out.width="60%"}
-custom_breaks = c(0, 2, 3, 4, 5, 10,20, 30, 50) * 10000
-tm_shape(africa)+
- tm_polygons(col = "gdp_md_est", title = "GDP",  breaks = custom_breaks)
+# custom_breaks = c(0, 2, 3, 4, 5, 10,20, 30, 50) * 10000
+# tm_shape(africa)+
+#  tm_polygons(col = "gdp_md_est", title = "GDP",  breaks = custom_breaks)
 ```
