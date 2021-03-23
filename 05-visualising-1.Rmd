@@ -250,7 +250,7 @@ tm_shape(africa) +
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 5.4.1**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.
+**Exercise 5.4.1**: Exercise on interactive map to be here
 </div>  
 <br/>
 
