@@ -124,6 +124,11 @@ tm_shape(africa)+
  tm_polygons(col = "pop_est", title = "Population", n = 15)
 ```
 
+So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable with income level. It allows for visual grouping of countries in the same category.
+```{r, out.width="75%"}
+tm_shape(africa)+  
+  tm_polygons(col = "income_grp", title = "Income levels", alpha = 0.6)
+```
 
 ### Colour pallet
 An important aspect of the maps, as in every visual representation, are the colours. In `tmap` we can change the default colours using `palette` argument. In the example below, we used palette called **Set1** and **plasma** and there are many other options to choose from. To view them, we run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow selecting a number of colours.  
@@ -136,20 +141,26 @@ tm_shape(africa)+
 ```
 
 ### Different layers for the static maps
-`tmap` not only allows us to add extra layers to a single map by building on a basic structure, but it also enables us to join maps from different datasets. We first create an object called *countries* which is a single map with African countries:
+`tmap` not only allows us to add extra layers to a single map by building on a basic structure, but it also enables us to join two separate datasets in a single map. We first create an object called *countries* which is a map with African countries:
 ```{r, warning=FALSE, out.width="75%"}
-data(africountries)
+#read in data
+data(africountries) 
+#create an object 
 countries = tm_shape(africountries)+  
-  tm_polygons(col = "lightblue")
-countries #view object "countries"
+  tm_polygons(col = "lightblue", alpha = 0.3)
+#view object called "countries"
+countries 
 ```
 
 Then we use it as an argument to merge it with a map containing the location of capitals.
 ```{r, warning=FALSE, out.width="75%"}
+#read in data with capitals
 data(africapitals)
+#merge two maps
 countries+
   tm_shape(africapitals)+  #uses dataset with capitals
-  tm_dots(size = 0.15)       #adds dots on the map
+    tm_dots(size = 0.15)+       #adds dots on the map
+      tm_layout(title = "Capital cities of Africa" , title.position = c("right", "top"), title.size = 1) #add and adjust map title
 ```
 
 ### Exercises
@@ -159,7 +170,7 @@ The solution to the exercises are provided at the [end of the chapter](#solution
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 1**: Change the settings to obtain a yellow, non-transparent map with solid line borders of width 3, as showed below. 
+**Exercise 1**: Plot a yellow map of Africa with transparency of 0.4 and solid line borders of width 3. 
 </div>   
 
 <br/>
@@ -168,7 +179,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 2**: Create a blue map with transparency of 0.3, dotted, non-transparent, red borders, as demonstrated below.
+**Exercise 2**: Plot a lightblue map of Africa with dotted, non-transparent, red borders.
 </div>  
 
 <br/>
@@ -177,8 +188,18 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 3**: Create a map with polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.
+**Exercise 3**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.
 </div>  
+<br/>
+
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 4**: Firstly, plot a map with continent contour in light green colour. Then add a layer of african highways. At the end include a title on the bottom of the map. Tip: For plotting highways use *afrihighway* data. 
+</div>  
+
+
 
 ## Interactive maps with tmap
 `tmap`package offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently by simply changing the mode of operation from static *plot* to dynamic *view* using `tmap_mode()`. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.  
@@ -201,13 +222,13 @@ tmap_mode("plot")
 - Exercise 1
 ```{r, out.width="60%"}
 tm_shape(africa)+
- tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 1)
+ tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 0.4)
 ```
 
 - Exercise 2
 ```{r, out.width="60%"}
 tm_shape(africa)+
- tm_fill(col = "blue",alpha = 0.3)+
+ tm_fill(col = "lightblue")+
  tm_borders(col = "red", lty = "dotted", alpha = 1)
 ```
 
@@ -217,4 +238,16 @@ tm_shape(africa)+
 custom_breaks = c(0, 2, 3, 4, 5, 10,20, 30, 50) * 10000
 tm_shape(africa)+
  tm_polygons(col = "gdp_md_est", title = "GDP",  breaks = custom_breaks)
+```
+
+- Exercise 4
+```{r, out.width="60%"}
+map_contour = tm_shape(africa)+  
+  tm_fill(col = "lightgreen")
+data(afrihighway)
+map_contour +
+  tm_shape(afrihighway)+
+  tm_lines()+
+  tm_layout(title = "Highways in Africa", title.position = c("center", "bottom"))
+
 ```
