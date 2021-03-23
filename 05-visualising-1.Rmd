@@ -217,8 +217,22 @@ tm_shape(africa)+
     
 ```
 
+To return to static maps mode, we need to set the `tmap_mode` back to `plot`. Regradless of the mode, the creation of maps using `tmap` package is easy and convenient. The only additional feature in the interactive mode is the choice of the background map. This can be set up using function `tm_basemap`. Available base maps can be accessed using `leaflet::providers`. They can also be previewed [here](https://leaflet-extras.github.io/leaflet-providers/preview/). In the example below, we use a topographic map of Africa
 
-To return to static maps mode, we need to set the `tmap_mode` back to `plot`. Regradless of the mode, the creation of maps using `tmap` package is easy and convenient. The only additional feature in the dynamic (interactive mode) is the choice of the background map. This can be set up using function `tm_basemap`.
+```{r}
+tmap_mode("view")
+
+tm_basemap(leaflet::providers$OpenTopoMap)+
+tm_shape(africa)+  
+  tm_borders()+     
+    tm_shape(africapitals)+
+    tm_dots(col = "white", border.col = "blue", size = 0.1)+ #capital dots settings
+        tm_shape(afrihighway)+ 
+    tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
+
+```
+
+
 
 ## Further resources
 
