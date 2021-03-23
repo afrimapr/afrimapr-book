@@ -170,7 +170,7 @@ The solution to the exercises are provided at the [end of the chapter](#solution
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 1**: Plot a yellow map of Africa with transparency of 0.4 and solid line borders of width 3. 
+**Exercise 5.3.1**: Plot a yellow map of Africa with transparency of 0.4 and solid line borders of width 3. 
 </div>   
 
 <br/>
@@ -179,7 +179,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 2**: Plot a lightblue map of Africa with dotted, non-transparent, red borders.
+**Exercise 5.3.2**: Plot a lightblue map of Africa with dotted, non-transparent, red borders.
 </div>  
 
 <br/>
@@ -188,7 +188,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 3**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.
+**Exercise 5.3.3**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.
 </div>  
 <br/>
 
@@ -196,7 +196,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 4**: Firstly, plot a map with continent contour in light green colour. Then add a layer of african highways. At the end include a title on the bottom of the map. Tip: For plotting highways use *afrihighway* data. 
+**Exercise 5.3.4**: Firstly, plot a map with continent contour in light green colour. Then add a layer of african highways. At the end include a title on the bottom of the map. Tip: For plotting highways use *afrihighway* data. 
 </div>  
 
 
@@ -217,12 +217,12 @@ tm_shape(africa)+
     
 ```
 
-To return to static maps mode, we need to set the `tmap_mode` back to `plot`. Regradless of the mode, the creation of maps using `tmap` package is easy and convenient. The only additional feature in the interactive mode is the choice of the background map. This can be set up using function `tm_basemap`. Available base maps can be accessed using `leaflet::providers`. They can also be previewed [here](https://leaflet-extras.github.io/leaflet-providers/preview/). In the example below, we use a topographic map of Africa
+Regradless of the mode, the creation of maps using `tmap` package is easy and convenient. The additional feature in the interactive mode is the choice of the background map. This can be set up using function `tm_basemap`. Available base maps can be accessed using `leaflet::providers`. They can also be previewed [here](https://leaflet-extras.github.io/leaflet-providers/preview/). In the example below, we use a topographic map of Africa. 
 
 ```{r}
 tmap_mode("view")
 
-tm_basemap(leaflet::providers$OpenTopoMap)+
+tm_basemap("OpenTopoMap")+
 tm_shape(africa)+  
   tm_borders()+     
     tm_shape(africapitals)+
@@ -231,38 +231,59 @@ tm_shape(africa)+
     tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
 
 ```
+Using the map layer icon we can enable and disable the visibility of different map layers. Furthermore, `tm_tiles` function allows us to add a layer of overlay tiles. It is only available in "view" mode.
 
 
+```{r, out.width="60%"}
+tmap_mode("view")
+
+tm_basemap("Stamen.Watercolor") +
+tm_shape(africa) + 
+  tm_borders()+
+  tm_bubbles(size = "pop_est", col = "pop_est") +
+  tm_tiles("Stamen.TonerLabels") # adds overlay tiles with names
+```
+
+### Exercises
+
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 5.4.1**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.
+</div>  
+<br/>
 
 ## Further resources
+
+Documentation on [tm_tiles](http://finzi.psych.upenn.edu/library/tmap/html/tm_tiles.html)
 
 ## Exercise solutions {#solutions_ch5}
 ```{r, include = FALSE}
 tmap_mode("plot")
 ```
 
-- Exercise 1
+- Exercise 5.3.1
 ```{r, out.width="60%"}
 tm_shape(africa)+
  tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 0.4)
 ```
 
-- Exercise 2
+- Exercise 5.3.2
 ```{r, out.width="60%"}
 tm_shape(africa)+
  tm_fill(col = "lightblue")+
  tm_borders(col = "red", lty = "dotted", alpha = 1)
 ```
 
-
-- Exercise 3
+- Exercise 5.3.3
 ```{r, out.width="60%"}
 custom_breaks = c(0, 2, 3, 4, 5, 10,20, 30, 50) * 10000
 tm_shape(africa)+
  tm_polygons(col = "gdp_md_est", title = "GDP",  breaks = custom_breaks)
 ```
 
-- Exercise 4
+- Exercise 5.3.4
 ```{r, out.width="60%"}
 map_contour = tm_shape(africa)+  
   tm_fill(col = "lightgreen")
@@ -273,3 +294,5 @@ map_contour +
   tm_layout(title = "Highways in Africa", title.position = c("center", "bottom"))
 
 ```
+
+- Exercise 5.4.1
