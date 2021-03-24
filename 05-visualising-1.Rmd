@@ -140,7 +140,7 @@ tm_shape(africa)+
  tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma", legend.format = list(format="s"))
 ```
 
-### Different layers for the static maps
+### Visualising different datasets in one map
 `tmap` not only allows us to add extra layers to a single map by building on a basic structure, but it also enables us to join two separate datasets in a single map. We first create an object called *countries* which is a map with African countries:
 ```{r, warning=FALSE, out.width="75%"}
 #read in data
@@ -196,10 +196,8 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 5.3.4**: Firstly, plot a map with continent contour in light green colour. Then add a layer of african highways. At the end include a title on the bottom of the map. Tip: For plotting highways use *afrihighway* data. 
+**Exercise 5.3.4**: Create a map with continent contour in light green colour. Then add african highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. 
 </div>  
-
-
 
 ## Interactive maps with tmap
 `tmap`package offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.  
@@ -226,22 +224,10 @@ tm_basemap("OpenTopoMap")+
 tm_shape(africa)+  
   tm_borders()+     
     tm_shape(africapitals)+
-    tm_dots(col = "white", border.col = "blue", size = 0.1)+ #capital dots settings
+    tm_dots(col = "black", size = 0.5)+ #capital dots settings
         tm_shape(afrihighway)+ 
     tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
 
-```
-Using the map layer icon we can enable and disable the visibility of different map layers. Furthermore, `tm_tiles` function allows us to add a layer of overlay tiles. It is only available in "view" mode.
-
-
-```{r, out.width="60%"}
-tmap_mode("view")
-
-tm_basemap("Stamen.Watercolor") +
-tm_shape(africa) + 
-  tm_borders()+
-  tm_bubbles(size = "pop_est", col = "pop_est") +
-  tm_tiles("Stamen.TonerLabels") # adds overlay tiles with names
 ```
 
 ### Exercises
@@ -250,7 +236,7 @@ tm_shape(africa) +
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 5.4.1**: Exercise on interactive map to be here
+**Exercise 5.4.1**: Create an interactive map using watercolour theme. Then add blue 'bubbles' which size is based on the population of each country.Tip use tm_bubbles. 
 </div>  
 <br/>
 
@@ -296,3 +282,11 @@ map_contour +
 ```
 
 - Exercise 5.4.1
+```{r, out.width="60%"}
+tmap_mode("view")
+
+tm_basemap("Stamen.Watercolor") +
+tm_shape(africa) + 
+  tm_borders(title = "Population")+
+  tm_bubbles(size = "pop_est", col = "blue")
+```
