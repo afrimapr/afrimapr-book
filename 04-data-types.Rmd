@@ -54,6 +54,7 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 
 
 ## 4.1 Points {#episode_1_points}
+
 <style>
 div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 </style>
@@ -71,6 +72,7 @@ Let’s take an imaginary walk outside. What do you see? Houses, cars, trees… 
 
 
 ### Example
+
 Lets try and visualise the capital cities of Africa.
 
 Just a quick reminder of the necessary packages 
@@ -150,6 +152,7 @@ If the labelling is essential, you can look up the help section of the 'tm_text'
 </div>
 
 #### Exercise 1
+
 In this first exercise, we will use the same African capital data as our example. 
 Below, We have visualised all capitals with > 1.400.000 people using green squares of size 1. However, the code isn't working. Can you find the **four** mistakes? 
 
@@ -182,6 +185,7 @@ Answer:
 
 
 #### Exercise 2
+
 We will now use capital and African airport data.
 Visualise the capitals and airports in one map, with capitals as grey large filled-in circles and airports as smaller blue not-filled triangles.
 *Hint: if you get stuck, look at 'Add Points to a Plot' in the help section.*
@@ -201,6 +205,7 @@ Answer:
 
 
 ## 4.2 Lines {#episode_2_lines}
+
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
@@ -216,6 +221,7 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 In previous episode we looked at point data, such as capitals and airports. We are often interested in how these different locations on a map are connect to eachother. These connections are visualised using lines. Roads, rivers and flight pathes are just a few of the many ways that lines are used. Lines are one dimensional data which are drawn using points (and thus point data) connected to eachother in a set order. Depending on the detail of the lines, more or less point data are connected. 
 
 ### Example
+
 For this example, we will look at the trans-African highway network.
 Let's start by looking at a quick summary of the spatial aspects (geometry).
 ```{r, warning=FALSE, message=FALSE}
@@ -292,6 +298,7 @@ Answer:
 
 
 #### Exercise 2 
+
 Visualise the trans-African highway network, with line width associated with the length of the road. The function `st_length` is used to calculate the length of a line.
 
 Answer:
@@ -306,6 +313,7 @@ Answer:
 
 
 ## 4.3 Polygons {#episode_3_polygons}
+
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
@@ -343,6 +351,7 @@ As you can see in the image, when the polygon of South Africa is visualised, a w
 
 
 ### Example
+
 For this example, we will look at the country borders of African countries. 
 Let's visualise the geometry of the datafile first. 
 ```{r, warning=FALSE, message=FALSE}
@@ -385,6 +394,7 @@ Now we can add the capitals and highways from previous episodes
 
 
 #### Exercise 1
+
 Multiple choice to identify if datafiles contain point, line or (multi)polygon geometry.
 
 1.1 Look up the bus routes in your home area. Which data type would you use to visualise this data? 
@@ -417,6 +427,7 @@ d All of the above
 answer: d
 
 #### Exercise 2 
+
 Visualise the African borders of all countries with an area larger than 300.000 km^2. The function `st_area` is used to calculate the area within a polygon. 
 *Hint: make sure you check the units*
 Answer:
@@ -437,6 +448,7 @@ Answer:
 
 
 ## 4.4 Rasters {#episode_4_raster}
+
 Points, lines and polygons, in their essence, consist of points with a longitude and latitude value. The data files of these vectors look very similar. Raster data are a group on their own. Raster data consist of a matrix of grid cells (pixels), with each grid cell representing a geographical location with a value illustrating a characteristic of that location. Raster data are mainly used when displaying data that are continuous accross space. For example, population density, landcover variation and elevation data extracted from satellites, drones and surveys.  
 
 The more grid cells a raster file contains, the smoother the visualisation of the characteristic will be. However, a large number of grids also means a large heavy file, which may be difficult to run. Whenever you are working with raster files, think about your goal and objective. The highest resolution might not always be necessary. 
@@ -464,7 +476,8 @@ To read in raster data, we first need to install and load the 'raster' package.
 ```
 We can now start visualising raster data. 
 
-### Example 
+### Example
+
 For this example we use African population data from 2000 and 2020. Let's look at the information within the file first.
 ```{r, warning=FALSE, message=FALSE}
 
@@ -528,6 +541,7 @@ Now we can add the capitals and highways from previous episodes.
 ```
 
 #### Exercise 1
+
 Visualise the population data of 2000 using a different palette from the [viridisLite](https://cran.r-project.org/web/packages/viridisLite/viridisLite.pdf) package. Increase the number of breaks to six. Which breaks are most appropriate?
 ```{r, warning=FALSE, message=FALSE}
 
@@ -547,6 +561,7 @@ Visualise the population data of 2000 using a different palette from the [viridi
 Summary image (to be created) 
 
 ## 4.6 Further resources
+
 If you are interested in learning more about the different spatial data types, please visit: 
 
 - [Geospatial workshop](https://datacarpentry.org/geospatial-workshop/)
@@ -559,4 +574,5 @@ If you are interested in learning more about the different spatial data types, p
 
 
 ## 4.7 Feedback
+
 - Request on what was useful to the reader (learner) and what can be improved: Is this necessary after each chapter? Feels slightly repetitive. 
