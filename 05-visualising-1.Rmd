@@ -242,7 +242,6 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 ## Further resources
 
-Documentation on [tm_tiles](http://finzi.psych.upenn.edu/library/tmap/html/tm_tiles.html)
 
 ## Exercise solutions {#solutions_ch5}
 ```{r, include = FALSE}
