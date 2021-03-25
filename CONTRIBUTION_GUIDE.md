@@ -10,3 +10,5 @@ Internal contributors are encouraged to push text changes directly (you don't ne
 ## markdown tips
 
 * blank lines before section headers (# ## ##) to get them to work
+* I sometimes run a section of code or text in a simple markdown file to check it. Great way to quickly check the formatting. 
+* 
