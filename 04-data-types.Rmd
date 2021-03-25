@@ -76,14 +76,14 @@ Lets try and visualise the capital cities of Africa.
 Just a quick reminder of the necessary packages 
 ```{r, warning=FALSE, message=FALSE}
 
-library(afrilearndata) #load afrilearndata package
-
-#In case the data isn't loaded into your R environment automatically, they can be individually loaded using the codes below.
-data(africapitals) #location of the African capitals
-data(afriairports) #location of the large airports in Africa
-data(afrihighway) #the main highways in Africa
-data(africountries) #borders of the African countries
-data(afripop2000) #The population density accross Africa (Worldpop)
+# library(afrilearndata) #load afrilearndata package
+# 
+# #In case the data isn't loaded into your R environment automatically, they can be individually loaded using the codes below.
+# data(africapitals) #location of the African capitals
+# data(afriairports) #location of the large airports in Africa
+# data(afrihighway) #the main highways in Africa
+# data(africountries) #borders of the African countries
+# data(afripop2000) #The population density accross Africa (Worldpop)
 
 
 ```
@@ -93,10 +93,10 @@ We will start by downloading the necessary packages:
 *[tmap](https://cran.r-project.org/web/packages/tmap/tmap.pdf) package. This package is necessary to create the maps. 
 ```{r, warning=FALSE, message=FALSE}
 
-#install.packages("sf") #install sf package
-#install.packages("tmap") #install tmap package
-library(sf) #load sf package
-library(tmap) #load tmap package
+# #install.packages("sf") #install sf package
+# #install.packages("tmap") #install tmap package
+# library(sf) #load sf package
+# library(tmap) #load tmap package
 
 ```
 
@@ -110,14 +110,14 @@ Please note that more information can be found about the different packages usin
 Now, let's look at the data file that contains information about the African capitals. A quick summary of the spatial aspects (geometry) of the datafile can be checked using the following code:
 ```{r, warning=FALSE, message=FALSE}
 
-print(st_geometry(africapitals)) #printing information on the geometry
+#print(st_geometry(africapitals)) #printing information on the geometry
 
 ```
 We can see from the results that the African capital data file contains 50 points (capitals) with geometry type **POINT**. 
 Let's print the first 6 rows of data, so we can see how the coordinates of each African captial is stored in the database.
 ```{r, warning=FALSE, message=FALSE}
 
-head(africapitals) #First 6 rows of data are printed
+#head(africapitals) #First 6 rows of data are printed
 
 ```
 The capitals all have one latitude and one longitude value. The geometry of the point data is stored as *POINT (Latitude, Longitude)*. On the location where the latitude and longitude overlap, a point will be drawn when POINT data is visualised.
@@ -220,7 +220,7 @@ For this example, we will look at the trans-African highway network.
 Let's start by looking at a quick summary of the spatial aspects (geometry).
 ```{r, warning=FALSE, message=FALSE}
 
-print(st_geometry(afrihighway)) #printing information on the geometry
+#print(st_geometry(afrihighway)) #printing information on the geometry
 
 ```
 The results show that the African highway network contains 100 lines with geometry type **LINESTRING**.
@@ -228,7 +228,7 @@ The results show that the African highway network contains 100 lines with geomet
 Let's now print the first 6 rows of data to see how line data are stored.
 ```{r, warning=FALSE, message=FALSE}
 
-head(afrihighway) #First 6 rows of data are printed
+#head(afrihighway) #First 6 rows of data are printed
 
 ```
 Line data contain a string of data points with latitude and longitude: *LINESTRING(Latitude1, Longitude1, Latitude2, Longitude2, Latitude3, Longitude3,.. )*. During mapping, these points are connected to form a line. 
@@ -324,7 +324,7 @@ Polygons are lines with the same first and last coordinate. When the polygon lin
 For example the continent outline of Africa is a multipolygon.
 ```{r, warning=FALSE, message=FALSE}
 
-plot(st_geometry(africontinent), col = "lightblue")
+#plot(st_geometry(africontinent), col = "lightblue")
 
 ```
 One polygon is used to visualise mainland of Africa. An additional polygon is used for Madagascar. Together they represent the whole African continent. 
@@ -355,7 +355,7 @@ The country border file contains 51 country outlines with geometry type **MULTIP
 If we print the first 6 rows of data, we can see how each country border is stored in the database.
 ```{r, warning=FALSE, message=FALSE}
 
-head(africountries) #First 6 rows of data are printed
+#head(africountries) #First 6 rows of data are printed
 
 ```
 Here, the geometry data contain a list with (multiple) polygons, with each polygon represented as a list of data points with latitude and longitude. These points are connected to form polygons, which are either used to include or exclude areas from the final image. The geometry of the multipolygon data is stored as *MULTIPOLYGON (((Latitude1, Longitude1, Latitude2, Longitude2, Latitude3, Longitude3,.. ),(Latitude1, Longitude1, ..)),(Latitude1, Longitude1, ...)))*. 
@@ -459,7 +459,7 @@ To read in raster data, we first need to install and load the 'raster' package.
 ```{r, warning=FALSE, message=FALSE}
 
 #install.packages("raster") #install sf package
-library(raster) # load raster package
+#library(raster) # load raster package
 
 ```
 We can now start visualising raster data. 
@@ -545,13 +545,6 @@ Visualise the population data of 2000 using a different palette from the [viridi
 ## Summary/key points
 
 Summary image (to be created) 
-
-## 4.5 Putting it into practise
---> is this section necessary this early in the book? 
-In this chapter we learned the differences between the four different spatial data types. 
-### 1 Visualise 
-### 2 User story
-
 
 ## 4.6 Further resources
 If you are interested in learning more about the different spatial data types, please visit: 
