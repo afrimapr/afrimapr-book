@@ -3,11 +3,16 @@
 
 ## Overall goal of the chapter
 
-Previous chapter provided a short recap of the R basics that are necessary to succesfully work through the geospatial training that has been drawn up in this book. This section will start with the very basics of geospatial mapping: the 4 different types of spatial data types that you will encounter. 
+Previous chapter provided a short recap of the R basics that are necessary to succesfully go through the geospatial training that has been drawn up in this book. This section will focus on the very basics of geospatial mapping, the four different types of spatial data:
+1. points
+2. lines
+3. polygons
+4. rasters
 
-The goal of any spatial map is to model reality, whether this is on the scale of a house, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools and so on. The opportunities are endless. All the R software needs is information to visualise spatial data in a digital format. This is achieved by loading different spatial data types, which together form a model of reality. This section presents the four main data types: points, lines, polygons and rasters. 
 
---> interactive image with a different layer for points, lines, polygons and rasters (need help doing this, without the need to load data first..)
+The goal of a spatial map is to model reality, whether this is on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools and so on. The opportunities are endless. All the R software needs is information in points, lines, polygons and rasters which together form a model of reality. 
+
+--> interactive image with a different layer for points, lines, polygons and rasters (need help doing this)
 #mapview(list(africapitals, afrihighway),
 #        zcol = list('pop','Name'),
 #        legend = list(TRUE, FALSE),  
@@ -15,17 +20,17 @@ The goal of any spatial map is to model reality, whether this is on the scale of
 #        label = list(paste(africapitals$countryname,':',africapitals$capitalname),
 #                     afrihighway$Name) )
 
-All spatial data types require a spatial reference frame or coordinate system identification to place data in the correct location in space. We will discuss this in more detail in chapter xxx. For now, just be aware that apart from your data file, additional data is necessary to place your points, lines, polygons and rasters in the correct location. 
+All spatial data types require a spatial reference framework or coordinate system identification to place data in the correct location in space. We will discuss this in more detail in chapter xxx. For now, just be aware that apart from your data file, additional data are necessary to place your spatial data in the correct location. 
 
 
 <style>
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
-Please note that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming sometimes. Don't hesitate to contact the owner of the data or use google to find out more! 
+Please note that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming  at times. Never hesitate to contact the owner of the data or search the internet to find out more about your spatial database! 
 </div>
 
-This chapter is written for beginners, who have basic knowledge of R and no experience with spatial data. If you are familiar with the basic spatial data types, you can move on to the next chapter where visualisation of data types are explained in more detail. 
+This chapter is written for beginners, who have basic knowledge of R and no experience with spatial data. If you are familiar with these basic data types, you can move on to the next chapter where visualisation of data types are explained in more detail. 
 <br/>
 
 <style>
@@ -74,10 +79,12 @@ Just a quick reminder of the necessary packages
 library(afrilearndata) #load afrilearndata package
 
 #In case the data isn't loaded into your R environment automatically, they can be individually loaded using the codes below.
-data(africountries) #borders of the African countries
 data(africapitals) #location of the African capitals
+data(afriairports) #location of the large airports in Africa
 data(afrihighway) #the main highways in Africa
+data(africountries) #borders of the African countries
 data(afripop2000) #The population density accross Africa (Worldpop)
+
 
 ```
 
@@ -106,7 +113,8 @@ Now, let's look at the data file that contains information about the African cap
 print(st_geometry(africapitals)) #printing information on the geometry
 
 ```
-We can see from the results that the African capital data file contains 50 points (capitals) with geometry type **POINT**. Let's print the first 6 rows of data, so we can see how the coordinates of each African captial is stored in the database.
+We can see from the results that the African capital data file contains 50 points (capitals) with geometry type **POINT**. 
+Let's print the first 6 rows of data, so we can see how the coordinates of each African captial is stored in the database.
 ```{r, warning=FALSE, message=FALSE}
 
 head(africapitals) #First 6 rows of data are printed
@@ -128,7 +136,7 @@ Let's now visualise the African capitals by plotting their geometry using the tm
 #   tm_dots() # displaying the point geometry
 
 ```
-The `tmap` package works similar to the ggplot package. You need to first specify the data file you want to visualise using `tm_shape()`, after which the exact format of the spatial data can be specified. As we are working with point data in this example, the `tm_dots()` function is used. As with ggplot, there is a lot of flexibility in the colouring, shapes and sizes of the dots. For example, the dots can be turned red and labelled with the name of the city. 
+The `tmap` package works similar to the ggplot package. You need to first specify the data file you want to visualise using `tm_shape()`, after which the exact format of the spatial data can be specified (points, lines, polygons). As we are working with point data in this example, the `tm_dots()` function is used. As with ggplot, there is a lot of flexibility in the colouring, shapes and sizes of the dots. For example, the dots can be turned red and labelled with the name of the city. 
 ```{r, warning=FALSE, message=FALSE}
 
 # tm_shape(africapitals) +
@@ -136,9 +144,12 @@ The `tmap` package works similar to the ggplot package. You need to first specif
 #     tm_text("capitalname", size=0.7 ) #adding the name 
 
 ```
-As you can see in the example above, the labelling makes the image messy. In these instances it is important to think about the message you are trying to convey. If the labelling is essential, you can look up the help section of the 'tm_text' using the help tool and play around with the different options to clean up the image. 
+As you can see in the example above, the labelling makes the image messy. In these instances it is important to think about the message you are trying to convey with your map. 
+If the labelling is essential, you can look up the help section of the 'tm_text' using the help tool and play around with the different options to clean up the map further. 
 
-### Exercise 1
+</div>
+
+#### Exercise 1
 In this first exercise, we will use the same African capital data as our example. 
 Below, We have visualised all capitals with > 1.400.000 people using green squares of size 1. However, the code isn't working. Can you find the **four** mistakes? 
 
@@ -146,36 +157,47 @@ Below, We have visualised all capitals with > 1.400.000 people using green squar
 
 ```{r, warning=FALSE, message=FALSE}
 
-#africapitals_ex1=africapitals %>%
-#  filter(as.factor(`pop`) > 1.400.000)
+#africapitals_filtered=africapitals %>%
+#  dplyr::filter((africapitals$iso3c) > 1.400.000)
 
-#tm_shape(africapitals_ex1) +
+#tm_shape(africapitals_filtered) +
 #  tm_dots("green", size=0.5)
 
 ```
 
 Answer:
-*In the initial filter, `as.factor` needs to be changed to `as.numeric`
-*Dots in 1.400.000 need to be removed
-*The shape of the dots need to be specified as squares using `shape=22`
-*The size of the points needs to be 1. 
+* In the initial filter, `africapitals$iso3c` needs to be changed to `africapitals$pop`
+* Dots in 1.400.000 need to be removed
+* The shape of the dots need to be specified as squares using `shape=22`
+* The size of the points needs to be 1. 
 ```{r, warning=FALSE, message=FALSE}
 
-#africapitals_ex1=africapitals %>%
-#  filter(as.numeric(`pop`) > 1400000)
+#africapitals_filtered=africapitals %>%
+#  dplyr::filter((africapitals$pop) > 1400000)
 
-#tm_shape(africapitals_ex1) +
+#tm_shape(africapitals_filtered) +
 #  tm_dots("green", shape = 22, size=1)
 
 ```
 
 
-### Exercise 2
-We will now use a different data type. We will download the locations of the big universities in Africa using open street map. 
+#### Exercise 2
+We will now use capital and African airport data.
+Visualise the capitals and airports in one map, with capitals as grey large filled-in circles and airports as smaller blue not-filled triangles.
+*Hint: if you get stuck, look at 'Add Points to a Plot' in the help section.*
+*Hint: When both points and lines are mapped, datasets need to be identified seperately in `tm_shape()` before the use of `tm_dots()`.*
 
+Answer:
+```{r, warning=FALSE, message=FALSE}
 
+#tm_shape(africapitals) +
+#  tm_dots(col="grey", shape = 19, size=3) +
+#tm_shape(afriairports) +
+#  tm_dots(col="blue", shape = 2, size=1)
 
+```
 
+</div>
 
 
 ## 4.2 Lines {#episode_2_lines}
@@ -191,10 +213,10 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 
 </div>
 
-In previous episode we looked at point data on a map. We are often interested in how these different points on a map are connect to eachother. Roads, rivers and flight pathes are just a few of the many ways that lines are used. Lines are one dimensional data which are drawn using points (and thus point data) connected to eachother in a set order. Depending on the detail of the lines, more or less points can be used. 
+In previous episode we looked at point data, such as capitals and airports. We are often interested in how these different locations on a map are connect to eachother. These connections are visualised using lines. Roads, rivers and flight pathes are just a few of the many ways that lines are used. Lines are one dimensional data which are drawn using points (and thus point data) connected to eachother in a set order. Depending on the detail of the lines, more or less point data are connected. 
 
 ### Example
-For this example, we will look at the trans african highway network.
+For this example, we will look at the trans-African highway network.
 Let's start by looking at a quick summary of the spatial aspects (geometry).
 ```{r, warning=FALSE, message=FALSE}
 
@@ -203,7 +225,7 @@ print(st_geometry(afrihighway)) #printing information on the geometry
 ```
 The results show that the African highway network contains 100 lines with geometry type **LINESTRING**.
 
-Let's now print the first 6 rows of data to see how line data is stored.
+Let's now print the first 6 rows of data to see how line data are stored.
 ```{r, warning=FALSE, message=FALSE}
 
 head(afrihighway) #First 6 rows of data are printed
@@ -211,22 +233,22 @@ head(afrihighway) #First 6 rows of data are printed
 ```
 Line data contain a string of data points with latitude and longitude: *LINESTRING(Latitude1, Longitude1, Latitude2, Longitude2, Latitude3, Longitude3,.. )*. During mapping, these points are connected to form a line. 
 
-Lets visualise these linestrings in red by plotting their geometry using the tmap package.
+Let's visualise these linestrings in red by plotting their geometry using the tmap package.
 ```{r, warning=FALSE, message=FALSE}
 
-# tm_shape(afrihighway) +
-#   tm_lines("red") #similar to tm_dots colour of the lines can be specified.
+#tm_shape(afrihighway) +
+#  tm_lines("red") 
 
 ```
-
+ 
 <style>
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
-Please check out the help section to familiarise yourself with the many layout options available. 
+Similar to point data, the lines can be illustrated in a large variety of ways. Please check the `tm_lines()` help section to familiarise yourself with the many layout options available. 
 </div>
 
-Now we can add the capitals from previous episode in blue
+Now we add the capitals from previous episode in blue. 
 ```{r, warning=FALSE, message=FALSE}
 
 # tm_shape(africapitals) +
@@ -235,7 +257,8 @@ Now we can add the capitals from previous episode in blue
 #   tm_lines("red") # displaying the point geometry as red dots
 
 ```
-When both points and lines are mapped, datasets need to be identified seperately in `tm_shape()` before the use of `tm_dots()` and `tm_lines()`. 
+Great to see how the capitals are connected by the trans-African highway network.
+
 <style>
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
@@ -243,13 +266,23 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 Please note that the order of `tm_dots()` and `tm_lines()` matters. If you want the points overlaying the lines, it should be placed *after* the lines coding and visa versa.
 </div>
 
-### Exercise 1
+#### Exercise 1
 In the below exercise we have tried to visualise all the capitals and *only* the roads starting with the letter 'b'.
 However, we have messed up the order of the code. Can you rearrange the code? 
 ```{r, warning=FALSE, message=FALSE}
 
-#need to check the code before rearranging it
-afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
+# tm_shape(africapitals) +
+#     tm_shape(afrihighway_ex1)+
+#   tm_dots("blue", size=0.5)+
+#   tm_lines("blue") 
+#afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
+
+```
+
+Answer:
+```{r, warning=FALSE, message=FALSE}
+
+#afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
 # tm_shape(africapitals) + #important that capitals are visualised first 
 #   tm_dots("blue", size=0.5)+
 #     tm_shape(afrihighway_ex1)+
@@ -257,10 +290,19 @@ afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
 
 ```
 
-### Exercise 2 (rivers in Africa, flight paths?)
-- make this slightly more complicated by selecting rivers than are at least 100 km long? 
 
+#### Exercise 2 
+Visualise the trans-African highway network, with line width associated with the length of the road. The function `st_length` is used to calculate the length of a line.
 
+Answer:
+```{r, warning=FALSE, message=FALSE}
+#afrihighway$length=tapply(st_length(afrihighway), afrihighway$Name, sum)
+#tm_shape(afrihighway) +
+#  tm_lines(lwd = `length`) 
+
+```
+
+</div>
 
 
 ## 4.3 Polygons {#episode_3_polygons}
@@ -277,27 +319,18 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </div>
 
 
-
-- If a line has the same first and last coordinate, this creates a closed figure: a polygon. Similar to lines, depending on the detail of the map, more or less points can be used to create a polygon. 
-
-- Polygons are two dimension data. Examples include country boundaries and continent outlines.
-
-- Often times one polygon is not sufficient to visualise complicated shapes. Several polygons are necessary: these shapes are called mulipolygons. The different polygons in one data row indicate either areas to include or exclude from the final image.   
+Polygons are lines with the same first and last coordinate. When the polygon line is connected, the same start and end point results in a closed shape. Similar to lines, depending on the detail of the map, more or less points can be used to create a polygon. This two-dimensional data is most often used to visualise country and continent boundaries. 
 
 For example the continent outline of Africa is a multipolygon.
-
 ```{r, warning=FALSE, message=FALSE}
 
 plot(st_geometry(africontinent), col = "lightblue")
 
 ```
+One polygon is used to visualise mainland of Africa. An additional polygon is used for Madagascar. Together they represent the whole African continent. 
 
-- One polygon is used to visualise mainland of Africa. An additional polygon is used for Madagascar. Together they represent the whole African continent. 
-
---> This might be a simple polygon and not a multipolygon... 
-An example of a multipolygon where areas are excluded is the country border of South Africa. Lesotho is entirely surrounded by South Africa. If we want to visualise South Africa, we need to make sure that the Lesotho area is excluded. Visualisation of South Africa therefore requires two polygons, one to outline the outer borders and one to highlight the area to exclude (Lesotho country borders).
-
-
+Sometimes several polygons are necessary to capture a more complex shape. The different polygons in one data row indicate either areas to include or exclude from the final image. These are called multipolygons. An example of a multipolygon is the country border of South Africa. Lesotho is entirely surrounded by South Africa. If we want to visualise South Africa, we need to make sure that the Lesotho area is excluded. Visualisation of South Africa therefore requires two polygons, one to outline the outer borders and one to highlight the area to exclude (Lesotho country borders). 
+Below, the South African border is visualised.
 ```{r, warning=FALSE, message=FALSE}
 
 #africountries_ex=africountries %>%
@@ -306,11 +339,12 @@ An example of a multipolygon where areas are excluded is the country border of S
 #plot(st_geometry(africountries_ex), col = "lightblue") 
 
 ```
-
-- As you can see in the image above, when the border lines of South Africa are visualised, a white area is visible inside the country (representing Lesotho), which is not part of South Africa. 
+As you can see in the image, when the polygon of South Africa is visualised, a white area is visible inside the country (representing Lesotho), which is not part of South Africa. 
 
 
 ### Example
+For this example, we will look at the country borders of African countries. 
+Let's visualise the geometry of the datafile first. 
 ```{r, warning=FALSE, message=FALSE}
 
 print(st_geometry(africountries)) #printing information on the geometry
@@ -318,16 +352,15 @@ print(st_geometry(africountries)) #printing information on the geometry
 ```
 The country border file contains 51 country outlines with geometry type **MULTIPOLYGON**.
 
-If we print the first 6 rows of data, we can see how each country border is stored in the database
+If we print the first 6 rows of data, we can see how each country border is stored in the database.
 ```{r, warning=FALSE, message=FALSE}
 
 head(africountries) #First 6 rows of data are printed
 
 ```
-Geometry data contains a list within multiple polygons that are represented as data points with latitude and longitude. These points are connected to form multiple polygons which are either used to include or exclude areas from the final image.
-The geometry of the multipolygon data is stored as *MULTIPOLYGON (((Latitude1, Longitude1, Latitude2, Longitude2, Latitude3, Longitude3,.. ),(Latitude1, Longitude1, ..)),(Latitude1, Longitude1, ...)))*. This needs further clarification.
+Here, the geometry data contain a list with (multiple) polygons, with each polygon represented as a list of data points with latitude and longitude. These points are connected to form polygons, which are either used to include or exclude areas from the final image. The geometry of the multipolygon data is stored as *MULTIPOLYGON (((Latitude1, Longitude1, Latitude2, Longitude2, Latitude3, Longitude3,.. ),(Latitude1, Longitude1, ..)),(Latitude1, Longitude1, ...)))*. 
 
-Lets visualise these multipolygons in black
+Lets visualise these multipolygons with black lines.
 ```{r, warning=FALSE, message=FALSE}
 
 # tm_shape(africountries) +
@@ -350,39 +383,69 @@ Now we can add the capitals and highways from previous episodes
 
 ```
 
-### Exercise 1
-Multiple choice to identify if datafiles contain point, line or multipolygon geometry
--need to identify two different datafiles to use. 
---> list of data : the students need to identify what kind of geometry type the data file contains
---> Visual example: the students need to identify what kind of geometry type the data file contains that is visualised in the example. 
+
+#### Exercise 1
+Multiple choice to identify if datafiles contain point, line or (multi)polygon geometry.
+
+1.1 Look up the bus routes in your home area. Which data type would you use to visualise this data? 
 
 a Point data
 b Line data
 c Multipolygon data
 d All of the above
 
-If wrong: go back (explain why wrong)
+answer: b
 
+1.2 What kind of data type is necessary to visualise the countries part of the [the Economic Community of West African States (ECWAS)](https://www.ecowas.int/) community?
 
-### Exercise 2 (different data: game reserves)
-Visualise the Malawi country border in black and district borders in green. 
+a Point data
+b Line data
+c Multipolygon data
+d All of the above
 
+answer: c
+
+1.3 Which data type is necessary for the authors to visualise the below image. 
+(need help visualising this with the right approval from authors)
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fcdiac.ess-dive.lbl.gov%2Fepubs%2Fndp%2Fndp055%2Fndp055.html&psig=AOvVaw2qJ0HAjtU9ytbSWT-qFR0R&ust=1616679119758000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKD8l5qFye8CFQAAAAAdAAAAABBW
+
+a Point data
+b Line data
+c Multipolygon data
+d All of the above
+
+answer: d
+
+#### Exercise 2 
+Visualise the African borders of all countries with an area larger than 300.000 km^2. The function `st_area` is used to calculate the area within a polygon. 
+*Hint: make sure you check the units*
+Answer:
 ```{r, warning=FALSE, message=FALSE}
+#africountries$area_sqm <- st_area(africountries)
+#africountries$area_sqkm <-africountries$area_sqm / 1000000
 
+#africountries_filtered = africountries %>%
+#  dplyr::filter(as.numeric(africountries$area_sqkm) > 300000)
 
-
+#tm_shape(africountries_filtered) +
+#   tm_borders()+
 
 ```
 
+</div>
 
-Points, lines and polygons are grouped together as vector data. Several points together can form a line and several lines together form a polygon. They are all dependent on coordinates and their datafiles look very similar. Rasters are a group of their own. They are made up of a grid of pixels, with each grid containing values. 
 
 
 ## 4.4 Rasters {#episode_4_raster}
+Points, lines and polygons, in their essence, consist of points with a longitude and latitude value. The data files of these vectors look very similar. Raster data are a group on their own. Raster data consist of a matrix of grid cells (pixels), with each grid cell representing a geographical location with a value illustrating a characteristic of that location. Raster data are mainly used when displaying data that are continuous accross space. For example, population density, landcover variation and elevation data extracted from satellites, drones and surveys.  
+
+The more grid cells a raster file contains, the smoother the visualisation of the characteristic will be. However, a large number of grids also means a large heavy file, which may be difficult to run. Whenever you are working with raster files, think about your goal and objective. The highest resolution might not always be necessary. 
+
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
+
 ### Learning objectives
 
 - Explain the difference between vector and raster data
@@ -392,66 +455,40 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 
 </div>
 
-- Episode 1 to 3 are focussed on vector data. Vector data uses points, lines, polygons to model the real world. 
-
-- I extracted the text below. Needs to be re-written.
-- Raster data is a matrix of grid cells. Each cell represents a geographical location and contains a value that represents a characteristict of that region [ref]. Represents large areas with continuously changing values. 
-
---> image of a simple raster: with data
-
-- Raster data is used when displaying information that is continuous across an area and cannot easily be divided into vector features(vectors aren’t very good at representing features that are not homogeneous). examples: population density, landcover variation, elevation. 
-
-- Rasters are often backdrop for vector data.
-
-- Raster data is extracted from eg. satellite imagery, drone imagery, surveys, 
-
-- Depending on the number of grid cells, this can result in a smooth image, or visualisation of individual grid cells. Raster datasets can become potentially very large because they record values for each cell in an image. As resolution increases, the size of the cell decreases. But this comes at a cost for speed of processing and data storage.
-
-
-To read in raster data, we need to install and load the 'raster' package. 
+To read in raster data, we first need to install and load the 'raster' package. 
 ```{r, warning=FALSE, message=FALSE}
 
 #install.packages("raster") #install sf package
 library(raster) # load raster package
 
 ```
+We can now start visualising raster data. 
 
 ### Example 
-To show raster data, in this example we use population data from 2000 and 2020. 
+For this example we use African population data from 2000 and 2020. Let's look at the information within the file first.
 ```{r, warning=FALSE, message=FALSE}
 
 #print(afripop2000) #printing information on the raster data file
 
 ```
-The population raster data from 2000 contains 434 rows, 413 columns and a total of 179242 grid cells with geometry type **RasterLayer **.
+The population raster data from 2000 contains 434 rows, 413 columns and a total of 179.242 grid cells with geometry type **RasterLayer **.
 
-If we print the first 6 rows of data, we can see how each country border is stored in the database
+Let's print the first 10 rows of data. 
 ```{r, warning=FALSE, message=FALSE}
 
 #head(afripop2000) #First 6 rows of data are printed
 
 ```
-
-Why do you think the first 6 data points are empty? 
-
-Better to see a few more grid cells in the raster layer.
+Why do you think all rows are empty? 
+Let's take a look at more grid cells. 
 ```{r, warning=FALSE, message=FALSE}
 
 #getValues(afripop2000)
 
 ```
+The printed matrix shows that the raster layer consists of a matrix with values. The grid cells can be empty if no data is available. This just results in no visualisation at those locations. 
 
-The raster layer consists of a matrix with values. The grid cells can be empty if no data is available. 
-
-Lets visualise the population data with the country borders (example from [afrilearnr](https://andysouth.shinyapps.io/afrilearnr-crash-course/#section-tmap-map-vector-and-raster-data). 
-```{r, warning=FALSE, message=FALSE}
-
-#tm_shape(afripop2020) +
-#    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
-#tm_shape(africountries) +
-#    tm_borders() 
-
-```
+Lets visualise the population data with the country borders. 
 <style>
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
@@ -459,46 +496,61 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 Please note that population density data are highly skewed. To ensure both high and low density areas are clearly visible, we have to specify the data breaks manually.  
 </div>
 
+```{r, warning=FALSE, message=FALSE}
 
-Now we can add the capitals and highways from previous episodes
+#tm_shape(afripop2020) +
+#    tm_raster(breaks=c(0,2,20,200,2000,25000))
+
+```
+
+
+We can make the image easier to interpret by using a palette from the [viridisLite](https://cran.r-project.org/web/packages/viridisLite/viridisLite.pdf) package, moving the legend using `tm_layout()` and including the African borders. 
 ```{r, warning=FALSE, message=FALSE}
 
 #tm_shape(afripop2020) +
 #    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
+#  tm_layout(legend.position = c("left","bottom"))+
 #tm_shape(africountries) +
-#    tm_borders("white", lwd = .5) +
-#tm_shape(afrihighway) +
-#    tm_lines(col = "red") + 
-#tm_shape(africapitals) +
-#    tm_symbols(col = "blue", alpha=0.4, scale = .6 )+
-#tm_legend(show = FALSE)
+#    tm_borders() 
 
 ```
 
-### Exercise 1
+
+Now we can add the capitals and highways from previous episodes. 
+```{r, warning=FALSE, message=FALSE}
+
+#tm_shape(afripop2000) +
+#    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
+#  tm_layout(legend.position = c("left","bottom"))+
+#tm_shape(africountries) +
+#    tm_borders() 
+
+```
+
+#### Exercise 1
+Visualise the population data of 2000 using a different palette from the [viridisLite](https://cran.r-project.org/web/packages/viridisLite/viridisLite.pdf) package. Increase the number of breaks to six. Which breaks are most appropriate?
+```{r, warning=FALSE, message=FALSE}
+
+#tm_shape(afripop2020) +
+#    tm_raster(palette = rev(viridisLite::plasma(6)), breaks=c(0,2,20,200,2000,20000, 25000)) +
+#  tm_layout(legend.position = c("left","bottom"))+
+#tm_shape(africountries) +
+#    tm_borders()
+
+```
 
 
-
-### Exercise 2 (different data: elevation data?)
-
-
+</div>
 
 ## Summary/key points
-- Points are ..
-- Lines are ..
-- Polygons are ..
-- Rasters are ..
 
-## 4.5 Wrap up with final exercises
+Summary image (to be created) 
 
-In this chapter we learned xxxx
-
-Try to solve the exercises below tp 
+## 4.5 Putting it into practise
+--> is this section necessary this early in the book? 
+In this chapter we learned the differences between the four different spatial data types. 
 ### 1 Visualise 
-
-
 ### 2 User story
-
 
 
 ## 4.6 Further resources

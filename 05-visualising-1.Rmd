@@ -123,14 +123,20 @@ tm_shape(africa)+
 tm_shape(africa)+                                
  tm_polygons(col = "pop_est", title = "Population", n = 15)
 ```
-
-So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable with income level. It allows for visual grouping of countries in the same category.
+So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable with income level. It allows for visual grouping of countries in the same category. The namesof the categories in the legend were adjusted using `labels` argument.
 ```{r, out.width="75%"}
 tm_shape(africa)+  
-  tm_polygons(col = "income_grp", title = "Income levels", alpha = 0.6)
+  tm_polygons(col = "income_grp", title = "Income levels", alpha = 0.6, labels = c("High", "Upper middle", "Lower middle", "Lower"))
 ```
 
-### Colour pallet
+It is important to bear in mind that same information can be displayed on the map in many different ways. For example, we can make use of 'tm_bubbles' to create so called bubbles which size is linked to the population of each country while their colour related to the income group.
+```{r, out.width="75%"}
+tm_shape(africa)+                                
+ tm_polygons(col = "lightblue")+
+  tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level", title.size = "Population")
+```
+
+### Colour setting and colour pallete
 An important aspect of the maps, as in every visual representation, are the colours. In `tmap` we can change the default colours using `palette` argument. In the example below, we used palette called **Set1** and **plasma** and there are many other options to choose from. To view them, we run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow selecting a number of colours.  
 ```{r, warning=FALSE, results='hide', fig.show="hold", fig.cap = "Africa's maps using different pallete options.", out.width="50%"}
 tm_shape(africa)+
@@ -138,6 +144,30 @@ tm_shape(africa)+
 
 tm_shape(africa)+
  tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma", legend.format = list(format="s"))
+```
+
+Alternatively an overall style of a single map can be easily changed using `tm_style` function. However, it might also be useful to change the style in all the maps in the document. This can be achieved with setting the style globally with `tmap_style("nameofthestyle")`. The default style is called "white", hence to restore a default style setting use `tmap_style("white")`. 
+```{r, include = FALSE}
+tmap_mode("plot")
+```
+```{r, out.width="33%", fig.show="hold", fig.cap = "Examples of different styles."}
+tm_style("classic")+
+tm_shape(africa)+                                
+ tm_polygons()+
+     tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level", 
+                title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
+
+tm_style("beaver")+
+tm_shape(africa)+                                
+ tm_polygons()+
+     tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level", 
+                title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
+
+tm_style("albatross")+
+tm_shape(africa)+                                
+ tm_polygons()+
+     tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level", 
+                title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
 ```
 
 ### Visualising different datasets in one map
@@ -159,7 +189,7 @@ data(africapitals)
 #merge two maps
 countries+
   tm_shape(africapitals)+  #uses dataset with capitals
-    tm_dots(size = 0.15)+       #adds dots on the map
+    tm_dots(col = "red", size = 0.15)+       #adds dots on the map
       tm_layout(title = "Capital cities of Africa" , title.position = c("right", "top"), title.size = 1) #add and adjust map title
 ```
 
@@ -218,13 +248,11 @@ tm_shape(africa)+
 Regradless of the mode, the creation of maps using `tmap` package is easy and convenient. The additional feature in the interactive mode is the choice of the background map. This can be set up using function `tm_basemap`. Available base maps can be accessed using `leaflet::providers`. They can also be previewed [here](https://leaflet-extras.github.io/leaflet-providers/preview/). In the example below, we use a topographic map of Africa. 
 
 ```{r}
-tmap_mode("view")
-
 tm_basemap("OpenTopoMap")+
 tm_shape(africa)+  
   tm_borders()+     
     tm_shape(africapitals)+
-    tm_dots(col = "black", size = 0.5)+ #capital dots settings
+    tm_dots(col = "black")+ #capital dots settings
         tm_shape(afrihighway)+ 
     tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
 
@@ -236,7 +264,7 @@ tm_shape(africa)+
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 5.4.1**: Create an interactive map using watercolour theme. Then add blue 'bubbles' which size is based on the population of each country.Tip use tm_bubbles. 
+**Exercise 5.4.1**: Create an interactive map uses watercolour theme, the highways are blue and dots denoting capitals are white with black borders. Finally, add capitalnames.
 </div>  
 <br/>
 
@@ -284,8 +312,14 @@ map_contour +
 ```{r, out.width="60%"}
 tmap_mode("view")
 
-tm_basemap("Stamen.Watercolor") +
-tm_shape(africa) + 
-  tm_borders(title = "Population")+
-  tm_bubbles(size = "pop_est", col = "blue")
+
+tm_basemap("Stamen.Watercolor")+
+tm_shape(africa)+  
+  tm_borders()+     
+    tm_shape(africapitals)+
+    tm_dots(col = "white", border.col = "black")+ #capital dots settings
+    tm_text("capitalname", size = 1.2)+
+        tm_shape(afrihighway)+ 
+    tm_lines(col = "blue", lwd = 3) #highway lines setting
+
 ```
