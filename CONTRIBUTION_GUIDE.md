@@ -9,6 +9,8 @@ Internal contributors are encouraged to push text changes directly (you don't ne
 
 ## markdown tips
 
-* blank lines before section headers (# ## ##) to get them to work
+* Blank lines before section headers (# ## ##) to get them to work
+* For R to consider a chunk of text a section heading there needs to be a space between the hashtag # and the title
 * I sometimes run a section of code or text in a simple markdown file to check it. Great way to quickly check the formatting. 
-* 
+* The numbering of the section can be removed by using **{-}** after the section title
+* Sub-sections (level 2 headings) cannot be referred to (links cannot be created)
