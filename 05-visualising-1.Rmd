@@ -29,6 +29,9 @@ cran_packages_to_install <- c(
   "tmaptools"          # map building package
   )
 install.packages(cran_packages_to_install)
+
+remotes::install_github("afrimapr/afrilearnr")
+remotes::install_github("afrimapr/afrilearndata")
 ```
 
 Next, we need to load the packages:
@@ -39,6 +42,7 @@ library(mapview)
 library(ggplot2)
 library(sf)
 library(afrilearndata)
+library(afrilearnr)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(dplyr)
@@ -192,6 +196,14 @@ countries+
     tm_dots(col = "red", size = 0.15)+       #adds dots on the map
       tm_layout(title = "Capital cities of Africa" , title.position = c("right", "top"), title.size = 1) #add and adjust map title
 ```
+
+## Visualising subsets of data
+
+Airports data to be visualised here, split in airport size (or maybe in discrete part above?)
+```{r}
+
+```
+
 
 ### Exercises
 The solution to the exercises are provided at the [end of the chapter](#solutions_ch5).
