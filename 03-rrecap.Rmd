@@ -81,9 +81,9 @@ If you do not select any code and press **Run**, RStudio will run the line of co
 
 In RStudio it is also possible to add comments next to your commands simply using a hashtag (#) beforehand. This will stop R from executing this specific part:
 ```{r}
-3+6 # Using R as a calculator
+3 + 6 # Using R as a calculator
 
-# 3+6
+# 3 + 6
 ```
 
 ## Install and load packages {#install_packages}
@@ -207,7 +207,7 @@ class(z)
 Logical objects can take values `TRUE` or `FALSE`, where `TRUE` is an equivalent of 1 whereas `FALSE` is an equivalent of 0. In these sense, they can be thought of as numerical values.
 ```{r, warning=FALSE, message=FALSE}
 x <- TRUE
-y <- 3+TRUE
+y <- 3 + TRUE
 print(y)
 ```
 
@@ -234,6 +234,16 @@ b
 ```
 
 The numbers and strings, in the example above, serve as labels of different levels.
+
+### Exercises
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 3.6.1**: Create a vector 'a' that contains descending sequence of numbers from 50 to 30 that decrases by 2. Hint use seq()
+</div>  
+<br/>
+
 
 ## Basic objects and data structures {#objects_basics}
 In this section we explain the basic data structures that we often work with in R. These include a vector, list, matrix and a data frame.
@@ -301,6 +311,22 @@ colnames(df_1)
 
 ```
 
+### Exercises
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 3.7.1**: Create three vectors containing character, integer and logical values, respectively. Each with 10 rows. Then bind them to generate a matrix with 3 columns and 10 rows.
+</div>  
+<br/>
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 3.7.3**: Create a data frame from the matrix created in the previous exercise. Rename column headers respectively to their content.
+</div>  
+<br/>
+
 ## Getting help with R Help {#help}
 R is a powerful software with many different packages and functions which are continuously developed and added. Therefore, it is difficult, if not impossible, to be familiar with all the functions that are currently available. Hence, in order to learn more about them, R provides extensive documentation which can be accessed with `help()` function, `? operator` or by clicking in *Help* panel in the bottom-right corner. For example:
 ```{r, warning=FALSE, message=FALSE}
@@ -326,9 +352,37 @@ R documentation for functions frequently offers a working example which can be a
 example(vector) #to see an example of a vector
 ```
 
+## Further resources
 Finally, the Internet also provides several reliable sources such as official [R website](r-project.org) or [documentation pages](rdocumentation.org) where you can find help. 
 
 ## Wrap up
 In this chapter we learned several R commands which prepared the reader for starting with his/her own project. Moreover, we familiarised with a number of data types and R objects. Moreover, we looked at how to obtain help and access R documentation. The material covered in this section aimed at building a base for the reader to allow him/her successfully progress through the book. 
 
-## Feedback
+## Exercise solutions {#solutions_ch3}
+
+- Exercise 3.6.1
+```{r}
+a <- seq(50,30, by = -2)
+```
+
+- Exercise 3.7.1
+```{r, warning=FALSE, message=FALSE}
+v1 <- c("water", "milk", "juice", "coffee", "tea", "tea", "juice", "milk", "water", "soda")
+v2 <- seq(1,10)
+v3 <- rep(c(TRUE,FALSE), length.out = 10) 
+v3 <-as.logical(v3)
+m1 = cbind(v1, v2, v3) 
+m1
+```
+- Exercise 3.7.2
+```{r, warning=FALSE, message=FALSE}
+df = data.frame(m1)
+
+names(df)[1] <- "Drink"
+names(df)[2] <- "Amount"
+names(df)[3] <- "Female"
+
+df$Female <-as.logical(df$Female)
+df$Amount <-as.integer(df$Amount)
+df
+```

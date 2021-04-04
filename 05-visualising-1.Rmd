@@ -281,7 +281,8 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 <br/>
 
 ## Further resources
-
+[tmap documentation](https://cran.r-project.org/web/packages/tmap/tmap.pdf)
+[Mapview documentation](https://www.rdocumentation.org/packages/mapview/versions/2.9.0)
 
 ## Exercise solutions {#solutions_ch5}
 ```{r, include = FALSE}
