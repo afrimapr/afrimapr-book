@@ -81,9 +81,9 @@ If you do not select any code and press **Run**, RStudio will run the line of co
 
 In RStudio it is also possible to add comments next to your commands simply using a hashtag (#) beforehand. This will stop R from executing this specific part:
 ```{r}
-3 + 6 # Using R as a calculator
+3+6 # Using R as a calculator
 
-# 3 + 6
+# 3+6
 ```
 
 ## Install and load packages {#install_packages}
