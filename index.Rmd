@@ -14,7 +14,9 @@ description: "An introduction to making maps from African data in R."
 
 # Welcome {-}
 
+```{r, echo=FALSE}
 knitr::include_graphics("images/afrilogo.jpg")
+```
 
 This is the in-progress book introducing map making in R using African data. We aim to make a first version available in summer 2021.
 

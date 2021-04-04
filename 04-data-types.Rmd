@@ -347,7 +347,7 @@ For this example, we will look at the country borders of African countries.
 Let's visualise the geometry of the datafile first. 
 ```{r, warning=FALSE, message=FALSE}
 
-print(st_geometry(africountries)) #printing information on the geometry
+#print(st_geometry(africountries)) #printing information on the geometry
 
 ```
 The country border file contains 51 country outlines with geometry type **MULTIPOLYGON**.
