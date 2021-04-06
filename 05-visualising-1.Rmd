@@ -58,11 +58,31 @@ The typical spatial objects types supported by `mapview` package are:
 - raster
 - sp
 
-
+To create the most basic map with the boundaries of African countries we call `mapview()` function
 ```{r, warning=FALSE, message=FALSE}
-# data(africountries)
-# mapview(africountries)
+data(africountries)
+mapview(africountries)
 ```
+This map has a number of functions:
+
+- a layer button to switch between five different layers
+- scale bar
+- zoom butttons
+- data name in the top right corner
+
+We can easily fill an interactive map with the colours based on one of the columns. Here we use population column to colours our map. Importantlz, when we hoover over specific country the population data for a given country is showed.
+```{r, warning=FALSE, message=FALSE}
+mapview(africountries, zcol = ("pop_est"))
+```
+
+Similarly, we can control for other features.
+```{r, warning=FALSE, message=FALSE}
+mapview(africountries, color = "red", col.regions = "white", lwd = 1.5)
+```
+
+
+### Exercises
+
 
 ## Static maps with tmap
 In this section we explore the potential of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. Before we plot the first maps we need to create a dataset called *africa* and activate static map viewing mode.
@@ -201,7 +221,8 @@ countries+
 
 Airports data to be visualised here, split in airport size (or maybe in discrete part above?)
 ```{r}
-
+#library(afrilearndata)
+#data(afriairports)
 ```
 
 
@@ -243,6 +264,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 ## Interactive maps with tmap
 `tmap`package offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.  
+
 ```{r, warning=FALSE}
 #sets interactive mode
 tmap_mode("view")
@@ -282,11 +304,15 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 ## Further resources
 [tmap documentation](https://cran.r-project.org/web/packages/tmap/tmap.pdf)
-[Mapview documentation](https://www.rdocumentation.org/packages/mapview/versions/2.9.0)
+[Mapview documentation](https://r-spatial.github.io/mapview/articles/)
 
 ## Exercise solutions {#solutions_ch5}
 ```{r, include = FALSE}
 tmap_mode("plot")
+```
+- Exercise 5.2.1
+```{r, out.width="60%"}
+mapview(africountries)
 ```
 
 - Exercise 5.3.1
