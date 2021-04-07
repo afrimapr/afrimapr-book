@@ -70,19 +70,36 @@ This map has a number of functions:
 - zoom butttons
 - data name in the top right corner
 
-We can easily fill an interactive map with the colours based on one of the columns. Here we use population column to colours our map. Importantlz, when we hoover over specific country the population data for a given country is showed.
+We can easily fill an interactive map with the colours based on one of the columns. Here we use population column to colours our map. Importantly, when we hoover over specific country the population data for a given country is showed.
 ```{r, warning=FALSE, message=FALSE}
 mapview(africountries, zcol = ("pop_est"))
 ```
 
-Similarly, we can control for other features.
-```{r, warning=FALSE, message=FALSE}
-mapview(africountries, color = "red", col.regions = "white", lwd = 1.5)
+Similarly, we can control for other features such as line width (lwd), colour of polygons (col.regions). Another important feature that we might want to control is the underlying map which we set with 'map.types' argument. The available background maps can be viewed [here](http://leaflet-extras.github.io/leaflet-providers/preview/).
+```{r, warning=FALSE, message=FALSE, fig.show='hold', out.width='50%'}
+mapview(africountries, color = "red", lwd = 1.5, col.regions = "white", map.types = "Esri.WorldShadedRelief")
 ```
 
+Further, mapview allows us to easily build up many layers within a single map. Here, we firstly include countries and then add location of airports. Further a useful option is `layer.name` which allows us to control the naming of different layers of the map. The specific layers can be controlled and adjusted as showed in the example. In partucular, we keep colour of countries white and then we fill the airports dots according to airport size. It is possible to use layer button to hide and unhide layers of the map.
+
+```{r, warning=FALSE, message=FALSE, fig.show='hold', out.width='50%'}
+# simple map with two layers
+data(afriairports)
+mapview(list(africountries,afriairports), layer.name = c("Countries", "Airports"))
+
+#map with advanced layers options
+mapview(africountries, col.regions = "white", layer.name = "Countries") + mapview(afriairports, zcol = "type", layer.name = "Airport size" )
+```
+
+The link to full documentation is available in *Further resources* section. 
 
 ### Exercises
-
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 5.2.1**: Create a map with two layers: countries and capitals. Fill the country polygons according to income group. Explore the layers button to hide and unhide some of them.  
+</div>   
 
 ## Static maps with tmap
 In this section we explore the potential of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. Before we plot the first maps we need to create a dataset called *africa* and activate static map viewing mode.
@@ -310,9 +327,10 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 ```{r, include = FALSE}
 tmap_mode("plot")
 ```
+
 - Exercise 5.2.1
 ```{r, out.width="60%"}
-mapview(africountries)
+mapview(africountries, zcol = "income_grp") + mapview(africapitals)
 ```
 
 - Exercise 5.3.1
