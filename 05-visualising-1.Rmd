@@ -113,14 +113,14 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 In this section we explore the potential of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. Before we plot the first maps we need to create a dataset called *africa* and activate static map viewing mode.
 
 ```{r c5-tmap-countries1, message=FALSE}
-# africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
-# tmap_mode("plot") #activates static map viewing mode
+africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
+tmap_mode("plot") #activates static map viewing mode
 ```
 
 Next, we create an empty contour map of the continent, where `tm_shape()` function serves as a basic component containing the shape object i.e. our spatial dataset. On top of this basic element we can then add more layers using `+` operator. The advantage of `tmap` package is that it offers a large variety layers and these are named relatively intuitively to make the search and use easier. For example, we will now use layer called `tm_borders()` which defines the borders of the polygons. 
 ```{r c5-tmap-countries2, results='hide', out.width="75%"}
-# tm_shape(africa)+
-#  tm_borders()
+tm_shape(africa)+
+ tm_borders()
 
 ```
 
@@ -128,8 +128,8 @@ Further, we create an empty, borderless map using `tm_fill()` which defines the 
 
 
 ```{r c5-tmap-countries3, out.width="75%"}
-# tm_shape(africa)+
-#  tm_fill()
+tm_shape(africa)+
+ tm_fill()
 
 ```
 
@@ -138,11 +138,11 @@ Intuitively to create a map with both layers, we need to include `tm_fill()` and
 
 ```{r c5-tmap-countries4,fig.show="hold", out.width="75%"}
 
-# tm_shape(africa)+ 
-#  tm_borders()+
-#   tm_fill()
-# tm_shape(africa)+
-#  tm_polygons()
+tm_shape(africa)+
+ tm_borders()+
+  tm_fill()
+tm_shape(africa)+
+ tm_polygons()
 
 ```
 
@@ -151,14 +151,14 @@ We can further develop our map by adjusting different features of the map such a
 
 ```{r c5-tmap-countries5, out.width="75%"}
 
-# tm_shape(africa)+
-#  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
+tm_shape(africa)+
+ tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
 
 ```
 
 As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and adding relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
 
-```{r, out.width="75%"}
+```{r c5-tmap-countries6, out.width="75%"}
 # tm_shape(africa)+
 #  tm_polygons(col = "lastcensus", title = "Year of last census", legend.format = list(format="s"))
 
