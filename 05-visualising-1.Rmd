@@ -29,7 +29,7 @@ cran_packages_to_install <- c(
   "tmaptools"          # map building package
   )
 install.packages(cran_packages_to_install)
-
+remotes::install_github("afrimapr/afrilearnr")
 remotes::install_github("afrimapr/afrilearndata")
 ```
 
@@ -45,6 +45,7 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 library(dplyr)
 library(tmaptools)
+library(afrilearnr)
 ```
 
 ## Quick interactive maps with mapview
@@ -60,8 +61,8 @@ To create the most basic map with the boundaries of African countries we call `m
 
 
 ```{r c5-mapview-countries, warning=FALSE, message=FALSE}
-data(africountries)
-mapview(africountries)
+# data(africountries)
+# mapview(africountries)
 ```
 
 This map has a number of functions:
@@ -75,8 +76,7 @@ We can easily fill an interactive map with the colours based on one of the colum
 
 
 ```{r c5-mapview-countries2, warning=FALSE, message=FALSE, fig.show='hold', out.width='75%'}
-mapview(africountries, zcol = ("pop_est"))
-
+#mapview(africountries, zcol = ("pop_est"))
 ```
 
 Similarly, we can control for other features such as line width (lwd), colour of polygons (col.regions). Another important feature that we might want to control is the underlying map which we set with 'map.types' argument. The available background maps can be viewed [here](http://leaflet-extras.github.io/leaflet-providers/preview/).
