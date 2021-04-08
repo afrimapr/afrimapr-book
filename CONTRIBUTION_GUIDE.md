@@ -20,3 +20,4 @@ This updates local copy of the book every time you make a change (turn off by re
 * The numbering of the section can be removed by using {-} after the section title
 * Sub-sections (level 2 headings) cannot be referred to (links cannot be created)
 * To control how table of contents (TOC) behaves when clicking on it we need to set 'collapse:' in output.yml file to: section, subsection or null, depending on the level we want our TOC to expand and collapse. So if you want only the top-level headings to be displayed initially (like in our book) use 'section'.
+* It is worth naming code chunks so that it is easier to identify failing code in case it happens. The name can be added to the code chunk in the following way:{r code-name-without-spaces, ...}
