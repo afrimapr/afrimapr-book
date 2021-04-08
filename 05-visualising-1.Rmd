@@ -30,7 +30,6 @@ cran_packages_to_install <- c(
   )
 install.packages(cran_packages_to_install)
 
-remotes::install_github("afrimapr/afrilearnr")
 remotes::install_github("afrimapr/afrilearndata")
 ```
 
@@ -42,7 +41,6 @@ library(mapview)
 library(ggplot2)
 library(sf)
 library(afrilearndata)
-library(afrilearnr)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(dplyr)
