@@ -61,8 +61,8 @@ To create the most basic map with the boundaries of African countries we call `m
 
 
 ```{r c5-mapview-countries, warning=FALSE, message=FALSE}
-# data(africountries)
-# mapview(africountries)
+data(africountries)
+mapview(africountries)
 ```
 
 This map has a number of functions:
