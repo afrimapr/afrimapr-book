@@ -393,7 +393,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 ## Exercise solutions {#solutions_ch5}
 ```{r, include = FALSE}
-#tmap_mode("plot")
+tmap_mode("plot")
 ```
 
 - Exercise 5.2.1
@@ -404,15 +404,15 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 - Exercise 5.3.1
 ```{r c5-ex-5.3.1, out.width="60%"}
-# tm_shape(africa)+
-#  tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 0.4)
+tm_shape(africa)+
+ tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 0.4)
 ```
 
 - Exercise 5.3.2
 ```{r c5-ex-5.3.2, out.width="60%"}
-# tm_shape(africa)+
-#  tm_fill(col = "lightblue")+
-#  tm_borders(col = "red", lty = "dotted", alpha = 1)
+tm_shape(africa)+
+ tm_fill(col = "lightblue")+
+ tm_borders(col = "red", lty = "dotted", alpha = 1)
 ```
 
 - Exercise 5.3.3
@@ -424,13 +424,13 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 - Exercise 5.3.4
 ```{r c5-ex-5.3.4, out.width="60%"}
-# map_contour = tm_shape(africa)+  
-#   tm_fill(col = "lightgreen")
-# data(afrihighway)
-# map_contour +
-#   tm_shape(afrihighway)+
-#   tm_lines()+
-#   tm_layout(title = "Highways in Africa", title.position = c("center", "bottom"))
+map_contour = tm_shape(africa)+
+  tm_fill(col = "lightgreen")
+data(afrihighway)
+map_contour +
+  tm_shape(afrihighway)+
+  tm_lines()+
+  tm_layout(title = "Highways in Africa", title.position = c("center", "bottom"))
 
 ```
 
