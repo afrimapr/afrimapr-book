@@ -6,6 +6,11 @@ See [template chapter](https://github.com/afrimapr/afrimapr-book/blob/main/16-te
 
 Internal contributors are encouraged to push text changes directly (you don't need to submit pull requests). To minimise potential for conflicts remember to pull before making changes and communicate with others about what you are working on. 
 
+## to build the book locally
+
+`bookdown::serve_book()`  
+This updates local copy of the book every time you make a change (turn off by restarting R).
+
 
 ## markdown tips
 
