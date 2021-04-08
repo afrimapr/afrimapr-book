@@ -159,8 +159,9 @@ tm_shape(africa)+
 As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and adding relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
 
 ```{r c5-tmap-countries6, out.width="75%"}
-# tm_shape(africa)+
-#  tm_polygons(col = "lastcensus", title = "Year of last census", legend.format = list(format="s"))
+
+tm_shape(africa)+
+ tm_polygons(col = "lastcensus", title = "Year of last census")
 
 ```
 
@@ -169,9 +170,9 @@ Further, we can build on the previous map by adding labels for country names wit
 
 ```{r c5-tmap-countries7, warning=FALSE, out.width="75%"}
 
-# tm_shape(africa)+
-#  tm_polygons(col = "lastcensus", title = "Year of last census", legend.format = list(format="s"))+
-#  tm_text("admin", size = 0.52, fontface = "bold", auto.placement = TRUE)
+tm_shape(africa)+
+ tm_polygons(col = "lastcensus", title = "Year of last census")+
+ tm_text("admin", size = 0.52, fontface = "bold", auto.placement = TRUE)
 
 ```
 
@@ -222,11 +223,11 @@ An important aspect of the maps, as in every visual representation, are the colo
 
 ```{r c5-tmap-palette, warning=FALSE, results='hide', fig.show="hold", fig.cap = "Africa's maps using different pallete options.", out.width="50%"}
 
-# tm_shape(africa)+
-#  tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1", legend.format = list(format="s"))
-# 
-# tm_shape(africa)+
-#  tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma", legend.format = list(format="s"))
+tm_shape(africa)+
+ tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1")
+
+tm_shape(africa)+
+ tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma")
 
 ```
 
