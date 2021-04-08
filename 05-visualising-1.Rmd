@@ -30,7 +30,7 @@ cran_packages_to_install <- c(
   )
 install.packages(cran_packages_to_install)
 remotes::install_github("afrimapr/afrilearnr")
-remotes::install_github("afrimapr/afrilearndata")
+#remotes::install_github("afrimapr/afrilearndata")
 ```
 
 Next, we need to load the packages:
@@ -45,7 +45,7 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 library(dplyr)
 library(tmaptools)
-library(afrilearnr)
+#library(afrilearnr)
 ```
 
 ## Quick interactive maps with mapview
