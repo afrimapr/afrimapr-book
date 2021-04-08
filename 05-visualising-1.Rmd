@@ -145,7 +145,7 @@ We can further develop our map by adjusting different features of the map such a
 
 As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and adding relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
 
-```{r, warning=FALSE, out.width="75%"}
+```{r, out.width="75%"}
 # tm_shape(africa)+
 #  tm_polygons(col = "lastcensus", title = "Year of last census", legend.format = list(format="s"))
 ```
