@@ -4,10 +4,11 @@
 ## Overall goal of the chapter
 
 Previous chapter provided a short recap of the R basics that are necessary to succesfully go through the geospatial training that has been drawn up in this book. This section will focus on the very basics of geospatial mapping, the four different types of spatial data:
+
 1. points
-2. lines
-3. polygons
-4. rasters
+1. lines
+1. polygons
+1. rasters
 
 
 The goal of a spatial map is to model reality, whether this is on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools and so on. The opportunities are endless. All the R software needs is information in points, lines, polygons and rasters which together form a model of reality. 
