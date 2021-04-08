@@ -1,5 +1,5 @@
 
-# Chapter 4 Spatial data types with focus on real examples {#data-types}
+# Spatial data types with focus on real examples {#data-types}
 
 ## Overall goal of the chapter
 
@@ -13,12 +13,15 @@ Previous chapter provided a short recap of the R basics that are necessary to su
 The goal of a spatial map is to model reality, whether this is on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools and so on. The opportunities are endless. All the R software needs is information in points, lines, polygons and rasters which together form a model of reality. 
 
 --> interactive image with a different layer for points, lines, polygons and rasters (need help doing this)
+
+```{r}
 #mapview(list(africapitals, afrihighway),
 #        zcol = list('pop','Name'),
 #        legend = list(TRUE, FALSE),  
 #        color = list(NULL, 'red'),
 #        label = list(paste(africapitals$countryname,':',africapitals$capitalname),
 #                     afrihighway$Name) )
+```
 
 All spatial data types require a spatial reference framework or coordinate system identification to place data in the correct location in space. We will discuss this in more detail in chapter xxx. For now, just be aware that apart from your data file, additional data are necessary to place your spatial data in the correct location. 
 
@@ -147,7 +150,6 @@ The `tmap` package works similar to the ggplot package. You need to first specif
 As you can see in the example above, the labelling makes the image messy. In these instances it is important to think about the message you are trying to convey with your map. 
 If the labelling is essential, you can look up the help section of the 'tm_text' using the help tool and play around with the different options to clean up the map further. 
 
-</div>
 
 #### Exercise 1
 In this first exercise, we will use the same African capital data as our example. 
@@ -196,8 +198,6 @@ Answer:
 #  tm_dots(col="blue", shape = 2, size=1)
 
 ```
-
-</div>
 
 
 ## 4.2 Lines {#episode_2_lines}
@@ -302,7 +302,6 @@ Answer:
 
 ```
 
-</div>
 
 
 ## 4.3 Polygons {#episode_3_polygons}
@@ -432,8 +431,6 @@ Answer:
 
 ```
 
-</div>
-
 
 
 ## 4.4 Rasters {#episode_4_raster}
@@ -540,7 +537,6 @@ Visualise the population data of 2000 using a different palette from the [viridi
 ```
 
 
-</div>
 
 ## Summary/key points
 
