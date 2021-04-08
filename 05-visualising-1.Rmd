@@ -77,27 +77,27 @@ We can easily fill an interactive map with the colours based on one of the colum
 
 
 ```{r c5-mapview-countries2}
-mapview(africountries, zcol = ("pop_est"))
+#mapview(africountries, zcol = ("pop_est"))
 ```
 
 Similarly, we can control for other features such as line width (lwd), colour of polygons (col.regions). Another important feature that we might want to control is the underlying map which we set with 'map.types' argument. The available background maps can be viewed [here](http://leaflet-extras.github.io/leaflet-providers/preview/).
 
 
 ```{r c5-mapview-countries3}
-mapview(africountries, color = "red", 
-       lwd = 1.5, col.regions = "white", map.types = "Esri.WorldShadedRelief")
+#mapview(africountries, color = "red", 
+ #      lwd = 1.5, col.regions = "white", map.types = "Esri.WorldShadedRelief")
 ```
 
 Further, mapview allows us to easily build up many layers within a single map. Here, we firstly include countries and then add location of airports. Further a useful option is `layer.name` which allows us to control the naming of different layers of the map. The specific layers can be controlled and adjusted as showed in the example. In partucular, we set the colour of countries polygons according to the population size. It is possible to use layer button to hide and unhide layers of the map.
 
 ```{r c5-mapview-airports}
-# simple map with two layers
-# data(afriairports)
-mapview(list(africountries,afriairports), layer.name = c("Countries", "Airports"))
-
-#map with advanced layers options
-mapview(africountries, zcol = "pop_est", layer.name = "Population") +
-  mapview(afriairports, layer.name = "Airports location")
+# # simple map with two layers
+# # data(afriairports)
+# mapview(list(africountries,afriairports), layer.name = c("Countries", "Airports"))
+# 
+# #map with advanced layers options
+# mapview(africountries, zcol = "pop_est", layer.name = "Population") +
+#   mapview(afriairports, layer.name = "Airports location")
 ```
 
 The link to full documentation is available in *Further resources* section. 
