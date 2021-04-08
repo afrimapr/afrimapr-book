@@ -19,32 +19,32 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 This chapter requires the following packages (some of them we used already):
 
 ```{r, eval=FALSE}
-# cran_packages_to_install <- c(
-#   "mapview",           # map-making package for interactive maps
-#   "tmap",              # map-making package for static and interactive maps
-#   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
-#   "sf",                # package for working with spatial data
-#   "rnaturalearth",     # data package
-#   "rnaturalearthdata", # data package
-#   "tmaptools"          # map building package
-#   )
-# install.packages(cran_packages_to_install)
-# 
-# remotes::install_github("afrimapr/afrilearndata")
+cran_packages_to_install <- c(
+  "mapview",           # map-making package for interactive maps
+  "tmap",              # map-making package for static and interactive maps
+  "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
+  "sf",                # package for working with spatial data
+  "rnaturalearth",     # data package
+  "rnaturalearthdata", # data package
+  "tmaptools"          # map building package
+  )
+install.packages(cran_packages_to_install)
+
+remotes::install_github("afrimapr/afrilearndata")
 ```
 
 Next, we need to load the packages:
 
 ```{r, results='hide', warning=FALSE, message=FALSE}
-# library(tmap)
-# library(mapview)
-# library(ggplot2)
-# library(sf)
-# library(afrilearndata)
-# library(rnaturalearth)
-# library(rnaturalearthdata)
-# library(dplyr)
-# library(tmaptools)
+library(tmap)
+library(mapview)
+library(ggplot2)
+library(sf)
+library(afrilearndata)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(dplyr)
+library(tmaptools)
 ```
 
 ## Quick interactive maps with mapview
