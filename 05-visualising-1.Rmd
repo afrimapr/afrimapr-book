@@ -20,7 +20,7 @@ This chapter requires the following packages (some of them we used already):
 
 ```{r, eval=FALSE}
 cran_packages_to_install <- c(
-  "mapview",           # map-making package for interactive maps
+ # "mapview",           # map-making package for interactive maps
   "tmap",              # map-making package for static and interactive maps
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
@@ -30,6 +30,7 @@ cran_packages_to_install <- c(
   )
 install.packages(cran_packages_to_install)
 remotes::install_github("afrimapr/afrilearnr")
+remotes::install_github("r-spatial/mapview@develop")
 #remotes::install_github("afrimapr/afrilearndata")
 ```
 
