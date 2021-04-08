@@ -265,12 +265,12 @@ tm_shape(africa)+
 `tmap` not only allows us to add extra layers to a single map by building on a basic structure, but it also enables us to join two separate datasets in a single map. We first create an object called *countries* which is a map with African countries:
 ```{r c5-tmap-combine1, warning=FALSE, out.width="75%"}
 #read in data
-#data(africountries) 
-#create an object 
-# countries = tm_shape(africountries)+  
-#   tm_polygons(col = "lightblue", alpha = 0.3)
+data(africountries)
+#create an object
+countries = tm_shape(africountries)+
+  tm_polygons(col = "lightblue", alpha = 0.3)
 #view object called "countries"
-#countries 
+countries
 ```
 
 Then we use it as an argument to merge it with a map containing the location of capitals.
