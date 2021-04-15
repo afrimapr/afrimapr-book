@@ -1,4 +1,4 @@
-# Step through a simple example of process of mapmaking {#steps1} 
+# A taster - making your first map  {#taster} 
 
 Step through a simple example of process of map-making.
 
