@@ -108,8 +108,9 @@ In the example, above we use double-colon operator *::* to call function `instal
 There are different approaches that can be used to import your data sets, depending on where the data is located and in what file type it is stored. The easiest case is when the data set is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
 
 For example, install and load packages containing data set:
-```{r, eval=FALSE, results='hide', warning=FALSE, message=FALSE}
+```{r, results='hide', warning=FALSE, message=FALSE}
 remotes::install_github("afrimapr/afrilearndata")
+
 library(afrilearndata)
 ```
 
