@@ -117,24 +117,19 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 tmap_mode("plot") #activates static map viewing mode
 ```
 
-Next, we create an empty contour map of the continent, where `tm_shape()` function serves as a basic component containing the shape object i.e. our spatial dataset. On top of this basic element we can then add more layers using `+` operator. The advantage of `tmap` package is that it offers a large variety layers and these are named relatively intuitively to make the search and use easier. For example, we will now use layer called `tm_borders()` which defines the borders of the polygons. 
-```{r c5-tmap-countries2, results='hide', out.width="75%"}
+Next, we create an empty contour map of the continent, where `tm_shape()` function serves as a basic component containing the shape object i.e. our spatial dataset. On top of this basic element we can then add more layers using `+` operator. The advantage of `tmap` package is that it offers a large variety layers and these are named relatively intuitively to make the search and use easier. For example, we will now use layer called `tm_borders()` which defines the borders of the polygons. Further, we create an empty, borderless map using `tm_fill()` which defines the fill of the polygons. 
+
+```{r c5-tmap-countries2, fig.show='hold', out.width="50%"}
+
 tm_shape(africa)+
  tm_borders()
 
-```
-
-Further, we create an empty, borderless map using `tm_fill()` which defines the fill of the polygons. 
-
-
-```{r c5-tmap-countries3, out.width="75%"}
 tm_shape(africa)+
  tm_fill()
 
 ```
 
 Intuitively to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows us to achieve exactly the same result more efficiently. It draws the polygons borders and fills them.
-
 
 ```{r c5-tmap-countries4,fig.show="hold", out.width="50%"}
 

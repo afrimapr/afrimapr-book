@@ -75,6 +75,7 @@ div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 If you do not select any code and press **Run**, RStudio will run the line of code where the cursor is located. The code which has been exectued will appear in the **Console**, usually located at the bottom part of the window.
 
 In RStudio it is also possible to add comments next to your commands simply using a hashtag (#) beforehand. This will stop R from executing this specific part:
+
 ```{r}
 3+6 # Using R as a calculator
 
@@ -83,10 +84,13 @@ In RStudio it is also possible to add comments next to your commands simply usin
 
 ## Install and load packages {#install_packages}
 Before being able to use a specific package in R, it is necessary to firstly install and then load it. In this example we install package *remotes* using `install.packages()`:
+
 ```{r, eval=FALSE}
 install.packages("remotes")
 ```
-Further, we have to load it into R using `library()` function. Note the presence of the quotation mark ("") in case of the first function and its lack in case of the second function
+
+Further, we have to load it into R using `library()` function. Note the presence of the quotation mark ("") in case of the first function and its lack in case of the second function.
+
 ```{r, eval=FALSE}
 library(remotes)
 ```
@@ -110,7 +114,7 @@ library(afrilearndata)
 ```
 
 To view what data sets are available in a given package:
-```{r}
+```{r, c3-read-in-data}
 data(package="afrilearndata")
 ```
 We can view and explore the `africapitals` data set using:
