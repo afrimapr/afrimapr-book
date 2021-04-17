@@ -8,14 +8,9 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 <div class = "green">
 ### Learning objectives {-}
 
-- create a working directory for his/her project
-- create, name and save a new R script
-- execute R code
-- install and load an R package
-- import data set into R space
-- identify and characterise different data types
-- classify and contrast various data structures
-- accessing and using *Help* within R 
+- create a new project and start working with data
+- identify and characterise different data types and structures in R
+- access and search for help within R 
 
 </div>
 
@@ -91,17 +86,10 @@ Before being able to use a specific package in R, it is necessary to firstly ins
 ```{r, eval=FALSE}
 install.packages("remotes")
 ```
-Further, we have to load it into R using `library()` function:
+Further, we have to load it into R using `library()` function. Note the presence of the quotation mark ("") in case of the first function and its lack in case of the second function
 ```{r, eval=FALSE}
 library(remotes)
 ```
-
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-Please note the presence of the quotation mark *" "* in case of the first function and its lack in case of the second function. 
-</div>
 
 To download and install packages directly from remote repositories such as GitHub, we can use previously loaded `remote` package and load them as usual:
 
@@ -115,14 +103,12 @@ In the example, above we use double-colon operator *::* to call function `instal
 ## Load data {#load_data}
 There are different approaches that can be used to import your data sets, depending on where the data is located and in what file type it is stored. The easiest case is when the data set is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
 
-For example, install packages containing data set:
-```{r, eval=FALSE}
+For example, install and load packages containing data set:
+```{r, eval=FALSE, results='hide', warning=FALSE, message=FALSE}
 remotes::install_github("afrimapr/afrilearndata")
-```
-Load them:
-```{r, results='hide', warning=FALSE, message=FALSE}
 library(afrilearndata)
 ```
+
 To view what data sets are available in a given package:
 ```{r}
 data(package="afrilearndata")
@@ -158,12 +144,8 @@ y <- 52
 x*y # multiplication
 ```
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-**Hint**: To assign a value to an object two operators can be used interchangeably: `<-` or `=`.
-</div>
+Hint: To assign a value to an object two operators can be used interchangeably: `<-` or `=`.
+
 
 ### Numeric and integer
 *Numeric data* stores real numbers. This means that the object `x` from above is in fact 11.000000, where the zeros are not printed, by default. It is also possible to store value as whole number in a class object called `integer`. An integer can be created from a `numeric` object in the following way:

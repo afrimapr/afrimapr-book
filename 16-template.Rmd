@@ -50,12 +50,6 @@ div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 
 ## Episode 3 (topic 3) {#episode_3_template}
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-**Hints**: Hints to be in a blue box.
-</div>
 
 ## Further resources
 In this section we provide links to additional websites and sources that are useful in a given topic or package in the following way:
