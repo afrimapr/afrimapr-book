@@ -43,14 +43,15 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 
 ```
 
-```{r c2-empty-static-map1, fig.cap = "Examples of maps"}
+```{r c2-empty-static-map1,message=FALSE, fig.cap = "Examples of maps"}
 
 #Create an empty map of Africa using a classic style
 
 map_basic = tm_style("classic")+
 tm_shape(africa)+
  tm_polygons()+
-  tm_layout(title = "Africa", title.position = c("center", "top"), inner.margins = 0.05, legend.text.size = 0.47)
+  tm_layout(title = "Africa", title.position = c("center", "top"), 
+            inner.margins = 0.05, legend.text.size = 0.47)
 
 #map_basic
 
@@ -62,7 +63,8 @@ m_airports = afriairports %>% filter(type == "medium_airport")
 
 map_points = map_basic +
   tm_shape(m_airports)+
-    tm_dots(col = "type", palette="blue", labels = "Medium airports", title = "")+
+    tm_dots(col = "type", palette="blue", 
+            labels = "Medium airports", title = "")+
       tm_legend(legend.position = c("left", "bottom")) +
         tm_layout(scale = 1.07)
 
@@ -74,7 +76,8 @@ map_points = map_basic +
 map_bubbles = map_points +
        tm_shape(africa)+
           tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
-              title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
+              title.size = "Population", 
+              labels = c("High", "Upper middle", "Lower middle", "Lower"))
 
 #map_bubbles
 
@@ -82,13 +85,14 @@ tmap_arrange(map_basic, map_points, map_bubbles)
 
 ```
 
-```{r c2-empty-static-map2, warning = FALSE, fig.cap = "Examples of maps 2"}
+```{r c2-empty-static-map2, warning = FALSE, message=FALSE, fig.cap = "Examples of maps 2"}
 
 #Basic map 2
 map_basic_2 = tm_style("watercolor")+
   tm_shape(africa)+
       tm_fill(col = "pop_est", style = "jenks", title = "Population")+
-        tm_layout(title = "Africa", title.position = c("center", "top"), legend.text.size = 0.50)
+        tm_layout(title = "Africa", 
+                  title.position = c("center", "top"), legend.text.size = 0.50)
   
 #map_basic_2
  
