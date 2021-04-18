@@ -37,6 +37,9 @@ Static maps
 #static mode activated
 tmap_mode("plot")
 
+#create dataset
+africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
+
 #Create a static empty map using a style
 tm_style("classic")+
 tm_shape(africa)+
