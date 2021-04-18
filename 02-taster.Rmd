@@ -50,7 +50,7 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 map_basic = tm_style("classic")+
 tm_shape(africa)+
  tm_polygons()+
-  tm_layout(title = "Africa", title.position = c("center", "top"), inner.margins = 0.05)
+  tm_layout(title = "Africa", title.position = c("center", "top"), inner.margins = 0.05, legend.text.size = 0.47)
 
 #map_basic
 
