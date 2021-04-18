@@ -136,6 +136,7 @@ Intuitively to create a map with both layers, we need to include `tm_fill()` and
 tm_shape(africa)+
  tm_borders()+
   tm_fill()
+
 tm_shape(africa)+
  tm_polygons()
 
@@ -144,26 +145,19 @@ tm_shape(africa)+
 We can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
 
 
-```{r c5-tmap-countries5, out.width="75%"}
+```{r c5-tmap-countries5, out.width="50%"}
 
 tm_shape(africa)+
  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
 
 ```
 
-As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and adding relevant title to the legend. In this case, we also use `legend.format`option to format the legend numbers to be treated as years.
+As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and adding relevant title to the legend. Further, we can build on the previous map by adding labels for country names with `tm_text` function. In a similar manner a variety of different layers can be added. 
 
-```{r c5-tmap-countries6, out.width="75%"}
+```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labesl (left) and map with added coutries names (right)"}
 
 tm_shape(africa)+
  tm_polygons(col = "lastcensus", title = "Year of last census")
-
-```
-
-Further, we can build on the previous map by adding labels for country names with `tm_text` function. In a similar manner a variety of different layers can be added. 
-
-
-```{r c5-tmap-countries7, warning=FALSE, out.width="75%"}
 
 tm_shape(africa)+
  tm_polygons(col = "lastcensus", title = "Year of last census")+
@@ -177,10 +171,12 @@ Another useful function in `tmap` is the adjustment of the intervals in the lege
 #default settings
 tm_shape(africa)+
  tm_polygons(col = "pop_est", title = "Population")
+
 #set up breaks manually
 custom_breaks = c(0, 1, 4, 7, 10, 30, 50, 70, 100, 120, 150) * 1000000
 tm_shape(africa)+
  tm_polygons(col = "pop_est", title = "Population", breaks = custom_breaks)
+
 #set up a number of bins
 tm_shape(africa)+
  tm_polygons(col = "pop_est", title = "Population", n = 15)
@@ -191,13 +187,16 @@ So far, we used continuous variables to fill the polygons but it is also possibl
 
 ```{r c5-tmap-countries-categorical, out.width="50%"}
 tm_shape(africa)+
-  tm_polygons(col = "income_grp", title = "Income levels", alpha = 0.6, labels = c("High", "Upper middle", "Lower middle", "Lower"))
+  tm_polygons(col = "income_grp", title = "Income levels", alpha = 0.6,
+              labels = c("High", "Upper middle", "Lower middle", "Lower"))
 
 data(afriairports)
 tm_shape(africontinent)+
   tm_polygons(col = "lightgrey")+
 tm_shape(afriairports)+
-  tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size", labels = c("Large", "Medium", "Small"), palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))
+  tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
+          labels = c("Large", "Medium", "Small"), 
+          palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))
 
 ```
 
