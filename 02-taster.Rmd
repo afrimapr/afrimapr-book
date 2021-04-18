@@ -6,7 +6,7 @@ Demonstrate a simple step by step process of making a map with relatively little
 
 https://speakerdeck.com/minecr/let-them-eat-cake-first
 
-```{r, c2-packages, results='hide', warning=FALSE, message=FALSE}
+```{r, c2-packages, results='hide', warning=FALSE, message=FALSE, include = FALSE}
 #Install packages
 cran_packages_to_install <- c(
   "ggplot" ,            # plot-making package
@@ -33,13 +33,16 @@ library(tmaptools)
 ```
 
 Static maps
-```{r c2-empty-static-map1, out.width="50%", fig.show="hold", fig.cap = "Examples of maps"}
+```{r c2-dataset, include=FALSE}
 #static mode activated
 tmap_mode("plot")
 
 #create dataset
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 
+```
+
+```{r c2-empty-static-map1, out.width="50%", fig.show="hold", fig.cap = "Examples of maps"}
 #Create a static empty map using a style
 tm_style("classic")+
 tm_shape(africa)+
