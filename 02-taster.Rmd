@@ -15,6 +15,7 @@ cran_packages_to_install <- c(
   "sf",                # package for working with spatial data
   "rnaturalearth",     # data package
   "rnaturalearthdata", # data package
+  "afrilearndata",     #datapackage
   "tmaptools"          # map building package
   )
 
@@ -42,35 +43,31 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 
 ```
 
-```{r c2-empty-static-map1, out.width="50%", fig.show="hold", fig.cap = "Examples of maps"}
-#Create a static empty map using a style
-tm_style("classic")+
-tm_shape(africa)+
- tm_polygons()
+```{r c2-empty-static-map1, out.width="50%", warning = FALSE, fig.show="hold", fig.cap = "Examples of maps"}
 
-
-#Add points
-
-
-#Add title
-
-
-
-#Add legends
-
-
-#Maps on a subet of data
-data(afirairport)
-m_airports = afriairports %>% filter(type == "medium_airport")
-
-#Plot the subset
-tm_style("classic")+
+#Create an empty map of Africa using a classic style
+basic_map = tm_style("classic")+
 tm_shape(africa)+
  tm_polygons()+
-     tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
-                title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))+
+  tm_layout(title = "Africa", title.position = c("center", "bottom"), inner.margins = 0.05 )
+
+basic_map
+
+
+#Add points for medium airports
+data(afriairports)
+m_airports = afriairports %>% filter(type == "medium_airport")
+
+map_points = basic_map +
   tm_shape(m_airports)+
-    tm_dots(col = "type", palette="red", labels = "Medium airport")
+    tm_dots(col = "type", palette="blue", labels = "Medium airport", title = "")+
+      tm_legend(legend.position = c("left", "bottom")) +
+        tm_layout(scale = 0.99)
+
+
+map_points  
+
+
 ```
 
 Interactive maps
