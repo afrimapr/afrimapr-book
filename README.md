@@ -2,7 +2,7 @@
 
 # Welcome
 
-This is the repository for the in-progress book introducing map making in R using African data. A first version is planned for summer 2021. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
+This is the repository for the in-progress book introducing map making in R using African data. A first version is planned for mid 2021. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
 
 [Here is the compiled book.](https://afrimapr.github.io/afrimapr-book/)
 
