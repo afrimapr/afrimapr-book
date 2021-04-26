@@ -1,17 +1,37 @@
 
-# Spatial data types with focus on real examples {#data-types}
+# Spatial data in R {#data-types}
 
 ## Overall goal of the chapter
 
-Previous chapter provided a short recap of the R basics that are necessary to succesfully go through the geospatial training that has been drawn up in this book. This section will focus on the very basics of geospatial mapping, the four different types of spatial data:
+The previous chapter provided a short recap of the R basics that will help you progress through this book. This chapter will focus on the fundamentals of mapping, i.e. the different types of data that can be used to make a map. 
+
+This chapter is written for those with some knowledge of R and little experience with spatial data. If you are familiar with these data types, you can move on to the next chapter where visualisation of data types are explained in more detail. 
+<br/>
+
+<style>
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+### Learning objectives
+[still thinking how best to structure these]
+- Be able to describe and use points, lines, polygons and raster data types
+- Understand the difference between vector and raster data
+- Be able to read in data of the 4 types into R from files and other sources
+- Know that the current best packages for manipulating spatial data are package `sf` for vector and package `raster` for raster.
+- Be comfortable visualising the four different spatial data types in R using packages `mapview` & `raster`
+
+
+</div>
+
+
+The four main types of spatial data are :
 
 1. points
 1. lines
 1. polygons
 1. rasters
 
-
-The goal of a spatial map is to model reality, whether this is on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools and so on. The opportunities are endless. All the R software needs is information in points, lines, polygons and rasters which together form a model of reality. 
+The goal of a spatial map is to provide a model of reality. This could be on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools and so on. The opportunities are endless. All the R software needs is information in points, lines, polygons and rasters which together form a model of reality. 
 
 --> interactive image with a different layer for points, lines, polygons and rasters (need help doing this)
 
@@ -27,28 +47,8 @@ The goal of a spatial map is to model reality, whether this is on the scale of a
 All spatial data types require a spatial reference framework or coordinate system identification to place data in the correct location in space. We will discuss this in more detail in chapter xxx. For now, just be aware that apart from your data file, additional data are necessary to place your spatial data in the correct location. 
 
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-Please note that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming  at times. Never hesitate to contact the owner of the data or search the internet to find out more about your spatial database! 
-</div>
+Note that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming  at times. We will come to these later. 
 
-This chapter is written for beginners, who have basic knowledge of R and no experience with spatial data. If you are familiar with these basic data types, you can move on to the next chapter where visualisation of data types are explained in more detail. 
-<br/>
-
-<style>
-div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "green">
-### Learning objectives
-
-- Describe the difference between points, lines, polygons and raster data types
-- Identify data files from the four different spatial data types
-- Open data files from the four different spatial data types in R
-- Visualise data files from the four different spatial data types in R
-
-</div>
 
 ### List of episodes
 1. [Points (cities)](#episode_1_points)
@@ -58,17 +58,6 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 
 
 ## Points {#episode_1_points}
-<style>
-div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "green">
-### Learning objectives
-
-- Identify point data files 
-- Open point data files 
-- Visualise point data files
-
-</div>
 
 
 Let’s take an imaginary walk outside. What do you see? Houses, cars, trees… All these objects have unique coordinates that can be used to identify their exact location. On a map, the objects can be drawn as points with their latitude and longitude coordinate indicating their exact location in relation to other objects and places. Depending on the scale of your map, points can represent anything from a house, health clinic, city or district. You, as the map creator, can decide the scale of your own map.
@@ -104,12 +93,7 @@ We will start by downloading the necessary packages:
 
 ```
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-Please note that more information can be found about the different packages using the Help tools explained in [chapter 3.8](## chapter 3.8)
-</div>
+Note that more information can be found about the different packages using the Help tools explained in [chapter 3.8](## chapter 3.8)
 
 Now, let's look at the data file that contains information about the African capitals. A quick summary of the spatial aspects (geometry) of the datafile can be checked using the following code:
 ```{r, warning=FALSE, message=FALSE}
