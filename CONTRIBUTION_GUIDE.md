@@ -6,10 +6,11 @@ See [template chapter](https://github.com/afrimapr/afrimapr-book/blob/main/16-te
 
 Internal contributors are encouraged to push text changes directly (you don't need to submit pull requests). To minimise potential for conflicts remember to pull before making changes and communicate with others about what you are working on. 
 
-## to build the book locally
+## to build the book & debug locally
 
 `bookdown::serve_book()`  
 This updates local copy of the book every time you make a change (turn off by restarting R).
+It creates a temporary file `bookdown-demo.Rmd` which collates all the code from the chapters into a single file. Error messages may refer to line numbers in this file, e.g. `Quitting from lines 901-906 (bookdown-demo.Rmd)`. To debug look up the lines in `bookdown-demo.Rmd` and then find where they are in a chapter source file and attempt to fix the problem there. You may be prompted to delete the temporary file before building the book locally again, it is fine to do that.  
 
 ## temporary comments
 
