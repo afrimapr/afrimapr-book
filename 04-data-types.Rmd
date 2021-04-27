@@ -26,8 +26,9 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 Maps are used for a wide range of purposes. In this book we focus on using maps to present data.
 
 A map can provide a model of reality to help the reader see where things or events are located. This could be on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools. The opportunities are endless. 
+[andy thinking about examples to start from here]
 
-
+The data that we can represent on a map can be divided into two categories. Vector and raster. 
 
 
 The four main types of spatial data are :
@@ -88,21 +89,20 @@ Let’s take an imaginary walk outside. What do you see? Houses, cars, trees… 
 
 
 ### Example
+<<<<<<< HEAD
 
 Lets try and visualise the capital cities of Africa.
+=======
+Lets try and visualise the capital cities of Africa whih we have stored in the `afrilearndata` package.
+>>>>>>> c403d785a8ef476a389bdcd0615b38ed078d4834
 
 Just a quick reminder of the necessary packages 
 ```{r, warning=FALSE, message=FALSE}
 
-# library(afrilearndata) #load afrilearndata package
-# 
-# #In case the data isn't loaded into your R environment automatically, they can be individually loaded using the codes below.
-# data(africapitals) #location of the African capitals
-# data(afriairports) #location of the large airports in Africa
-# data(afrihighway) #the main highways in Africa
-# data(africountries) #borders of the African countries
-# data(afripop2000) #The population density accross Africa (Worldpop)
+library(afrilearndata) #load afrilearndata package
 
+#In case the data isn't loaded into your R environment automatically, they can be individually loaded using the codes below.
+data(africapitals) #location of the African capitals
 
 ```
 
@@ -123,14 +123,14 @@ Note that more information can be found about the different packages using the H
 Now, let's look at the data file that contains information about the African capitals. A quick summary of the spatial aspects (geometry) of the datafile can be checked using the following code:
 ```{r, warning=FALSE, message=FALSE}
 
-#print(st_geometry(africapitals)) #printing information on the geometry
+print(st_geometry(africapitals)) #printing information on the geometry
 
 ```
 We can see from the results that the African capital data file contains 50 points (capitals) with geometry type **POINT**. 
 Let's print the first 6 rows of data, so we can see how the coordinates of each African captial is stored in the database.
 ```{r, warning=FALSE, message=FALSE}
 
-#head(africapitals) #First 6 rows of data are printed
+head(africapitals) #First 6 rows of data are printed
 
 ```
 The capitals all have one latitude and one longitude value. The geometry of the point data is stored as *POINT (Latitude, Longitude)*. On the location where the latitude and longitude overlap, a point will be drawn when POINT data is visualised. There is also another column that contains the population of the capital.
@@ -139,8 +139,8 @@ The capitals all have one latitude and one longitude value. The geometry of the 
 Let's now visualise the African capitals by plotting their geometry using the tmap package.
 ```{r, warning=FALSE, message=FALSE}
 
-# tm_shape(africapitals) + #specify the data file
-#   tm_dots() # displaying the point geometry
+tm_shape(africapitals) + #specify the data file
+  tm_dots() # displaying the point geometry
 
 ```
 The `tmap` package works similar to the ggplot package. You need to first specify the data file you want to visualise using `tm_shape()`, after which the exact format of the spatial data can be specified (points, lines, polygons). As we are working with point data in this example, the `tm_dots()` function is used. As with ggplot, there is a lot of flexibility in the colouring, shapes and sizes of the dots. For example, the dots can be turned red and labelled with the name of the city. 
