@@ -1,17 +1,42 @@
 
-# Spatial data types with focus on real examples {#data-types}
+# Spatial data in R {#data-types}
 
 ## Overall goal of the chapter
 
-Previous chapter provided a short recap of the R basics that are necessary to succesfully go through the geospatial training that has been drawn up in this book. This section will focus on the very basics of geospatial mapping, the four different types of spatial data:
+The previous chapter provided a short recap of the R basics that will help you progress through this book. This chapter will focus on the fundamentals of mapping, i.e. the different types of data that can be used to make a map. 
+
+This chapter is written for those with some knowledge of R and little experience with spatial data. If you are familiar with these data types, you may want to move on to the next chapter where visualisation of data types is explained in more detail. However you never know, you may learn something here too. 
+<br/>
+
+<style>
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+### Learning objectives
+[still thinking how best to structure these]
+
+- Be able to describe and use points, lines, polygons and raster data types
+- Understand the difference between vector and raster data
+- Be able to read in data of the 4 types into R from files and other sources
+- Know that the current best packages for manipulating spatial data are package `sf` for vector and package `raster` for raster.
+- Be comfortable visualising the four different spatial data types in R using packages `mapview` & `raster`
+</div>
+<br/>
+
+Maps are used for a wide range of purposes. In this book we focus on using maps to present data.
+
+A map can provide a model of reality to help the reader see where things or events are located. This could be on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools. The opportunities are endless. 
+
+
+
+
+The four main types of spatial data are :
 
 1. points
 1. lines
 1. polygons
 1. rasters
 
-
-The goal of a spatial map is to model reality, whether this is on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools and so on. The opportunities are endless. All the R software needs is information in points, lines, polygons and rasters which together form a model of reality. 
 
 --> interactive image with a different layer for points, lines, polygons and rasters (need help doing this)
 
@@ -27,28 +52,8 @@ The goal of a spatial map is to model reality, whether this is on the scale of a
 All spatial data types require a spatial reference framework or coordinate system identification to place data in the correct location in space. We will discuss this in more detail in chapter xxx. For now, just be aware that apart from your data file, additional data are necessary to place your spatial data in the correct location. 
 
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-Please note that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming  at times. Never hesitate to contact the owner of the data or search the internet to find out more about your spatial database! 
-</div>
+Note that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming  at times. We will come to these later. 
 
-This chapter is written for beginners, who have basic knowledge of R and no experience with spatial data. If you are familiar with these basic data types, you can move on to the next chapter where visualisation of data types are explained in more detail. 
-<br/>
-
-<style>
-div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "green">
-### Learning objectives
-
-- Describe the difference between points, lines, polygons and raster data types
-- Identify data files from the four different spatial data types
-- Open data files from the four different spatial data types in R
-- Visualise data files from the four different spatial data types in R
-
-</div>
 
 ### List of episodes
 1. [Points (cities)](#episode_1_points)
@@ -62,6 +67,7 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 
 =======
 ## Points {#episode_1_points}
+<<<<<<< HEAD
 >>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 <style>
 div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
@@ -74,6 +80,8 @@ div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 - Visualise point data files
 
 </div>
+=======
+>>>>>>> 9afa4f7957eef76c0a2b22fd2de051e8957dca90
 
 
 Let’s take an imaginary walk outside. What do you see? Houses, cars, trees… All these objects have unique coordinates that can be used to identify their exact location. On a map, the objects can be drawn as points with their latitude and longitude coordinate indicating their exact location in relation to other objects and places. Depending on the scale of your map, points can represent anything from a house, health clinic, city or district. You, as the map creator, can decide the scale of your own map.
@@ -110,12 +118,7 @@ We will start by downloading the necessary packages:
 
 ```
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-Please note that more information can be found about the different packages using the Help tools explained in [chapter 3.8](## chapter 3.8)
-</div>
+Note that more information can be found about the different packages using the Help tools explained in [chapter 3.8](## chapter 3.8)
 
 Now, let's look at the data file that contains information about the African capitals. A quick summary of the spatial aspects (geometry) of the datafile can be checked using the following code:
 ```{r, warning=FALSE, message=FALSE}
@@ -130,14 +133,8 @@ Let's print the first 6 rows of data, so we can see how the coordinates of each 
 #head(africapitals) #First 6 rows of data are printed
 
 ```
-The capitals all have one latitude and one longitude value. The geometry of the point data is stored as *POINT (Latitude, Longitude)*. On the location where the latitude and longitude overlap, a point will be drawn when POINT data is visualised.
-
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-Please note that this database also includes the population of the capital as a seperate data column.  
-</div>
+The capitals all have one latitude and one longitude value. The geometry of the point data is stored as *POINT (Latitude, Longitude)*. On the location where the latitude and longitude overlap, a point will be drawn when POINT data is visualised. There is also another column that contains the population of the capital.
+ 
 
 Let's now visualise the African capitals by plotting their geometry using the tmap package.
 ```{r, warning=FALSE, message=FALSE}
@@ -214,6 +211,7 @@ Answer:
 
 =======
 ## Lines {#episode_2_lines}
+<<<<<<< HEAD
 >>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
@@ -226,6 +224,8 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 - Visualise line data files
 
 </div>
+=======
+>>>>>>> 9afa4f7957eef76c0a2b22fd2de051e8957dca90
 
 In previous episode we looked at point data, such as capitals and airports. We are often interested in how these different locations on a map are connect to eachother. These connections are visualised using lines. Roads, rivers and flight pathes are just a few of the many ways that lines are used. Lines are one dimensional data which are drawn using points (and thus point data) connected to eachother in a set order. Depending on the detail of the lines, more or less point data are connected. 
 
@@ -256,12 +256,7 @@ Let's visualise these linestrings in red by plotting their geometry using the tm
 
 ```
  
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
 Similar to point data, the lines can be illustrated in a large variety of ways. Please check the `tm_lines()` help section to familiarise yourself with the many layout options available. 
-</div>
 
 Now we add the capitals from previous episode in blue. 
 ```{r, warning=FALSE, message=FALSE}
@@ -274,12 +269,8 @@ Now we add the capitals from previous episode in blue.
 ```
 Great to see how the capitals are connected by the trans-African highway network.
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-Please note that the order of `tm_dots()` and `tm_lines()` matters. If you want the points overlaying the lines, it should be placed *after* the lines coding and visa versa.
-</div>
+Note that the order of `tm_dots()` and `tm_lines()` matters. If you want the points overlaying the lines, it should be placed *after* the lines coding and visa versa.
+
 
 #### Exercise 1
 In the below exercise we have tried to visualise all the capitals and *only* the roads starting with the letter 'b'.
@@ -325,6 +316,7 @@ Answer:
 
 =======
 ## Polygons {#episode_3_polygons}
+<<<<<<< HEAD
 >>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
@@ -338,6 +330,8 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 
 </div>
 
+=======
+>>>>>>> 9afa4f7957eef76c0a2b22fd2de051e8957dca90
 
 Polygons are lines with the same first and last coordinate. When the polygon line is connected, the same start and end point results in a closed shape. Similar to lines, depending on the detail of the map, more or less points can be used to create a polygon. This two-dimensional data is most often used to visualise country and continent boundaries. 
 
@@ -468,20 +462,6 @@ Points, lines and polygons, in their essence, consist of points with a longitude
 
 The more grid cells a raster file contains, the smoother the visualisation of the characteristic will be. However, a large number of grids also means a large heavy file, which may be difficult to run. Whenever you are working with raster files, think about your goal and objective. The highest resolution might not always be necessary. 
 
-<style>
-div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "green">
-
-### Learning objectives
-
-- Explain the difference between vector and raster data
-- Identify raster data files 
-- Open raster data files 
-- Visualise raster data files
-
-</div>
-
 To read in raster data, we first need to install and load the 'raster' package. 
 ```{r, warning=FALSE, message=FALSE}
 
@@ -516,13 +496,8 @@ Let's take a look at more grid cells.
 ```
 The printed matrix shows that the raster layer consists of a matrix with values. The grid cells can be empty if no data is available. This just results in no visualisation at those locations. 
 
-Lets visualise the population data with the country borders. 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-Please note that population density data are highly skewed. To ensure both high and low density areas are clearly visible, we have to specify the data breaks manually.  
-</div>
+Lets visualise the population data with the country borders. Note that population density data are highly skewed. To ensure both high and low density areas are clearly visible, we have to specify the data breaks manually.  
+
 
 ```{r, warning=FALSE, message=FALSE}
 
@@ -592,9 +567,12 @@ If you are interested in learning more about the different spatial data types, p
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## 4.7 Feedback
 
 =======
 ## Feedback
 >>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 - Request on what was useful to the reader (learner) and what can be improved: Is this necessary after each chapter? Feels slightly repetitive. 
+=======
+>>>>>>> 9afa4f7957eef76c0a2b22fd2de051e8957dca90
