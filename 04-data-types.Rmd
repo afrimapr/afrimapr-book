@@ -385,7 +385,7 @@ africountries_filtered = africountries %>%
   dplyr::filter(as.numeric(africountries$area_sqkm) > 300000)
 
 tm_shape(africountries_filtered) +
-   tm_borders()+
+   tm_borders()
 
 ```
 
