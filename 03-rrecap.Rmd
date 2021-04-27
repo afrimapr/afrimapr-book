@@ -115,7 +115,7 @@ library(afrilearndata)
 ```
 
 To view what data sets are available in a given package:
-```{r, c3-read-in-data}
+```{r c3-read-in-data, eval=FALSE}
 data(package="afrilearndata")
 ```
 We can view and explore the `africapitals` data set using:
