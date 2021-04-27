@@ -334,7 +334,8 @@ help("!")
 
 R documentation for functions frequently offers a working example which can be accessed with:
 ```{r, warning=FALSE, message=FALSE}
-example(vector) #to see an example of a vector
+#[andy commented out because seems to be causing error]
+#example(vector) #to see an example of a vector
 ```
 
 ## Further resources
