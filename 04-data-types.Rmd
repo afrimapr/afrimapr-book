@@ -1,24 +1,28 @@
 
-# Chapter 4 Spatial data types with focus on real examples {#data-types}
+# Spatial data types with focus on real examples {#data-types}
 
 ## Overall goal of the chapter
 
 Previous chapter provided a short recap of the R basics that are necessary to succesfully go through the geospatial training that has been drawn up in this book. This section will focus on the very basics of geospatial mapping, the four different types of spatial data:
+
 1. points
-2. lines
-3. polygons
-4. rasters
+1. lines
+1. polygons
+1. rasters
 
 
 The goal of a spatial map is to model reality, whether this is on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools and so on. The opportunities are endless. All the R software needs is information in points, lines, polygons and rasters which together form a model of reality. 
 
 --> interactive image with a different layer for points, lines, polygons and rasters (need help doing this)
+
+```{r}
 #mapview(list(africapitals, afrihighway),
 #        zcol = list('pop','Name'),
 #        legend = list(TRUE, FALSE),  
 #        color = list(NULL, 'red'),
 #        label = list(paste(africapitals$countryname,':',africapitals$capitalname),
 #                     afrihighway$Name) )
+```
 
 All spatial data types require a spatial reference framework or coordinate system identification to place data in the correct location in space. We will discuss this in more detail in chapter xxx. For now, just be aware that apart from your data file, additional data are necessary to place your spatial data in the correct location. 
 
@@ -53,8 +57,12 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 4. [Rasters (population density)](#episode_4_raster)
 
 
+<<<<<<< HEAD
 ## 4.1 Points {#episode_1_points}
 
+=======
+## Points {#episode_1_points}
+>>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 <style>
 div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
 </style>
@@ -149,7 +157,6 @@ The `tmap` package works similar to the ggplot package. You need to first specif
 As you can see in the example above, the labelling makes the image messy. In these instances it is important to think about the message you are trying to convey with your map. 
 If the labelling is essential, you can look up the help section of the 'tm_text' using the help tool and play around with the different options to clean up the map further. 
 
-</div>
 
 #### Exercise 1
 
@@ -201,11 +208,13 @@ Answer:
 
 ```
 
-</div>
 
-
+<<<<<<< HEAD
 ## 4.2 Lines {#episode_2_lines}
 
+=======
+## Lines {#episode_2_lines}
+>>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
@@ -309,11 +318,14 @@ Answer:
 
 ```
 
-</div>
 
 
+<<<<<<< HEAD
 ## 4.3 Polygons {#episode_3_polygons}
 
+=======
+## Polygons {#episode_3_polygons}
+>>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
@@ -356,7 +368,7 @@ For this example, we will look at the country borders of African countries.
 Let's visualise the geometry of the datafile first. 
 ```{r, warning=FALSE, message=FALSE}
 
-print(st_geometry(africountries)) #printing information on the geometry
+#print(st_geometry(africountries)) #printing information on the geometry
 
 ```
 The country border file contains 51 country outlines with geometry type **MULTIPOLYGON**.
@@ -443,12 +455,15 @@ Answer:
 
 ```
 
-</div>
 
 
+<<<<<<< HEAD
 
 ## 4.4 Rasters {#episode_4_raster}
 
+=======
+## Rasters {#episode_4_raster}
+>>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 Points, lines and polygons, in their essence, consist of points with a longitude and latitude value. The data files of these vectors look very similar. Raster data are a group on their own. Raster data consist of a matrix of grid cells (pixels), with each grid cell representing a geographical location with a value illustrating a characteristic of that location. Raster data are mainly used when displaying data that are continuous accross space. For example, population density, landcover variation and elevation data extracted from satellites, drones and surveys.  
 
 The more grid cells a raster file contains, the smoother the visualisation of the characteristic will be. However, a large number of grids also means a large heavy file, which may be difficult to run. Whenever you are working with raster files, think about your goal and objective. The highest resolution might not always be necessary. 
@@ -554,14 +569,17 @@ Visualise the population data of 2000 using a different palette from the [viridi
 ```
 
 
-</div>
 
 ## Summary/key points
 
 Summary image (to be created) 
 
+<<<<<<< HEAD
 ## 4.6 Further resources
 
+=======
+## Further resources
+>>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 If you are interested in learning more about the different spatial data types, please visit: 
 
 - [Geospatial workshop](https://datacarpentry.org/geospatial-workshop/)
@@ -573,6 +591,10 @@ If you are interested in learning more about the different spatial data types, p
 - [Raster and vector data](https://datacarpentry.org/r-raster-vector-geospatial/)
 
 
+<<<<<<< HEAD
 ## 4.7 Feedback
 
+=======
+## Feedback
+>>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 - Request on what was useful to the reader (learner) and what can be improved: Is this necessary after each chapter? Feels slightly repetitive. 

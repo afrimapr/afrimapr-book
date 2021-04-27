@@ -8,14 +8,9 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 <div class = "green">
 ### Learning objectives {-}
 
-- create a working directory for his/her project
-- create, name and save a new R script
-- execute R code
-- install and load an R package
-- import data set into R space
-- identify and characterise different data types
-- classify and contrast various data structures
-- accessing and using *Help* within R 
+- create a new project and start working with data
+- identify and characterise different data types and structures in R
+- access and search for help within R 
 
 </div>
 
@@ -80,6 +75,7 @@ div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 If you do not select any code and press **Run**, RStudio will run the line of code where the cursor is located. The code which has been exectued will appear in the **Console**, usually located at the bottom part of the window.
 
 In RStudio it is also possible to add comments next to your commands simply using a hashtag (#) beforehand. This will stop R from executing this specific part:
+
 ```{r}
 3+6 # Using R as a calculator
 
@@ -88,20 +84,16 @@ In RStudio it is also possible to add comments next to your commands simply usin
 
 ## Install and load packages {#install_packages}
 Before being able to use a specific package in R, it is necessary to firstly install and then load it. In this example we install package *remotes* using `install.packages()`:
+
 ```{r, eval=FALSE}
 install.packages("remotes")
 ```
-Further, we have to load it into R using `library()` function:
+
+Further, we have to load it into R using `library()` function. Note the presence of the quotation mark ("") in case of the first function and its lack in case of the second function.
+
 ```{r, eval=FALSE}
 library(remotes)
 ```
-
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-Please note the presence of the quotation mark *" "* in case of the first function and its lack in case of the second function. 
-</div>
 
 To download and install packages directly from remote repositories such as GitHub, we can use previously loaded `remote` package and load them as usual:
 
@@ -115,16 +107,15 @@ In the example, above we use double-colon operator *::* to call function `instal
 ## Load data {#load_data}
 There are different approaches that can be used to import your data sets, depending on where the data is located and in what file type it is stored. The easiest case is when the data set is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
 
-For example, install packages containing data set:
-```{r, eval=FALSE}
-remotes::install_github("afrimapr/afrilearndata")
-```
-Load them:
+For example, install and load packages containing data set:
 ```{r, results='hide', warning=FALSE, message=FALSE}
+remotes::install_github("afrimapr/afrilearndata")
+
 library(afrilearndata)
 ```
+
 To view what data sets are available in a given package:
-```{r}
+```{r, c3-read-in-data}
 data(package="afrilearndata")
 ```
 We can view and explore the `africapitals` data set using:
@@ -158,12 +149,8 @@ y <- 52
 x*y # multiplication
 ```
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-**Hint**: To assign a value to an object two operators can be used interchangeably: `<-` or `=`.
-</div>
+Hint: To assign a value to an object two operators can be used interchangeably: `<-` or `=`.
+
 
 ### Numeric and integer
 *Numeric data* stores real numbers. This means that the object `x` from above is in fact 11.000000, where the zeros are not printed, by default. It is also possible to store value as whole number in a class object called `integer`. An integer can be created from a `numeric` object in the following way:
@@ -207,7 +194,7 @@ class(z)
 Logical objects can take values `TRUE` or `FALSE`, where `TRUE` is an equivalent of 1 whereas `FALSE` is an equivalent of 0. In these sense, they can be thought of as numerical values.
 ```{r, warning=FALSE, message=FALSE}
 x <- TRUE
-y <- 3+TRUE
+y <- 3 + TRUE
 print(y)
 ```
 
@@ -234,6 +221,14 @@ b
 ```
 
 The numbers and strings, in the example above, serve as labels of different levels.
+
+### Exercises
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 3.6.1**: Create a vector 'a' that contains descending sequence of numbers from 50 to 30 that decrases by 2. Hint: use seq()
+</div>  
 
 ## Basic objects and data structures {#objects_basics}
 In this section we explain the basic data structures that we often work with in R. These include a vector, list, matrix and a data frame.
@@ -301,6 +296,22 @@ colnames(df_1)
 
 ```
 
+### Exercises
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 3.7.1**: Create three vectors containing character, integer and logical values, respectively. Each with 10 rows. Bind them to generate a matrix with 3 columns and 10 rows.
+</div>  
+<br/>
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 3.7.2**: Create a data frame from the matrix created in the previous exercise. Rename column headers to describe their content.
+</div>  
+<br/>
+
 ## Getting help with R Help {#help}
 R is a powerful software with many different packages and functions which are continuously developed and added. Therefore, it is difficult, if not impossible, to be familiar with all the functions that are currently available. Hence, in order to learn more about them, R provides extensive documentation which can be accessed with `help()` function, `? operator` or by clicking in *Help* panel in the bottom-right corner. For example:
 ```{r, warning=FALSE, message=FALSE}
@@ -326,9 +337,37 @@ R documentation for functions frequently offers a working example which can be a
 example(vector) #to see an example of a vector
 ```
 
+## Further resources
 Finally, the Internet also provides several reliable sources such as official [R website](r-project.org) or [documentation pages](rdocumentation.org) where you can find help. 
 
 ## Wrap up
 In this chapter we learned several R commands which prepared the reader for starting with his/her own project. Moreover, we familiarised with a number of data types and R objects. Moreover, we looked at how to obtain help and access R documentation. The material covered in this section aimed at building a base for the reader to allow him/her successfully progress through the book. 
 
-## Feedback
+## Exercise solutions {#solutions_ch3}
+
+- Exercise 3.6.1
+```{r}
+a <- seq(50,30, by = -2)
+```
+
+- Exercise 3.7.1
+```{r, warning=FALSE, message=FALSE}
+v1 <- c("water", "milk", "juice", "coffee", "tea", "tea", "juice", "milk", "water", "soda")
+v2 <- seq(1,10)
+v3 <- rep(c(TRUE,FALSE), length.out = 10) 
+v3 <-as.logical(v3)
+m1 = cbind(v1, v2, v3) 
+m1
+```
+- Exercise 3.7.2
+```{r, warning=FALSE, message=FALSE}
+df = data.frame(m1)
+
+names(df)[1] <- "Drink"
+names(df)[2] <- "Amount"
+names(df)[3] <- "Female"
+
+df$Female <-as.logical(df$Female)
+df$Amount <-as.integer(df$Amount)
+df
+```

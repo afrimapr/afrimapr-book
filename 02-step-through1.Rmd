@@ -1,7 +1,0 @@
-# Step through a simple example of process of mapmaking {#steps1} 
-
-Step through a simple example of process of map-making.
-
-Demonstrate a simple step by step process of making a map with relatively little explanation. To show the readers what we are aiming for and that this is achievable. Then in later chapters we will work to fill in the gaps in understanding
-
-https://speakerdeck.com/minecr/let-them-eat-cake-first

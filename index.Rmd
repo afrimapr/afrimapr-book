@@ -13,7 +13,12 @@ description: "An introduction to making maps from African data in R."
 ---
 
 # Welcome {-}
-This is the in-progress book introducing map making in R using African data. We aim to make a first version available in summer 2021.
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/afrilogo.jpg")
+```
+
+This is the in-progress book introducing map making in R using African data. We aim to make a first version available in mid 2021.
 
 It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project running in 2020-21.
 
@@ -40,7 +45,7 @@ In the meantime, do [get in touch](https://afrimapr.github.io/afrimapr.website/g
 In-progress chapters
 
 1. Intro : aims of this book \@ref(intro)
-1. Step through a simple example of process of mapmaking \@ref(steps1)
+1. Step through a simple example of process of mapmaking \@ref(taster)
 1. R recap - help ensure readers know foundations \@ref(rrecap)
 1. Spatial data types focusing on examples \@ref(data-types)
 1. Visualising spatial data part 1 : sf, mapview, tmap \@ref(visualising1)

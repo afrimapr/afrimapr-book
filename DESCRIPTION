@@ -32,14 +32,12 @@ Imports:
     rnaturalearth,
     rnaturalearthdata,
     rgeos,
-    afrihealthsites,
     afriadmin,
     afrilearndata,
     mapview
 Suggests:
     usethis
 Remotes:
-  afrimapr/afrihealthsites,
   afrimapr/afriadmin,
   afrimapr/afrilearndata
 License: CC BY-NC-ND 4.0
