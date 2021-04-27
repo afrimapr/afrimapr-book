@@ -5,7 +5,7 @@
 
 The previous chapter provided a short recap of the R basics that will help you progress through this book. This chapter will focus on the fundamentals of mapping, i.e. the different types of data that can be used to make a map. 
 
-This chapter is written for those with some knowledge of R and little experience with spatial data. If you are familiar with these data types, you can move on to the next chapter where visualisation of data types are explained in more detail. 
+This chapter is written for those with some knowledge of R and little experience with spatial data. If you are familiar with these data types, you may want to move on to the next chapter where visualisation of data types is explained in more detail. However you never know, you may learn something here too. 
 <br/>
 
 <style>
@@ -21,6 +21,13 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 - Know that the current best packages for manipulating spatial data are package `sf` for vector and package `raster` for raster.
 - Be comfortable visualising the four different spatial data types in R using packages `mapview` & `raster`
 </div>
+<br/>
+
+Maps are used for a wide range of purposes. In this book we focus on using maps to present data.
+
+A map can provide a model of reality to help the reader see where things or events are located. This could be on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools. The opportunities are endless. 
+
+
 
 
 The four main types of spatial data are :
@@ -30,7 +37,6 @@ The four main types of spatial data are :
 1. polygons
 1. rasters
 
-The goal of a spatial map is to provide a model of reality. This could be on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools and so on. The opportunities are endless. All the R software needs is information in points, lines, polygons and rasters which together form a model of reality. 
 
 --> interactive image with a different layer for points, lines, polygons and rasters (need help doing this)
 
