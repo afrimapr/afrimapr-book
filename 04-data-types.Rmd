@@ -257,9 +257,14 @@ Visualise the trans-African highway network, with line width associated with the
 Answer:
 ```{r, warning=FALSE, message=FALSE}
 
-afrihighway$length=tapply(st_length(afrihighway), afrihighway$Name, sum)
-tm_shape(afrihighway) +
- tm_lines(lwd = `length`)
+#[julie-anne this seems to error]
+# Error: Assigned data `value` must be compatible with existing data.
+# x Existing data has 100 rows.
+# x Assigned data has 99 rows.
+
+# afrihighway$length=tapply(st_length(afrihighway), afrihighway$Name, sum)
+# tm_shape(afrihighway) +
+#  tm_lines(lwd = `length`)
 
 ```
 
