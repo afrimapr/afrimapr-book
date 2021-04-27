@@ -26,7 +26,6 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 Maps are used for a wide range of purposes. In this book we focus on using maps to present data.
 
 A map can provide a model of reality to help the reader see where things or events are located. This could be on the scale of a street, a neighbourhood, a country or a continent. Depending on the topics you're interested in, this could be focussed on disease cases, landcover dynamics, location of schools. The opportunities are endless. 
-[andy thinking about examples to start from here]
 
 The data that we can represent on a map can be divided into four main types :
 
@@ -35,19 +34,14 @@ The data that we can represent on a map can be divided into four main types :
 1. polygons
 1. rasters
 
+Points can be used to represent the locations of e.g. cities, buildings, disease cases, sample sites or wildlife records. They can be used to represent the centre of an area. Points can be chosen when the shape of the location is not important. Thus for a map representing a continent, cities can be represented by points because the area of cities would not be visible.
 
---> interactive image with a different layer for points, lines, polygons and rasters (need help doing this)
+Lines may represent physical features such as rivers or roads, or routes travelled, or abstract links between point locations.
 
-```{r}
-#mapview(list(africapitals, afrihighway),
-#        zcol = list('pop','Name'),
-#        legend = list(TRUE, FALSE),  
-#        color = list(NULL, 'red'),
-#        label = list(paste(africapitals$countryname,':',africapitals$capitalname),
-#                     afrihighway$Name) )
-```
+[andy to continue ...]
 
-All spatial data types require a spatial reference framework or coordinate system identification to place data in the correct location in space. We will discuss this in more detail in chapter xxx. For now, just be aware that apart from your data file, additional data are necessary to place your spatial data in the correct location. Note also that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming  at times. We will come to these later. 
+
+All spatial data types require a coordinate reference system (CRS) identification to place data in the correct location on the earth. We will discuss this in more detail later. For now, just be aware that a code may need to be entered to ensure that data display in the correct place. Note also that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming  at times. We will come to these later. 
 
 
 ### List of episodes
@@ -321,7 +315,7 @@ tm_shape(africountries) +
    tm_borders() #if only borders need to be visualised
  
 tm_shape(africountries) +
-   tm_polygons() #if you want the image to specify the multipologon area
+   tm_polygons() #if you want the image to specify the multipolygon area
 
 ```
 
