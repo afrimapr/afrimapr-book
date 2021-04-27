@@ -11,6 +11,11 @@ Internal contributors are encouraged to push text changes directly (you don't ne
 `bookdown::serve_book()`  
 This updates local copy of the book every time you make a change (turn off by restarting R).
 
+## temporary comments
+
+To make temporary comments for yourself and others enclose them in square brackets []. You can include your name or a collaborators immediately after the bracket so that you or others can search for things you still need to look at. So Andy might include :
+[andy: I haven't finished this] or [martyna: can you have a look at this?]. If it is a bigger thing we recommend submitting a Github issue.
+
 
 ## markdown tips
 
