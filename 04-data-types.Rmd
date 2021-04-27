@@ -63,38 +63,16 @@ Note that spatial data types can be stored in many different formats, from Shape
 4. [Rasters (population density)](#episode_4_raster)
 
 
-<<<<<<< HEAD
-## 4.1 Points {#episode_1_points}
 
-=======
 ## Points {#episode_1_points}
-<<<<<<< HEAD
->>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
-<style>
-div.green { background-color:palegreen; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "green">
-### Learning objectives
-
-- Identify point data files 
-- Open point data files 
-- Visualise point data files
-
-</div>
-=======
->>>>>>> 9afa4f7957eef76c0a2b22fd2de051e8957dca90
 
 
 Let’s take an imaginary walk outside. What do you see? Houses, cars, trees… All these objects have unique coordinates that can be used to identify their exact location. On a map, the objects can be drawn as points with their latitude and longitude coordinate indicating their exact location in relation to other objects and places. Depending on the scale of your map, points can represent anything from a house, health clinic, city or district. You, as the map creator, can decide the scale of your own map.
 
 
 ### Example
-<<<<<<< HEAD
 
-Lets try and visualise the capital cities of Africa.
-=======
 Lets try and visualise the capital cities of Africa whih we have stored in the `afrilearndata` package.
->>>>>>> c403d785a8ef476a389bdcd0615b38ed078d4834
 
 Just a quick reminder of the necessary packages 
 ```{r, warning=FALSE, message=FALSE}
@@ -206,26 +184,7 @@ Answer:
 ```
 
 
-<<<<<<< HEAD
-## 4.2 Lines {#episode_2_lines}
-
-=======
 ## Lines {#episode_2_lines}
-<<<<<<< HEAD
->>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
-<style>
-div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "green">
-### Learning objectives
-
-- Identify line data files 
-- Open line data files 
-- Visualise line data files
-
-</div>
-=======
->>>>>>> 9afa4f7957eef76c0a2b22fd2de051e8957dca90
 
 In previous episode we looked at point data, such as capitals and airports. We are often interested in how these different locations on a map are connect to eachother. These connections are visualised using lines. Roads, rivers and flight pathes are just a few of the many ways that lines are used. Lines are one dimensional data which are drawn using points (and thus point data) connected to eachother in a set order. Depending on the detail of the lines, more or less point data are connected. 
 
@@ -311,27 +270,7 @@ Answer:
 
 
 
-<<<<<<< HEAD
-## 4.3 Polygons {#episode_3_polygons}
-
-=======
 ## Polygons {#episode_3_polygons}
-<<<<<<< HEAD
->>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
-<style>
-div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "green">
-### Learning objectives
-
-- Identify polygon data files 
-- Open polygon data files 
-- Visualise polygon data files
-
-</div>
-
-=======
->>>>>>> 9afa4f7957eef76c0a2b22fd2de051e8957dca90
 
 Polygons are lines with the same first and last coordinate. When the polygon line is connected, the same start and end point results in a closed shape. Similar to lines, depending on the detail of the map, more or less points can be used to create a polygon. This two-dimensional data is most often used to visualise country and continent boundaries. 
 
@@ -451,13 +390,8 @@ Answer:
 
 
 
-<<<<<<< HEAD
 
-## 4.4 Rasters {#episode_4_raster}
-
-=======
 ## Rasters {#episode_4_raster}
->>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 Points, lines and polygons, in their essence, consist of points with a longitude and latitude value. The data files of these vectors look very similar. Raster data are a group on their own. Raster data consist of a matrix of grid cells (pixels), with each grid cell representing a geographical location with a value illustrating a characteristic of that location. Raster data are mainly used when displaying data that are continuous accross space. For example, population density, landcover variation and elevation data extracted from satellites, drones and surveys.  
 
 The more grid cells a raster file contains, the smoother the visualisation of the characteristic will be. However, a large number of grids also means a large heavy file, which may be difficult to run. Whenever you are working with raster files, think about your goal and objective. The highest resolution might not always be necessary. 
@@ -549,12 +483,7 @@ Visualise the population data of 2000 using a different palette from the [viridi
 
 Summary image (to be created) 
 
-<<<<<<< HEAD
-## 4.6 Further resources
-
-=======
 ## Further resources
->>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
 If you are interested in learning more about the different spatial data types, please visit: 
 
 - [Geospatial workshop](https://datacarpentry.org/geospatial-workshop/)
@@ -566,13 +495,4 @@ If you are interested in learning more about the different spatial data types, p
 - [Raster and vector data](https://datacarpentry.org/r-raster-vector-geospatial/)
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-## 4.7 Feedback
-
-=======
 ## Feedback
->>>>>>> 86bd33d1db4d8f234aed2955c56983ae036c751e
-- Request on what was useful to the reader (learner) and what can be improved: Is this necessary after each chapter? Feels slightly repetitive. 
-=======
->>>>>>> 9afa4f7957eef76c0a2b22fd2de051e8957dca90
