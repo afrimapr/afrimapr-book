@@ -13,7 +13,7 @@ In this section we will describe what the overall aim of this chapter and target
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
-### Learning objectives {-}
+**Learning objectives** 
 
 - What you will learn
 - What you will be able to do at the end of this chapter
