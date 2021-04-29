@@ -7,7 +7,7 @@ In the previous section we explored different types of spatial data and looked a
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
-### Learning objectives {-}
+**Learning objectives**
 
 - Create static and interactive maps using different packages
 - Learn function structure to build more advanced maps

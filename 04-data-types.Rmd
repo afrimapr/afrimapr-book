@@ -12,7 +12,8 @@ This chapter is written for those with some knowledge of R and little experience
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
-### Learning objectives
+**Learning objectives**
+
 [andy: still thinking how best to structure these]
 
 - Be able to describe and use points, lines, polygons and raster data types

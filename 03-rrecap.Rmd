@@ -6,7 +6,7 @@ Previous section demonstrated what can be achieved with the learning materials p
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
-### Learning objectives {-}
+**Learning objectives**
 
 - create a new project and start working with data
 - identify and characterise different data types and structures in R
