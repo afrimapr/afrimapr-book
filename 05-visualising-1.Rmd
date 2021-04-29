@@ -67,7 +67,7 @@ To create the most basic map with the boundaries of African countries we call `m
 
 This map has a number of functions:
 
-- a layer button to switch between five different layers
+- layer button to switch between five different layers
 - scale bar
 - zoom butttons
 - data name in the top right corner
