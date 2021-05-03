@@ -1,6 +1,6 @@
 # R recap {#rrecap}
 
-Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. This section presents basic steps that are required (or simply a good practice) before starting the project. It provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R and provide a basic background knowledge that the reader can build on, while progressing through the further chapters of this book. It will be particularly useful for beginners, who have minimal knowledge of R. Therefore, more advanced readers can move forward to the next chapter where spatial data types are looked into. <br/>
+Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. This section presents basic steps that are required (or simply good practice) before starting the project. It provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R and provide background knowledge that the reader can build on, while progressing through the further chapters of this book. It will be particularly useful for beginners, who have minimal knowledge of R. Therefore, more advanced readers can move forward to the next chapter where spatial data types are looked into. <br/>
 
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
@@ -8,9 +8,9 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 <div class = "green">
 **Learning objectives**
 
-- create a new project and start working with data
-- identify and characterise different data types and structures in R
-- access and search for help within R 
+- Create a new R project and start working with data
+- Identify and characterise different data types and structures in R
+- Access and search for help within R 
 
 </div>
 
@@ -26,7 +26,7 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 8. [Getting help](#help)
 
 ## Setting working directory {#wd}
-At the beginning of each project it is crucial to determine the working directory for your project. A working directory is a folder where all your files associated with the project will be stored. For example, original data sets, saved data sets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing data sets into the RStudio.<br/><br/>
+At the beginning of each project it is crucial to determine the working directory of your project. A working directory is a folder where all your files associated with the project will be stored. For example, original data sets, saved data sets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing data sets into the RStudio.<br/><br/>
 
 You can set up the working directory with the `openProject` function as follows (recommended):
 
@@ -43,8 +43,8 @@ While the former option will set up and open the working directory for your proj
 
 ## Creating, naming and saving a new R script {#new_script}
 
-The R script is a plain text file that allows you to save the R code containing both, commands and comments. Saving the R script allows you to reuse your R code and creates a reproducible record of your work. Therefore, it is a good practice to create, name and save it at the very beginning of your project. <br/><br/>
-You can crate a new R script by clicking the **New File** icon in the top right corner of the RStudio toolbar, which will open a list with different file options. Choose the **R Script** from the menu and the blank script will open in the main RStudio window.
+The R script is a plain text file that allows you to save the R code containing both commands and comments. Saving the R script allows you to reuse your R code and creates a reproducible record of your work. Therefore, it is good practice to create, name and save it at the very beginning of your project. <br/><br/>
+You can create a new R script by clicking the **New File** icon in the top right corner of the RStudio toolbar, which will open a list with different file options. Choose the **R Script** from the menu and the blank script will open in the main RStudio window.
 
 <style>
 div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
@@ -63,7 +63,7 @@ div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 </div>
 
 ## Executing the code {#executing}
-Now, as you set up the working directory for your project and created your first R script file, we will look into ways of executing (also known as running) the code. You can execute selected chunk of code by clicking **Run** button at the top right corner of the **Script Editor**. 
+Now that you have set up the working directory for your project and created your first R script file, we will look into ways of executing (also known as running) the code. You can execute selected chunk of code by clicking the **Run** button at the top right corner of the **Script Editor**. 
 
 <style>
 div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
@@ -83,11 +83,13 @@ In RStudio it is also possible to add comments next to your commands simply usin
 ```
 
 ## Install and load packages {#install_packages}
-Before being able to use a specific package in R, it is necessary to firstly install and then load it. In this example we install package *remotes* using `install.packages()`:
+[Martyna: remind the reader what packages are?]
+Before being able to use a specific package in R, it is necessary to first install and then load it. In this example we install package *remotes* using `install.packages()`. [Martyna: explain what the remotes package does]
 
 ```{r, eval=FALSE}
 install.packages("remotes")
 ```
+
 
 Further, we have to load it into R using `library()` function. Note the presence of the quotation mark ("") in case of the first function and its lack in case of the second function.
 
@@ -95,19 +97,19 @@ Further, we have to load it into R using `library()` function. Note the presence
 library(remotes)
 ```
 
-To download and install packages directly from remote repositories such as GitHub, we can use previously loaded `remote` package and load them as usual:
+To download and install packages directly from remote repositories such as GitHub, we can use previously loaded `remotes` package and load them as usual:
 
 ```{r, eval=FALSE}
 remotes::install_github("afrimapr/afrilearndata")
 library(afrilearndata)
 ```
 
-In the example, above we use double-colon operator *::* to call function `install_github` from name space`remotes`. Only functions which are included in the packages can be retrieved in this manner. 
+In the example above, we use double-colon operator *::* to call function `install_github` from name space`remotes`. Only functions included in the packages can be retrieved in this manner. 
 
 ## Load data {#load_data}
 There are different approaches that can be used to import your data sets, depending on where the data is located and in what file type it is stored. The easiest case is when the data set is already part of the R package, as it will be automatically read in when the package is installed and loaded into R.<br/>
 
-For example, install and load packages containing data set:
+For example, install and load packages containing data sets:
 ```{r, results='hide', warning=FALSE, message=FALSE}
 remotes::install_github("afrimapr/afrilearndata")
 
@@ -141,7 +143,7 @@ x <- 11 #we create a vector that stores value 11
 class(x)
 ```
 
-It is useful because each class has different properties and can be used in a different way. For example, intuitively we can perform the mathematical operations on numeric objects such that:
+It is useful to check the class of an object because each class has different properties and can be used in a different way. For example, intuitively we can perform the mathematical operations on numeric objects such that:
 
 ```{r, warning=FALSE, message=FALSE}
 x <- 11 
@@ -173,7 +175,7 @@ y <- "I have a bicycle."
 
 ```
 
-Interestingly, a character can also contain a number, however it will be stored as a text and will not have the same properties as a `numeric` or `integer` object. As a  results, it will not be possible to perform calculation on character objects, even if they contain numbers. This is when `class` function becomes helpful.
+Interestingly, a character can also contain a number, however it will be stored as a text and will not have the same properties as a `numeric` or `integer` object. As a  results, it will not be possible to perform calculation on character objects, even if they contain numbers. This is when the `class` function becomes helpful.
 
 ```{r, warning=FALSE, message=FALSE}
 x <- "5" 
@@ -255,7 +257,7 @@ typeof(capitals)
 ```
 
 ### Matrix
-Matrix can be though of as an upgraded version of a vector, where vector is an one-dimensional array and two-dimensional array. We can create a matrix that has three columns and five rows with the following:
+Matrix can be thought of as an upgraded version of a vector, where vector is an one-dimensional array and the matrix is a two-dimensional array. We can create a matrix that has three columns and five rows with the following:
 ```{r, warning=FALSE, message=FALSE}
 matrix(1:15, ncol=3, nrow=5, byrow = TRUE)
 ```
@@ -270,7 +272,7 @@ cbind(vector1, vector2) #for row-wise binding we would use rbind()
 ```
 
 ### Data frame
-Data frame is a two dimensional array, similar to a matrix. However, it can contain different data types, unlike matrix. Beyond, columns as well as rows within the data frame are named. In a data frame a column is a variable and row is an observation. You can create a simple data frame with two columns and three rows, using vectors above, with `data.frame` function:
+Data frame is a two dimensional array, similar to a matrix. However, unlike a matrix, it can contain different data types. [Martyna sorry the next section is unclear.] Beyond, columns as well as rows within the data frame are named. In a data frame a column is a variable and row is an observation. You can create a simple data frame with two columns and three rows, using vectors above, with `data.frame` function:
 ```{r, warning=FALSE, message=FALSE}
 data.frame(vector1, vector2)
 ```
@@ -283,7 +285,7 @@ df_1 = data.frame(vector1, vector2) #create data frame called df_1
 df_1$vector1 #view column called vector1
 ```
 
-At the moment columns in the *df_1* adapted names of the vectors:
+Columns in the *df_1* have adapted names of the vectors:
 ```{r, warning=FALSE, message=FALSE}
 colnames(df_1)
 ```
@@ -338,10 +340,13 @@ R documentation for functions frequently offers a working example which can be a
 #example(vector) #to see an example of a vector
 ```
 
+
 ## Further resources
-Finally, the Internet also provides several reliable sources such as official [R website](r-project.org) or [documentation pages](rdocumentation.org) where you can find help. 
+Finally, the Internet also provides several reliable sources such as official [R website](r-project.org) or [documentation pages](rdocumentation.org) where you can find help. [Martyna: stackoverflow?]
+
 
 ## Wrap up
+[Martyna I called this ## Summary, which do we use?]
 In this chapter we learned several R commands which prepared the reader for starting with his/her own project. Moreover, we familiarised with a number of data types and R objects. Moreover, we looked at how to obtain help and access R documentation. The material covered in this section aimed at building a base for the reader to allow him/her successfully progress through the book. 
 
 ## Exercise solutions {#solutions_ch3}
