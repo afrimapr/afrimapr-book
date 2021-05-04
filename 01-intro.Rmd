@@ -1,50 +1,22 @@
 # Introduction {#intro}
 
-This first chapter is an entry level introduction to spatial data in R using examples from Africa. It is aimed at those with a little knowledge of R.
+[andy: we may move this text to the Preface later (coded in index.Rmd), but is more difficult to find there.]
 
-## Spatial data outline
+## Why read this book
 
-We will start by looking at these spatial data for Africa, shown in the map below. 
+[mnetion reproducibility, html, markdown, QGIS etc.]
 
-1. Capital city locations (points)
-1. A highway network (lines)
-1. Country boundaries (polygons)
-1. Population density (gridded or raster data)
 
-```{r tmap-first-view, echo=FALSE, warning=FALSE, message=FALSE}
-#echo=FALSE to not show code in first version 
- 
-# #temporary fix for potential rgdal issue
-# #https://stackoverflow.com/questions/61286108/error-in-cpl-transformx-crs-aoi-pipeline-reverse-ogrcreatecoordinatetrans
-# #If you save an sf-dataframe with a newer version of GDAL, and then try on a system with an older version of GDAL, the projection info cannot be read properly.
-# #The solution is to re-set the projection:
-# sf::st_crs(africapitals) <- 4326
-# sf::st_crs(afrihighway) <- 4326
-# sf::st_crs(africountries) <- 4326
-# sf::st_crs(africontinent) <- 4326 #not used yet but just in case
+## Who for
 
-# library(tmap)
-# library(afrilearndata)
-# 
-# tm_shape(afripop2020) +
-#     tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
-# tm_shape(africountries) +
-#     tm_borders("white", lwd = .5) +
-#     #tm_text("iso_a3", size = "AREA") +
-# tm_shape(afrihighway) +
-#     tm_lines(col = "red") +
-# tm_shape(africapitals) +
-#     tm_symbols(col = "blue", alpha=0.4, scale = .6 )+
-# tm_legend(show = FALSE)
-```
+The book is aimed principally at analysts who want to make maps from African data as a part of their routine work. We expect that readers will have had some limited experience of R and/or spatial data but this is not strictly required. We will take you step-by-step through code to obtain, manipulate and visualise spatial data. We focus on routine tasks and developing confidence and resilience in applying them, rather than moving to more advanced analyses.
 
-Cities, highways and boundaries are examples of point, line and polygon data termed **vector data**. 
+## What this book will not cover
 
-The gridded population density data are termed **raster data**.
+For those that are interested in spatial analyses we refer you to the excellent recent book [Geocomputation with R](https://geocompr.robinlovelace.net/). The afrimapr book, in comparison, will cover fewer processes but do so in more detail and assuming less prior knowledge of R and spatial data. We see the two books as being complementary. Those that wish to take their work further after this afrimapr book should find the geocompr book useful. Those that have been through the geocompr book and would like more detail on visualising varied data sources in R should find this afrimapr book useful. 
 
-In R there is often more than one package that does the same thing. Which one is 'best' for you may depend on preference and can change over time. This is true for R spatial operations.  
+## How the book is organised
+[recap, taster chapters etc.]
 
-In R the `sf` package deals with vector data (points, lines and polygons), and the `raster` package deals with raster data.
-
-There are other packages too but we don't need those for now.
-
+## Book formatting
+[exercise blocks, learning objectives etc.]
