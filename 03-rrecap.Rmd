@@ -272,7 +272,7 @@ cbind(vector1, vector2) #for row-wise binding we would use rbind()
 ```
 
 ### Data frame
-Data frame is a two dimensional array, similar to a matrix. However, unlike a matrix, it can contain different data types. [Martyna sorry the next section is unclear.] Beyond, columns as well as rows within the data frame are named. In a data frame a column is a variable and row is an observation. You can create a simple data frame with two columns and three rows, using vectors above, with `data.frame` function:
+Data frame is a two dimensional array, similar to a matrix. However, unlike a matrix, it can contain different data types. In a data frame a column is a variable and row is an observation. You can create a simple data frame with two columns and three rows, using vectors above, with `data.frame` function:
 ```{r, warning=FALSE, message=FALSE}
 data.frame(vector1, vector2)
 ```
@@ -342,11 +342,10 @@ R documentation for functions frequently offers a working example which can be a
 
 
 ## Further resources
-Finally, the Internet also provides several reliable sources such as official [R website](r-project.org) or [documentation pages](rdocumentation.org) where you can find help. [Martyna: stackoverflow?]
+Finally, the Internet also provides several reliable sources such as official [R website](r-project.org), [documentation pages](rdocumentation.org) or knowledge sharing platform [Stackoverflow](https://stackoverflow.com) where you can find help.
 
 
-## Wrap up
-[Martyna I called this ## Summary, which do we use?]
+## Summary
 In this chapter we learned several R commands which prepared the reader for starting with his/her own project. Moreover, we familiarised with a number of data types and R objects. Moreover, we looked at how to obtain help and access R documentation. The material covered in this section aimed at building a base for the reader to allow him/her successfully progress through the book. 
 
 ## Exercise solutions {#solutions_ch3}
