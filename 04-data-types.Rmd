@@ -518,6 +518,8 @@ If you are interested in learning more about the different spatial data types, p
 ## Summary/key points
 The image below gives a short recap of the different data types discussed in this chapter. You should now be able to recognize, load and manipulate these data types using the `sf` and `raster` and visualise them using the `tmap` package.
 
-[Andy/Martyna could either of you please include the summary image?]
+```{r, echo=FALSE}
+knitr::include_graphics("images/chapter_4_image.png")
+```
 
 </div> 
