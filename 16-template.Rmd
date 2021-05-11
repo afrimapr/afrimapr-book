@@ -57,7 +57,7 @@ In this section we provide links to additional websites and sources that are use
 - [R website](r-project.org)
 - [Documentation pages](rdocumentation.org)
 
-## Wrap up
+## Summary
 This closing section should show the reader what has been done in this chapter and how it links with the topics provided in the next chapter by a brief introduction to next topic.
 
 ## Exercise solutions

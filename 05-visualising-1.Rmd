@@ -386,6 +386,10 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 - [tmap documentation](https://cran.r-project.org/web/packages/tmap/tmap.pdf)
 - [Mapview documentation](https://r-spatial.github.io/mapview/articles/)
 
+## Summary
+In  this chapter we looked at how to produce static and interactive maps using different packages. Specifically, we saw that the `tmap` package is a flexible tool to create maps with a stepwise approach, where we can add different layers to our maps. It is equally easy to switch between static and interactive maps. Further, `mapview` was showed to be a quick solution for creating interactive maps.
+
+
 ## Exercise solutions {#solutions_ch5}
 ```{r, include = FALSE}
 tmap_mode("plot")
