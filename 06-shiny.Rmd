@@ -1,3 +1,48 @@
 # Shiny interactive map applications {#shiny}
 
-Use of shiny package
+Use of the shiny package to make interactive applications displaying maps.
+
+We start with a very simple example showing how you can create a small application that allows a user to choose from a list of countries and then displays the outline of that country on a map.
+
+[andy (or anyone else) to look at best ways of demoing shinyapps in a book]
+
+```{r shiny1, eval=FALSE}
+
+# save this code in a single file called app.r
+# then the shiny app can be run from RStudio using the 'Run' button
+# (above the text editor window)
+# or can just copy & paste code into the console
+
+library(afrilearndata)
+library(dplyr)
+library(mapview)
+library(leaflet)
+
+# User Interface
+ui <- bootstrapPage(
+  
+  # allow user to choose a country 
+  selectInput('country_choice', 
+              label='choose a country', 
+              choices = sort(africountries$name)),
+  # plot map
+  leafletOutput("serve_map")
+)
+
+# server code (does things requested by the UI)
+server <- function(input, output) {
+  
+  output$serve_map <- renderLeaflet({
+    
+    # filter
+    selected_country <- dplyr::filter(africountries, name==input$country_choice) 
+    mapplot <- mapview(selected_country, zcol="name")
+    mapplot@map
+    
+  })
+}
+
+# Return a Shiny app object
+shinyApp(ui = ui, server = server)
+
+```
