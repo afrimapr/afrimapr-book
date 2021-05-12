@@ -6,20 +6,21 @@ Demonstrate a simple step by step process of making a map with relatively little
 
 https://speakerdeck.com/minecr/let-them-eat-cake-first
 
-```{r, c2-packages, eval=FALSE, results='hide', warning=FALSE, message=FALSE, include = FALSE}
-#Install packages
-cran_packages_to_install <- c(
-  "ggplot" ,            # plot-making package
-  "tmap",              # map-making package for static and interactive maps
-  "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
-  "sf",                # package for working with spatial data
-  "rnaturalearth",     # data package
-  "rnaturalearthdata", # data package
-  "afrilearndata",     #datapackage
-  "tmaptools"          # map building package
-  )
+```{r, c2-packages, results='hide', warning=FALSE, message=FALSE, include = FALSE}
 
-install.packages(cran_packages_to_install)
+#Install packages
+# cran_packages_to_install <- c(
+#   "ggplot" ,            # plot-making package
+#   "tmap",              # map-making package for static and interactive maps
+#   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
+#   "sf",                # package for working with spatial data
+#   "rnaturalearth",     # data package
+#   "rnaturalearthdata", # data package
+#   "afrilearndata",     #datapackage
+#   "tmaptools"          # map building package
+#   )
+# 
+# install.packages(cran_packages_to_install)
 
 #Load packages
 library(tmap)
