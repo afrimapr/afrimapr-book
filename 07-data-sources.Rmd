@@ -48,7 +48,8 @@ downloadData(selection)
 
 Finally, we use the `sf` package to read in the downloaded shapefile and plot it with `ggplot()`.
 
-```{r}
+[Paula: I've set this to eval=FALSE for now to avoid filenotfound error, can we make this runnable ?, Andy]
+```{r, eval=FALSE}
 library(sf)
 library(ggplot2)
 
@@ -242,7 +243,8 @@ MODIStsp(gui             = FALSE,
          out_format      = "GTiff")
 ```
 
-```{r}
+[Paula: I've set this to eval=FALSE for now to avoid filenotfound error, can we make this runnable ?, Andy]
+```{r, eval=FALSE}
 # Reading in the downloaded NDVI raster data
 NDVI_raster <- raster("VegetationData/map/VI_16Days_1Km_v6/NDVI/MYD13A2_NDVI_2020_153.tif")
 
