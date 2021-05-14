@@ -108,6 +108,7 @@ We can use `get_elev_raster()` to obtain the elevation of Ghana as follows.
 
 
 ```{r}
+install.packages("elevatr")
 library(ggplot2)
 library(raster)
 library(elevatr)
