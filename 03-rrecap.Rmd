@@ -89,7 +89,7 @@ knitr::include_graphics("images/example_script_1.jpg")
 ```
 
 ## Install and load packages {#install_packages}
-As described by [Wickham & Bryan (2015)](https://r-pkgs.org/index.html) R package is basic unit of shareable code containing a collection of functions (and sometimes also datasets). One of the most popular and larges packages repository is *Comprehensive R Archive Network (CRAN)*, but there are number of *remote repositories*, where packages can be published and stored by their authors such as *Github* or *GitLab*. Packages can differ in their capabilities and they will usually have a specific purpose, for example, data wrangling, visualisations or modelling. To learn more about a particular package we can use `packageDescription`, which calls a file with description of a package or `help` function that contains description of functions included in the package. For example, `remotes` packages is often used to install other packages available at remote repositories  
+As described by [Wickham & Bryan (2015)](https://r-pkgs.org/index.html) R package is basic unit of shareable code containing a collection of functions (and sometimes also datasets). One of the most popular and larges packages repository is *Comprehensive R Archive Network (CRAN)*, but there are number of *remote repositories*, where packages can be published and stored by their authors such as *Github* or *GitLab*. Packages can differ in their capabilities and they will usually have a specific purpose, for example, data wrangling, visualisations or modelling. To learn more about a particular package we can use `packageDescription`, which calls a file with description of a package or `help` function that contains description of functions included in the package. For example, `remotes` package is often used to install other packages available at remote repositories.  
 
 ```{r package-help}
 packageDescription("remotes")
@@ -102,14 +102,13 @@ Before being able to use a specific package in R, it is necessary to first insta
 install.packages("remotes")
 ```
 
-
-Further, we have to load it into R using `library()` function. Note the presence of the quotation mark ("") in case of the first function and its lack in case of the second function.
+Further, we have to load the package into R using `library()` function. Note the presence of the quotation mark ("") in case of the first function and its lack in case of the second function.
 
 ```{r, eval=FALSE}
 library(remotes)
 ```
 
-To download and install packages directly from remote repositories such as GitHub, we can use previously loaded `remotes` package and load them as usual:
+As mentioned above, to download and install packages directly from remote repositories such as GitHub, we can use previously loaded `remotes` package and load them as usual:
 
 ```{r, eval=FALSE}
 remotes::install_github("afrimapr/afrilearndata")
@@ -163,7 +162,7 @@ y <- 52
 x*y # multiplication
 ```
 
-Hint: To assign a value to an object two operators can be used interchangeably: `<-` or `=`.
+**Hint:** To assign a value to an object two operators can be used interchangeably: `<-` or `=`.
 
 
 ### Numeric and integer
@@ -241,7 +240,7 @@ The numbers and strings, in the example above, serve as labels of different leve
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 3.6.1**: Create a vector 'a' that contains descending sequence of numbers from 50 to 30 that decrases by 2. Hint: use seq()
+**Exercise 3.6.1**: Create a vector 'a' that contains descending sequence of numbers from 50 to 30 that decreases by 2. Hint: use seq()
 </div>  
 
 ## Basic objects and data structures {#objects_basics}
@@ -354,7 +353,7 @@ R documentation for functions frequently offers a working example which can be a
 
 
 ## Further resources
-Finally, the Internet also provides several reliable sources such as official [R website](r-project.org), [documentation pages](rdocumentation.org) or knowledge sharing platform [Stackoverflow](https://stackoverflow.com) where you can find help.
+Finally, the Internet also provides several reliable sources such as official [R website](r-project.org), [documentation pages](rdocumentation.org), [R packages book](https://r-pkgs.org/index.html) or knowledge sharing platform [Stackoverflow](https://stackoverflow.com) where you can find help.
 
 
 ## Summary
