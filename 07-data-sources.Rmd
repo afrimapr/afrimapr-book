@@ -1,7 +1,317 @@
 # Sources of data {#data-sources}
 
-See also [https://rspatialdata.github.io/](https://rspatialdata.github.io/)
+Here we show several R packages that can be used to download spatial data including administrative boundaries, population, climatic, and health data.
+We give short reproducible examples on how to download and visualize spatial data that can be useful in different settings.
+More extended examples and details about the capabilities of each of the packages can be seen at https://rspatialdata.github.io/ and the packages' websites.
 
-R packages, Web APIs, OpenStreetMap intro, HDX
 
-### HDX
+## Administrative boundaries
+
+We can download administrative boundaries of countries with the `rgeoboundaries` package.
+For example, we can download the administrative boundaries of Nigeria with `geoboundaries()` as follows.
+
+```{r}
+library(rgeoboundaries)
+library(ggplot2)
+map <- geoboundaries("Nigeria")
+ggplot(data = map) + geom_sf() 
+```
+
+We can also download administrative boundaries of multiple countries and different administrative levels.
+
+```{r}
+map <- geoboundaries(c("Nigeria", "Chad"), "adm1")
+ggplot(data = map) + geom_sf()
+```
+
+## Population
+
+The `wopr` package provides access to the [WorldPop Open Population Repository](https://wopr.worldpop.org/) and provides estimates of population sizes for specific geographic areas.
+
+To download the population data we first use `getCatalogue()` to retrieve the WOPR data catalogue and see a list of currently available databases.
+
+```{r}
+#install.packages("remotes")
+library(remotes)
+#remotes::install_github('wpgp/wopr')
+library(wopr)
+catalogue <- getCatalogue(spatial_query = T)
+catalogue
+```
+
+Then, we subset the catalogue for the country (e.g. Nigeria with ISO code NGA) and download the data for the selection using the `downloadData()` function.
+
+```{r, eval = FALSE}
+selection <- subset(catalogue, country == "NGA" & category == "Population" & version == "v1.2")
+downloadData(selection)
+```
+
+Finally, we use the `sf` package to read in the downloaded shapefile and plot it with `ggplot()`.
+
+[Paula: I've set this to eval=FALSE for now to avoid filenotfound error, can we make this runnable ?, Andy]
+```{r, eval=FALSE}
+library(sf)
+library(ggplot2)
+
+map <- st_read("wopr/NGA/population/v1.2/NGA_population_v1_2_admin/NGA_population_v1_2_admin/NGA_population_v1_2_admin_level2_boundaries.shp")
+
+ggplot(map, aes(fill = mean)) + geom_sf() +
+  scale_fill_continuous(name = "Population")
+```
+
+
+
+
+## Open Street Map data
+
+We can retrieve [Open Street Map data](https://www.openstreetmap.org/) using the `osmdata` package. The `available_features()` function can be used to get the list of recognized features in OSM.
+The `available_tags()` function lists out the tags associated with each feature.
+A list of the available features can be found in the [OSM wiki](https://wiki.openstreetmap.org/wiki/Map_Features).
+
+```{r}
+library(osmdata)
+head(available_features())
+head(available_tags("amenity"))
+```
+
+The first step in creating an `osmdata` query is defining the geographical area we wish to include in the query. This can be done by defining a bounding box that defines a geographical area by its bounding latitudes and longitudes.
+
+```{r}
+lagos_bb <- getbb("Lagos")
+lagos_bb
+```
+
+To retrieve the required features of a place (defined by the bounding box), we have to then create an overpass query with `opq()`.
+Then, the `add_osm_feature()` function can be used to add the required features to the query. Finally, we use the `osmdata_sf()` function to obtain a simple feature object of the resultant query.
+
+```{r}
+lagos_hospitals <- lagos_bb %>% opq() %>%
+  add_osm_feature(key = "amenity", value = "hospital") %>%
+  osmdata_sf()
+```
+
+We can visualise an interactive map of the hospitals in Lagos as follows.
+
+```{r}
+library(leaflet)
+leaflet() %>%  addTiles() %>%
+  addPolygons(data = lagos_hospitals$osm_polygons,
+              label = lagos_hospitals$osm_polygons$name)
+```
+
+
+
+## Elevation
+
+The `elevatr` package can be used to download elevation data.
+We can use `get_elev_raster()` to obtain the elevation of Ghana as follows.
+
+
+```{r}
+library(ggplot2)
+library(raster)
+library(elevatr)
+library(rgeoboundaries)
+library(sf)
+library(viridis)
+
+map <- geoboundaries("Ghana")
+
+elevation_data <- get_elev_raster(locations = map, z = 9, clip = "locations") 
+
+elevation_data <- as.data.frame(elevation_data, xy = TRUE)
+colnames(elevation_data)[3] = "elevation"
+#remove rows of data frame with one or more NA's using complete.cases
+elevation_data <- elevation_data[complete.cases(elevation_data), ] 
+
+ggplot() + geom_raster(data = elevation_data, aes(x = x, y = y, fill = elevation)) +
+  geom_sf(data = map, color = "white", fill = NA) +
+  coord_sf() + scale_fill_viridis_c() + ggtitle("Elevation")
+
+```
+
+      
+
+## Temperature
+
+The `raster` package provides access to the [WorldClim](https://www.worldclim.org/) database, and allows us to download data sets on the many different climatic conditions.
+
+For example, we can can download maximum temperature at a resolution of 10 minutes as follows.
+
+```{r}
+library(raster)
+library(ggplot2)
+
+tmax_data <- getData(name = "worldclim", var = "tmax", res = 10)
+
+# Degrees Celsius
+gain(tmax_data) <- 0.1
+
+# Converting the raster object into a dataframe
+tmax_data_may_df <- as.data.frame(tmax_data$tmax5, xy = TRUE, na.rm = TRUE)
+rownames(tmax_data_may_df) <- c()
+
+# Plot
+ggplot(data = tmax_data_may_df, aes(x=x,y=y)) + geom_raster(aes(fill = tmax5)) +
+  labs(title = "Maximum temperature in May", subtitle = "For the years 1970-2000") +
+  xlab("Longitude") + ylab("Latitude") +
+  scale_fill_gradientn(name = "Temperature (°C)", colours=c("#0094D1","#68C1E6", "#FEED99","#AF3301"), breaks = c(-20, 0, 20, 40))
+```
+
+
+## Rainfall
+
+The `nasapower` package aims at making it quick and easy to automate downloading [NASA POWER (NASA Prediction of Worldwide Energy Resource)](https://power.larc.nasa.gov/) global meteorology, surface solar energy and climatology data.
+
+For example, we can use `get_power()`, to obtain global rainfall (specifying `pars = "PRECTOT"`) or humidity (specifying `pars = "RH2M"`). 
+
+
+```{r, eval = FALSE}
+library(nasapower)
+library(terra)
+library(viridis)
+
+climate_avg <- get_power(community = "AG", pars = "PRECTOT",
+                         lonlat = "GLOBAL", temporal_average = "CLIMATOLOGY")
+
+
+library("rnaturalearth")
+map <- ne_countries(returnclass = "sf")
+
+climate_box <- split(climate_avg, climate_avg$PARAMETER)
+climate_box <- lapply(climate_box, function(x){
+  x["PARAMETER"] <- NULL
+  x})
+climate_box <- lapply(X = climate_box, FUN = as.matrix)
+
+#retrieving precipitation data using the above made climate_box() function
+PRECTOT <- terra::rast(climate_box$PRECTOT[,c(1:2, 15)],
+     crs = "+proj=eqc +lat_ts=0 +lat_0=0 +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs", type = "xyz")
+
+#converting above raster object into a data.frame for mapping 
+PRECTOT_df <- as.data.frame(PRECTOT, xy = TRUE, na.rm = TRUE)
+rownames(PRECTOT_df) <- c()
+
+
+#plotting the graph
+ggplot() + 
+  geom_raster(data = PRECTOT_df, aes(x = x, y = y, fill = ANN)) +
+  geom_sf(data = map, inherit.aes = FALSE, fill = NA) + 
+  scale_fill_viridis() +
+  labs(title = "Rainfall in inches", fill = "Annual Rainfall")
+
+```
+
+
+## Vegetation and Land cover
+
+`MODIStsp` is an R package for downloading and preprocessing time series of raster data from [MODIS](https://modis.gsfc.nasa.gov/data/dataprod/) data products.
+
+
+Here, we use the ‘Vegetation Indices 16-Day L3 Global 250’ product with the product IDs MOD13Q1(Terra Product ID), and MYD13Q1(Aqua Product ID), but will be represented by `M*D13Q1` - the second character is replaced by an asterix(`*`) to identify both Terra and Aqua.
+
+We can also download the ‘Land Cover Type Yearly L3 Global 500m’ product with the product ID `MCD12Q1` (Combined Aqua and Terra Product ID)
+
+```{r}
+library(MODIStsp)
+library(rgeoboundaries)
+library(sf)
+
+# Downloading the country boundary
+map_boundary <- geoboundaries("Kenya")
+
+# Defining filepath to save downloaded spatial file
+spatial_filepath <- "map.shp"
+
+# Saving downloaded spatial file on to our computer
+#st_write(map_boundary, paste0(spatial_filepath))
+```
+
+```{r, eval = FALSE}
+MODIStsp(gui             = FALSE,
+         out_folder      = "VegetationData",
+         out_folder_mod  = "VegetationData",
+         selprod         = "Vegetation_Indexes_16Days_1Km (M*D13A2)",
+         bandsel         = "NDVI", 
+         user            = "mstp_test" ,
+         password        = "MSTP_test_01",
+         start_date      = "2020.06.01", 
+         end_date        = "2020.06.01", 
+         verbose         = FALSE,
+         spatmeth        = "file",
+         spafile         = spatial_filepath,
+         out_format      = "GTiff")
+```
+
+[Paula: I've set this to eval=FALSE for now to avoid filenotfound error, can we make this runnable ?, Andy]
+```{r, eval=FALSE}
+# Reading in the downloaded NDVI raster data
+NDVI_raster <- raster("VegetationData/map/VI_16Days_1Km_v6/NDVI/MYD13A2_NDVI_2020_153.tif")
+
+# Transforming the data
+NDVI_raster <- projectRaster(NDVI_raster, crs = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
+
+# Cropping the data
+NDVI_raster <- raster::mask(NDVI_raster, as_Spatial(map_boundary))
+
+# Dividing values by 10000 to have NDVI values between -1 and 1
+gain(NDVI_raster) <- 0.0001
+
+# Converting the raster object into a dataframe
+NDVI_df <- as.data.frame(NDVI_raster, xy = TRUE, na.rm = TRUE)
+rownames(NDVI_df) <- c()
+
+# Visualising using ggplot2
+ggplot() + 
+  geom_raster(data = NDVI_df, aes(x = x, y = y, fill = MYD13A2_NDVI_2020_153)) +
+  geom_sf(data = map_boundary, inherit.aes = FALSE, fill = NA) +
+  scale_fill_viridis(name = "NDVI") +
+  labs(title = "NDVI (Normalized Difference Vegetation Index)",
+       subtitle = "01-06-2020", x = "Longitude", y = "Latitude")
+
+```
+
+## Demographic and Health Survey (DHS)
+
+The `rdhs` packages gives the users the ability to access and make analysis on the Demographic and Health Survey (DHS) data.
+For example we can find out the trends in antimalarial use in Africa as follows.
+
+```{r}
+library(rdhs)
+
+# Make an api request
+resp <- dhs_data(indicatorIds = "ML_FEVT_C_AML", surveyYearStart = 2010, breakdown = "subnational")
+
+# filter it to 12 countries for space
+countries  <- c("Angola","Ghana","Kenya","Liberia",
+                "Madagascar","Mali","Malawi","Nigeria",
+                "Rwanda","Sierra Leone","Senegal","Tanzania")
+
+
+library(ggplot2)
+ggplot(resp[resp$CountryName %in% countries, ],
+       aes(x = SurveyYear, y = Value, colour = CountryName)) +
+  geom_point() + geom_smooth(method = "glm") + 
+  theme(axis.text.x = element_text(angle = 90, vjust = .5)) +
+  ylab(resp$Indicator[1]) + facet_wrap(~ CountryName, ncol = 6) 
+```
+
+
+## Malaria
+
+The `malariaAtlas` package can be used to download, visualise and manipulate global malaria data hosted by the Malaria Atlas Project.
+
+The package enables users to download the following types of data:
+
+- parasite rate (PR) survey data (Plasmodium falciparum and Plasmodium vivax)
+- vector occurrence data
+- administrative boundary shapefiles to visualise data
+- rasters covering a range of modelled outputs related to malaria research such as predicted malaria parasite prevalence
+
+For example, we can download parasite rate survey data corresponding to Zimbabwe as follows.
+
+```{r}
+library(malariaAtlas)
+d  <- getPR(country = "Zimbabwe", species = "BOTH") 
+autoplot(d)
+```

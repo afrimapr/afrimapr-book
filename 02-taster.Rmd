@@ -2,6 +2,7 @@
 
 This chapter shows the steps through an example process of map-making. It demonstrates the focus and potential of this book, so that the readers can quickly see what this book aims to achieve and how this is done. 
 
+
 ```{r, c2-packages, results='hide', warning=FALSE, message=FALSE, include = FALSE, eval=FALSE}
 #Install packages
 cran_packages_to_install <- c(
@@ -17,7 +18,6 @@ cran_packages_to_install <- c(
   )
 
 install.packages(cran_packages_to_install)
-
 ```
 
 ```{r, c2-libraries, results='hide', warning=FALSE, message=FALSE, include = FALSE}
