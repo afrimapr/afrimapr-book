@@ -89,8 +89,14 @@ knitr::include_graphics("images/example_script_1.jpg")
 ```
 
 ## Install and load packages {#install_packages}
-[Martyna: remind the reader what packages are?]
-Before being able to use a specific package in R, it is necessary to first install and then load it. In this example we install package *remotes* using `install.packages()`. [Martyna: explain what the remotes package does]
+As described by [Wickham & Bryan (2015)](https://r-pkgs.org/index.html) R package is basic unit of shareable code containing a collection of functions (and sometimes also datasets). One of the most popular and larges packages repository is *Comprehensive R Archive Network (CRAN)*, but there are number of *remote repositories*, where packages can be published and stored by their authors such as *Github* or *GitLab*. Packages can differ in their capabilities and they will usually have a specific purpose, for example, data wrangling, visualisations or modelling. To learn more about a particular package we can use `packageDescription`, which calls a file with description of a package or `help` function that contains description of functions included in the package. For example, `remotes` packages is often used to install other packages available at remote repositories  
+
+```{r package-help}
+packageDescription("remotes")
+help(package = "remotes")
+```
+
+Before being able to use a specific package in R, it is necessary to first install and then load it. In this example we install package *remotes* using `install.packages()`.
 
 ```{r, eval=FALSE}
 install.packages("remotes")

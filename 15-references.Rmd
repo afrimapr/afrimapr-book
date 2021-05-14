@@ -1,3 +1,5 @@
 `r if (knitr:::is_html_output()) '# References {-}'`
 
 Hijmans, R., J.(2020) *Spatial Data Science.* https://rspatial.org/intr/ 
+
+Wickham, H. & Jenny Bryan. (2021). *R packages: organize, test, document, and share your code.* "O'Reilly Media, Inc.". 2nd edition.  https://r-pkgs.org/index.html 
