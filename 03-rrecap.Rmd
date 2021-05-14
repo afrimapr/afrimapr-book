@@ -82,6 +82,7 @@ In RStudio it is also possible to add comments next to your commands simply usin
 # 3+6
 ```
 
+This is also a convenient way to describe your R script, name different section and keep it organised. Short descriptions in the form of headings will help you rember 
 ## Install and load packages {#install_packages}
 [Martyna: remind the reader what packages are?]
 Before being able to use a specific package in R, it is necessary to first install and then load it. In this example we install package *remotes* using `install.packages()`. [Martyna: explain what the remotes package does]

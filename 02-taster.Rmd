@@ -1,6 +1,6 @@
 # A taster - making your first map  {#taster} 
 
-This chapter shows the steps through an example process of map-making. It demonstrates the focus and potential of this book, so that the readers can quickly see what this book aims to achieve and how this is done. 
+This chapter shows the steps through an example process of map-making. It demonstrates the focus and potential of this book, so that the readers can quickly see what this book aims to achieve and how it is done. 
 
 
 ```{r, c2-packages, results='hide', warning=FALSE, message=FALSE, include = FALSE, eval=FALSE}
@@ -36,6 +36,7 @@ library(raster)
 ```{r c2-dataset, include=FALSE}
 #static mode activated
 tmap_mode("plot")
+
 #create dataset
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
@@ -45,12 +46,14 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 tm_shape(africountries) +
     tm_polygons()
 ```
+
 ## Map components
-```{r c2-simple-map, out.width="50%"}
+```{r c2-simple-map2, out.width="50%"}
 tm_shape(africountries) + #dataset used to create a map
-    tm_polygons(col = "area_sqkm", title = "Country size (sq km)") #function to draw polygons of the map, 'col' fills polygons based on the variable in the dataset, 'title' adjust the legend title
+    tm_polygons(col = "pop_est", title = "Population") #function to draw polygons of the map, 'col' fills polygons based on the variable in the dataset, 'title' adjust the legend title
   
 ```
+
 ## Static maps
 ```{r c2-empty-static-map1,message=FALSE, fig.cap = "Examples of maps"}
 
@@ -120,8 +123,7 @@ breaks=c(0,2,20,200,2000,25000)
 tm_shape(afripop2020) +
     tm_raster(breaks=breaks, title = "Population per km sq") +
 tm_shape(afrihighway) +
-    tm_lines(col = "red") + 
+    tm_lines(col = "blue") + 
 tm_shape(africapitals) +
-    tm_symbols(col = "black", alpha=0.5, scale = 0.6 )+
-tm_legend(show = FALSE)
+    tm_dots(col = "black", alpha=0.5)
 ```
