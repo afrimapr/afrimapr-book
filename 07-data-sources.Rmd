@@ -33,7 +33,7 @@ To download the population data we first use `getCatalogue()` to retrieve the WO
 ```{r}
 #install.packages("remotes")
 library(remotes)
-#remotes::install_github('wpgp/wopr')
+remotes::install_github('wpgp/wopr')
 library(wopr)
 catalogue <- getCatalogue(spatial_query = T)
 catalogue
