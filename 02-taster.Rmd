@@ -48,9 +48,11 @@ tm_shape(africountries) +
 ```
 
 ## Map components
+In the example below, *africountries* is a dataset used to create a map. `tm_polygons` function is used to draw polygons of the map, *'col'* fills polygons based on the variable in the dataset, while *'title'* argument sets the legend title.
 ```{r c2-simple-map2, out.width="50%"}
-tm_shape(africountries) + #dataset used to create a map
-    tm_polygons(col = "pop_est", title = "Population") #function to draw polygons of the map, 'col' fills polygons based on the variable in the dataset, 'title' adjust the legend title
+
+tm_shape(africountries) + 
+    tm_polygons(col = "pop_est", title = "Population") 
   
 ```
 
