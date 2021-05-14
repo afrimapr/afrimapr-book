@@ -4,7 +4,7 @@
 
 ## Why read this book
 
-[mnetion reproducibility, html, markdown, QGIS etc.]
+[mention reproducibility, html, markdown, QGIS etc.]
 
 
 ## Who for
