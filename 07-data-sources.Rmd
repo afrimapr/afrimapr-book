@@ -214,6 +214,7 @@ Here, we use the ‘Vegetation Indices 16-Day L3 Global 250’ product with the 
 We can also download the ‘Land Cover Type Yearly L3 Global 500m’ product with the product ID `MCD12Q1` (Combined Aqua and Terra Product ID)
 
 ```{r}
+install.packages("MODIStsp")
 library(MODIStsp)
 library(rgeoboundaries)
 library(sf)
@@ -278,6 +279,7 @@ The `rdhs` packages gives the users the ability to access and make analysis on t
 For example we can find out the trends in antimalarial use in Africa as follows.
 
 ```{r}
+install.packages("rdhs")
 library(rdhs)
 
 # Make an api request
@@ -312,6 +314,7 @@ The package enables users to download the following types of data:
 For example, we can download parasite rate survey data corresponding to Zimbabwe as follows.
 
 ```{r}
+install.packages("malariaAtlas")
 library(malariaAtlas)
 d  <- getPR(country = "Zimbabwe", species = "BOTH") 
 autoplot(d)
