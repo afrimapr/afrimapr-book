@@ -49,11 +49,11 @@ downloadData(selection)
 Finally, we use the `sf` package to read in the downloaded shapefile and plot it with `ggplot()`.
 
 [Paula: I've set this to eval=FALSE for now to avoid filenotfound error, can we make this runnable ?, Andy]
-```{r, eval=FALSE}
+```{r c7-data-NGA}
 library(sf)
 library(ggplot2)
 
-map <- st_read("wopr/NGA/population/v1.2/NGA_population_v1_2_admin/NGA_population_v1_2_admin/NGA_population_v1_2_admin_level2_boundaries.shp")
+map <- st_read("data/NGA_population_v1_2_admin_level2_boundaries.shp")
 
 ggplot(map, aes(fill = mean)) + geom_sf() +
   scale_fill_continuous(name = "Population")
