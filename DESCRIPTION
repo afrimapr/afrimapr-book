@@ -26,7 +26,7 @@ Authors@R:
     )
 Description: The package that supports the afrimapr book.    
 Imports:
-    bookdown,
+    bookdown(< 0.19),
     tmap,
     tidyverse,
     rnaturalearth,
