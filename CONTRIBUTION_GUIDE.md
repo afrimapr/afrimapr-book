@@ -27,3 +27,5 @@ To make temporary comments for yourself and others enclose them in square bracke
 * Sub-sections (level 2 headings) cannot be referred to (links cannot be created)
 * To control how table of contents (TOC) behaves when clicking on it we need to set 'collapse:' in output.yml file to: section, subsection or null, depending on the level we want our TOC to expand and collapse. So if you want only the top-level headings to be displayed initially (like in our book) use 'section'.
 * It is worth naming code chunks so that it is easier to identify failing code in case it happens. The name can be added to the code chunk in the following way: {r code-name-without-spaces, ...}
+* You can collapse (unfold) parts of the Rmd file with the downward (upward) pointed arrow next to the line number, where this function is possible. The collapsible parts are at the section/subsection level or r code chunks. It makes it easier to navigate through the long chapter files, where finalised parts can be "hidden".
+* A keyboard shortcut Ctrl + Shift + F allows for searching of a phrase inside the all files in the project.

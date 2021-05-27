@@ -116,7 +116,6 @@ tmap_arrange(map_basic_2, map_highways, map_named)
 ```
 
 ## Interactive maps
-
 ```{r c2-interactive_map, fig.show="hold", out.width="50%"}
 tmap_mode("view") 
 
