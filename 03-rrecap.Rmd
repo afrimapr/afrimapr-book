@@ -33,8 +33,6 @@ Let's start with basic setup of R studio window. As seen in Figure 3.1, the typi
 knitr::include_graphics("images/R_studio_window.png")
 ```
 
-
-
 ## Setting working directory {#wd}
 At the beginning of each project it is crucial to determine the working directory of your project. A working directory is a folder where all your files associated with the project will be stored. For example, original data sets, saved data sets as well as plots, graphs or maps created and exported from R. Hence, working directory not only allows you to gather and access the files produced along the work but also load the existing data sets into the RStudio.<br/><br/>
 
