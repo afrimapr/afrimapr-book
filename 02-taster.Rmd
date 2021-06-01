@@ -41,19 +41,21 @@ tmap_mode("plot")
 africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
 
-## A simple map
-```{r c2-simple-map, out.width="50%"}
-tm_shape(africountries) +
+## Simple maps
+```{r c2-simple-map}
+tmap_mode("plot") 
+map_1 = tm_shape(africountries) +
     tm_polygons()
-```
 
-## Map components
-In the example below, *africountries* is a dataset used to create a map. `tm_polygons` function is used to draw polygons of the map, *'col'* fills polygons based on the variable in the dataset, while *'title'* argument sets the legend title.
-```{r c2-simple-map2, out.width="50%"}
-
-tm_shape(africountries) + 
+map_2 = tm_shape(africountries) + 
     tm_polygons(col = "pop_est", title = "Population") 
-  
+
+map_3 = map_1 +
+  tm_shape(afrihighway) + 
+    tm_lines(col = "blue")
+
+tmap_arrange(map_1, map_2, map_3)
+
 ```
 
 ## Static maps
