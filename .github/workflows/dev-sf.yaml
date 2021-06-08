@@ -1,0 +1,34 @@
+name: dev-sf
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: geocompr/geocompr
+    steps:
+        - name: Checkout Project
+          uses: actions/checkout@v1
+
+        - name: Build book
+          run: |
+            Rscript -e 'remotes::install_github("afrimapr/afrimapr-book")'
+            Rscript -e 'remotes::install_github("r-spatial/sf")'
+            Rscript -e 'bookdown::render_book("index.Rmd")'
+
+      # - name: Commit results
+      #   if: github.repository == 'afrimapr/afrimapr-book'
+      #   run: |
+      #     cd _book
+      #     git init
+      #     git config user.name "Robin Lovelace"
+      #     git config user.email "rob00x@gmail.com"
+      #     git config --global push.default simple
+      #     git add .
+      #     git status
+      #     git commit -m 'update book'
+      #     git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:gh-pages --force
