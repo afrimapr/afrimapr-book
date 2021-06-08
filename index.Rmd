@@ -8,7 +8,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: afrimapr/afrimapr-book
 description: "An introduction to making maps from African data in R."
 ---
 
