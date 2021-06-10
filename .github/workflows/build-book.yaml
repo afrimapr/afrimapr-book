@@ -50,7 +50,8 @@ jobs:
         run: |
           brew install libgit2
           brew install automake udunits
-          brew install liblwgeom
+          brew install pkg-config
+          brew install gdal
       - name: Install dependencies
         run: |
           pak::local_install_dev_deps(upgrade = TRUE)
