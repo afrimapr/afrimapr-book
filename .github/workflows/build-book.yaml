@@ -63,7 +63,9 @@ jobs:
         run: |
           options(width = 100)
           pkgs <- installed.packages()[, "Package"]
-          sessioninfo::session_info(pkgs, include_base = TRUE)
+          #sessioninfo::session_info(pkgs, include_base = TRUE)
+          #2021-06-17 andy commenting above & replacing with below because #29
+          sessionInfo()          
         shell: Rscript {0}
 
       - name: Configure Git user
