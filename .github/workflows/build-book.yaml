@@ -54,7 +54,6 @@ jobs:
           brew install automake udunits
           brew install pkg-config
           brew install gdal
-          install.packages("sf", configure.args = "--with-proj-lib=/usr/local/lib/")
       - name: Install dependencies
         run: |
           pak::local_install_dev_deps(upgrade = TRUE)
