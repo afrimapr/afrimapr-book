@@ -43,18 +43,18 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 
 ## Simple maps
 ```{r c2-simple-map}
-tmap_mode("plot") 
-map_1 = tm_shape(africountries) +
-    tm_polygons()
-
-map_2 = tm_shape(africountries) + 
-    tm_polygons(col = "pop_est", title = "Population") 
-
-map_3 = map_1 +
-  tm_shape(afrihighway) + 
-    tm_lines(col = "blue")
-
-tmap_arrange(map_1, map_2, map_3)
+# tmap_mode("plot") 
+# map_1 = tm_shape(africountries) +
+#     tm_polygons()
+# 
+# map_2 = tm_shape(africountries) + 
+#     tm_polygons(col = "pop_est", title = "Population") 
+# 
+# map_3 = map_1 +
+#   tm_shape(afrihighway) + 
+#     tm_lines(col = "blue")
+# 
+# tmap_arrange(map_1, map_2, map_3)
 
 ```
 
