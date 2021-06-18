@@ -31,7 +31,7 @@ The `wopr` package provides access to the [WorldPop Open Population Repository](
 To download the population data we first use `getCatalogue()` to retrieve the WOPR data catalogue and see a list of currently available databases.
 
 ```{r}
-#install.packages("remotes")
+install.packages("remotes")
 library(remotes)
 remotes::install_github('wpgp/wopr')
 library(wopr)
