@@ -8,7 +8,7 @@ on:
   #schedule:
     # * is a special character in YAML so you have to quote this string
     #commented out scheduled builds for now
-    #- cron: "0 4 * * *"
+    - cron: "0 4 * * *"
 
 name: tic
 
