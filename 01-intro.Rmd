@@ -6,6 +6,8 @@
 
 [mention reproducibility, html, markdown, QGIS etc.]
 
+Read this book if you would like to be able to make maps from African data (or indeed other data too).
+
 
 ## Who for
 
