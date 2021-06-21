@@ -29,8 +29,9 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 ## R studio window {#window}
 
 Let's start with basic setup of R studio window. As seen in Figure 3.1, the typical R studio  consists of four elements: **R script**, which is a file that will contain your code, and which can be saved. Below, there is a **console** that will display the output of the executed code. It is also possible to type the code directly in the console, however, it will not be saved after you close current R session. Thirdly, there is so-called **global environment** or a workspace that will store all the objects that you currently work with, such as dataframes, matrices, variables etc. Finally, in the bottom right corner you will find a panel where you can access the files in your current project or working directory, see installed packages, view your visualisations such as plot, graphs and maps and finally get help (for details on getting help, click [here](#help))
+
 ```{r c3-example-R-studio, echo=FALSE, fig.cap="Empty R studio window", out.width="200%"}
-knitr::include_graphics("images/R_studio_window.png")
+#knitr::include_graphics("images/R_studio_window.png")
 ```
 
 ## Setting working directory {#wd}
@@ -100,8 +101,8 @@ knitr::include_graphics("images/example_script_1.jpg")
 As described by [Wickham & Bryan (2015)](https://r-pkgs.org/index.html) R package is basic unit of shareable code containing a collection of functions (and sometimes also datasets). One of the most popular and larges packages repository is *Comprehensive R Archive Network (CRAN)*, but there are number of *remote repositories*, where packages can be published and stored by their authors such as *Github* or *GitLab*. Packages can differ in their capabilities and they will usually have a specific purpose, for example, data wrangling, visualisations or modelling. To learn more about a particular package we can use `packageDescription`, which calls a file with description of a package or `help` function that contains description of functions included in the package. For example, `remotes` package is often used to install other packages available at remote repositories.  
 
 ```{r package-help}
-packageDescription("remotes")
-help(package = "remotes")
+#packageDescription("remotes")
+#help(package = "remotes")
 ```
 
 Before being able to use a specific package in R, it is necessary to first install and then load it. In this example we install package *remotes* using `install.packages()`.
