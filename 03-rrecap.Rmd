@@ -339,7 +339,7 @@ R is a powerful software with many different packages and functions which are co
 ```{r, warning=FALSE, message=FALSE}
 help(matrix) #to find out what matrix is
 
-help(package="remotes") #to get help with remotes package
+#help(package="remotes") #to get help with remotes package
 ```
 
 Alternatively, it is possible to use `?` in front of the searched item and the R documentation will appear in right-bottom pane. For example, to read more on how to use help function itself we can use: 
