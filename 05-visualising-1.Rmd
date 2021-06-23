@@ -132,13 +132,13 @@ Next, we create an empty contour map of the continent, where `tm_shape()` functi
 Intuitively to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows us to achieve exactly the same result more efficiently. It draws the polygons borders and fills them.
 
 ```{r c5-tmap-countries4,fig.show="hold", out.width="50%"}
-
-tm_shape(africa)+
- tm_borders()+
-  tm_fill()
-
-tm_shape(africa)+
- tm_polygons()
+# 
+# tm_shape(africa)+
+#  tm_borders()+
+#   tm_fill()
+# 
+# tm_shape(africa)+
+#  tm_polygons()
 
 ```
 
@@ -147,8 +147,8 @@ We can further develop our map by adjusting different features of the map such a
 
 ```{r c5-tmap-countries5, out.width="50%"}
 
-tm_shape(africa)+
- tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
+# tm_shape(africa)+
+#  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
 
 ```
 
@@ -156,49 +156,49 @@ As we already know a basic structure required to build a static map, we can proc
 
 ```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labesl (left) and map with added coutries names (right)"}
 
-tm_shape(africa)+
- tm_polygons(col = "lastcensus", title = "Year of last census")
-
-tm_shape(africa)+
- tm_polygons(col = "lastcensus", title = "Year of last census")+
- tm_text("admin", size = 0.52, fontface = "bold", auto.placement = TRUE)
+# tm_shape(africa)+
+#  tm_polygons(col = "lastcensus", title = "Year of last census")
+# 
+# tm_shape(africa)+
+#  tm_polygons(col = "lastcensus", title = "Year of last census")+
+#  tm_text("admin", size = 0.52, fontface = "bold", auto.placement = TRUE)
 
 ```
 
 Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to to much clustering of information. Instead, we might want to use `breaks` argument to set them up manually to provide more differentiation visually. For clarity, I set up the customised breaks outside of the map-making function. Alternatively, we can control number of so-called `bins` (groups) into which the **Population** is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons` function.
 
 ```{r c5-tmap-countries-breaks, message = FALSE, fig.cap = "Africa's population with default breaks (left), customised breaks (middle) and divided in bins (right)."}
-#default settings
-default_map = tm_shape(africa)+
-                tm_polygons(col = "pop_est", title = "Population")
-
-#set up breaks manually
-custom_breaks = c(0, 1, 4, 7, 10, 30, 50, 70, 100, 120, 150) * 1000000
-custom_map = tm_shape(africa)+
-              tm_polygons(col = "pop_est", title = "Population", breaks = custom_breaks)
-
-#set up a number of bins
-bins_map = tm_shape(africa)+
-            tm_polygons(col = "pop_est", title = "Population", n = 15)
-
-tmap_arrange(default_map, custom_map, bins_map)
+# #default settings
+# default_map = tm_shape(africa)+
+#                 tm_polygons(col = "pop_est", title = "Population")
+# 
+# #set up breaks manually
+# custom_breaks = c(0, 1, 4, 7, 10, 30, 50, 70, 100, 120, 150) * 1000000
+# custom_map = tm_shape(africa)+
+#               tm_polygons(col = "pop_est", title = "Population", breaks = custom_breaks)
+# 
+# #set up a number of bins
+# bins_map = tm_shape(africa)+
+#             tm_polygons(col = "pop_est", title = "Population", n = 15)
+# 
+# tmap_arrange(default_map, custom_map, bins_map)
 ```
 
 So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable with income level. It allows for visual grouping of countries in the same category. The names of the categories in the legend were adjusted using `labels` argument. In the similar manner we can show the airports of Africa according to their size.
 
 
 ```{r c5-tmap-countries-categorical, out.width="50%"}
-tm_shape(africa)+
-  tm_polygons(col = "income_grp", title = "Income levels", alpha = 0.6,
-              labels = c("High", "Upper middle", "Lower middle", "Lower"))
-
-data(afriairports)
-tm_shape(africontinent)+
-  tm_polygons(col = "lightyellow")+
-tm_shape(afriairports)+
-  tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
-          labels = c("Large", "Medium", "Small"), 
-          palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))
+# tm_shape(africa)+
+#   tm_polygons(col = "income_grp", title = "Income levels", alpha = 0.6,
+#               labels = c("High", "Upper middle", "Lower middle", "Lower"))
+# 
+# data(afriairports)
+# tm_shape(africontinent)+
+#   tm_polygons(col = "lightyellow")+
+# tm_shape(afriairports)+
+#   tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
+#           labels = c("Large", "Medium", "Small"), 
+#           palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))
 
 ```
 
@@ -206,9 +206,9 @@ It is important to bear in mind that same information can be displayed on the ma
 
 
 ```{r c5-tmap-bubbles, out.width="75%"}
-tm_shape(africa)+
- tm_polygons(col = "lightyellow")+
-  tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level", title.size = "Population")
+# tm_shape(africa)+
+#  tm_polygons(col = "lightyellow")+
+#   tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level", title.size = "Population")
 
 ```
 
@@ -219,69 +219,69 @@ An important aspect of the maps, as in every visual representation, are the colo
 
 ```{r c5-tmap-palette, warning=FALSE, message = FALSE, results='hide', fig.cap = "Africa's maps using different pallete options."}
 
-set1 = tm_shape(africa)+
-         tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1")
-
-plasma = tm_shape(africa)+
-          tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma")
-
-tmap_arrange(set1, plasma)
+# set1 = tm_shape(africa)+
+#          tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1")
+# 
+# plasma = tm_shape(africa)+
+#           tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma")
+# 
+# tmap_arrange(set1, plasma)
 
 ```
 
 Alternatively an overall style of a single map can be easily changed using `tm_style` function. However, it might also be useful to change the style in all the maps in the document. This can be achieved with setting the style globally with `tmap_style("nameofthestyle")`. The default style is called "white", hence to restore a default style setting use `tmap_style("white")`. 
 
 ```{r, include = FALSE}
-tmap_mode("plot")
+#tmap_mode("plot")
 ```
 
 
 ```{r c5-tmap-style,message = FALSE, fig.cap = "Examples of different styles."}
-
-classic = tm_style("classic")+
-            tm_shape(africa)+
-              tm_polygons()+
-                tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
-                  title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
-
-beaver = tm_style("beaver")+
-          tm_shape(africa)+
-            tm_polygons()+
-              tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
-                title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
-
-albatross = tm_style("albatross")+
-            tm_shape(africa)+
-              tm_polygons()+
-                 tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
-                  title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
-
-tmap_arrange(classic, beaver, albatross)
+# 
+# classic = tm_style("classic")+
+#             tm_shape(africa)+
+#               tm_polygons()+
+#                 tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
+#                   title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
+# 
+# beaver = tm_style("beaver")+
+#           tm_shape(africa)+
+#             tm_polygons()+
+#               tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
+#                 title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
+# 
+# albatross = tm_style("albatross")+
+#             tm_shape(africa)+
+#               tm_polygons()+
+#                  tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
+#                   title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
+# 
+# tmap_arrange(classic, beaver, albatross)
 
 ```
 
 ### Visualising different datasets in one map
 `tmap` not only allows us to add extra layers to a single map by building on a basic structure, but it also enables us to join two separate datasets in a single map. We first create an object called *countries* which is a map with African countries:
 ```{r c5-tmap-combine1, warning=FALSE, out.width="75%"}
-#read in data
-data(africountries)
-#create an object
-countries = tm_shape(africountries)+
-  tm_polygons(col = "lightblue", alpha = 0.3)
-#view object called "countries"
-countries
+# #read in data
+# data(africountries)
+# #create an object
+# countries = tm_shape(africountries)+
+#   tm_polygons(col = "lightblue", alpha = 0.3)
+# #view object called "countries"
+# countries
 ```
 
 Then we use it as an argument to merge it with a map containing the location of capitals.
 
 ```{r c5-tmap-combine2, warning=FALSE, out.width="75%"}
-#read in data with capitals
-data(africapitals)
-#merge two maps
-countries+
-  tm_shape(africapitals)+  #uses dataset with capitals
-    tm_dots(col = "red", size = 0.15)+       #adds dots on the map
-      tm_layout(title = "Capital cities of Africa" , title.position = c("right", "top"), title.size = 1) #add and adjust map title
+# #read in data with capitals
+# data(africapitals)
+# #merge two maps
+# countries+
+#   tm_shape(africapitals)+  #uses dataset with capitals
+#     tm_dots(col = "red", size = 0.15)+       #adds dots on the map
+#       tm_layout(title = "Capital cities of Africa" , title.position = c("right", "top"), title.size = 1) #add and adjust map title
 
 ```
 
@@ -326,16 +326,16 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 
 ```{r c5-tmap-interactive, warning=FALSE}
-#sets interactive mode
-tmap_mode("view")
-
-tm_shape(africa)+
-  tm_borders()+
-    tm_shape(africapitals)+
-    tm_dots(col = "white", border.col = "blue", size = 0.1)+ #capital dots settings
-    tm_text("capitalname")+ #adds capital names
-        tm_shape(afrihighway)+
-    tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
+# #sets interactive mode
+# tmap_mode("view")
+# 
+# tm_shape(africa)+
+#   tm_borders()+
+#     tm_shape(africapitals)+
+#     tm_dots(col = "white", border.col = "blue", size = 0.1)+ #capital dots settings
+#     tm_text("capitalname")+ #adds capital names
+#         tm_shape(afrihighway)+
+#     tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
 
 ```
 
@@ -343,13 +343,13 @@ Regardless of the mode, the creation of maps using `tmap` package is easy and co
 
 
 ```{r c5-tmap-basemap}
-tm_basemap("OpenTopoMap")+
-tm_shape(africa)+
-  tm_borders()+
-    tm_shape(africapitals)+
-    tm_dots(col = "black")+ #capital dots settings
-        tm_shape(afrihighway)+
-    tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
+# tm_basemap("OpenTopoMap")+
+# tm_shape(africa)+
+#   tm_borders()+
+#     tm_shape(africapitals)+
+#     tm_dots(col = "black")+ #capital dots settings
+#         tm_shape(afrihighway)+
+#     tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
 
 ```
 
@@ -358,17 +358,17 @@ tm_shape(africa)+
 Let's assume that we are only interested in the subset of our data for example a specific country or the location of large airports only. We can achieve it using `dplyr` package. 
 
 ```{r c5-tmap-subset}
-tmap_mode("view")
-data(afriairports)
-
-#take a subset of data
-large = afriairports %>% filter(type=="large_airport")
-
-#plot the subset
-tm_shape(africa)+
-  tm_borders()+
-  tm_shape(large)+
-    tm_dots( col = "red")
+# tmap_mode("view")
+# data(afriairports)
+# 
+# #take a subset of data
+# large = afriairports %>% filter(type=="large_airport")
+# 
+# #plot the subset
+# tm_shape(africa)+
+#   tm_borders()+
+#   tm_shape(large)+
+#     tm_dots( col = "red")
 
 ```
 
@@ -398,7 +398,7 @@ In  this chapter we looked at how to produce static and interactive maps using d
 
 ## Exercise solutions {#solutions_ch5}
 ```{r, include = FALSE}
-tmap_mode("plot")
+#tmap_mode("plot")
 ```
 
 - Exercise 5.2.1
@@ -409,63 +409,63 @@ tmap_mode("plot")
 
 - Exercise 5.3.1
 ```{r c5-ex-5.3.1, out.width="60%"}
-tm_shape(africa)+
- tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 0.4)
+# tm_shape(africa)+
+#  tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 0.4)
 ```
 
 - Exercise 5.3.2
 ```{r c5-ex-5.3.2, out.width="60%"}
-tm_shape(africa)+
- tm_fill(col = "lightblue")+
- tm_borders(col = "red", lty = "dotted", alpha = 1)
+# tm_shape(africa)+
+#  tm_fill(col = "lightblue")+
+#  tm_borders(col = "red", lty = "dotted", alpha = 1)
 ```
 
 - Exercise 5.3.3
 ```{r c5-ex-5.3.3, out.width="60%"}
-custom_breaks = c(0, 2, 3, 4, 5, 10,20, 30, 50) * 10000
-tm_shape(africa)+
- tm_polygons(col = "gdp_md_est", title = "GDP",  breaks = custom_breaks)
+# custom_breaks = c(0, 2, 3, 4, 5, 10,20, 30, 50) * 10000
+# tm_shape(africa)+
+#  tm_polygons(col = "gdp_md_est", title = "GDP",  breaks = custom_breaks)
 ```
 
 - Exercise 5.3.4
 ```{r c5-ex-5.3.4, out.width="60%"}
-map_contour = tm_shape(africa)+
-  tm_fill(col = "lightgreen")
-data(afrihighway)
-map_contour +
-  tm_shape(afrihighway)+
-  tm_lines()+
-  tm_layout(title = "Highways in Africa", title.position = c("center", "bottom"))
+# map_contour = tm_shape(africa)+
+#   tm_fill(col = "lightgreen")
+# data(afrihighway)
+# map_contour +
+#   tm_shape(afrihighway)+
+#   tm_lines()+
+#   tm_layout(title = "Highways in Africa", title.position = c("center", "bottom"))
 
 ```
 
 - Exercise 5.4.1
 
 ```{r c5-ex-5.4.1, out.width="60%"}
-tmap_mode("view")
-
-
-tm_basemap("Stamen.Watercolor")+
-tm_shape(africa)+
-  tm_borders()+
-    tm_shape(africapitals)+
-    tm_dots(col = "white", border.col = "black")+ #capital dots settings
-    tm_text("capitalname", size = 1.2)+
-        tm_shape(afrihighway)+
-    tm_lines(col = "blue", lwd = 3) #highway lines setting
+# tmap_mode("view")
+# 
+# 
+# tm_basemap("Stamen.Watercolor")+
+# tm_shape(africa)+
+#   tm_borders()+
+#     tm_shape(africapitals)+
+#     tm_dots(col = "white", border.col = "black")+ #capital dots settings
+#     tm_text("capitalname", size = 1.2)+
+#         tm_shape(afrihighway)+
+#     tm_lines(col = "blue", lwd = 3) #highway lines setting
 
 ```
 
 - Exercise 5.4.2
 
 ```{r c5-ex-5.4.2}
-tmap_mode("view")
-data(africountries)
-
-#take a subset of data
-small = africountries %>% filter(pop_est < 10000000)
-
-tm_shape(small)+
-  tm_polygons(col = "pop_est")
+# tmap_mode("view")
+# data(africountries)
+# 
+# #take a subset of data
+# small = africountries %>% filter(pop_est < 10000000)
+# 
+# tm_shape(small)+
+#   tm_polygons(col = "pop_est")
 
 ```
