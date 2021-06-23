@@ -131,7 +131,7 @@ There are different approaches that can be used to import your data sets, depend
 
 For example, install and load packages containing data sets:
 ```{r, results='hide', warning=FALSE, message=FALSE}
-remotes::install_github("afrimapr/afrilearndata")
+#remotes::install_github("afrimapr/afrilearndata")
 
 library(afrilearndata)
 ```
