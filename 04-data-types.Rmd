@@ -234,13 +234,12 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 In the below exercise we have tried to visualise all the capitals and *only* the roads starting with the letter 'b'.
 However, we have messed up the order of the code. Can you rearrange the code? 
 ```{r, eval=FALSE, warning=FALSE, message=FALSE}
+afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
 
-# tm_shape(africapitals) +
-#     tm_shape(afrihighway_ex1)+
-#   tm_dots("blue", size=0.5)+
-#   tm_lines("blue") 
-#afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
-
+tm_shape(africapitals) +
+  tm_dots("blue", size=0.5)+
+    tm_shape(afrihighway_ex1)+
+  tm_lines("blue")
 ```
 
 Answer:
