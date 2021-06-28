@@ -131,13 +131,13 @@ tm_shape(africa)+
 Intuitively to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows us to achieve exactly the same result more efficiently. It draws the polygons borders and fills them.
 
 ```{r c5-tmap-countries4,fig.show="hold", out.width="50%"}
-# 
-# tm_shape(africa)+
-#  tm_borders()+
-#   tm_fill()
-# 
-# tm_shape(africa)+
-#  tm_polygons()
+
+tm_shape(africa)+
+ tm_borders()+
+  tm_fill()
+
+tm_shape(africa)+
+ tm_polygons()
 
 ```
 
