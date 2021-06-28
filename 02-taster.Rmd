@@ -13,12 +13,12 @@ cran_packages_to_install <- c(
   "s2",                # package for working with spatial data
   "rnaturalearth",     # data package
   "rnaturalearthdata", # data package
-  "afrilearndata",     # datapackage
   "tmaptools",         # map building package
   "raster"
   )
 
 install.packages(cran_packages_to_install)
+remotes::install_github("afrimapr/afrilearndata")
 ```
 
 ```{r, c2-libraries, results='hide', warning=FALSE, message=FALSE, include = FALSE}
