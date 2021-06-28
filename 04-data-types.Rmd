@@ -272,6 +272,7 @@ Answer:
 # x Assigned data has 99 rows.
 
 # afrihighway$length=tapply(st_length(afrihighway), afrihighway$Name, sum)
+#                     
 # tm_shape(afrihighway) +
 #  tm_lines(lwd = `length`)
 
