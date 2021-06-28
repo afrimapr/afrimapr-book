@@ -30,7 +30,7 @@ cran_packages_to_install <- c(
   )
 install.packages(cran_packages_to_install)
 #remotes::install_github("afrimapr/afrilearnr")
-#remotes::install_github("r-spatial/mapview@develop")
+remotes::install_github("r-spatial/mapview@develop")
 remotes::install_github("afrimapr/afrilearndata")
 ```
 
