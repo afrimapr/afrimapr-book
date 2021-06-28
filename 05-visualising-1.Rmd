@@ -76,7 +76,7 @@ We can easily fill an interactive map with the colours based on one of the colum
 
 
 ```{r c5-mapview-countries2}
-#mapview(africountries, zcol = ("pop_est"))
+mapview(africountries, zcol = ("pop_est"))
 ```
 
 Similarly, we can control for other features such as line width (lwd), colour of polygons (col.regions). Another important feature that we might want to control is the underlying map which we set with 'map.types' argument. The available background maps can be viewed [here](http://leaflet-extras.github.io/leaflet-providers/preview/).
