@@ -6,13 +6,14 @@ This chapter shows the steps through an example process of map-making. It demons
 ```{r, c2-packages, results='hide', warning=FALSE, message=FALSE, include = FALSE, eval=FALSE}
 #Install packages
 cran_packages_to_install <- c(
-  "ggplot" ,            # plot-making package
+  "ggplot" ,           # plot-making package
   "tmap",              # map-making package for static and interactive maps
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
+  "s2",                # package for working with spatial data
   "rnaturalearth",     # data package
   "rnaturalearthdata", # data package
-  "afrilearndata",     #datapackage
+  "afrilearndata",     # datapackage
   "tmaptools",         # map building package
   "raster"
   )
@@ -25,6 +26,7 @@ install.packages(cran_packages_to_install)
 library(tmap)
 library(ggplot2)
 library(sf)
+library(s2)
 library(afrilearndata)
 library(rnaturalearth)
 library(rnaturalearthdata)
@@ -43,18 +45,21 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 
 ## Simple maps
 ```{r c2-simple-map}
-# tmap_mode("plot") 
-# map_1 = tm_shape(africountries) +
-#     tm_polygons()
-# 
-# map_2 = tm_shape(africountries) + 
-#     tm_polygons(col = "pop_est", title = "Population") 
-# 
-# map_3 = map_1 +
-#   tm_shape(afrihighway) + 
-#     tm_lines(col = "blue")
-# 
-# tmap_arrange(map_1, map_2, map_3)
+
+sf_use_s2(FALSE) #switches off spherical geometry, needed after sf package update
+
+
+tm_shape(africountries) +
+    tm_polygons()
+
+map_2 = tm_shape(africountries) +
+    tm_polygons(col = "pop_est", title = "Population")
+
+map_3 = map_1 +
+  tm_shape(afrihighway) +
+    tm_lines(col = "blue")
+
+tmap_arrange(map_1, map_2, map_3)
 
 ```
 
