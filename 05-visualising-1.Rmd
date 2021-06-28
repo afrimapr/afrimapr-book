@@ -91,7 +91,6 @@ Further, mapview allows us to easily build up many layers within a single map. H
 
 ```{r c5-mapview-airports}
 # simple map with two layers
-# data(afriairports)
 mapview(list(africountries,afriairports), layer.name = c("Countries", "Airports"))
 
 #map with advanced layers options
@@ -121,11 +120,11 @@ Next, we create an empty contour map of the continent, where `tm_shape()` functi
 
 ```{r c5-tmap-countries2, fig.show='hold', out.width="50%"}
 
-# tm_shape(africa)+
-#  tm_borders()
-# 
-# tm_shape(africa)+
-#  tm_fill()
+tm_shape(africa)+
+ tm_borders()
+
+tm_shape(africa)+
+ tm_fill()
 
 ```
 
