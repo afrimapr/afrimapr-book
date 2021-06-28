@@ -397,74 +397,74 @@ In  this chapter we looked at how to produce static and interactive maps using d
 
 ## Exercise solutions {#solutions_ch5}
 ```{r, include = FALSE}
-#tmap_mode("plot")
+tmap_mode("plot")
 ```
 
 - Exercise 5.2.1
 
 ```{r c5-ex-5.2.1, out.width="60%"}
-#mapview(africountries, zcol = "income_grp") + mapview(africapitals)
+mapview(africountries, zcol = "income_grp") + mapview(africapitals)
 ```
 
 - Exercise 5.3.1
 ```{r c5-ex-5.3.1, out.width="60%"}
-# tm_shape(africa)+
-#  tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 0.4)
+ tm_shape(africa)+
+  tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 0.4)
 ```
 
 - Exercise 5.3.2
 ```{r c5-ex-5.3.2, out.width="60%"}
-# tm_shape(africa)+
-#  tm_fill(col = "lightblue")+
-#  tm_borders(col = "red", lty = "dotted", alpha = 1)
+tm_shape(africa)+
+ tm_fill(col = "lightblue")+
+ tm_borders(col = "red", lty = "dotted", alpha = 1)
 ```
 
 - Exercise 5.3.3
 ```{r c5-ex-5.3.3, out.width="60%"}
-# custom_breaks = c(0, 2, 3, 4, 5, 10,20, 30, 50) * 10000
-# tm_shape(africa)+
-#  tm_polygons(col = "gdp_md_est", title = "GDP",  breaks = custom_breaks)
+custom_breaks = c(0, 2, 3, 4, 5, 10,20, 30, 50) * 10000
+tm_shape(africa)+
+ tm_polygons(col = "gdp_md_est", title = "GDP",  breaks = custom_breaks)
 ```
 
 - Exercise 5.3.4
 ```{r c5-ex-5.3.4, out.width="60%"}
-# map_contour = tm_shape(africa)+
-#   tm_fill(col = "lightgreen")
-# data(afrihighway)
-# map_contour +
-#   tm_shape(afrihighway)+
-#   tm_lines()+
-#   tm_layout(title = "Highways in Africa", title.position = c("center", "bottom"))
+map_contour = tm_shape(africa)+
+  tm_fill(col = "lightgreen")
+data(afrihighway)
+map_contour +
+  tm_shape(afrihighway)+
+  tm_lines()+
+  tm_layout(title = "Highways in Africa", title.position = c("center", "bottom"))
 
 ```
 
 - Exercise 5.4.1
 
 ```{r c5-ex-5.4.1, out.width="60%"}
-# tmap_mode("view")
-# 
-# 
-# tm_basemap("Stamen.Watercolor")+
-# tm_shape(africa)+
-#   tm_borders()+
-#     tm_shape(africapitals)+
-#     tm_dots(col = "white", border.col = "black")+ #capital dots settings
-#     tm_text("capitalname", size = 1.2)+
-#         tm_shape(afrihighway)+
-#     tm_lines(col = "blue", lwd = 3) #highway lines setting
+tmap_mode("view")
+
+
+tm_basemap("Stamen.Watercolor")+
+tm_shape(africa)+
+  tm_borders()+
+    tm_shape(africapitals)+
+    tm_dots(col = "white", border.col = "black")+ #capital dots settings
+    tm_text("capitalname", size = 1.2)+
+        tm_shape(afrihighway)+
+    tm_lines(col = "blue", lwd = 3) #highway lines setting
 
 ```
 
 - Exercise 5.4.2
 
 ```{r c5-ex-5.4.2}
-# tmap_mode("view")
-# data(africountries)
-# 
-# #take a subset of data
-# small = africountries %>% filter(pop_est < 10000000)
-# 
-# tm_shape(small)+
-#   tm_polygons(col = "pop_est")
+tmap_mode("view")
+data(africountries)
+
+#take a subset of data
+small = africountries %>% filter(pop_est < 10000000)
+
+tm_shape(small)+
+  tm_polygons(col = "pop_est")
 
 ```
