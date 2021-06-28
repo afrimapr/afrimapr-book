@@ -205,9 +205,9 @@ It is important to bear in mind that same information can be displayed on the ma
 
 
 ```{r c5-tmap-bubbles, out.width="75%"}
-# tm_shape(africa)+
-#  tm_polygons(col = "lightyellow")+
-#   tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level", title.size = "Population")
+tm_shape(africa)+
+ tm_polygons(col = "lightyellow")+
+  tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level", title.size = "Population")
 
 ```
 
