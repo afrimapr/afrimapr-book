@@ -218,69 +218,69 @@ An important aspect of the maps, as in every visual representation, are the colo
 
 ```{r c5-tmap-palette, warning=FALSE, message = FALSE, results='hide', fig.cap = "Africa's maps using different pallete options."}
 
-# set1 = tm_shape(africa)+
-#          tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1")
-# 
-# plasma = tm_shape(africa)+
-#           tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma")
-# 
-# tmap_arrange(set1, plasma)
+set1 = tm_shape(africa)+
+         tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1")
+
+plasma = tm_shape(africa)+
+          tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma")
+
+tmap_arrange(set1, plasma)
 
 ```
 
 Alternatively an overall style of a single map can be easily changed using `tm_style` function. However, it might also be useful to change the style in all the maps in the document. This can be achieved with setting the style globally with `tmap_style("nameofthestyle")`. The default style is called "white", hence to restore a default style setting use `tmap_style("white")`. 
 
 ```{r, include = FALSE}
-#tmap_mode("plot")
+tmap_mode("plot")
 ```
 
 
 ```{r c5-tmap-style,message = FALSE, fig.cap = "Examples of different styles."}
-# 
-# classic = tm_style("classic")+
-#             tm_shape(africa)+
-#               tm_polygons()+
-#                 tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
-#                   title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
-# 
-# beaver = tm_style("beaver")+
-#           tm_shape(africa)+
-#             tm_polygons()+
-#               tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
-#                 title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
-# 
-# albatross = tm_style("albatross")+
-#             tm_shape(africa)+
-#               tm_polygons()+
-#                  tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
-#                   title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
-# 
-# tmap_arrange(classic, beaver, albatross)
+
+classic = tm_style("classic")+
+            tm_shape(africa)+
+              tm_polygons()+
+                tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
+                  title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
+
+beaver = tm_style("beaver")+
+          tm_shape(africa)+
+            tm_polygons()+
+              tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
+                title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
+
+albatross = tm_style("albatross")+
+            tm_shape(africa)+
+              tm_polygons()+
+                 tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
+                  title.size = "Population", labels = c("High", "Upper middle", "Lower middle", "Lower"))
+
+tmap_arrange(classic, beaver, albatross)
 
 ```
 
 ### Visualising different datasets in one map
 `tmap` not only allows us to add extra layers to a single map by building on a basic structure, but it also enables us to join two separate datasets in a single map. We first create an object called *countries* which is a map with African countries:
 ```{r c5-tmap-combine1, warning=FALSE, out.width="75%"}
-# #read in data
-# data(africountries)
-# #create an object
-# countries = tm_shape(africountries)+
-#   tm_polygons(col = "lightblue", alpha = 0.3)
-# #view object called "countries"
-# countries
+#read in data
+data(africountries)
+#create an object
+countries = tm_shape(africountries)+
+  tm_polygons(col = "lightblue", alpha = 0.3)
+#view object called "countries"
+countries
 ```
 
 Then we use it as an argument to merge it with a map containing the location of capitals.
 
 ```{r c5-tmap-combine2, warning=FALSE, out.width="75%"}
-# #read in data with capitals
-# data(africapitals)
-# #merge two maps
-# countries+
-#   tm_shape(africapitals)+  #uses dataset with capitals
-#     tm_dots(col = "red", size = 0.15)+       #adds dots on the map
-#       tm_layout(title = "Capital cities of Africa" , title.position = c("right", "top"), title.size = 1) #add and adjust map title
+#read in data with capitals
+data(africapitals)
+#merge two maps
+countries+
+  tm_shape(africapitals)+  #uses dataset with capitals
+    tm_dots(col = "red", size = 0.15)+       #adds dots on the map
+      tm_layout(title = "Capital cities of Africa" , title.position = c("right", "top"), title.size = 1) #add and adjust map title
 
 ```
 
