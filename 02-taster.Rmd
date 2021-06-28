@@ -49,7 +49,7 @@ africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf
 sf_use_s2(FALSE) #switches off spherical geometry, needed after sf package update
 
 
-tm_shape(africountries) +
+map_1 = tm_shape(africountries) +
     tm_polygons()
 
 map_2 = tm_shape(africountries) +
