@@ -167,20 +167,20 @@ tm_shape(africa)+
 Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to to much clustering of information. Instead, we might want to use `breaks` argument to set them up manually to provide more differentiation visually. For clarity, I set up the customised breaks outside of the map-making function. Alternatively, we can control number of so-called `bins` (groups) into which the **Population** is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons` function.
 
 ```{r c5-tmap-countries-breaks, message = FALSE, fig.cap = "Africa's population with default breaks (left), customised breaks (middle) and divided in bins (right)."}
-# #default settings
-# default_map = tm_shape(africa)+
-#                 tm_polygons(col = "pop_est", title = "Population")
-# 
-# #set up breaks manually
-# custom_breaks = c(0, 1, 4, 7, 10, 30, 50, 70, 100, 120, 150) * 1000000
-# custom_map = tm_shape(africa)+
-#               tm_polygons(col = "pop_est", title = "Population", breaks = custom_breaks)
-# 
-# #set up a number of bins
-# bins_map = tm_shape(africa)+
-#             tm_polygons(col = "pop_est", title = "Population", n = 15)
-# 
-# tmap_arrange(default_map, custom_map, bins_map)
+#default settings
+default_map = tm_shape(africa)+
+                tm_polygons(col = "pop_est", title = "Population")
+
+#set up breaks manually
+custom_breaks = c(0, 1, 4, 7, 10, 30, 50, 70, 100, 120, 150) * 1000000
+custom_map = tm_shape(africa)+
+              tm_polygons(col = "pop_est", title = "Population", breaks = custom_breaks)
+
+#set up a number of bins
+bins_map = tm_shape(africa)+
+            tm_polygons(col = "pop_est", title = "Population", n = 15)
+
+tmap_arrange(default_map, custom_map, bins_map)
 ```
 
 So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable with income level. It allows for visual grouping of countries in the same category. The names of the categories in the legend were adjusted using `labels` argument. In the similar manner we can show the airports of Africa according to their size.
