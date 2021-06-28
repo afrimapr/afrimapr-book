@@ -83,8 +83,8 @@ Similarly, we can control for other features such as line width (lwd), colour of
 
 
 ```{r c5-mapview-countries3}
-#mapview(africountries, color = "red", 
- #      lwd = 1.5, col.regions = "white", map.types = "Esri.WorldShadedRelief")
+mapview(africountries, color = "red", 
+      lwd = 1.5, col.regions = "white", map.types = "Esri.WorldShadedRelief")
 ```
 
 Further, mapview allows us to easily build up many layers within a single map. Here, we firstly include countries and then add location of airports. Further a useful option is `layer.name` which allows us to control the naming of different layers of the map. The specific layers can be controlled and adjusted as showed in the example. In partucular, we set the colour of countries polygons according to the population size. It is possible to use layer button to hide and unhide layers of the map.
