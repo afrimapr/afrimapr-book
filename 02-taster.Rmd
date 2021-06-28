@@ -124,14 +124,14 @@ tmap_arrange(map_basic_2, map_highways, map_named)
 
 ## Interactive maps
 ```{r c2-interactive_map, fig.show="hold", out.width="50%"}
-# tmap_mode("view") 
-# 
-# breaks=c(0,2,20,200,2000,25000)
-# 
-# tm_shape(afripop2020) +
-#     tm_raster(breaks=breaks, title = "Population per km sq") +
-# tm_shape(afrihighway) +
-#     tm_lines(col = "blue") + 
-# tm_shape(africapitals) +
-#     tm_dots(col = "black", alpha=0.5)
+tmap_mode("view")
+
+breaks=c(0,2,20,200,2000,25000)
+
+tm_shape(afripop2020) +
+    tm_raster(breaks=breaks, title = "Population per km sq") +
+tm_shape(afrihighway) +
+    tm_lines(col = "blue") +
+tm_shape(africapitals) +
+    tm_dots(col = "black", alpha=0.5)
 ```
