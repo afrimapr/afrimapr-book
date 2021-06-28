@@ -11,6 +11,7 @@ We can download administrative boundaries of countries with the `rgeoboundaries`
 For example, we can download the administrative boundaries of Nigeria with `geoboundaries()` as follows.
 
 ```{r}
+install.packages("rgeoboundaries")
 library(rgeoboundaries)
 library(ggplot2)
 # map <- geoboundaries("Nigeria")
