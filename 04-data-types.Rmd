@@ -132,11 +132,11 @@ Below, We have visualised all capitals with > 1.400.000 people using green squar
 
 ```{r, warning=FALSE, message=FALSE}
 
-#africapitals_filtered=africapitals %>%
-#  dplyr::filter((africapitals$iso3c) > 1.400.000)
+africapitals_filtered=africapitals %>%
+ dplyr::filter((africapitals$iso3c) > 1400000)
 
-#tm_shape(africapitals_filtered) +
-#  tm_dots("green", size=0.5)
+tm_shape(africapitals_filtered) +
+ tm_dots("green", size=0.5)
 
 ```
 
