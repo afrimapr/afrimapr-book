@@ -90,13 +90,13 @@ mapview(africountries, color = "red",
 Further, mapview allows us to easily build up many layers within a single map. Here, we firstly include countries and then add location of airports. Further a useful option is `layer.name` which allows us to control the naming of different layers of the map. The specific layers can be controlled and adjusted as showed in the example. In partucular, we set the colour of countries polygons according to the population size. It is possible to use layer button to hide and unhide layers of the map.
 
 ```{r c5-mapview-airports}
-# # simple map with two layers
-# # data(afriairports)
-# mapview(list(africountries,afriairports), layer.name = c("Countries", "Airports"))
-# 
-# #map with advanced layers options
-# mapview(africountries, zcol = "pop_est", layer.name = "Population") +
-#   mapview(afriairports, layer.name = "Airports location")
+# simple map with two layers
+# data(afriairports)
+mapview(list(africountries,afriairports), layer.name = c("Countries", "Airports"))
+
+#map with advanced layers options
+mapview(africountries, zcol = "pop_est", layer.name = "Population") +
+  mapview(afriairports, layer.name = "Airports location")
 ```
 
 The link to full documentation is available in *Further resources* section. 
