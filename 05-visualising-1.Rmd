@@ -325,16 +325,16 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 
 ```{r c5-tmap-interactive, warning=FALSE}
-# #sets interactive mode
-# tmap_mode("view")
-# 
-# tm_shape(africa)+
-#   tm_borders()+
-#     tm_shape(africapitals)+
-#     tm_dots(col = "white", border.col = "blue", size = 0.1)+ #capital dots settings
-#     tm_text("capitalname")+ #adds capital names
-#         tm_shape(afrihighway)+
-#     tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
+#sets interactive mode
+tmap_mode("view")
+
+tm_shape(africa)+
+  tm_borders()+
+    tm_shape(africapitals)+
+    tm_dots(col = "white", border.col = "blue", size = 0.1)+ #capital dots settings
+    tm_text("capitalname")+ #adds capital names
+        tm_shape(afrihighway)+
+    tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
 
 ```
 
@@ -342,13 +342,13 @@ Regardless of the mode, the creation of maps using `tmap` package is easy and co
 
 
 ```{r c5-tmap-basemap}
-# tm_basemap("OpenTopoMap")+
-# tm_shape(africa)+
-#   tm_borders()+
-#     tm_shape(africapitals)+
-#     tm_dots(col = "black")+ #capital dots settings
-#         tm_shape(afrihighway)+
-#     tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
+tm_basemap("OpenTopoMap")+
+tm_shape(africa)+
+  tm_borders()+
+    tm_shape(africapitals)+
+    tm_dots(col = "black")+ #capital dots settings
+        tm_shape(afrihighway)+
+    tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
 
 ```
 
@@ -357,17 +357,17 @@ Regardless of the mode, the creation of maps using `tmap` package is easy and co
 Let's assume that we are only interested in the subset of our data for example a specific country or the location of large airports only. We can achieve it using `dplyr` package. 
 
 ```{r c5-tmap-subset}
-# tmap_mode("view")
-# data(afriairports)
-# 
-# #take a subset of data
-# large = afriairports %>% filter(type=="large_airport")
-# 
-# #plot the subset
-# tm_shape(africa)+
-#   tm_borders()+
-#   tm_shape(large)+
-#     tm_dots( col = "red")
+tmap_mode("view")
+data(afriairports)
+
+#take a subset of data
+large = afriairports %>% filter(type=="large_airport")
+
+#plot the subset
+tm_shape(africa)+
+  tm_borders()+
+  tm_shape(large)+
+    tm_dots( col = "red")
 
 ```
 
