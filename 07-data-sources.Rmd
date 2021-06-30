@@ -79,8 +79,8 @@ head(available_tags("amenity"))
 The first step in creating an `osmdata` query is defining the geographical area we wish to include in the query. This can be done by defining a bounding box that defines a geographical area by its bounding latitudes and longitudes.
 
 ```{r}
-# lagos_bb <- getbb("Lagos")
-# lagos_bb
+lagos_bb <- getbb("Lagos")
+lagos_bb
 ```
 
 To retrieve the required features of a place (defined by the bounding box), we have to then create an overpass query with `opq()`.
