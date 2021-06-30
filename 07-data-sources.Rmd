@@ -43,8 +43,8 @@ catalogue
 Then, we subset the catalogue for the country (e.g. Nigeria with ISO code NGA) and download the data for the selection using the `downloadData()` function.
 
 ```{r, eval = FALSE}
-#selection <- subset(catalogue, country == "NGA" & category == "Population" & version == "v1.2")
-#downloadData(selection)
+selection <- subset(catalogue, country == "NGA" & category == "Population" & version == "v1.2")
+downloadData(selection)
 ```
 
 Finally, we use the `sf` package to read in the downloaded shapefile and plot it with `ggplot()`.
