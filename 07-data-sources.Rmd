@@ -110,26 +110,26 @@ We can use `get_elev_raster()` to obtain the elevation of Ghana as follows.
 
 
 ```{r}
-# install.packages("elevatr")
-# library(ggplot2)
-# library(raster)
-# library(elevatr)
-# library(rgeoboundaries)
-# library(sf)
-# library(viridis)
-# 
-# map <- geoboundaries("Ghana")
-# 
-# elevation_data <- get_elev_raster(locations = map, z = 9, clip = "locations") 
-# 
-# elevation_data <- as.data.frame(elevation_data, xy = TRUE)
-# colnames(elevation_data)[3] = "elevation"
-# #remove rows of data frame with one or more NA's using complete.cases
-# elevation_data <- elevation_data[complete.cases(elevation_data), ] 
-# 
-# ggplot() + geom_raster(data = elevation_data, aes(x = x, y = y, fill = elevation)) +
-#   geom_sf(data = map, color = "white", fill = NA) +
-#   coord_sf() + scale_fill_viridis_c() + ggtitle("Elevation")
+install.packages("elevatr")
+library(ggplot2)
+library(raster)
+library(elevatr)
+library(rgeoboundaries)
+library(sf)
+library(viridis)
+
+map <- geoboundaries("Ghana")
+
+elevation_data <- get_elev_raster(locations = map, z = 9, clip = "locations")
+
+elevation_data <- as.data.frame(elevation_data, xy = TRUE)
+colnames(elevation_data)[3] = "elevation"
+#remove rows of data frame with one or more NA's using complete.cases
+elevation_data <- elevation_data[complete.cases(elevation_data), ]
+
+ggplot() + geom_raster(data = elevation_data, aes(x = x, y = y, fill = elevation)) +
+  geom_sf(data = map, color = "white", fill = NA) +
+  coord_sf() + scale_fill_viridis_c() + ggtitle("Elevation")
 
 ```
 
