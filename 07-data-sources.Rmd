@@ -87,9 +87,9 @@ To retrieve the required features of a place (defined by the bounding box), we h
 Then, the `add_osm_feature()` function can be used to add the required features to the query. Finally, we use the `osmdata_sf()` function to obtain a simple feature object of the resultant query.
 
 ```{r}
-# lagos_hospitals <- lagos_bb %>% opq() %>%
-#   add_osm_feature(key = "amenity", value = "hospital") %>%
-#   osmdata_sf()
+lagos_hospitals <- lagos_bb %>% opq() %>%
+  add_osm_feature(key = "amenity", value = "hospital") %>%
+  osmdata_sf()
 ```
 
 We can visualise an interactive map of the hospitals in Lagos as follows.
