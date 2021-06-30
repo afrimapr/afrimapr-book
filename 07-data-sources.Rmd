@@ -15,7 +15,7 @@ install.packages("rgeoboundaries")
 library(rgeoboundaries)
 library(ggplot2)
 map <- geoboundaries("Nigeria")
-ggplot(data = map) + geom_sf()
+# ggplot(data = map) + geom_sf()
 ```
 
 We can also download administrative boundaries of multiple countries and different administrative levels.
