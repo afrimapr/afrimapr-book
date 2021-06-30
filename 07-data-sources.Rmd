@@ -110,26 +110,26 @@ We can use `get_elev_raster()` to obtain the elevation of Ghana as follows.
 
 
 ```{r}
-install.packages("elevatr")
-library(ggplot2)
-library(raster)
-library(elevatr)
-library(rgeoboundaries)
-library(sf)
-library(viridis)
-
-map <- geoboundaries("Ghana")
-
-elevation_data <- get_elev_raster(locations = map, z = 9, clip = "locations")
-
-elevation_data <- as.data.frame(elevation_data, xy = TRUE)
-colnames(elevation_data)[3] = "elevation"
-#remove rows of data frame with one or more NA's using complete.cases
-elevation_data <- elevation_data[complete.cases(elevation_data), ]
-
-ggplot() + geom_raster(data = elevation_data, aes(x = x, y = y, fill = elevation)) +
-  geom_sf(data = map, color = "white", fill = NA) +
-  coord_sf() + scale_fill_viridis_c() + ggtitle("Elevation")
+# install.packages("elevatr")
+# library(ggplot2)
+# library(raster)
+# library(elevatr)
+# library(rgeoboundaries)
+# library(sf)
+# library(viridis)
+# 
+# map <- geoboundaries("Ghana")
+# 
+# elevation_data <- get_elev_raster(locations = map, z = 9, clip = "locations")
+# 
+# elevation_data <- as.data.frame(elevation_data, xy = TRUE)
+# colnames(elevation_data)[3] = "elevation"
+# #remove rows of data frame with one or more NA's using complete.cases
+# elevation_data <- elevation_data[complete.cases(elevation_data), ]
+# 
+# ggplot() + geom_raster(data = elevation_data, aes(x = x, y = y, fill = elevation)) +
+#   geom_sf(data = map, color = "white", fill = NA) +
+#   coord_sf() + scale_fill_viridis_c() + ggtitle("Elevation")
 
 ```
 
@@ -142,23 +142,23 @@ The `raster` package provides access to the [WorldClim](https://www.worldclim.or
 For example, we can can download maximum temperature at a resolution of 10 minutes as follows.
 
 ```{r}
-# library(raster)
-# library(ggplot2)
-# 
-# tmax_data <- getData(name = "worldclim", var = "tmax", res = 10)
-# 
-# # Degrees Celsius
-# gain(tmax_data) <- 0.1
-# 
-# # Converting the raster object into a dataframe
-# tmax_data_may_df <- as.data.frame(tmax_data$tmax5, xy = TRUE, na.rm = TRUE)
-# rownames(tmax_data_may_df) <- c()
-# 
-# # Plot
-# ggplot(data = tmax_data_may_df, aes(x=x,y=y)) + geom_raster(aes(fill = tmax5)) +
-#   labs(title = "Maximum temperature in May", subtitle = "For the years 1970-2000") +
-#   xlab("Longitude") + ylab("Latitude") +
-#   scale_fill_gradientn(name = "Temperature (°C)", colours=c("#0094D1","#68C1E6", "#FEED99","#AF3301"), breaks = c(-20, 0, 20, 40))
+library(raster)
+library(ggplot2)
+
+tmax_data <- getData(name = "worldclim", var = "tmax", res = 10)
+
+# Degrees Celsius
+gain(tmax_data) <- 0.1
+
+# Converting the raster object into a dataframe
+tmax_data_may_df <- as.data.frame(tmax_data$tmax5, xy = TRUE, na.rm = TRUE)
+rownames(tmax_data_may_df) <- c()
+
+# Plot
+ggplot(data = tmax_data_may_df, aes(x=x,y=y)) + geom_raster(aes(fill = tmax5)) +
+  labs(title = "Maximum temperature in May", subtitle = "For the years 1970-2000") +
+  xlab("Longitude") + ylab("Latitude") +
+  scale_fill_gradientn(name = "Temperature (°C)", colours=c("#0094D1","#68C1E6", "#FEED99","#AF3301"), breaks = c(-20, 0, 20, 40))
 ```
 
 
