@@ -95,10 +95,10 @@ lagos_hospitals <- lagos_bb %>% opq() %>%
 We can visualise an interactive map of the hospitals in Lagos as follows.
 
 ```{r}
-# library(leaflet)
-# leaflet() %>%  addTiles() %>%
-#   addPolygons(data = lagos_hospitals$osm_polygons,
-#               label = lagos_hospitals$osm_polygons$name)
+library(leaflet)
+leaflet() %>%  addTiles() %>%
+  addPolygons(data = lagos_hospitals$osm_polygons,
+              label = lagos_hospitals$osm_polygons$name)
 ```
 
 
