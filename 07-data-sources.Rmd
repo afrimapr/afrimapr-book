@@ -70,6 +70,7 @@ The `available_tags()` function lists out the tags associated with each feature.
 A list of the available features can be found in the [OSM wiki](https://wiki.openstreetmap.org/wiki/Map_Features).
 
 ```{r}
+install.packages("osmdata")
 library(osmdata)
 head(available_features())
 head(available_tags("amenity"))
