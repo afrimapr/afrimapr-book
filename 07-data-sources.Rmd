@@ -21,8 +21,8 @@ For example, we can download the administrative boundaries of Nigeria with `geob
 We can also download administrative boundaries of multiple countries and different administrative levels.
 
 ```{r}
-map <- geoboundaries(c("Nigeria", "Chad"), "adm1")
-ggplot(data = map) + geom_sf()
+# map <- geoboundaries(c("Nigeria", "Chad"), "adm1")
+# ggplot(data = map) + geom_sf()
 ```
 
 ## Population
