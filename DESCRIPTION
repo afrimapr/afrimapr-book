@@ -34,12 +34,14 @@ Imports:
     rgeos,
     afriadmin,
     afrilearndata,
+    rgeoboundaries,
     mapview
 Suggests:
     usethis
 Remotes:
   afrimapr/afriadmin,
-  afrimapr/afrilearndata
+  afrimapr/afrilearndat,
+  wmgeolab/rgeoboundaries
 License: CC BY-NC-ND 4.0
 Encoding: UTF-8
 LazyData: true
