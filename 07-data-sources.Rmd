@@ -266,7 +266,7 @@ We can also download the ‘Land Cover Type Yearly L3 Global 500m’ product wit
 # rownames(NDVI_df) <- c()
 # 
 # # Visualising using ggplot2
-# ggplot() + 
+# ggplot() +
 #   geom_raster(data = NDVI_df, aes(x = x, y = y, fill = MYD13A2_NDVI_2020_153)) +
 #   geom_sf(data = map_boundary, inherit.aes = FALSE, fill = NA) +
 #   scale_fill_viridis(name = "NDVI") +
@@ -281,24 +281,24 @@ The `rdhs` packages gives the users the ability to access and make analysis on t
 For example we can find out the trends in antimalarial use in Africa as follows.
 
 ```{r}
-# install.packages("rdhs")
-# library(rdhs)
-# 
-# # Make an api request
-# resp <- dhs_data(indicatorIds = "ML_FEVT_C_AML", surveyYearStart = 2010, breakdown = "subnational")
-# 
-# # filter it to 12 countries for space
-# countries  <- c("Angola","Ghana","Kenya","Liberia",
-#                 "Madagascar","Mali","Malawi","Nigeria",
-#                 "Rwanda","Sierra Leone","Senegal","Tanzania")
-# 
-# 
-# library(ggplot2)
-# ggplot(resp[resp$CountryName %in% countries, ],
-#        aes(x = SurveyYear, y = Value, colour = CountryName)) +
-#   geom_point() + geom_smooth(method = "glm") + 
-#   theme(axis.text.x = element_text(angle = 90, vjust = .5)) +
-#   ylab(resp$Indicator[1]) + facet_wrap(~ CountryName, ncol = 6) 
+install.packages("rdhs")
+library(rdhs)
+
+# Make an api request
+resp <- dhs_data(indicatorIds = "ML_FEVT_C_AML", surveyYearStart = 2010, breakdown = "subnational")
+
+# filter it to 12 countries for space
+countries  <- c("Angola","Ghana","Kenya","Liberia",
+                "Madagascar","Mali","Malawi","Nigeria",
+                "Rwanda","Sierra Leone","Senegal","Tanzania")
+
+
+library(ggplot2)
+ggplot(resp[resp$CountryName %in% countries, ],
+       aes(x = SurveyYear, y = Value, colour = CountryName)) +
+  geom_point() + geom_smooth(method = "glm") +
+  theme(axis.text.x = element_text(angle = 90, vjust = .5)) +
+  ylab(resp$Indicator[1]) + facet_wrap(~ CountryName, ncol = 6)
 ```
 
 
