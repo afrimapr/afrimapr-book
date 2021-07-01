@@ -40,7 +40,7 @@ Suggests:
     usethis
 Remotes:
   afrimapr/afriadmin,
-  afrimapr/afrilearndat,
+  afrimapr/afrilearndata,
   wmgeolab/rgeoboundaries
 License: CC BY-NC-ND 4.0
 Encoding: UTF-8
