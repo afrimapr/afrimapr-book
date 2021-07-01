@@ -316,8 +316,8 @@ The package enables users to download the following types of data:
 For example, we can download parasite rate survey data corresponding to Zimbabwe as follows.
 
 ```{r}
-# install.packages("malariaAtlas")
-# library(malariaAtlas)
-# d  <- getPR(country = "Zimbabwe", species = "BOTH") 
-# autoplot(d)
+install.packages("malariaAtlas")
+library(malariaAtlas)
+d  <- getPR(country = "Zimbabwe", species = "BOTH")
+autoplot(d)
 ```
