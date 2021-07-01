@@ -170,38 +170,38 @@ For example, we can use `get_power()`, to obtain global rainfall (specifying `pa
 
 
 ```{r, eval = FALSE}
-# library(nasapower)
-# library(terra)
-# library(viridis)
-# 
-# climate_avg <- get_power(community = "AG", pars = "PRECTOT",
-#                          lonlat = "GLOBAL", temporal_average = "CLIMATOLOGY")
-# 
-# 
-# library("rnaturalearth")
-# map <- ne_countries(returnclass = "sf")
-# 
-# climate_box <- split(climate_avg, climate_avg$PARAMETER)
-# climate_box <- lapply(climate_box, function(x){
-#   x["PARAMETER"] <- NULL
-#   x})
-# climate_box <- lapply(X = climate_box, FUN = as.matrix)
-# 
-# #retrieving precipitation data using the above made climate_box() function
-# PRECTOT <- terra::rast(climate_box$PRECTOT[,c(1:2, 15)],
-#      crs = "+proj=eqc +lat_ts=0 +lat_0=0 +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs", type = "xyz")
-# 
-# #converting above raster object into a data.frame for mapping 
-# PRECTOT_df <- as.data.frame(PRECTOT, xy = TRUE, na.rm = TRUE)
-# rownames(PRECTOT_df) <- c()
-# 
-# 
-# #plotting the graph
-# ggplot() + 
-#   geom_raster(data = PRECTOT_df, aes(x = x, y = y, fill = ANN)) +
-#   geom_sf(data = map, inherit.aes = FALSE, fill = NA) + 
-#   scale_fill_viridis() +
-#   labs(title = "Rainfall in inches", fill = "Annual Rainfall")
+library(nasapower)
+library(terra)
+library(viridis)
+
+climate_avg <- get_power(community = "AG", pars = "PRECTOT",
+                         lonlat = "GLOBAL", temporal_average = "CLIMATOLOGY")
+
+
+library("rnaturalearth")
+map <- ne_countries(returnclass = "sf")
+
+climate_box <- split(climate_avg, climate_avg$PARAMETER)
+climate_box <- lapply(climate_box, function(x){
+  x["PARAMETER"] <- NULL
+  x})
+climate_box <- lapply(X = climate_box, FUN = as.matrix)
+
+#retrieving precipitation data using the above made climate_box() function
+PRECTOT <- terra::rast(climate_box$PRECTOT[,c(1:2, 15)],
+     crs = "+proj=eqc +lat_ts=0 +lat_0=0 +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs", type = "xyz")
+
+#converting above raster object into a data.frame for mapping
+PRECTOT_df <- as.data.frame(PRECTOT, xy = TRUE, na.rm = TRUE)
+rownames(PRECTOT_df) <- c()
+
+
+#plotting the graph
+ggplot() +
+  geom_raster(data = PRECTOT_df, aes(x = x, y = y, fill = ANN)) +
+  geom_sf(data = map, inherit.aes = FALSE, fill = NA) +
+  scale_fill_viridis() +
+  labs(title = "Rainfall in inches", fill = "Annual Rainfall")
 
 ```
 
