@@ -42,8 +42,6 @@ library(mapview)
 library(ggplot2)
 library(sf)
 library(afrilearndata)
-# library(rnaturalearth)
-# library(rnaturalearthdata)
 library(dplyr)
 library(tmaptools)
 #library(afrilearnr)
@@ -132,11 +130,11 @@ Intuitively to create a map with both layers, we need to include `tm_fill()` and
 
 ```{r c5-tmap-countries4,fig.show="hold", out.width="50%"}
 
-tm_shape(africa)+
+tm_shape(africountries)+
  tm_borders()+
   tm_fill()
 
-tm_shape(africa)+
+tm_shape(africountries)+
  tm_polygons()
 
 ```
