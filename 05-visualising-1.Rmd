@@ -155,7 +155,7 @@ tm_shape(africountries)+
 
 tm_shape(africountries)+
  tm_polygons(col = "lastcensus", title = "Year of last census")+
- tm_text("admin", size = 0.52, fontface = "bold", auto.placement = TRUE)
+ tm_text("name", size = 0.52, fontface = "bold", auto.placement = TRUE)
 
 ```
 
