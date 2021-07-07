@@ -11,8 +11,6 @@ cran_packages_to_install <- c(
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
   "s2",                # package for working with spatial data
-  "rnaturalearth",     # data package
-  "rnaturalearthdata", # data package
   "tmaptools",         # map building package
   "raster"
   )
@@ -28,8 +26,6 @@ library(ggplot2)
 library(sf)
 library(s2)
 library(afrilearndata)
-library(rnaturalearth)
-library(rnaturalearthdata)
 library(dplyr)
 library(tmaptools)
 library(raster) 
@@ -39,8 +35,6 @@ library(raster)
 #static mode activated
 tmap_mode("plot")
 
-#create dataset
-africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 ```
 
 ## Simple maps
@@ -68,7 +62,7 @@ tmap_arrange(map_1, map_2, map_3)
 
 #Create an empty map of Africa using a classic style
 map_basic = tm_style("classic")+
-tm_shape(africa)+
+tm_shape(africountries)+
  tm_polygons()+
   tm_layout(title = "Africa", title.position = c("center", "top"),
             inner.margins = 0.05, legend.text.size = 0.47)
@@ -101,7 +95,7 @@ tmap_arrange(map_basic, map_points, map_bubbles)
 
 #Basic map 2
 map_basic_2 = tm_style("watercolor")+
-  tm_shape(africa)+
+  tm_shape(africountries)+
       tm_fill(col = "pop_est", style = "jenks", title = "Population")+
         tm_layout(title = "Africa",
                   title.position = c("center", "top"), legend.text.size = 0.50)
