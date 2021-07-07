@@ -24,8 +24,6 @@ cran_packages_to_install <- c(
   "tmap",              # map-making package for static and interactive maps
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
- # "rnaturalearth",     # data package
- # "rnaturalearthdata", # data package
   "tmaptools"          # map building package
   )
 install.packages(cran_packages_to_install)
