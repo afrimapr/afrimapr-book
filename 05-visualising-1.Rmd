@@ -24,8 +24,8 @@ cran_packages_to_install <- c(
   "tmap",              # map-making package for static and interactive maps
   "tidyverse",         # metapackage containing dplyr, ggplot2 and other packages
   "sf",                # package for working with spatial data
-  "rnaturalearth",     # data package
-  "rnaturalearthdata", # data package
+ # "rnaturalearth",     # data package
+ # "rnaturalearthdata", # data package
   "tmaptools"          # map building package
   )
 install.packages(cran_packages_to_install)
@@ -42,8 +42,8 @@ library(mapview)
 library(ggplot2)
 library(sf)
 library(afrilearndata)
-library(rnaturalearth)
-library(rnaturalearthdata)
+# library(rnaturalearth)
+# library(rnaturalearthdata)
 library(dplyr)
 library(tmaptools)
 #library(afrilearnr)
@@ -112,7 +112,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 In this section we explore the potential of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. Before we plot the first maps we need to create a dataset called *africa* and activate static map viewing mode.
 
 ```{r c5-tmap-countries1, message=FALSE}
-africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
+#africa <- ne_countries(continent = 'africa', scale = "medium", returnclass = "sf")
 tmap_mode("plot") #activates static map viewing mode
 ```
 
@@ -120,10 +120,10 @@ Next, we create an empty contour map of the continent, where `tm_shape()` functi
 
 ```{r c5-tmap-countries2, fig.show='hold', out.width="50%"}
 
-tm_shape(africa)+
+tm_shape(africountries)+
  tm_borders()
 
-tm_shape(africa)+
+tm_shape(africountries)+
  tm_fill()
 
 ```
