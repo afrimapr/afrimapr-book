@@ -81,7 +81,7 @@ map_points = map_basic +
 
 #Add bubbles with population and GDP size
 map_bubbles = map_points +
-       tm_shape(africa)+
+       tm_shape(africountries)+
           tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
               title.size = "Population",
               labels = c("High", "Upper middle", "Lower middle", "Lower"))
