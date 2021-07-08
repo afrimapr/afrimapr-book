@@ -39,7 +39,8 @@ Imports:
     remotes,
     osmdata,
     wopr,
-    rdhs
+    rdhs,
+    malariaAtlas
 Suggests:
     usethis
 Remotes:
