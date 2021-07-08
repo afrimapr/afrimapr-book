@@ -45,7 +45,8 @@ Suggests:
 Remotes:
   afrimapr/afriadmin,
   afrimapr/afrilearndata,
-  wmgeolab/rgeoboundaries
+  wmgeolab/rgeoboundaries,
+  wpgp/wopr
 License: CC BY-NC-ND 4.0
 Encoding: UTF-8
 LazyData: true
