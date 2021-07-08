@@ -431,7 +431,7 @@ For this example we use African population data from 2000 and 2020. Let's look a
 print(afripop2000) #printing information on the raster data file
 
 ```
-The population raster data from 2000 contains 434 rows, 413 columns and a total of 179.242 grid cells with geometry type **RasterLayer **.
+The population raster data from 2000 contains 434 rows, 413 columns and a total of 179242 grid cells with geometry type **RasterLayer **.
 
 Let's print the first 10 rows of data. 
 ```{r, warning=FALSE, message=FALSE}
@@ -441,8 +441,9 @@ head(afripop2000) #First 6 rows of data are printed
 ```
 Why do you think all rows are empty? 
 
-Let's take a look at more grid cells. 
-```{r, warning=FALSE, message=FALSE}
+You could use `getValues()` to look at all grid cell values, but that would take up a few pages of the book, so we won't do it here ! 
+
+```{r, eval=FALSE, warning=FALSE, message=FALSE}
 
 getValues(afripop2000)
 
