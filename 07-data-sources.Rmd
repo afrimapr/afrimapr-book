@@ -31,7 +31,7 @@ The `wopr` package provides access to the [WorldPop Open Population Repository](
 
 To download the population data we first use `getCatalogue()` to retrieve the WOPR data catalogue and see a list of currently available databases.
 
-```{r}
+```{r, eval=FALSE}
 install.packages("remotes")
 library(remotes)
 remotes::install_github('wpgp/wopr')
@@ -69,8 +69,11 @@ We can retrieve [Open Street Map data](https://www.openstreetmap.org/) using the
 The `available_tags()` function lists out the tags associated with each feature.
 A list of the available features can be found in the [OSM wiki](https://wiki.openstreetmap.org/wiki/Map_Features).
 
-```{r}
+```{r, eval=FALSE}
 install.packages("osmdata")
+```
+
+```{r}
 library(osmdata)
 head(available_features())
 head(available_tags("amenity"))
@@ -280,8 +283,11 @@ We can also download the ‘Land Cover Type Yearly L3 Global 500m’ product wit
 The `rdhs` packages gives the users the ability to access and make analysis on the Demographic and Health Survey (DHS) data.
 For example we can find out the trends in antimalarial use in Africa as follows.
 
-```{r}
+```{r, eval=FALSE}
 install.packages("rdhs")
+```
+
+```{r}
 library(rdhs)
 
 # Make an api request
@@ -315,8 +321,11 @@ The package enables users to download the following types of data:
 
 For example, we can download parasite rate survey data corresponding to Zimbabwe as follows.
 
-```{r}
+```{r, eval=FALSE}
 install.packages("malariaAtlas")
+```
+
+```{r}
 library(malariaAtlas)
 d  <- getPR(country = "Zimbabwe", species = "BOTH")
 autoplot(d)

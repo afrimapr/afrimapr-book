@@ -35,7 +35,11 @@ Imports:
     afriadmin,
     afrilearndata,
     rgeoboundaries,
-    mapview
+    mapview,
+    remotes,
+    osmdata,
+    wopr,
+    rdhs
 Suggests:
     usethis
 Remotes:
