@@ -98,26 +98,25 @@ knitr::include_graphics("images/example_script_1.jpg")
 ```
 
 ## Install and load packages {#install_packages}
-As described by [Wickham & Bryan (2015)](https://r-pkgs.org/index.html) R package is basic unit of shareable code containing a collection of functions (and sometimes also datasets). One of the most popular and larges packages repository is *Comprehensive R Archive Network (CRAN)*, but there are number of *remote repositories*, where packages can be published and stored by their authors such as *Github* or *GitLab*. Packages can differ in their capabilities and they will usually have a specific purpose, for example, data wrangling, visualisations or modelling. To learn more about a particular package we can use `packageDescription`, which calls a file with description of a package or `help` function that contains description of functions included in the package. For example, `remotes` package is often used to install other packages available at remote repositories.  
+As described by [Wickham & Bryan (2015)](https://r-pkgs.org/index.html) R packages are the basic unit of shareable code containing a collection of functions and data. The main repository for quality-controlled packages is *Comprehensive R Archive Network (CRAN)*, but there are number of *remote repositories*, where packages can also be published and stored by their authors such as *Github* or *GitLab*. Packages can differ in their capabilities and they will usually have a specific purpose, for example, data wrangling, visualisations or modelling. To learn more about a particular package we can use `packageDescription`, which provides a brief description of a package. For example, the `remotes` package is often used to install other packages available at remote repositories.  
 
-```{r package-help}
+```{r package-help, eval=FALSE}
 packageDescription("remotes")
-help(package = "remotes")
 ```
 
-Before being able to use a specific package in R, it is necessary to first install and then load it. In this example we install package *remotes* using `install.packages()`.
+Before being able to use a specific package in R, it is necessary to first install and then load it. Packages from CRAN can be installed with `install.packages()`. In this example we install package *remotes* using `install.packages()`.
 
 ```{r, eval=FALSE}
 install.packages("remotes")
 ```
 
-Further, we have to load the package into R using `library()` function. Note the presence of the quotation mark ("") in case of the first function and its lack in case of the second function.
+After the install, we have to load the package into R using `library()` function in each R session that we want to use it. Note the presence of the quotation mark ("") in case of the first function and its lack in case of the second function.
 
 ```{r, eval=FALSE}
 library(remotes)
 ```
 
-As mentioned above, to download and install packages directly from remote repositories such as GitHub, we can use previously loaded `remotes` package and load them as usual:
+As mentioned above, to download and install packages directly from non-CRAN repositories such as GitHub, we can use previously loaded `remotes` package to intall (e.g. `install_github()`) and after that use `library` as usual:
 
 ```{r, eval=FALSE}
 remotes::install_github("afrimapr/afrilearndata")
@@ -140,10 +139,16 @@ To view what data sets are available in a given package:
 ```{r c3-read-in-data, eval=FALSE}
 data(package="afrilearndata")
 ```
-We can view and explore the `africapitals` data set using:
+We can view and explore the `africapitals` data set using the function `str()` which displays the structure of the data :
+```{r, warning=FALSE, message=FALSE}
+str(africapitals)
+```
+
+... or the function `head()` which displays the first few rows of the data :
 ```{r, warning=FALSE, message=FALSE}
 head(africapitals)
 ```
+
 We can also create a dataframe from `africapitals` in the global environment:
 ```{r, warning=FALSE, message=FALSE}
 dataset <- africapitals
@@ -336,28 +341,27 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 ## Getting help with R Help {#help}
 R is a powerful software with many different packages and functions which are continuously developed and added. Therefore, it is difficult, if not impossible, to be familiar with all the functions that are currently available. Hence, in order to learn more about them, R provides extensive documentation which can be accessed with `help()` function, `? operator` or by clicking in *Help* panel in the bottom-right corner. For example:
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
 help(matrix) #to find out what matrix is
 
-#help(package="remotes") #to get help with remotes package
 ```
 
-Alternatively, it is possible to use `?` in front of the searched item and the R documentation will appear in right-bottom pane. For example, to read more on how to use help function itself we can use: 
-```{r, warning=FALSE, message=FALSE}
+Alternatively, it is possible to use `?` in front of the searched item and the R documentation will appear in right-bottom pane. For example, to read more on how to use help function itself, or the `str()` function we used above, we can use: 
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
 ?help 
+?str 
 ```
 
 Importantly, in order to get help regarding objects with unusual names such as the logical operators, it is necessary to use quotation marks:
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
 ?"&"
 
 help("!")
 ```
 
 R documentation for functions frequently offers a working example which can be accessed with:
-```{r, warning=FALSE, message=FALSE}
-#[andy commented out because seems to be causing error]
-#example(vector) #to see an example of a vector
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
+example(vector) #to see an example of a vector
 ```
 
 
