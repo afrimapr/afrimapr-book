@@ -87,9 +87,10 @@ lagos_bb
 ```
 
 To retrieve the required features of a place (defined by the bounding box), we have to then create an overpass query with `opq()`.
-Then, the `add_osm_feature()` function can be used to add the required features to the query. Finally, we use the `osmdata_sf()` function to obtain a simple feature object of the resultant query.
+Then, the `add_osm_feature()` function can be used to add the required features to the query. Finally, we use the `osmdata_sf()` function to obtain a simple feature obj
 
-```{r}
+[andy setting to eval=FALSE to avoid osm error for now]
+```{r, eval=FALSE}
 lagos_hospitals <- lagos_bb %>% opq() %>%
   add_osm_feature(key = "amenity", value = "hospital") %>%
   osmdata_sf()
@@ -97,7 +98,8 @@ lagos_hospitals <- lagos_bb %>% opq() %>%
 
 We can visualise an interactive map of the hospitals in Lagos as follows.
 
-```{r}
+[andy setting to eval=FALSE to avoid osm error for now]
+```{r, eval=FALSE}
 library(leaflet)
 leaflet() %>%  addTiles() %>%
   addPolygons(data = lagos_hospitals$osm_polygons,
