@@ -23,6 +23,9 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </div>
 
 ### List of episodes {-}
+
+[we are not decided if using episodes terminology is useful]
+
 List of 'episodes' in this chapter that will help achieve set goal with their short description and an explanation of links between them.
 
 1. [Episode 1](#episode_1_template)
@@ -73,9 +76,11 @@ This closing section should show the reader what has been done in this chapter a
 ```
 
 ## Feedback 
+[we are not decided if these sections necessary, may be too cluttered]
 
 Feedback section aims at learning what was useful to the reader (learner) and what can be improved. It gives the reader an opportunity to reflect on what he/she learned and evaluate the book in this this context.
 
 ## Putting into practice
+[we are not decided if these sections necessary, may be too cluttered]
 
 This final section is aimed at consolidating the knowledge and skills learned throughout the whole chapter, where the reader can put them into practice in a more complex working example with a new context. 
