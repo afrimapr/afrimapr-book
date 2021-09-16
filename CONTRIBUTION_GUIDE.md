@@ -4,7 +4,10 @@ For internal & external contributors to the book. Please add anything to this do
 
 See [template chapter](https://github.com/afrimapr/afrimapr-book/blob/main/16-template.Rmd) which sets out standard format for chapters
 
-Internal contributors are encouraged to push text changes directly (you don't need to submit pull requests). To minimise potential for conflicts remember to pull before making changes and communicate with others about what you are working on. 
+## work in the Github 'staging' branch (not main)
+
+Internal contributors are encouraged to push text changes directly (you don't need to submit pull requests). To minimise potential for conflicts remember to pull before making changes and communicate with others about what you are working on. Pull from & push to the 'staging' branch this should allow us to keep the main built book up even when we are adding new content. Then we can occasionally submit pull-request from the staging branch to main. [We are still experimenting with this workflow]. This should be the [development or staging site](https://staging--afrimapr-book.netlify.app/).
+
 
 ## to build the book & debug locally
 
