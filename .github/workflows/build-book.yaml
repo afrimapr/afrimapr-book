@@ -2,9 +2,11 @@ on:
   push:
     branches:
       - main
+      - staging
   pull_request:
     branches:
       - main
+      - staging
   schedule:
     # run every day at 11 PM
     #commented out scheduled builds for now
