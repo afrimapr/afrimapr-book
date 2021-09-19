@@ -140,21 +140,6 @@ tm_shape(africapitals_filtered) +
  tm_dots("green", size=0.5)
 
 ```
-
-Answer:
-* In the initial filter, `africapitals$iso3c` needs to be changed to `africapitals$pop`
-* Dots in 1.400.000 need to be removed
-* The shape of the dots need to be specified as squares using `shape=22`
-* The size of the points needs to be 1. 
-```{r, warning=FALSE, message=FALSE}
-
-africapitals_filtered=africapitals %>%
-  dplyr::filter((africapitals$pop) > 1400000)
-
-tm_shape(africapitals_filtered) +
-  tm_dots("green", shape = 22, size=1)
-
-```
 </div>  
 
 
@@ -169,16 +154,6 @@ We will now use capital and African airport data.
 Visualise the capitals and airports in one map, with capitals as grey large filled-in circles and airports as smaller blue not-filled triangles.
 *Hint: if you get stuck, look at 'Add Points to a Plot' in the help section.*
 *Hint: When both points and lines are mapped, datasets need to be identified seperately in `tm_shape()` before the use of `tm_dots()`.*
-
-Answer:
-```{r, warning=FALSE, message=FALSE}
-
-tm_shape(africapitals) +
-  tm_dots(col="grey", shape = 19, size=3) +
-tm_shape(afriairports) +
-  tm_dots(col="blue", shape = 2, size=1)
-
-```
 </div> 
 
 
@@ -244,17 +219,6 @@ tm_shape(africapitals) +
     tm_shape(afrihighway_ex1)+
   tm_lines("blue")
 ```
-
-Answer:
-```{r, warning=FALSE, message=FALSE}
-
-afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
-tm_shape(africapitals) + #important that capitals are visualised first
-  tm_dots("blue", size=0.5)+
-    tm_shape(afrihighway_ex1)+
-  tm_lines("blue")
-
-```
 </div> 
 
 
@@ -267,20 +231,6 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 Visualise the trans-African highway network, with line width associated with the length of the road. The function `st_length` is used to calculate the length of a line.
 
-Answer:
-```{r, warning=FALSE, message=FALSE}
-
-#[julie-anne this seems to error]
-# Error: Assigned data `value` must be compatible with existing data.
-# x Existing data has 100 rows.
-# x Assigned data has 99 rows.
-
-# afrihighway$length=tapply(st_length(afrihighway), afrihighway$Name, sum)
-#                     
-# tm_shape(afrihighway) +
-#  tm_lines(lwd = `length`)
-
-```
 </div> 
 
 
@@ -359,31 +309,28 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 #### Exercise 5
 
-Multiple choice to identify if datafiles contain point, line or (multi)polygon geometry.
+Multiple choice to identify if data files contain point, line or (multi)polygon geometry.
 
-1 Look up the bus routes in your home area. Which data type would you use to visualise this data? 
-a Point data
-b Line data
-c Multipolygon data
-d All of the above
+1. Look up the bus routes in your home area. Which data type would you use to visualise this data? 
+* a. Point data
+* b. Line data
+* c. Multipolygon data
+* d. All of the above
 
-answer: b
+2. What kind of data type is necessary to visualise the countries part of the [the Economic Community of West African States (ECWAS)](https://www.ecowas.int/) community?
 
-2 What kind of data type is necessary to visualise the countries part of the [the Economic Community of West African States (ECWAS)](https://www.ecowas.int/) community?
-a Point data
-b Line data
-c Multipolygon data
-d All of the above
+* a. Point data
+* b. Line data
+* c. Multipolygon data
+* d. All of the above
 
-answer: c
-
-3 Which data type is necessary for the authors to visualise the below image. 
+3. Which data type is necessary for the authors to visualise the below image. 
 (need help visualising this with the right approval from authors)
 https://www.google.com/url?sa=i&url=https%3A%2F%2Fcdiac.ess-dive.lbl.gov%2Fepubs%2Fndp%2Fndp055%2Fndp055.html&psig=AOvVaw2qJ0HAjtU9ytbSWT-qFR0R&ust=1616679119758000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKD8l5qFye8CFQAAAAAdAAAAABBW
-a Point data
-b Line data
-c Multipolygon data
-d All of the above
+* a. Point data
+* b. Line data
+* c. Multipolygon data
+* d. All of the above
 
 answer: d
 
@@ -412,8 +359,6 @@ tm_shape(africountries_filtered) +
 
 ```
 </div> 
-
-
 
 ## Rasters {#episode_4_raster}
 Points, lines and polygons, in their essence, consist of points with a longitude and latitude value. The data files of these vectors look very similar. Raster data are a group on their own. Raster data consist of a matrix of grid cells (pixels), with each grid cell representing a geographical location with a value illustrating a characteristic of that location. Raster data are mainly used when displaying data that are continuous accross space. For example, population density, landcover variation and elevation data extracted from satellites, drones and surveys.  
@@ -523,7 +468,7 @@ If you are interested in learning more about the different spatial data types, p
 - [Raster and vector data](https://datacarpentry.org/r-raster-vector-geospatial/)
 
 
-## Summary/key points
+## Summary
 The image below gives a short recap of the different data types discussed in this chapter. You should now be able to recognize, load and manipulate these data types using the `sf` and `raster` and visualise them using the `tmap` package.
 
 ```{r, fig.caption ="Summary of the chapter", echo=FALSE}
@@ -531,3 +476,63 @@ knitr::include_graphics("images/chapter_4_image.png")
 ```
 
 </div> 
+
+## Exercise solutions
+
+- Exercise 1
+* In the initial filter, `africapitals$iso3c` needs to be changed to `africapitals$pop`
+* Dots in 1.400.000 need to be removed
+* The shape of the dots need to be specified as squares using `shape=22`
+* The size of the points needs to be 1. 
+```{r, warning=FALSE, message=FALSE}
+
+africapitals_filtered=africapitals %>%
+  dplyr::filter((africapitals$pop) > 1400000)
+
+tm_shape(africapitals_filtered) +
+  tm_dots("green", shape = 22, size=1)
+
+```
+
+- Exercise 2
+Answer:
+```{r, warning=FALSE, message=FALSE}
+
+tm_shape(africapitals) +
+  tm_dots(col="grey", shape = 19, size=3) +
+tm_shape(afriairports) +
+  tm_dots(col="blue", shape = 2, size=1)
+
+```
+
+- Exercise 3
+```{r, warning=FALSE, message=FALSE}
+
+afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
+tm_shape(africapitals) + #important that capitals are visualised first
+  tm_dots("blue", size=0.5)+
+    tm_shape(afrihighway_ex1)+
+  tm_lines("blue")
+
+```
+
+- Exercise 4
+```{r, warning=FALSE, message=FALSE}
+
+#[julie-anne this seems to error]
+# Error: Assigned data `value` must be compatible with existing data.
+# x Existing data has 100 rows.
+# x Assigned data has 99 rows.
+
+# afrihighway$length=tapply(st_length(afrihighway), afrihighway$Name, sum)
+#                     
+# tm_shape(afrihighway) +
+#  tm_lines(lwd = `length`)
+
+```
+
+- Exercise 5
+
+1. b
+2. c
+3. d
