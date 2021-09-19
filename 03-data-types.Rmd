@@ -126,7 +126,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
 **Exercise 1**: In this first exercise, we will use the same African capital data as our example. 
-Below, We have visualised all capitals with > 1.400.000 people using green squares of size 1. However, the code isn't working. Can you find the **four** mistakes? 
+Below, we have visualised all capitals with > 1.400.000 people using green squares of size 1. However, the code is not working. Can you find the **four** mistakes? 
 
 *Hint: if you get stuck, look at '?tm_dots'*
 
@@ -145,7 +145,8 @@ tm_shape(africapitals_filtered) +
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 2**: We will now use capital and African airport data.Visualise the capitals and airports in one map, with capitals as grey large filled-in circles and airports as smaller blue not-filled triangles.*Hint: if you get stuck, look at 'Add Points to a Plot' in the help section.*
+**Exercise 2**: We will now use capital and African airport data.Visualise the capitals and airports in one map, with capitals as grey large filled-in circles and airports as smaller blue not-filled triangles.<br/> 
+*Hint: if you get stuck, look at 'Add Points to a Plot' in the help section.*
 *Hint: When both points and lines are mapped, datasets need to be identified seperately in `tm_shape()` before the use of `tm_dots()`.*
 </div> 
 
@@ -318,7 +319,7 @@ https://www.google.com/url?sa=i&url=https%3A%2F%2Fcdiac.ess-dive.lbl.gov%2Fepubs
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 6**: Visualise the African borders of all countries with an area larger than 300.000 km^2. The function `st_area` is used to calculate the area within a polygon. 
+**Exercise 6**: Visualise the African borders of all countries with an area larger than 300.000 km^2. The function `st_area` is used to calculate the area within a polygon. <br/>
 *Hint: make sure you check the units*
 </div> 
 
@@ -440,10 +441,10 @@ knitr::include_graphics("images/chapter_4_image.png")
 ## Exercise solutions
 
 - Exercise 1
-* In the initial filter, `africapitals$iso3c` needs to be changed to `africapitals$pop`
-* Dots in 1.400.000 need to be removed
-* The shape of the dots need to be specified as squares using `shape=22`
-* The size of the points needs to be 1. 
+  * In the initial filter, `africapitals$iso3c` needs to be changed to `africapitals$pop`
+  * Dots in 1.400.000 need to be removed
+  * The shape of the dots need to be specified as squares using `shape=22`
+  * The size of the points needs to be 1. 
 ```{r, warning=FALSE, message=FALSE}
 
 africapitals_filtered=africapitals %>%

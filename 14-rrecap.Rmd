@@ -326,7 +326,7 @@ colnames(df_1)
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 2**:Create three vectors containing character, integer and logical values, respectively. Each with 10 rows. Bind them to generate a matrix with 3 columns and 10 rows.
+**Exercise 2**: Create three vectors containing character, integer and logical values, respectively. Each with 10 rows. Bind them to generate a matrix with 3 columns and 10 rows.
 </div>  
 <br/>
 <style>
