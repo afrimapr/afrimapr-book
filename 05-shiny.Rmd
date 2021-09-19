@@ -46,3 +46,9 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 
 ```
+
+## Further resources
+
+## Summary
+
+## Exercise solutions {#solutions_ch5}

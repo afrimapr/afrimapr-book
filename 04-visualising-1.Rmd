@@ -101,7 +101,7 @@ The link to full documentation is available in *Further resources* section.
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 5.2.1**: Create a map with two layers: countries and capitals. Fill the country polygons according to income group. Explore the layers button to hide and unhide some of them.  
+**Exercise 1**: Create a map with two layers: countries and capitals. Fill the country polygons according to income group. Explore the layers button to hide and unhide some of them.  
 </div>   
 
 ## Static maps with tmap
@@ -280,39 +280,34 @@ countries+
 ```
 
 ### Exercises
-The solution to the exercises are provided at the [end of the chapter](#solutions_ch5).
+The solution to the exercises are provided at the [end of the chapter](#solutions_ch4).
 
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 5.3.1**: Plot a yellow map of Africa with transparency of 0.4 and solid line borders of width 3. 
+**Exercise 2**: Plot a yellow map of Africa with transparency of 0.4 and solid line borders of width 3. 
 </div>   
-
 <br/>
-
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 5.3.2**: Plot a lightblue map of Africa with dotted, non-transparent, red borders.
-</div>  
-
-<br/>
-
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 5.3.3**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.
+**Exercise 3**: Plot a lightblue map of Africa with dotted, non-transparent, red borders.
 </div>  
 <br/>
-
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 5.3.4**: Create a map with continent contour in light green colour. Then add african highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. 
+**Exercise 4**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.
+</div>  
+<br/>
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 5**: Create a map with continent contour in light green colour. Then add african highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. 
 </div>  
 
 ## Interactive maps with tmap
@@ -372,14 +367,14 @@ tm_shape(africountries)+
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 5.4.1**: Create an interactive map uses watercolour theme, the highways are blue and dots denoting capitals are white with black borders. Finally, add capitalnames.
+**Exercise 6**: Create an interactive map uses watercolour theme, the highways are blue and dots denoting capitals are white with black borders. Finally, add capitalnames.
 </div>  
 <br/>
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 5.4.2**: Create an interactive map of African countries which have population smaller than 10 million. Fill the polygons with the population size.
+**Exercise 7**: Create an interactive map of African countries which have population smaller than 10 million. Fill the polygons with the population size.
 </div>  
 
 ## Further resources
@@ -390,38 +385,38 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 In  this chapter we looked at how to produce static and interactive maps using different packages. Specifically, we saw that the `tmap` package is a flexible tool to create maps with a stepwise approach, where we can add different layers to our maps. It is equally easy to switch between static and interactive maps. Further, `mapview` was showed to be a quick solution for creating interactive maps.
 
 
-## Exercise solutions {#solutions_ch5}
+## Exercise solutions {#solutions_ch4}
 ```{r, include = FALSE}
 tmap_mode("plot")
 ```
 
-- Exercise 5.2.1
+- Exercise 1
 
 ```{r c5-ex-5.2.1, out.width="60%"}
 mapview(africountries, zcol = "income_grp") + mapview(africapitals)
 ```
 
-- Exercise 5.3.1
+- Exercise 2
 ```{r c5-ex-5.3.1, out.width="60%"}
  tm_shape(africountries)+
   tm_polygons(col = "yellow", lwd = 3, lty = "solid", alpha = 0.4)
 ```
 
-- Exercise 5.3.2
+- Exercise 3
 ```{r c5-ex-5.3.2, out.width="60%"}
 tm_shape(africountries)+
  tm_fill(col = "lightblue")+
  tm_borders(col = "red", lty = "dotted", alpha = 1)
 ```
 
-- Exercise 5.3.3
+- Exercise 4
 ```{r c5-ex-5.3.3, out.width="60%"}
 custom_breaks = c(0, 2, 3, 4, 5, 10,20, 30, 50) * 10000
 tm_shape(africountries)+
  tm_polygons(col = "gdp_md_est", title = "GDP",  breaks = custom_breaks)
 ```
 
-- Exercise 5.3.4
+- Exercise 5
 ```{r c5-ex-5.3.4, out.width="60%"}
 map_contour = tm_shape(africountries)+
   tm_fill(col = "lightgreen")
@@ -433,7 +428,7 @@ map_contour +
 
 ```
 
-- Exercise 5.4.1
+- Exercise 6
 
 ```{r c5-ex-5.4.1, out.width="60%"}
 tmap_mode("view")
@@ -450,7 +445,7 @@ tm_shape(africountries)+
 
 ```
 
-- Exercise 5.4.2
+- Exercise 7
 
 ```{r c5-ex-5.4.2}
 tmap_mode("view")

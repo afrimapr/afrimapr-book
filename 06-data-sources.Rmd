@@ -332,3 +332,9 @@ library(malariaAtlas)
 d  <- getPR(country = "Zimbabwe", species = "BOTH")
 autoplot(d)
 ```
+
+## Further resources
+
+## Summary
+
+## Exercise solutions {#solutions_ch6}
