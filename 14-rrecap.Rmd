@@ -1,6 +1,5 @@
 # R recap {#rrecap}
-
-Previous section demonstrated what can be achieved with the learning materials provided in this book and gave an example of capabilities of packages that are used. This section presents basic steps that are required (or simply good practice) before starting the project. It provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R and provide background knowledge that the reader can build on, while progressing through the further chapters of this book. It will be particularly useful for beginners, who have minimal knowledge of R. Therefore, more advanced readers can move forward to the next chapter where spatial data types are looked into. <br/>
+This section presents basic steps that are required (or simply good practice) before starting the project. It provides a brief recap of R fundamentals such as data types and structures, objects and commands. It aims at building a starting point for those who are new to R and provides background knowledge that the reader can build on, while progressing through the chapters of this book. It will be particularly useful for beginners, who have minimal knowledge of R. Therefore, more advanced readers can simply skip this chapter.<br/>
 
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
@@ -253,7 +252,7 @@ The numbers and strings, in the example above, serve as labels of different leve
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 3.6.1**: Create a vector 'a' that contains descending sequence of numbers from 50 to 30 that decreases by 2. Hint: use seq()
+**Exercise 14.7.1**: Create a vector 'a' that contains descending sequence of numbers from 50 to 30 that decreases by 2. Hint: use seq()
 </div>  
 
 ## Basic objects and data structures {#objects_basics}
@@ -327,14 +326,14 @@ colnames(df_1)
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 3.7.1**: Create three vectors containing character, integer and logical values, respectively. Each with 10 rows. Bind them to generate a matrix with 3 columns and 10 rows.
+**Exercise 14.8.1**: Create three vectors containing character, integer and logical values, respectively. Each with 10 rows. Bind them to generate a matrix with 3 columns and 10 rows.
 </div>  
 <br/>
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 3.7.2**: Create a data frame from the matrix created in the previous exercise. Rename column headers to describe their content.
+**Exercise 14.8.2**: Create a data frame from the matrix created in the previous exercise. Rename column headers to describe their content.
 </div>  
 <br/>
 
@@ -373,12 +372,12 @@ In this chapter we learned several R commands which prepared the reader for star
 
 ## Exercise solutions {#solutions_ch3}
 
-- Exercise 3.6.1
+- Exercise 14.7.1
 ```{r}
 a <- seq(50,30, by = -2)
 ```
 
-- Exercise 3.7.1
+- Exercise 14.8.1
 ```{r, warning=FALSE, message=FALSE}
 v1 <- c("water", "milk", "juice", "coffee", "tea", "tea", "juice", "milk", "water", "soda")
 v2 <- seq(1,10)
@@ -387,7 +386,7 @@ v3 <-as.logical(v3)
 m1 = cbind(v1, v2, v3) 
 m1
 ```
-- Exercise 3.7.2
+- Exercise 14.8.2
 ```{r, warning=FALSE, message=FALSE}
 df = data.frame(m1)
 
