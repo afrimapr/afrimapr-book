@@ -1,9 +1,9 @@
 
 # Spatial data in R {#data-types}
 
-The previous chapter provided a short recap of the R basics that will help you progress through this book. This chapter will focus on the fundamentals of mapping, i.e. the different types of data that can be used to make a map. 
+The previous chapter presented concisely the focus of this book and what the reader would be able to achieve after reading it. This chapter will focus on the fundamentals of mapping, i.e. the different types of data that can be used to make a map. 
 
-This chapter is written for those with some knowledge of R and little experience with spatial data. If you are familiar with the different data types (points, lines, polygons and vectors), you may move on to the next chapter where visualisation of data types is explained in more detail. However you never know, you may learn something here too. 
+It is written for those with some knowledge of R and little experience with spatial data. If you are familiar with the different data types (points, lines, polygons and vectors), you may move on to the next chapter where visualisation of data types is explained in more detail. However you never know, you may learn something here too. 
 <br/>
 
 <style>
@@ -124,7 +124,8 @@ If the labelling is essential, you can look up the help section of the 'tm_text'
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 1**
+
+#### Exercise 1
 In this first exercise, we will use the same African capital data as our example. 
 Below, We have visualised all capitals with > 1.400.000 people using green squares of size 1. However, the code isn't working. Can you find the **four** mistakes? 
 
@@ -161,6 +162,7 @@ tm_shape(africapitals_filtered) +
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
+
 #### Exercise 2
 
 We will now use capital and African airport data.
@@ -230,6 +232,7 @@ It is great to see how the capitals are connected by the trans-African highway n
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
+
 #### Exercise 3
 In the below exercise we have tried to visualise all the capitals and *only* the roads starting with the letter 'b'.
 However, we have messed up the order of the code. Can you rearrange the code? 
@@ -259,6 +262,7 @@ tm_shape(africapitals) + #important that capitals are visualised first
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
+
 #### Exercise 4 
 
 Visualise the trans-African highway network, with line width associated with the length of the road. The function `st_length` is used to calculate the length of a line.
@@ -352,6 +356,7 @@ tm_shape(afrihighway) +
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
+
 #### Exercise 5
 
 Multiple choice to identify if datafiles contain point, line or (multi)polygon geometry.
@@ -388,6 +393,7 @@ answer: d
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
+
 #### Exercise 6 
 
 Visualise the African borders of all countries with an area larger than 300.000 km^2. The function `st_area` is used to calculate the area within a polygon. 
@@ -489,6 +495,7 @@ tm_shape(africountries) +
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
+
 #### Exercise 7
 
 Visualise the population data of 2000 using a different palette from the [viridisLite](https://cran.r-project.org/web/packages/viridisLite/viridisLite.pdf) package. Increase the number of breaks to six. Which breaks are most appropriate?
