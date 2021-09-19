@@ -120,11 +120,11 @@ As you can see in the example above, the labelling makes the image messy. In the
 If the labelling is essential, you can look up the help section of the 'tm_text' using the help tool and play around with the different options to clean up the map further. 
 
 ### Exercises
+
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-
 #### Exercise 1
 In this first exercise, we will use the same African capital data as our example. 
 Below, We have visualised all capitals with > 1.400.000 people using green squares of size 1. However, the code isn't working. Can you find the **four** mistakes? 
@@ -141,13 +141,11 @@ tm_shape(africapitals_filtered) +
 
 ```
 </div>  
-
-
+<br/>
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-
 #### Exercise 2
 
 We will now use capital and African airport data.
@@ -207,7 +205,6 @@ It is great to see how the capitals are connected by the trans-African highway n
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-
 #### Exercise 3
 In the below exercise we have tried to visualise all the capitals and *only* the roads starting with the letter 'b'.
 However, we have messed up the order of the code. Can you rearrange the code? 
@@ -220,19 +217,15 @@ tm_shape(africapitals) +
   tm_lines("blue")
 ```
 </div> 
-
-
+<br/>
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-
 #### Exercise 4 
 
 Visualise the trans-African highway network, with line width associated with the length of the road. The function `st_length` is used to calculate the length of a line.
-
 </div> 
-
 
 ## Polygons {#episode_3_polygons}
 
@@ -306,7 +299,6 @@ tm_shape(afrihighway) +
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-
 #### Exercise 5
 
 Multiple choice to identify if data files contain point, line or (multi)polygon geometry.
@@ -331,11 +323,8 @@ https://www.google.com/url?sa=i&url=https%3A%2F%2Fcdiac.ess-dive.lbl.gov%2Fepubs
 * b. Line data
 * c. Multipolygon data
 * d. All of the above
-
-answer: d
-
 </div> 
-
+<br/>
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
@@ -345,19 +334,6 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 
 Visualise the African borders of all countries with an area larger than 300.000 km^2. The function `st_area` is used to calculate the area within a polygon. 
 *Hint: make sure you check the units*
-Answer:
-```{r, warning=FALSE, message=FALSE}
-
-africountries$area_sqm <- st_area(africountries)
-africountries$area_sqkm <-africountries$area_sqm / 1000000
-
-africountries_filtered = africountries %>%
-  dplyr::filter(as.numeric(africountries$area_sqkm) > 300000)
-
-tm_shape(africountries_filtered) +
-   tm_borders()
-
-```
 </div> 
 
 ## Rasters {#episode_4_raster}
@@ -475,8 +451,6 @@ The image below gives a short recap of the different data types discussed in thi
 knitr::include_graphics("images/chapter_4_image.png")
 ```
 
-</div> 
-
 ## Exercise solutions
 
 - Exercise 1
@@ -495,7 +469,6 @@ tm_shape(africapitals_filtered) +
 ```
 
 - Exercise 2
-Answer:
 ```{r, warning=FALSE, message=FALSE}
 
 tm_shape(africapitals) +
@@ -536,3 +509,18 @@ tm_shape(africapitals) + #important that capitals are visualised first
 1. b
 2. c
 3. d
+
+- Exercise 6
+
+```{r, warning=FALSE, message=FALSE}
+
+africountries$area_sqm <- st_area(africountries)
+africountries$area_sqkm <-africountries$area_sqm / 1000000
+
+africountries_filtered = africountries %>%
+  dplyr::filter(as.numeric(africountries$area_sqkm) > 300000)
+
+tm_shape(africountries_filtered) +
+   tm_borders()
+
+```
