@@ -125,8 +125,7 @@ If the labelling is essential, you can look up the help section of the 'tm_text'
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-#### Exercise 1
-In this first exercise, we will use the same African capital data as our example. 
+**Exercise 1**: In this first exercise, we will use the same African capital data as our example. 
 Below, We have visualised all capitals with > 1.400.000 people using green squares of size 1. However, the code isn't working. Can you find the **four** mistakes? 
 
 *Hint: if you get stuck, look at '?tm_dots'*
@@ -146,14 +145,9 @@ tm_shape(africapitals_filtered) +
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-#### Exercise 2
-
-We will now use capital and African airport data.
-Visualise the capitals and airports in one map, with capitals as grey large filled-in circles and airports as smaller blue not-filled triangles.
-*Hint: if you get stuck, look at 'Add Points to a Plot' in the help section.*
+**Exercise 2**: We will now use capital and African airport data.Visualise the capitals and airports in one map, with capitals as grey large filled-in circles and airports as smaller blue not-filled triangles.*Hint: if you get stuck, look at 'Add Points to a Plot' in the help section.*
 *Hint: When both points and lines are mapped, datasets need to be identified seperately in `tm_shape()` before the use of `tm_dots()`.*
 </div> 
-
 
 ## Lines {#episode_2_lines}
 
@@ -205,8 +199,7 @@ It is great to see how the capitals are connected by the trans-African highway n
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-#### Exercise 3
-In the below exercise we have tried to visualise all the capitals and *only* the roads starting with the letter 'b'.
+**Exercise 3**: In the below exercise we have tried to visualise all the capitals and *only* the roads starting with the letter 'b'.
 However, we have messed up the order of the code. Can you rearrange the code? 
 ```{r, eval=FALSE, warning=FALSE, message=FALSE}
 afrihighway_ex1=afrihighway[grep("^B", afrihighway$Name),]
@@ -222,9 +215,7 @@ tm_shape(africapitals) +
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-#### Exercise 4 
-
-Visualise the trans-African highway network, with line width associated with the length of the road. The function `st_length` is used to calculate the length of a line.
+**Exercise 4**: Visualise the trans-African highway network, with line width associated with the length of the road. The function `st_length` is used to calculate the length of a line.
 </div> 
 
 ## Polygons {#episode_3_polygons}
@@ -299,9 +290,7 @@ tm_shape(afrihighway) +
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-#### Exercise 5
-
-Multiple choice to identify if data files contain point, line or (multi)polygon geometry.
+**Exercise 5**: Multiple choice to identify if data files contain point, line or (multi)polygon geometry.
 
 1. Look up the bus routes in your home area. Which data type would you use to visualise this data? 
 * a. Point data
@@ -329,10 +318,7 @@ https://www.google.com/url?sa=i&url=https%3A%2F%2Fcdiac.ess-dive.lbl.gov%2Fepubs
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-
-#### Exercise 6 
-
-Visualise the African borders of all countries with an area larger than 300.000 km^2. The function `st_area` is used to calculate the area within a polygon. 
+**Exercise 6**: Visualise the African borders of all countries with an area larger than 300.000 km^2. The function `st_area` is used to calculate the area within a polygon. 
 *Hint: make sure you check the units*
 </div> 
 
