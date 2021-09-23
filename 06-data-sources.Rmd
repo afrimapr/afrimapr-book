@@ -327,7 +327,13 @@ For example, we can download parasite rate survey data corresponding to Zimbabwe
 install.packages("malariaAtlas")
 ```
 
-```{r}
+```{r, eval=FALSE}
+
+#2021-09-23 set to eval=FALSE
+#because it started causing build fail
+#Error: Objects of type try-error not supported by autoplot.
+#see https://github.com/afrimapr/afrimapr-book/issues/39
+
 library(malariaAtlas)
 d  <- getPR(country = "Zimbabwe", species = "BOTH")
 autoplot(d)
