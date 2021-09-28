@@ -445,6 +445,7 @@ knitr::include_graphics("images/chapter_4_image.png")
   * Dots in 1.400.000 need to be removed
   * The shape of the dots need to be specified as squares using `shape=22`
   * The size of the points needs to be 1. 
+  
 ```{r, warning=FALSE, message=FALSE}
 
 africapitals_filtered=africapitals %>%
@@ -479,15 +480,10 @@ tm_shape(africapitals) + #important that capitals are visualised first
 - Exercise 4
 ```{r, warning=FALSE, message=FALSE}
 
-#[julie-anne this seems to error]
-# Error: Assigned data `value` must be compatible with existing data.
-# x Existing data has 100 rows.
-# x Assigned data has 99 rows.
+afrihighway$length=tapply(st_length(afrihighway), afrihighway$Name)
 
-# afrihighway$length=tapply(st_length(afrihighway), afrihighway$Name, sum)
-#                     
-# tm_shape(afrihighway) +
-#  tm_lines(lwd = `length`)
+tm_shape(afrihighway) +
+  tm_lines(lwd = "length")
 
 ```
 
