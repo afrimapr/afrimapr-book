@@ -37,6 +37,8 @@ tmap_mode("plot")
 
 ```
 
+The `tmap` package is frequently used in geospatial visualisations because it allows us to quickly and easily create both, static and interactive maps. The syntax of `tmap` resembles that of `ggplot2` which is a popular data-visualising package. Both use layers to include additional elements in the map and both follow a strict separation between the data and the aesthetic of the map. Firstly, the dataset is provided in `tm_shape` function and then additional layers of the map are specified through the use of a `+` sign followed by different functions (depending on what we want to add). Below we present two examples of how `tmap` is used to create simple static and interactive maps. In the code below, *africountries* is our dataset, an object of `sf` class, whereas `tm_polygons` and `tm_lines` are used to plot polygons and lines respectively.
+
 ## Static maps
 ```{r c2-simple-map, message=FALSE, warning=FALSE}
 
@@ -57,6 +59,7 @@ tmap_arrange(map_1, map_2, map_3)
 
 ```
 
+Furthermore, the creation of an interactive map is equally convenient, where it only requires "turning on" of an interactive mode by changing from "plot" to "view" in the `tmap_mode()` function, as seen in the example below.
 
 ## Interactive maps
 ```{r c2-interactive_map, fig.show="hold", out.width="50%"}
