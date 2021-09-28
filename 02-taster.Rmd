@@ -37,7 +37,7 @@ tmap_mode("plot")
 
 ```
 
-## Simple maps
+## Static maps
 ```{r c2-simple-map, message=FALSE, warning=FALSE}
 
 sf_use_s2(FALSE) #switches off spherical geometry, needed after sf package update
@@ -57,64 +57,6 @@ tmap_arrange(map_1, map_2, map_3)
 
 ```
 
-## Static maps
-```{r c2-empty-static-map1,message=FALSE, fig.cap = "Examples of maps"}
-
-#Create an empty map of Africa using a classic style
-map_basic = tm_style("classic")+
-tm_shape(africountries)+
- tm_polygons()+
-  tm_layout(title = "Africa", title.position = c("center", "top"),
-            inner.margins = 0.05, legend.text.size = 0.47)
-
-#Add points for medium airports
-data(afriairports)
-m_airports = afriairports %>% filter(type == "medium_airport")
-
-map_points = map_basic +
-  tm_shape(m_airports)+
-    tm_dots(col = "type", palette="blue",
-            labels = "Medium airports", title = "")+
-      tm_legend(legend.position = c("left", "bottom")) +
-        tm_layout(scale = 1.07)
-
-
-#Add bubbles with population and GDP size
-map_bubbles = map_points +
-       tm_shape(africountries)+
-          tm_bubbles(size = "pop_est", col = "income_grp", title.col = "Income level",
-              title.size = "Population",
-              labels = c("High", "Upper middle", "Lower middle", "Lower"))
-
-
-tmap_arrange(map_basic, map_points, map_bubbles)
-
-```
-
-```{r c2-empty-static-map2, warning = FALSE, message=FALSE, fig.cap = "Examples of maps 2"}
-
-#Basic map 2
-map_basic_2 = tm_style("watercolor")+
-  tm_shape(africountries)+
-      tm_fill(col = "pop_est", style = "jenks", title = "Population")+
-        tm_layout(title = "Africa",
-                  title.position = c("center", "top"), legend.text.size = 0.50)
-
-#Add highways names
-map_highways = map_basic_2 +
-  tm_shape(afrihighway)+
-              tm_lines(col = "black")
-
-#Add country names
-map_named = map_highways +
-  tm_shape(africapitals)+
-      tm_dots(col = "red", border.col = "black")+
-          tm_text("capitalname",  size = 0.35)
-
-
-tmap_arrange(map_basic_2, map_highways, map_named)
-
-```
 
 ## Interactive maps
 ```{r c2-interactive_map, fig.show="hold", out.width="50%"}
