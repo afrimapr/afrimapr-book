@@ -37,7 +37,16 @@ tmap_mode("plot")
 
 ```
 
-The `tmap` package is frequently used in geospatial visualisations because it allows us to quickly and easily create both, static and interactive maps. The syntax of `tmap` resembles that of `ggplot2` which is a popular data-visualising package. Both use layers to include additional elements in the map and both follow a strict separation between the data and the aesthetic of the map. Firstly, the dataset is provided in `tm_shape` function and then additional layers of the map are specified through the use of a `+` sign followed by different functions (depending on what we want to add). Below we present two examples of how `tmap` is used to create simple static and interactive maps. In the code below, *africountries* is our dataset, an object of `sf` class, whereas `tm_polygons` and `tm_lines` are used to plot polygons and lines respectively.
+The `tmap` package is frequently used in geospatial visualisations because it allows us to quickly and easily create both, static and interactive maps. The syntax of `tmap` resembles that of `ggplot2` which is a popular data-visualising package. Both use layers to include additional elements in the map and both follow a strict separation between the data and the aesthetic of the map. Firstly, the dataset is provided in `tm_shape()` function and additional layers of the map are specified through the use of a `+` sign followed by different functions, depending on what we want to add. There are several display specification to choose from such as:
+
+- `tm_polygons()` : draws the polygons
+- `tm_fill()` : fills the polygons with a specified colour (Grey is a default option.)
+- `tm_borders()`: draws the borders of the polygons
+- `tm_lines()`: draws spatial lines eg. roads
+- `tm_dots()`: draws points eg. capital cities 
+- `tm_symbols()`: draws symbols, with grey circles as a default option.
+
+They enables us to add and customise the map. Below we present two examples of how `tmap` is used to create simple static and interactive maps. In the code below, *africountries* is our dataset, an object of `sf` class, whereas `tm_polygons()` and `tm_lines()` are used to plot and adjust polygons and lines, respectively.
 
 ## Static maps
 ```{r c2-simple-map, message=FALSE, warning=FALSE}
