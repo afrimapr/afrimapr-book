@@ -55,7 +55,7 @@ The version of the book you are currently reading was last updated at:
 Sys.time()
 ```
 
-![Continuous integration (built on GitHub)](https://github.com/afrimapr/book/workflows/tic/badge.svg)
+![Continuous integration (built on GitHub)](https://github.com/afrimapr/book/workflows/build-book/badge.svg)
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
