@@ -1,15 +1,20 @@
 # Introduction {#intro}
 
-[andy: we may move this text to the Preface later (coded in index.Rmd), but is more difficult to find there.]
+## Why use this book ?
 
-## Why read this book
+Read this book if you would like to be able to make maps from African data  using R. It will introduce you to just enough of the required understanding of spatial data and R to be able to make useful maps. These maps that we are talking about, are those that are used to communicate data rather than maps used for navigation. For example you might want to show the numbers of COVID-19 cases in different regions, or the types of buildings or transport routes or land uses. You might want to present such maps in a report, a newspaper article, an interactive web application or a scientific paper. 
 
-[mention reproducibility, html, markdown, QGIS etc.]
+## Why R ?
 
-Read this book if you would like to be able to make maps from African data (or indeed other data too).
+R can do nearly anything, is free, open-source and has a great community of people keen to help each other. R is code based so that once you learn, for example, how to write the code to make a map for one month, you can modify that code to make 12 monthly maps. Then you can share that code with a colleague and they can make a small modification to make 12 similarly monthly maps for a different region. As such, R is good for re-useability and reproducibility. The R ecosystem has great mechanisms for sharing code and data, this means that you can benefit from the work of others and also allows you to generate impact by sharing your own work.    
 
+[mention QGIS]
 
-## Who for
+## Why African data ?
+
+There are three main reasons that we focus on Africa : rapidly growing open-source communities, a lack of existing targeted resources and great needs in, for example, health and environment. The rapid growth in open-source communities is seen in the birth of R user-groups in many African cities and more generally in the popularity of organisations like code4Africa. Learners within these communities are likely to learn more easily when training resources use examples with which they are more familiar. We are not aware of existing training resources focussing on African examples. Some of the greatest health and environment needs occur on the African continent. Data solutions and papers in the academic literature are still often led from the North. There is a great potential for local analysts to develop solutions to local issues. Making maps can be a useful contribution.  
+
+## Who for ?
 
 The book is aimed principally at analysts who want to make maps from African data as a part of their routine work. We expect that readers will have had some limited experience of R and/or spatial data but this is not strictly required. We will take you step-by-step through code to obtain, manipulate and visualise spatial data. We focus on routine tasks and developing confidence and resilience in applying them, rather than moving to more advanced analyses.
 
