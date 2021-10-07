@@ -1,6 +1,25 @@
 # A taster - making your first map  {#taster} 
 
-While this book will help the reader gain necessary skills to start geospatial visualisations, this chapter shows the steps through an example process of map-making. It demonstrates the focus and potential of this book, so that the readers can quickly see what this book aims to achieve and how it is done. In the examples below we use R package called `tmap` to create several different map types including static and interactive ones. We can produce maps with wide range of spatial objects such as sf, sp or raster. Moreover, with `tmap`, multiple shapes and layers can be plotted on a single map and its appearance can be changed quickly with many different styles and options to choose from. Below we present some key features and functionalities of the package, while more detailed information is presented in the next chapters. 
+## Overall goal of the chapter
+
+In this book we will take you step-by-step through making maps with African data in R. In this taster chapter we will demonstrate some of the steps so that you can get an idea of what we are aiming for and see that it is achievable. This taster chapter will not explain everything, that will come in later chapters. Don't worry if there are things that you don't quite understand at this stage. You should at least be able to run the code that we provide, see that it makes map, and have some idea what it is doing. 
+
+<style>
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+**Learning objectives**
+
+- See that maps can be made in R with relatively little code
+
+[todo add to these]
+
+</div>
+
+
+To be able to make maps in R you will need to install and load some R packages that contain functions and data.
+
+In the examples below we use the R package called `tmap` to create several different map types including static and interactive ones. With `tmap`, multiple shapes and layers can be plotted on a single map and its appearance can be changed quickly with many different styles and options to choose from. Below we present some key features and functionalities of the package, while more detailed information is presented in the next chapters. 
 
 
 ```{r, c2-packages, results='hide', warning=FALSE, message=FALSE, include = FALSE, eval=FALSE}
@@ -22,7 +41,6 @@ remotes::install_github("afrimapr/afrilearndata")
 ```{r, c2-libraries, results='hide', warning=FALSE, message=FALSE, include = FALSE}
 #Load packages
 library(tmap)
-library(ggplot2)
 library(sf)
 library(s2)
 library(afrilearndata)
@@ -35,7 +53,29 @@ library(raster)
 #static mode activated
 tmap_mode("plot")
 
+#switch off spherical geometry, needed after sf package update
+#[todo work out if we still need this in future]
+sf_use_s2(FALSE) 
+
 ```
+
+For the first 'Hello world !' or 'Hello Africa!' example you can use the `tmap` package to make a map of African country boundaries using data contained with the `afrilearndata` package.
+
+```{r c2-hello-africa, message=FALSE, warning=FALSE}
+
+# install packages
+# install.packages("tmap")
+# remotes::install_github("afrimapr/afrilearndata")
+
+# load packages
+library(tmap)
+library(afrilearndata)
+
+# run command on the data
+tm_shape(africountries) + tm_polygons()
+
+```
+
 
 The `tmap` package is frequently used in geospatial visualisations because it allows us to quickly and easily create both, static and interactive maps. The syntax of `tmap` resembles that of `ggplot2` which is a popular data-visualising package. Both use layers to include additional elements in the map and both follow a strict separation between the data and the aesthetic of the map. Firstly, the dataset is provided in `tm_shape()` function and additional layers of the map are specified through the use of a `+` sign followed by different functions, depending on what we want to add. There are several display specification to choose from such as:
 
@@ -50,9 +90,6 @@ They enables us to add and customise the map. Below we present two examples of h
 
 ## Static maps
 ```{r c2-simple-map, message=FALSE, warning=FALSE}
-
-sf_use_s2(FALSE) #switches off spherical geometry, needed after sf package update
-
 
 map_1 = tm_shape(africountries) +
     tm_polygons()
