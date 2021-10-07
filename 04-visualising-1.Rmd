@@ -136,7 +136,7 @@ tm_shape(africountries)+
 
 ```
 
-We can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
+Nevertheless, we can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. This approach can also be used to help distinguishing different elements of the map. Following the example from above, the lines representing region borders and roads can be coloured differently to avoid confusion. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
 
 
 ```{r c5-tmap-countries5, out.width="50%"}
@@ -146,7 +146,7 @@ tm_shape(africountries)+
 
 ```
 
-As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and adding relevant title to the legend. Further, we can build on the previous map by adding labels for country names with `tm_text` function. In a similar manner a variety of different layers can be added. 
+As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and adding relevant title to the legend. Further, we can build on the previous map by adding labels for country names with `tm_text()` function. In a similar manner a variety of different layers can be added. Even though the possibilities are nearly endless, where large number of elements and layers can be combined in a single map, care should be take in order not to overwhelm the reader with the amount of information presented in one map and impede the clarity and readability of the map.
 
 ```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labels (left) and map with added coutries names (right)"}
 
