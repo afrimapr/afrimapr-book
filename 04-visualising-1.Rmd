@@ -1,7 +1,7 @@
 # Visualising spatial data part 1: tmap and mapview {#visualising1}
 
 ## Overall goal of the chapter
-In the previous section we explored different types of spatial data and looked at how these can be used to create a map. In this section we will use `tmap` and `mapview` packages to crate both static and interactive maps. In particular, we will focus on the goals presented below.
+In the previous section we explored different types of spatial data and looked at how these can be used to create a map. In this section we will use `tmap` and `mapview` packages to create both static and interactive maps. In particular, we will focus on the goals presented below.
 
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
@@ -45,8 +45,9 @@ library(tmaptools)
 ```
 
 ## Quick interactive maps with mapview
-The `mapview package` allows quickly and easily create interactive maps of spatial data. Therefore, it is useful when we want to quickly explore the data visually without excessive care about the quality of the presentation. However, if we need static maps or interactive maps which are more elaborate we might want to consider other options such as `tmap package` which will be presented later in this chapter. <br/> 
-However, a potentially important aspect to consider is whether the map should be interactive at all. Even though powerful R packages allow us to produce interactive maps quickly and (nearly) effortlessly, it is important to align the purpose of the map with its appearance and functionality. This will ensure that the interactivity does not impede reader's interaction with the map and helps conveying key information easily.For example, it is important to consider target audience of the map. If the map is for the specialists then the interactivity will potentially help in more in-depth analysis of the data and finding more detailed, micro-scale information, beyond the trends identifiable at first sight. However, if the map is published for broader audience to provide an overview of a certain situation easily and quickly, then a static map is probably a better medium. At the end of the day the features included in the map should help the author of the map communicate with the reader. Therefore, the type, functions and appearance of the map should be in line with the amount and level of information to be presented, the purpose of the map and level of expertise of the reader.<br/>
+The `mapview package` allows you to quickly and easily create interactive maps using spatial data. Therefore, it is useful when we want to quickly explore the data visually without excessive care about the quality of the presentation. However, if we need static maps or interactive maps which are more elaborate we might want to consider other options such as `tmap package` which will be presented later in this chapter. <br/> 
+
+Moreover, a potentially important aspect to consider is whether the map should be interactive at all. Even though powerful R packages allow us to produce interactive maps quickly and (nearly) effortlessly, it is important to align the purpose of the map with its appearance and functionality. This will ensure that the interactivity does not impede reader's interaction with the map and helps conveying key information easily. For example, it is important to consider target audience of the map. If the map is for the specialists then the interactivity will potentially help in more in-depth analysis of the data and finding more detailed, micro-scale information, beyond the trends identifiable at first sight. However, if the map is published for broader audience to provide an overview of a certain situation easily and quickly, then a static map is probably a better medium. At the end of the day the features included in the map should help the author of the map communicate with the reader. Therefore, the type, functions and appearance of the map should be in line with the amount and level of information to be presented, the purpose of the map and level of expertise of the reader.<br/>
 
 As we now shortly discussed the advantages and disadvantages of using the interactive maps, let us have a look on the how they can be created. Firstly, it is important to say that the typical spatial objects types supported by `mapview` package are: 
 
@@ -54,7 +55,7 @@ As we now shortly discussed the advantages and disadvantages of using the intera
 - raster
 - sp
 
-To create the most basic map with the boundaries of African countries we call `mapview()` function
+To create the most basic, interactive map with the boundaries of African countries we call `mapview()` function
 
 ```{r c5-mapview-countries, warning=FALSE, message=FALSE}
  data(africountries)
@@ -65,29 +66,28 @@ This map has a number of functions:
 
 - layer button to switch between five different layers
 - scale bar
-- zoom butttons
+- zoom buttons
 - data name in the top right corner
 
-We can easily fill an interactive map with the colours based on one of the columns. Here we use population column to colours our map. Importantly, when we hoover over specific country the population data for a given country is showed.
+You can easily fill an interactive map with the colours based on one of the columns. Here we use population column to colours our map. Importantly, when you hoover over specific country the population data for a given country is showed.
 
 
 ```{r c5-mapview-countries2}
 mapview(africountries, zcol = ("pop_est"))
 ```
 
-Similarly, we can control for other features such as line width (lwd), colour of polygons (col.regions). Another important feature that we might want to control is the underlying map which we set with 'map.types' argument. The available background maps can be viewed [here](http://leaflet-extras.github.io/leaflet-providers/preview/).
-
+Similarly, you can control for other features such as *line width* (lwd) or *colour of polygons* (col.regions). Another important feature that we might want to control is the underlying map which we set with *map.types* argument. The available background maps can be viewed [here](http://leaflet-extras.github.io/leaflet-providers/preview/).
 
 ```{r c5-mapview-countries3}
 mapview(africountries, color = "red", 
       lwd = 1.5, col.regions = "white", map.types = "Esri.WorldShadedRelief")
 ```
 
-Further, mapview allows us to easily build up many layers within a single map. Here, we firstly include countries and then add location of airports. Further a useful option is `layer.name` which allows us to control the naming of different layers of the map. The specific layers can be controlled and adjusted as showed in the example. In partucular, we set the colour of countries polygons according to the population size. It is possible to use layer button to hide and unhide layers of the map.
+Further, `mapview` allows you to easily build up many layers within a single map. Here, we firstly include countries and then add location of airports. Further a useful option is `layer.name` where you can control the naming of different layers of the map. The specific layers can be adjusted as showed in the example. In particular, we set the colour of countries polygons according to the population size. It is possible to use layer button to hide and unhide layers of the map.
 
 ```{r c5-mapview-airports}
 # simple map with two layers
-mapview(list(africountries,afriairports), layer.name = c("Countries", "Airports"))
+mapview(list(africountries, afriairports), layer.name = c("Countries", "Airports"))
 
 #map with advanced layers options
 mapview(africountries, zcol = "pop_est", layer.name = "Population") +
@@ -105,13 +105,13 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </div>   
 
 ## Static maps with tmap
-In this section we explore the potential of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply build up on top of the basic structure. Before we plot the first maps we need to create a dataset called *africa* and activate static map viewing mode.
+In this section we explore the potential of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply built up on top of the basic structure. Before you plot the first maps your need to activate static map viewing mode and (if necessary) read in your dataset.
 
 ```{r c5-tmap-countries1, message=FALSE}
 tmap_mode("plot") #activates static map viewing mode
 ```
 
-Next, we create an empty contour map of the continent, where `tm_shape()` function serves as a basic component containing the shape object i.e. our spatial dataset. On top of this basic element we can then add more layers using `+` operator. The advantage of `tmap` package is that it offers a large variety layers and these are named relatively intuitively to make the search and use easier. For example, we will now use layer called `tm_borders()` which defines the borders of the polygons. Further, we create an empty, borderless map using `tm_fill()` which defines the fill of the polygons. 
+Next, we create an empty contour map of the continent, where `tm_shape()` function serves as a basic component containing the shape object i.e. our spatial dataset. On top of this basic element we can then add more layers using `+` operator. The advantage of `tmap` package is that it offers a large variety layers and these are named relatively intuitively to make the search and use easier. For example, we will now use layer called `tm_borders()` which defines the borders of the polygons. Further, we create an empty, border-less map using `tm_fill()` which defines the fill of the polygons. 
 
 ```{r c5-tmap-countries2, fig.show='hold', out.width="50%"}
 
@@ -123,7 +123,7 @@ tm_shape(africountries)+
 
 ```
 
-Intuitively to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows us to achieve exactly the same result more efficiently. It draws the polygons borders and fills them.
+Intuitively, to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows you to achieve exactly the same result more efficiently. It draws the polygons borders and fills them at the same time. The choice of the approach will depend on type of data and information that you try to present on your map. For example, if you plan to add a layer of road or rail network to your map later it may be a better idea to create a *base map* using polygons only (without contours) so that they do not overlap with road lines making the map more difficult to read.
 
 ```{r c5-tmap-countries4,fig.show="hold", out.width="50%"}
 
