@@ -1,6 +1,6 @@
 # A taster - making your first map  {#taster} 
 
-This chapter shows the steps through an example process of map-making. It demonstrates the focus and potential of this book, so that the readers can quickly see what this book aims to achieve and how it is done. 
+While this book will help the reader gain necessary skills to start geospatial visualisations, this chapter shows the steps through an example process of map-making. It demonstrates the focus and potential of this book, so that the readers can quickly see what this book aims to achieve and how it is done. In the examples below we use R package called `tmap` to create several different map types including static and interactive ones. We can produce maps with wide range of spatial objects such as sf, sp or raster. Moreover, with `tmap`, multiple shapes and layers can be plotted on a single map and its appearance can be changed quickly with many different styles and options to choose from. Below we present some key features and functionalities of the package, while more detailed information is presented in the next chapters. 
 
 
 ```{r, c2-packages, results='hide', warning=FALSE, message=FALSE, include = FALSE, eval=FALSE}
