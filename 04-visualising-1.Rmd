@@ -229,7 +229,7 @@ tmap_arrange(set1, plasma)
 
 ```
 
-Alternatively an overall style of a single map can be easily changed using `tm_style` function. However, it might also be useful to change the style in all the maps in the document. This can be achieved with setting the style globally with `tmap_style("nameofthestyle")`. The default style is called "white", hence to restore a default style setting use `tmap_style("white")`. 
+Alternatively, an overall style of a single map can be easily changed using `tm_style()` function. However, it might also be useful to change the style in all the maps in the document. This can be achieved with setting the style globally with `tmap_style("nameofthestyle")`. The default style is called "white", hence to restore a default style setting use `tmap_style("white")`. 
 
 ```{r, include = FALSE}
 tmap_mode("plot")
@@ -316,7 +316,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 5**: Create a map with continent contour in light green colour. Then add african highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. 
+**Exercise 5**: Create a map with continent contour in light green colour. Then add African highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. 
 </div>  
 
 ## Interactive maps with tmap
