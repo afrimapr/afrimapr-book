@@ -46,9 +46,10 @@ library(tmaptools)
 ```
 
 ## Quick interactive maps with mapview
-`Mapview package` allows quickly and easily create interactive maps of spatial data. Therefore, it is useful when we want to quickly explore the data visually without excessive care about the quality of the presentation. However, if we need static maps or interactive maps which are more elaborate we might want to consider other options such as `tmap package` which will be presented later in this chapter.<br/>
-
-The typical spatial objects types supported by `mapview` package are: 
+`Mapview package` allows quickly and easily create interactive maps of spatial data. Therefore, it is useful when we want to quickly explore the data visually without excessive care about the quality of the presentation. However, if we need static maps or interactive maps which are more elaborate we might want to consider other options such as `tmap package` which will be presented later in this chapter. <br/> 
+However, a potentially important aspect to consider is whether the map should be interactive at all. Even though powerful R packages allow us to produce interactive maps quickly and (nearly) effortlessly, it is important to align the purpose of the map with its appearance and functionality. This will ensure that the interactivity does not impede reader's interaction with the map and helps conveying key information easily.For example, it is important to consider target audience of the map. If the map is for the specialists then the interactivity will potentially help in more in-depth analysis of the data and finding more detailed, micro-scale information, beyond the trends identifiable at first sight. However, if the map is published for broader audience to provide an overview of a certain situation easily and quickly, then a static map is probably a better medium. At the end of the day the features included in the map should help the author of the map communicate with the reader. Therefore, the type, functions and appearance of the map should be in line with the amount and level of information to be presented, the purpose of the map and level of expertise of the reader.
+<br/>
+As we now debated the need for the interactive map, let us have a look on the how it can be achieved. The typical spatial objects types supported by `mapview` package are: 
 
 - sf
 - raster
@@ -320,9 +321,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </div>  
 
 ## Interactive maps with tmap
-`tmap`package offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.  
-
-
+The `mapview` is not package that allows us to produce interactive maps. Another possibility is the `tmap`package that offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.
 ```{r c5-tmap-interactive, warning=FALSE}
 #sets interactive mode
 tmap_mode("view")
