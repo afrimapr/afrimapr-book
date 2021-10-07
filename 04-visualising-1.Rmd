@@ -161,7 +161,7 @@ tm_shape(africountries)+
 
 ```
 
-Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to to much clustering of information. Instead, we might want to use `breaks` argument to set them up manually to provide more differentiation visually. For clarity, I set up the customised breaks outside of the map-making function. Alternatively, we can control number of so-called `bins` (groups) into which the **Population** is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons` function.
+Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to too much clustering of information. Instead, we might want to use `breaks` argument to set them up manually and provide more visual differentiation. For the transparency of the code, we set up the customised breaks outside of the map-making function. Alternatively, we can control number of so-called `bins` (groups) into which the **Population** is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons()` function.
 
 ```{r c5-tmap-countries-breaks,warnings = FALSE, message = FALSE,out.width="75%"}
 #default settings
@@ -181,7 +181,7 @@ tm_shape(africountries) +
 
 ```
 
-So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable with income level. It allows for visual grouping of countries in the same category. The names of the categories in the legend were adjusted using `labels` argument. In the similar manner we can show the airports of Africa according to their size.
+So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable with income level. It allows for visual grouping of countries in the same category. The names of the categories in the legend were adjusted using `labels` argument. In the similar manner we can show the airports of Africa depending on their size.
 
 
 ```{r c5-tmap-countries-categorical, out.width="50%"}
@@ -201,7 +201,7 @@ tm_shape(afriairports) +
 
 ```
 
-It is important to bear in mind that same information can be displayed on the map in many different ways. For example, we can make use of 'tm_bubbles' to create so called bubbles which size is linked to the population of each country while their colour related to the income group.
+It is important to bear in mind that same information can be displayed on the map in many different ways. For example, we can make use of `tm_bubbles()` to create so-called bubbles which size is linked to the population of each country while their colour represent the income group of the country.
 
 
 ```{r c5-tmap-bubbles, out.width="75%"}
@@ -214,7 +214,7 @@ tm_shape(africountries)+
 
 ### Colour setting and colour pallete
 
-An important aspect of the maps, as in every visual representation, are the colours. In `tmap` we can change the default colours using `palette` argument. In the example below, we used palette called **Set1** and **plasma** and there are many other options to choose from. To view them, we run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow selecting a number of colours.
+An important aspect of the maps, as in every visual representation, are the colours. In `tmap` we can change the default colours using `palette` argument. In the example below, we used palette called **Set1** and **plasma** but there are many other options to choose from. To view them, we run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow for selecting a number of colours.
 
 
 ```{r c5-tmap-palette, warning=FALSE, message = FALSE, results='hide', fig.cap = "Africa's maps using different pallete options."}
