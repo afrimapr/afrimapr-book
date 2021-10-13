@@ -45,17 +45,16 @@ library(tmaptools)
 ```
 
 ## Quick interactive maps with mapview
-The `mapview package` allows you to quickly and easily create interactive maps using spatial data. Therefore, it is useful when we want to quickly explore the data visually without excessive care about the quality of the presentation. However, if we need static maps or interactive maps which are more elaborate we might want to consider other options such as `tmap package` which will be presented later in this chapter. <br/> 
+The `mapview package` allows you to quickly and easily create interactive maps using spatial data. Therefore, it is useful when we want to quickly explore the data visually without excessive care about the quality of the presentation. However, if you need static maps or interactive maps which are more elaborate you might want to consider other options such as `tmap package` which will be presented later in this chapter. <br/> 
 
-Moreover, a potentially important aspect to consider is whether the map should be interactive at all. Even though powerful R packages allow us to produce interactive maps quickly and (nearly) effortlessly, it is important to align the purpose of the map with its appearance and functionality. This will ensure that the interactivity does not impede reader's interaction with the map and helps conveying key information easily. For example, it is important to consider target audience of the map. If the map is for the specialists then the interactivity will potentially help in more in-depth analysis of the data and finding more detailed, micro-scale information, beyond the trends identifiable at first sight. However, if the map is published for broader audience to provide an overview of a certain situation easily and quickly, then a static map is probably a better medium. At the end of the day the features included in the map should help the author of the map communicate with the reader. Therefore, the type, functions and appearance of the map should be in line with the amount and level of information to be presented, the purpose of the map and level of expertise of the reader.<br/>
+Moreover, a potentially important aspect to consider is whether the map should be interactive at all. Even though powerful R packages allow us to produce interactive maps quickly and (nearly) effortlessly, it is important to align the purpose of the map with its appearance and functionality. This will ensure that the interactivity does not impede reader's interaction with the map and helps conveying key information easily. For example, it is important to consider target audience of the map. If the map is for the specialists then the interactivity will potentially help gaining more in-depth insights into the data and finding more detailed, micro-scale information, beyond the trends identifiable at first sight. However, if the map is published for broader audience to provide an overview of a certain situation easily and quickly, then a static map is probably a better medium. At the end of the day the features included in the map should help the author of the map communicate with the reader. Therefore, the type, functions and appearance of the map should be in line with the amount and level of information to be presented, the purpose of the map and the level of expertise of the reader.<br/>
 
 As we now shortly discussed the advantages and disadvantages of using the interactive maps, let us have a look on the how they can be created. Firstly, it is important to say that the typical spatial objects types supported by `mapview` package are: 
 
-- sf
-- raster
-- sp
+- sf objects which is "*a collection of simple features that includes attributes and geometries in the form of a data frame*" [(Saddler, 2021)](https://www.jessesadler.com/post/simple-feature-objects/)
+- raster data made of pixels, where each pixel represents a geographical location
 
-To create the most basic, interactive map with the boundaries of African countries we call `mapview()` function
+To create the most basic, interactive map with the boundaries of African countries you need to call `mapview()` function
 
 ```{r c5-mapview-countries, warning=FALSE, message=FALSE}
  data(africountries)
@@ -76,7 +75,7 @@ You can easily fill an interactive map with the colours based on one of the colu
 mapview(africountries, zcol = ("pop_est"))
 ```
 
-Similarly, you can control for other features such as *line width* (lwd) or *colour of polygons* (col.regions). Another important feature that we might want to control is the underlying map which we set with *map.types* argument. The available background maps can be viewed [here](http://leaflet-extras.github.io/leaflet-providers/preview/).
+Similarly, you can control for other features such as *line width* (lwd) or *colour of polygons* (col.regions). Another important feature that you might want to control is the underlying map which we set with *map.types* argument. The available background maps can be viewed [here](http://leaflet-extras.github.io/leaflet-providers/preview/).
 
 ```{r c5-mapview-countries3}
 mapview(africountries, color = "red", 
@@ -105,7 +104,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </div>   
 
 ## Static maps with tmap
-In this section we explore the potential of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply built up on top of the basic structure. Before you plot the first maps your need to activate static map viewing mode and (if necessary) read in your dataset.
+In this section we explore the potential of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply built up on top of the basic structure. Before you plot the first maps you need to activate static map viewing mode and (if necessary) read in your dataset.
 
 ```{r c5-tmap-countries1, message=FALSE}
 tmap_mode("plot") #activates static map viewing mode
@@ -123,7 +122,7 @@ tm_shape(africountries)+
 
 ```
 
-Intuitively, to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows you to achieve exactly the same result more efficiently. It draws the polygons borders and fills them at the same time. The choice of the approach will depend on type of data and information that you try to present on your map. For example, if you plan to add a layer of road or rail network to your map later it may be a better idea to create a *base map* using polygons only (without contours) so that they do not overlap with road lines making the map more difficult to read.
+Intuitively, to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows you to achieve exactly the same result more efficiently. It draws the polygons borders and fills them at the same time. The choice of the approach will depend on type of data and information that you aim to present on your map. For example, if you plan to add a layer of road or rail network to your map later it may be a better idea to create a *base map* using polygons only (without contours) so that they do not overlap with road lines making the map more difficult to read.
 
 ```{r c5-tmap-countries4,fig.show="hold", out.width="50%"}
 
@@ -146,7 +145,7 @@ tm_shape(africountries)+
 
 ```
 
-As we already know a basic structure required to build a static map, we can proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and adding relevant title to the legend. Further, we can build on the previous map by adding labels for country names with `tm_text()` function. In a similar manner a variety of different layers can be added. Even though the possibilities are nearly endless, where large number of elements and layers can be combined in a single map, care should be take in order not to overwhelm the reader with the amount of information presented in one map and impede the clarity and readability of the map.
+As you already know a basic structure required to build a static map, we can now proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and add relevant title to the legend. Further, you can build on the previous map by adding labels for country names with `tm_text()` function. In a similar manner a variety of different layers can be added. Even though the possibilities are nearly endless, where large number of elements and layers can be combined in a single map, care should be take in order not to overwhelm the reader with the amount of information presented in one map and impede the clarity and readability of the map.
 
 ```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labels (left) and map with added coutries names (right)"}
 
@@ -161,7 +160,7 @@ tm_shape(africountries)+
 
 ```
 
-Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to too much clustering of information. Instead, we might want to use `breaks` argument to set them up manually and provide more visual differentiation. For the transparency of the code, we set up the customised breaks outside of the map-making function. Alternatively, we can control number of so-called `bins` (groups) into which the **Population** is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons()` function.
+Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to too much clustering of information. Instead, we might want to use `breaks` argument to set them up manually and provide more visual differentiation. For the transparency of the code, we set up the customised breaks outside of the map-making function. Alternatively, you can control number of so-called `bins` (groups) into which the **Population** is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons()` function.
 
 ```{r c5-tmap-countries-breaks,warnings = FALSE, message = FALSE,out.width="75%"}
 #default settings
@@ -181,7 +180,7 @@ tm_shape(africountries) +
 
 ```
 
-So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable with income level. It allows for visual grouping of countries in the same category. The names of the categories in the legend were adjusted using `labels` argument. In the similar manner we can show the airports of Africa depending on their size.
+So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable that contains information about the income level. It allows for visual grouping of countries in the same category. The names of the categories in the legend were adjusted using `labels` argument. In the similar manner you can group and present the airports of Africa depending on their size.
 
 
 ```{r c5-tmap-countries-categorical, out.width="50%"}
@@ -201,7 +200,7 @@ tm_shape(afriairports) +
 
 ```
 
-It is important to bear in mind that same information can be displayed on the map in many different ways. For example, we can make use of `tm_bubbles()` to create so-called bubbles which size is linked to the population of each country while their colour represent the income group of the country.
+It is important to bear in mind that some information can be displayed on the map in many different ways. For example, we can make use of `tm_bubbles()` to create so-called bubbles which size is linked to the population of each country while their colour represents the income group of the country.
 
 
 ```{r c5-tmap-bubbles, out.width="75%"}
@@ -214,7 +213,7 @@ tm_shape(africountries)+
 
 ### Colour setting and colour pallete
 
-An important aspect of the maps, as in every visual representation, are the colours. In `tmap` we can change the default colours using `palette` argument. In the example below, we used palette called **Set1** and **plasma** but there are many other options to choose from. To view them, we run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow for selecting a number of colours.
+An important aspect of the maps, as in every visual representation, are the colours. In `tmap` you can change the default colours using `palette` argument. In the example below, we used palette called **Set1** and **plasma** but there are many other options to choose from. To view them, run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow for selecting a number of colours.
 
 
 ```{r c5-tmap-palette, warning=FALSE, message = FALSE, results='hide', fig.cap = "Africa's maps using different pallete options."}
