@@ -217,11 +217,11 @@ An important aspect of the maps, as in every visual representation, are the colo
 
 Another important aspect in terms of colour use is the design of the map for the individuals with colour vision deficiency. They can differentiate between different lightness however specific colours used for different categories may be less accessible for them. The solution could be an addition of texture or usage of pallets which are colour-blindness friendly. In fact `tmaptools` allows for testing chosen map colours for three different types of colour blindness in its *color blindness simulator* (accessible via `tmaptools::palette_explorer()`), as seen in the Figure below.<br/>
 
-```{r, out.width = "30%", echo=FALSE}
-knitr::include_graphics("images/colour_blind.png")
+```{r, out.width = "50%", echo=FALSE}
+knitr::include_graphics("images/colour_blind.PNG")
 ```
 
-In `tmap` package has a broad colour selection, not only with respect to individual colours but also map styles where you can change the default colours using `palette` argument. In the example below, we used palette called *Set1* and *plasma* but there are many other options to choose from. To view them, in your console run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow for selecting a number of colours.
+Moreover, `tmap` package has a broad colour selection, not only with respect to individual colours but also map styles where you can change the default colours using `palette` argument. In the example below, we used palette called *Set1* and *plasma* but there are many other options to choose from. To view them, in your console run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow for selecting a number of colours.
 
 
 ```{r c5-tmap-palette, warning=FALSE, message = FALSE, results='hide', fig.cap = "Africa's maps using different pallete options."}
@@ -271,7 +271,7 @@ tmap_arrange(classic, beaver, albatross)
 ```
 
 ### Visualising different datasets in one map
-`tmap` not only allows us to add extra layers to a single map by building on a basic structure, but it also enables us to join two separate datasets in a single map. We first create an object called *countries* which is a map with African countries:
+The `tmap` package not only allows you to add extra layers to a single map by building on a basic structure, but it also enables you to join two separate datasets in a single map. We, first, create an object called *countries* which is a map with African countries:
 ```{r c5-tmap-combine1, warning=FALSE, out.width="75%"}
 #read in data
 data(africountries)
@@ -327,7 +327,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </div>  
 
 ## Interactive maps with tmap
-The `mapview` is not package that allows us to produce interactive maps. Another possibility is the `tmap`package that offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.
+The `mapview` is not the only package that allows us to produce interactive maps. Another possibility is the `tmap` package that offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently, by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.
 ```{r c5-tmap-interactive, warning=FALSE}
 #sets interactive mode
 tmap_mode("view")
@@ -342,7 +342,7 @@ tm_shape(africountries)+
 
 ```
 
-Regardless of the mode, the creation of maps using `tmap` package is easy and convenient. The additional feature in the interactive mode is the choice of the background map. This can be set up using function `tm_basemap`. Available base maps can be accessed using `leaflet::providers`. They can also be previewed [here](https://leaflet-extras.github.io/leaflet-providers/preview/). In the example below, we use a topographic map of Africa. 
+Regardless of the mode, the creation of maps using `tmap` package is easy and convenient. The additional feature in the interactive mode is the choice of the background map. This can be set up using function `tm_basemap`. The available base maps can be accessed using `leaflet::providers`. They can also be previewed [here](https://leaflet-extras.github.io/leaflet-providers/preview/). In the example below, we use a topographic map of Africa. 
 
 
 ```{r c5-tmap-basemap}
@@ -357,8 +357,7 @@ tm_shape(africountries)+
 ```
 
 ### Visualising subsets of data
-
-Let's assume that we are only interested in the subset of our data for example a specific country or the location of large airports only. We can achieve it using `dplyr` package. 
+So far we visualised whole datasets but now let's assume that we are only interested in the subset of our data, for instance, a specific country or the airports of a specific size only. We can achieve it using `dplyr` package. In the example below, our focus is on the large airport, consequently we `filter` them based on their size. This process of subsetting can be decomposed into smaller steps. Firstly, we create a new dataset called *large* which is based on the subset of data from the original dataset called *afriairports*. The data is subset using so-called pipe operator ` %>% ` that essentially links two arguments in the sequence. Here, ` %>% ` links our original dataset with the subsequent function `filter()`. The `filter()` function allows us to subset variables or dataset that meet our condition specified inside it. Specifically, we selected all the airports from the whole dataset which are large, based on the  *type* variable which contains *large_airport* observations that correspond to our airports of interest (large ones).
 
 ```{r c5-tmap-subset}
 tmap_mode("view")
