@@ -357,20 +357,22 @@ tm_shape(africountries)+
 ```
 
 ### Visualising subsets of data
-So far we visualised whole datasets but now let's assume that we are only interested in the subset of our data, for instance, a specific country or the airports of a specific size only. We can achieve it using `dplyr` package. In the example below, our focus is on the large airport, consequently we `filter` them based on their size. This process of subsetting can be decomposed into smaller steps. Firstly, we create a new dataset called *large* which is based on the subset of data from the original dataset called *afriairports*. The data is subset using so-called pipe operator ` %>% ` that essentially links two arguments in the sequence. Here, ` %>% ` links our original dataset with the subsequent function `filter()`. The `filter()` function allows us to subset variables or dataset that meet our condition specified inside it. Specifically, we selected all the airports from the whole dataset which are large, based on the  *type* variable which contains *large_airport* observations that correspond to our airports of interest (large ones).
+So far we visualised whole datasets but now let's assume that we are only interested in the subset of our data, for instance, a specific country or the airports of a specific size only. We can achieve it using `dplyr` package. In the example below, our focus is on the large airport, consequently we `filter` them based on their size. This process of subsetting can be decomposed into smaller steps. Firstly, we create a new dataset called *large_airports* which is based on the subset of data from the original dataset called *afriairports*. The data is subset using so-called pipe operator ` %>% ` that essentially links two arguments in the sequence. Here, ` %>% ` links our original dataset with the subsequent function `filter()`. The `filter()` function allows us to subset variables or dataset that meet our condition specified inside it. Specifically, we selected all the airports from the whole dataset which are large, based on the  *type* variable which contains *large_airport* observations that correspond to our airports of interest (large ones).<br/>
+
+Next, we simply visualise two datasets in a single map. In the first step we we use *africountries* inside the `tm_shape()` function to create a base map of Africa. We specify that borders should be displayed with `tm_borders()`. In the second step we add new *large_airports* dataset with `tm_shape(large_airports)` and we specify that airport (from the *large_airports* dataset) should be visualised as red dots `tm_dots(col = "red")``.
 
 ```{r c5-tmap-subset}
 tmap_mode("view")
 data(afriairports)
 
 #take a subset of data
-large = afriairports %>% filter(type=="large_airport")
+large_airports = afriairports %>% filter(type=="large_airport")
 
 #plot the subset
 tm_shape(africountries)+
   tm_borders()+
-  tm_shape(large)+
-    tm_dots( col = "red")
+  tm_shape(large_airports)+
+    tm_dots(col = "red")
 
 ```
 
