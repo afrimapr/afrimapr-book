@@ -10,9 +10,10 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 <div class = "green">
 **Learning objectives**
 
+- Gain an indication of what the book will enable you to do
+- Start to become familiar with R code to make maps
+- Revise & understand concepts of packages, functions & data objects in R
 - See that maps can be made in R with relatively little code
-
-[todo add to these]
 
 </div>
 
@@ -59,9 +60,12 @@ sf_use_s2(FALSE)
 
 ```
 
-For the first 'Hello world !' or 'Hello Africa!' example you can use the `tmap` package to make a map of African country boundaries using data contained with the `afrilearndata` package.
+## Hello Africa!
 
-```{r c2-hello-africa, message=FALSE, warning=FALSE}
+When learning to code something new it is good to start simple. "Hello World!" is often the first example used to teach a programming language - just enough code to print that welcoming message. Given the aim of this book we adapt the concept slightly, changing the geographic focus and presenting a map rather than text.  
+
+
+```{r c2-hello-africa-tmap, message=FALSE, warning=FALSE}
 
 # install packages
 # install.packages("tmap")
@@ -71,10 +75,54 @@ For the first 'Hello world !' or 'Hello Africa!' example you can use the `tmap` 
 library(tmap)
 library(afrilearndata)
 
-# run command on the data
-tm_shape(africountries) + tm_polygons()
+# plot a map of Africa country boundaries
+tm_shape(africountries) + tm_polygons() 
 
 ```
+
+For this 'Hello Africa!' example we use the `tm_shape` and `tm_polygons` functions from the `tmap` package to make a map of African country boundaries using a data object called `africountries` from the `afrilearndata` package. We don't expect you to understand the code completely at this stage but the example should give you an idea of what each part is doing.
+
+In R there is often more than one way of doing a task. This 'Hello Africa!' example can also be created using the `mapview` package and the same data.
+
+```{r c2-hello-africa-mapview, message=FALSE, warning=FALSE}
+
+# install packages
+# install.packages("mapview")
+
+# load packages
+library(mapview)
+library(afrilearndata)
+
+# plot a map of Africa country boundaries
+mapview(africountries) 
+
+```
+
+The `mapview` package makes interactive maps so that on a computer the viewer can zoom in and out and drag the map to different areas. It also provides an automatic basemap. These things can be done with `tmap` too - as we said, there is often more than one way of doing a similar task.
+
+Both maps above simply plot the geographic boundaries. 
+
+We can add just a little code to each example to visualise some other data using the geographic boundaries as a canvas. In this case we will use `income_grp` which is a column within the `africountries` data object.
+
+Firstly, using `tmap` :
+
+```{r c2-hello-africa-tmap-income_grp, message=FALSE, warning=FALSE}
+
+# colour polygons according to income group
+tm_shape(africountries) + tm_polygons(col='income_grp')
+
+```
+
+Secoundly, using `mapview` :
+
+```{r c2-hello-africa-mapview-income_grp, message=FALSE, warning=FALSE}
+
+# colour polygons according to income group
+mapview(africountries, zcol='income_grp')
+
+```
+
+[andy TODO: is it useful adding mapview above? trying to show early that you can use more than one approach & syntax is similar, also not to be too reliant on just one package, do I want to add more below]
 
 
 The `tmap` package is frequently used in geospatial visualisations because it allows us to quickly and easily create both, static and interactive maps. The syntax of `tmap` resembles that of `ggplot2` which is a popular data-visualising package. Both use layers to include additional elements in the map and both follow a strict separation between the data and the aesthetic of the map. Firstly, the dataset is provided in `tm_shape()` function and additional layers of the map are specified through the use of a `+` sign followed by different functions, depending on what we want to add. There are several display specification to choose from such as:
