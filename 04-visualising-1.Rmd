@@ -383,7 +383,7 @@ tm_shape(morocco_map)+
           palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))+
     tm_layout(legend.position = c("left", "top"),)
 ```
-Finally, it is also possible to zoom the map in by cropping it along the coordinates. This can be done using ´st_crop()´ function where we need to specify boundary longitude and latitude in degrees along which the map will be cut. The min and max x correspond to latitude values and max and min y correspond to longitude. We can obtain the boundary coordinates of our map by running ´st_box(function)´. We then specify aribtrary values along which we want to split the map in the ´st_crop()´ function as presented below where we focus only on the western Africa.
+Finally, it is also possible to zoom the map in by cropping it along the coordinates. This can be done using ´st_crop()´ function where we need to specify boundary longitude and latitude in degrees along which the map will be cut. The min and max x correspond to longitude values and max and min y correspond to latitude. We can obtain the boundary coordinates of our map by running ´st_box(function)´. We then specify aribtrary values along which we want to split the map in the ´st_crop()´ function as presented below where we focus only on the western Africa.
 ```{r}
 st_bbox(africontinent)
 
@@ -392,9 +392,48 @@ west <- st_crop(africontinent, xmin = -17, xmax = 16,
 tm_shape(west)+
   tm_polygons()
 
+
+
 ```
 Similarly, it is possible to subset airport depending on their location. In the example below we aim to split African airport into four regions: north, south, east and west. 
+```{r}
+west_airports <- st_crop(afriairports, xmin = -17, xmax = 16,
+                ymin = 2, ymax = 21)
 
+east_airports <- st_crop(afriairports, xmin = 22, xmax = 50,
+                ymin = -25, ymax = 21)
+
+south_airports <- st_crop(afriairports, xmin = 15, xmax = 35,
+                ymin = -34, ymax = -25)
+
+north_airports <- st_crop(afriairports, xmin = -16, xmax = 37,
+                 ymin = 20, ymax = 37)
+
+
+w = tm_shape(africontinent)+
+  tm_polygons()+
+tm_shape(west_airports)+
+  tm_dots()
+
+
+e = tm_shape(africontinent)+
+  tm_polygons()+
+tm_shape(east_airports)+
+  tm_dots()
+
+n = tm_shape(africontinent)+
+  tm_polygons()+
+tm_shape(north_airports)+
+  tm_dots()
+
+s = tm_shape(africontinent)+
+  tm_polygons()+
+tm_shape(south_airports)+
+  tm_dots()
+
+tmap_arrange(n,s,e,w)
+
+```
 
 ## Interactive maps with tmap
 The `mapview` is not the only package that allows us to produce interactive maps. Another possibility is the `tmap` package that offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently, by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.
