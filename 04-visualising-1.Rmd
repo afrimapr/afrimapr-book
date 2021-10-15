@@ -346,6 +346,17 @@ tm_shape(africountries)+
 
 ```
 
+Another useful, subsetting example may be to visualise only information for one, specific country. This can be done using similar approach as presented above. In our example, we will focus on presenting airports of Morocco on the map. Firstly, we take the dataset that contains all the airports (51 observations in total) and create a new dataset called *morocco* which contains only the airports of Morocco (31 observations in total). In the second step we create a map of the whole Africa coloured in beige and then overlay the moroccan airports as blue dots.
+```{r c5-tmap-subset-2}
+
+morocco = afriairports %>% filter(country_name=="Morocco")
+
+tm_shape(africountries)+
+  tm_polygons(beige)+
+  tm_shape(morocco)+
+  tm_dots(col = "blue")
+
+```
 
 ## Interactive maps with tmap
 The `mapview` is not the only package that allows us to produce interactive maps. Another possibility is the `tmap` package that offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently, by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.
