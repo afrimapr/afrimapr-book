@@ -395,8 +395,8 @@ Alternatively, it is also possible to zoom the map in by cropping it along the c
 ```{r, warning=FALSE, message=FALSE}
 st_bbox(africontinent)
 
-west <- st_crop(africountries, xmin = -17, xmax = 16,
-                          ymin = 2, ymax = 21)
+west <- st_crop(africountries, xmin = -17, xmax = 21,
+                          ymin = -25, ymax = 21)
 tm_shape(west)+
   tm_polygons()
 
@@ -420,7 +420,7 @@ south_airports <- st_crop(afriairports, xmin = 15, xmax = 35,
 north_airports <- st_crop(afriairports, xmin = -16, xmax = 37,
                  ymin = 20, ymax = 37)
 
-w = tm_shape(africountries)+
+w = tm_shape(africontinent)+
   tm_polygons()+
   tm_shape(west_airports)+
   tm_dots()
