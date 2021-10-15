@@ -383,7 +383,17 @@ tm_shape(morocco_map)+
           palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))+
     tm_layout(legend.position = c("left", "top"),)
 ```
+Finally, it is also possible to zoom the map in by cropping it along the coordinates. This can be done using ´st_crop()´ function where we need to specify boundary longitude and latitude in degrees along which the map will be cut. The min and max x correspond to latitude values and max and min y correspond to longitude. We can obtain the boundary coordinates of our map by running ´st_box(function)´. We then specify aribtrary values along which we want to split the map in the ´st_crop()´ function as presented below where we focus only on the western Africa.
+```{r}
+st_bbox(africontinent)
 
+west <- st_crop(africontinent, xmin = -17, xmax = 16,
+                          ymin = 2, ymax = 21)
+tm_shape(west)+
+  tm_polygons()
+
+```
+Similarly, it is possible to subset airport depending on their location. In the example below we aim to split African airport into four regions: north, south, east and west. 
 
 
 ## Interactive maps with tmap
