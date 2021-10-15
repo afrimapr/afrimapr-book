@@ -352,11 +352,38 @@ Another useful, subsetting example may be to visualise only information for one,
 morocco = afriairports %>% filter(country_name=="Morocco")
 
 tm_shape(africountries)+
-  tm_polygons(beige)+
+  tm_polygons("beige")+
   tm_shape(morocco)+
   tm_dots(col = "blue")
 
 ```
+
+It is also possible to visualise the different sizes of airport in the subset data. It is done exactly the same way as in the case of the whole dataset, where the colour of the dots are set to column name that contains the size of the airport. For clarity, the code within `tm_dots()` function adjusts the colour and size of the airport dots and adds the legend.
+```{r}
+tm_shape(africontinent)+
+  tm_polygons(col = "lightyellow")+
+  tm_shape(morocco) +
+tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
+        labels = c("Large", "Medium", "Small"),
+        palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))
+```
+
+However, it can also be observed that the view of the map is quite zoomed out and some of the airports overlap. A possible solution to this problem would be to subset both, airports of Morocco as well as the country borders so that only map of Morocco is visible which allows for taking a closer look at location of the airports. The rest of the code is identical to that above. The additional component of `tm_layout()` is used to control the position of the legend of the map. It is needed here as it was overlapping with the map in the default position (bottom, left corner).
+```{r}
+
+morocco_map=africountries %>%
+  filter(`name_long` == "Morocco")
+
+tm_shape(morocco_map)+
+  tm_polygons(col = "lightyellow")+
+  tm_shape(morocco) +
+  tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
+          labels = c("Large", "Medium", "Small"),
+          palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))+
+    tm_layout(legend.position = c("left", "top"),)
+```
+
+
 
 ## Interactive maps with tmap
 The `mapview` is not the only package that allows us to produce interactive maps. Another possibility is the `tmap` package that offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently, by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.
