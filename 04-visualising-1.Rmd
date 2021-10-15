@@ -397,7 +397,7 @@ Finally, it is also possible to zoom the map in by cropping it along the coordin
 ```{r, warning=FALSE, message=FALSE}
 st_bbox(africontinent)
 
-west <- st_crop(africuntries, xmin = -17, xmax = 16,
+west <- st_crop(africountries, xmin = -17, xmax = 16,
                           ymin = 2, ymax = 21)
 tm_shape(west)+
   tm_polygons()
