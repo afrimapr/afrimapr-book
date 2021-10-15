@@ -348,8 +348,9 @@ tm_shape(africountries)+
 
 Another useful, subsetting example may be to visualise only information for one, specific country. This can be done using similar approach as presented above. In our example, we will focus on presenting airports of Morocco on the map. Firstly, we take the dataset that contains all the airports (51 observations in total) and create a new dataset called *morocco* which contains only the airports of Morocco (31 observations in total). In the second step we create a map of the whole Africa coloured in beige and then overlay the moroccan airports as blue dots.
 ```{r c5-tmap-subset-2}
+tmap_mode("plot")
 
-morocco = afriairports %>% filter(country_name=="Morocco")
+morocco = afriairports %>% filter(country_name == "Morocco")
 
 tm_shape(africountries)+
   tm_polygons("beige")+
@@ -360,7 +361,7 @@ tm_shape(africountries)+
 
 It is also possible to visualise the different sizes of airport in the subset data. It is done exactly the same way as in the case of the whole dataset, where the colour of the dots are set to column name that contains the size of the airport. For clarity, the code within `tm_dots()` function adjusts the colour and size of the airport dots and adds the legend.
 ```{r}
-tm_shape(africontinent)+
+tm_shape(africountries)+
   tm_polygons(col = "lightyellow")+
   tm_shape(morocco) +
 tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
@@ -368,7 +369,7 @@ tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
         palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))
 ```
 
-However, it can also be observed that the view of the map is quite zoomed out and some of the airports overlap. A possible solution to this problem would be to subset both, airports of Morocco as well as the country borders so that only map of Morocco is visible which allows for taking a closer look at location of the airports. The rest of the code is identical to that above. The additional component of `tm_layout()` is used to control the position of the legend of the map. It is needed here as it was overlapping with the map in the default position (bottom, left corner).
+However, it can also be observed that the view of the map is quite zoomed out and some of the airports overlap. A possible solution to this problem would be to subset both, airports of Morocco as well as the country borders so that only map of Morocco is visible which allows for taking a closer look at location of the airports. The rest of the code is identical to that above. The additional component of `tm_layout()` is used to control the position of the legend of the map. It is needed here as it was overlapping with the map in the default position (bottom, left corner). Alternatively, it is also possible to use an interactive map to freely zoom in and out. This will be presented in the following section.
 ```{r}
 
 morocco_map=africountries %>%
@@ -413,6 +414,18 @@ tm_shape(africountries)+
         tm_shape(afrihighway)+
     tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
 
+```
+
+
+Finally, we arrive to visualisation of subset of data in an interactive mode. This only requires of change of view mode asimilar to examples above.
+```{r c5-tmap-basemap}
+
+tm_shape(africountries)+
+  tm_polygons()+
+  tm_shape(morocco) +
+tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
+        labels = c("Large", "Medium", "Small"),
+        palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))
 ```
 
 ### Exercises
