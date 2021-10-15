@@ -418,7 +418,7 @@ tm_shape(africountries)+
 
 
 Finally, we arrive to visualisation of subset of data in an interactive mode. This only requires of change of view mode asimilar to examples above.
-```{r c5-tmap-basemap}
+```{r c5-tmap-interactive-subset}
 
 tm_shape(africountries)+
   tm_polygons()+
