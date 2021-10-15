@@ -112,7 +112,7 @@ tmap_mode("plot") #activates static map viewing mode
 
 Next, we create an empty contour map of the continent, where `tm_shape()` function serves as a basic component containing the shape object i.e. our spatial dataset. On top of this basic element we can then add more layers using `+` operator. The advantage of `tmap` package is that it offers a large variety layers and these are named relatively intuitively to make the search and use easier. For example, we will now use layer called `tm_borders()` which defines the borders of the polygons. Further, we create an empty, border-less map using `tm_fill()` which defines the fill of the polygons. 
 
-```{r c5-tmap-countries2, fig.show='hold', out.width="50%"}
+```{r c5-tmap-countries2, fig.show='hold', out.width="60%"}
 
 tm_shape(africountries)+
  tm_borders()
@@ -124,7 +124,7 @@ tm_shape(africountries)+
 
 Intuitively, to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows you to achieve exactly the same result more efficiently. It draws the polygons borders and fills them at the same time. The choice of the approach will depend on type of data and information that you aim to present on your map. For example, if you plan to add a layer of road or rail network to your map later it may be a better idea to create a *base map* using polygons only (without contours) so that they do not overlap with road lines making the map more difficult to read.
 
-```{r c5-tmap-countries4,fig.show="hold", out.width="50%"}
+```{r c5-tmap-countries4,fig.show="hold", out.width="60%"}
 
 tm_shape(africountries)+
  tm_borders()+
@@ -138,7 +138,7 @@ tm_shape(africountries)+
 Nevertheless, we can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. This approach can also be used to help distinguishing different elements of the map. Following the example from above, the lines representing region borders and roads can be coloured differently to avoid confusion. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
 
 
-```{r c5-tmap-countries5, out.width="50%"}
+```{r c5-tmap-countries5, out.width="60%"}
 
 tm_shape(africountries)+
  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
@@ -147,7 +147,7 @@ tm_shape(africountries)+
 
 As you already know a basic structure required to build a static map, we can now proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and add relevant title to the legend. Further, you can build on the previous map by adding labels for country names with `tm_text()` function. In a similar manner a variety of different layers can be added. Even though the possibilities are nearly endless, where large number of elements and layers can be combined in a single map, care should be take in order not to overwhelm the reader with the amount of information presented in one map and impede the clarity and readability of the map.
 
-```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labels (left) and map with added coutries names (right)"}
+```{r c5-tmap-countries6, fig.show='hold', out.width="60%", fig.cap="Basic map without labels (left) and map with added coutries names (right)"}
 
 tm_shape(africountries)+
  tm_polygons(col = "lastcensus", title = "Year of last census")+
@@ -162,7 +162,7 @@ tm_shape(africountries)+
 
 Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to too much clustering of information. Instead, we might want to use `breaks` argument to set them up manually and provide more visual differentiation. For the transparency of the code, we set up the customised breaks outside of the map-making function. Alternatively, you can control number of so-called `bins` (groups) into which the **Population** is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons()` function.
 
-```{r c5-tmap-countries-breaks,warnings = FALSE, message = FALSE,out.width="75%"}
+```{r c5-tmap-countries-breaks,warnings = FALSE, message = FALSE,out.width="60%"}
 #default settings
 tm_shape(africountries) +
                 tm_polygons(col = "pop_est", title = "Population")
@@ -183,7 +183,7 @@ tm_shape(africountries) +
 So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable that contains information about the income level. It allows for visual grouping of countries in the same category. The names of the categories in the legend were adjusted using `labels` argument. In the similar manner you can group and present the airports of Africa depending on their size.
 
 
-```{r c5-tmap-countries-categorical, out.width="50%"}
+```{r c5-tmap-countries-categorical, out.width="60%"}
 tm_shape(africountries)+
   tm_polygons(col = "income_grp", title = "Income levels", alpha = 0.6,
               labels = c("High", "Upper middle", "Lower middle", "Lower"))+
@@ -203,7 +203,7 @@ tm_shape(afriairports) +
 It is important to bear in mind that some information can be displayed on the map in many different ways. For example, we can make use of `tm_bubbles()` to create so-called bubbles which size is linked to the population of each country while their colour represents the income group of the country.
 
 
-```{r c5-tmap-bubbles, out.width="75%"}
+```{r c5-tmap-bubbles, out.width="60%"}
 tm_shape(africountries)+
  tm_polygons(col = "lightyellow") +
   tm_bubbles(size = "pop_est", col = "income_grp", 
@@ -217,7 +217,7 @@ An important aspect of the maps, as in every visual representation, are the colo
 
 Another important aspect in terms of colour use is the design of the map for the individuals with colour vision deficiency. They can differentiate between different lightness however specific colours used for different categories may be less accessible for them. The solution could be an addition of texture or usage of pallets which are colour-blindness friendly. In fact `tmaptools` allows for testing chosen map colours for three different types of colour blindness in its *color blindness simulator* (accessible via `tmaptools::palette_explorer()`), as seen in the Figure below.<br/>
 
-```{r, out.width = "50%", echo=FALSE}
+```{r, out.width = "60%", echo=FALSE}
 knitr::include_graphics("images/colour_blind.PNG")
 ```
 
@@ -272,7 +272,7 @@ tmap_arrange(classic, beaver, albatross)
 
 ### Visualising different datasets in a single map
 The `tmap` package not only allows you to add extra layers to a single map by building on a basic structure, but it also enables you to join two separate datasets in a single map. We, first, create an object called *countries* which is a map with African countries:
-```{r c5-tmap-combine1, warning=FALSE, out.width="75%"}
+```{r c5-tmap-combine1, warning=FALSE, out.width="60%"}
 #read in data
 data(africountries)
 #create an object
@@ -284,7 +284,7 @@ countries
 
 Then we use it as an argument to merge it with a map containing the location of capitals.
 
-```{r c5-tmap-combine2, warning=FALSE, out.width="75%"}
+```{r c5-tmap-combine2, warning=FALSE, out.width="60%"}
 #read in data with capitals
 data(africapitals)
 #merge two maps
