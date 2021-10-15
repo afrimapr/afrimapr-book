@@ -346,7 +346,7 @@ tm_shape(africountries)+
 
 ```
 
-Another useful, subsetting example may be to visualise only information for one, specific country. This can be done using similar approach as presented above. In our example, we will focus on presenting airports of Morocco on the map. Firstly, we take the dataset that contains all the airports (51 observations in total) and create a new dataset called *morocco* which contains only the airports of Morocco (31 observations in total). In the second step we create a map of the whole Africa coloured in beige and then overlay the moroccan airports as blue dots.
+Another useful, subsetting example may be to visualise only information for one, specific country. This can be done using similar approach as presented above. In our example, we will focus on presenting airports of Morocco. Firstly, we take the dataset that contains all the airports (51 observations in total) and create a new dataset called *morocco* which contains only the airports located in Morocco (31 observations in total). In the second step we create a map of the whole Africa coloured in beige and then overlay the moroccan airports as blue dots.
 ```{r c5-tmap-subset-2}
 tmap_mode("plot")
 
@@ -360,7 +360,7 @@ tm_shape(africountries)+
 ```
 
 
-It is also possible to visualise the different sizes of airport in the subset data. It is done exactly the same way as in the case of the whole dataset, where the colour of the dots are set to column name that contains the size of the airport. For clarity, the code within `tm_dots()` function adjusts the colour and size of the airport dots and adds the legend.
+It is also possible to visualise the different sizes of airport in the subset data. It is done exactly the same way as in the case of the whole dataset, where the colour of the dots are set to column name that contains the size of the airport. The code within `tm_dots()` function adjusts the colour and size of the airport dots and adds the legend.
 
 
 ```{r}
@@ -373,8 +373,7 @@ tm_dots(col = "type", shape = 21,size = 0.1, title = "Airport size",
 ```
 
 
-However, it can also be observed that the view of the map is quite zoomed out and some of the airports overlap. A possible solution to this problem would be to subset both, airports of Morocco as well as the country borders so that only map of Morocco is visible which allows for taking a closer look at location of the airports. The rest of the code is identical to that above. The additional component of `tm_layout()` is used to control the position of the legend of the map. It is needed here as it was overlapping with the map in the default position (bottom, left corner). Alternatively, it is also possible to use an interactive map to freely zoom in and out. This will be presented in the following section.
-
+However, it can also be observed that the view of the map is quite zoomed out and some of the airports overlap. A possible solution to this problem would be to subset both, airports of Morocco as well as the country borders so that only map of Morocco is visible. This allows for taking a closer look at location of the moroccan airports. The rest of the code is identical to that above. The additional component of `tm_layout()` is used to control the position of the legend of the map. It is needed here as the legend was overlapping with the map in the default position (bottom, left corner).<br/>
 
 ```{r}
 
@@ -391,8 +390,7 @@ tm_shape(morocco_map)+
 ```
 
 
-Finally, it is also possible to zoom the map in by cropping it along the coordinates. This can be done using `st_crop()` function where we need to specify boundary longitude and latitude in degrees along which the map will be cut. The min and max x correspond to longitude values and max and min y correspond to latitude. We can obtain the boundary coordinates of our map by running `st_box(function)`. We then specify aribtrary values along which we want to split the map in the `st_crop()` function as presented below where we focus only on the western Africa.
-
+Alternatively, it is also possible to zoom the map in by cropping it along the coordinates. This can be done using `st_crop()` function where we need to specify boundary longitude and latitude in degrees along which the map will be clipped. We can obtain the boundary coordinates of our map by running `st_box(function)`. We then specify arbitrary values along which we want to split the map in the `st_crop()` function where the min and max x correspond to longitude values and max and min y correspond to latitude. We present how this can be done in the example below where we focus only on the western Africa.
 
 ```{r, warning=FALSE, message=FALSE}
 st_bbox(africontinent)
@@ -485,8 +483,13 @@ tm_shape(west_airports)+
 
 ```
 
+
+Finally, to control for the zoom-in level it is also possible to use an interactive map to freely zoom in and out. This will be presented in the following section of the book.
+
 ## Interactive maps with tmap
 The `mapview` is not the only package that allows us to produce interactive maps. Another possibility is the `tmap` package that offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently, by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.
+
+
 ```{r c5-tmap-interactive, warning=FALSE}
 #sets interactive mode
 tmap_mode("view")
