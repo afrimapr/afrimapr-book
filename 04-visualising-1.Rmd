@@ -270,7 +270,7 @@ tmap_arrange(classic, beaver, albatross)
 
 ```
 
-### Visualising different datasets in one map
+### Visualising different datasets in a single map
 The `tmap` package not only allows you to add extra layers to a single map by building on a basic structure, but it also enables you to join two separate datasets in a single map. We, first, create an object called *countries* which is a map with African countries:
 ```{r c5-tmap-combine1, warning=FALSE, out.width="75%"}
 #read in data
@@ -326,6 +326,27 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 **Exercise 5**: Create a map with continent contour in light green colour. Then add African highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. 
 </div>  
 
+### Visualising subsets of data
+So far we visualised whole datasets but now let's assume that we are only interested in the subset of our data, for instance, a specific country or the airports of a specific size only. We can achieve it using `dplyr` package. In the example below, our focus is on the large airport, consequently we `filter` them based on their size. This process of subsetting can be decomposed into smaller steps. Firstly, we create a new dataset called *large_airports* which is based on the subset of data from the original dataset called *afriairports*. The data is subset using so-called pipe operator ` %>% ` that essentially links two arguments in the sequence. Here, ` %>% ` links our original dataset with the subsequent function `filter()`. The `filter()` function allows us to subset variables or dataset that meet our condition specified inside it. Specifically, we selected all the airports from the whole dataset which are large, based on the  *type* variable which contains *large_airport* observations that correspond to our airports of interest (large ones).<br/>
+
+Next, we simply visualise two datasets in a single map. In the first step we we use *africountries* inside the `tm_shape()` function to create a base map of Africa. We specify that borders should be displayed with `tm_borders()`. In the second step we add new *large_airports* dataset with `tm_shape(large_airports)` and we specify that airport (from the *large_airports* dataset) should be visualised as red dots `tm_dots(col = "red")`.
+
+```{r c5-tmap-subset}
+tmap_mode("view")
+data(afriairports)
+
+#take a subset of data
+large_airports = afriairports %>% filter(type=="large_airport")
+
+#plot the subset
+tm_shape(africountries)+
+  tm_borders()+
+  tm_shape(large_airports)+
+    tm_dots(col = "red")
+
+```
+
+
 ## Interactive maps with tmap
 The `mapview` is not the only package that allows us to produce interactive maps. Another possibility is the `tmap` package that offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently, by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.
 ```{r c5-tmap-interactive, warning=FALSE}
@@ -353,26 +374,6 @@ tm_shape(africountries)+
     tm_dots(col = "black")+ #capital dots settings
         tm_shape(afrihighway)+
     tm_lines(col = "red", lwd = 2, alpha = 0.7) #highway lines setting
-
-```
-
-### Visualising subsets of data
-So far we visualised whole datasets but now let's assume that we are only interested in the subset of our data, for instance, a specific country or the airports of a specific size only. We can achieve it using `dplyr` package. In the example below, our focus is on the large airport, consequently we `filter` them based on their size. This process of subsetting can be decomposed into smaller steps. Firstly, we create a new dataset called *large_airports* which is based on the subset of data from the original dataset called *afriairports*. The data is subset using so-called pipe operator ` %>% ` that essentially links two arguments in the sequence. Here, ` %>% ` links our original dataset with the subsequent function `filter()`. The `filter()` function allows us to subset variables or dataset that meet our condition specified inside it. Specifically, we selected all the airports from the whole dataset which are large, based on the  *type* variable which contains *large_airport* observations that correspond to our airports of interest (large ones).<br/>
-
-Next, we simply visualise two datasets in a single map. In the first step we we use *africountries* inside the `tm_shape()` function to create a base map of Africa. We specify that borders should be displayed with `tm_borders()`. In the second step we add new *large_airports* dataset with `tm_shape(large_airports)` and we specify that airport (from the *large_airports* dataset) should be visualised as red dots `tm_dots(col = "red")`.
-
-```{r c5-tmap-subset}
-tmap_mode("view")
-data(afriairports)
-
-#take a subset of data
-large_airports = afriairports %>% filter(type=="large_airport")
-
-#plot the subset
-tm_shape(africountries)+
-  tm_borders()+
-  tm_shape(large_airports)+
-    tm_dots(col = "red")
 
 ```
 
