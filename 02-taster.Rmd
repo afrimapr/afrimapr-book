@@ -69,10 +69,12 @@ When learning to code something new it is good to start simple. "Hello World!" i
 
 # install packages
 # install.packages("tmap")
+# install.packages("remotes")
 # remotes::install_github("afrimapr/afrilearndata")
 
 # load packages
 library(tmap)
+library(remotes)
 library(afrilearndata)
 
 # plot a map of Africa country boundaries
