@@ -390,7 +390,7 @@ tm_shape(morocco_map)+
 ```
 
 
-Alternatively, it is also possible to zoom the map in by cropping it along the coordinates. This can be done using `st_crop()` function where we need to specify boundary longitude and latitude in degrees along which the map will be clipped. We can obtain the boundary coordinates of our map by running `st_box(function)`. We then specify arbitrary values along which we want to split the map in the `st_crop()` function where the min and max x correspond to longitude values and max and min y correspond to latitude. We present how this can be done in the example below where we focus only on the western Africa.
+Alternatively, it is also possible to zoom the map in by cropping it along the coordinates. This can be done using `st_crop()` function where we need to specify boundary longitude and latitude in degrees along which the map will be clipped. We can obtain the boundary coordinates of our map by running `st_bbox()` function. We then specify arbitrary values along which we want to split the map in the `st_crop()` function where the min and max x correspond to longitude values and max and min y correspond to latitude. We present how this can be done in the example below where we focus only on the Western Africa.
 
 ```{r, warning=FALSE, message=FALSE}
 st_bbox(africontinent)
@@ -499,7 +499,7 @@ tm_shape(africountries)+
 ```
 
 
-Finally, we arrive to visualisation of subset of data in an interactive mode. This only requires of change of view mode asimilar to examples above.
+Finally, we arrive to visualisation of subset of data in an interactive mode. This only requires change of the view mode similar to examples above.
 
 
 ```{r c5-tmap-interactive-subset}
