@@ -506,7 +506,7 @@ Finally, we arrive to visualisation of subset of data in an interactive mode. Th
 
 tm_shape(africountries)+
   tm_polygons()+
-  tm_shape(morocco) +
+  tm_shape(egypt) +
 tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
         labels = c("Large", "Medium", "Small"),
         palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))
