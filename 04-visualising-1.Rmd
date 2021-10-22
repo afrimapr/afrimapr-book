@@ -386,7 +386,7 @@ tm_shape(egypt_map)+
   tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
           labels = c("Large", "Medium", "Small"),
           palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))+
-    tm_layout(title = "Egypt", legend.position = c("left", "top"),)
+    tm_layout(title = "Egypt", legend.position = c("right", "top"),)
 ```
 
 
