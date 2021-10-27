@@ -327,9 +327,12 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </div>  
 
 ### Visualising subsets of data
-So far we visualised whole datasets but now let's assume that we are only interested in the subset of our data, for instance, a specific country or the airports of a specific size only. We can achieve it using `dplyr` package. In the example below, our focus is on the large airport, consequently we `filter` them based on their size. This process of subsetting can be decomposed into smaller steps. Firstly, we create a new dataset called *large_airports* which is based on the subset of data from the original dataset called *afriairports*. The data is subset using so-called pipe operator ` %>% ` that essentially links two arguments in the sequence. Here, ` %>% ` links our original dataset with the subsequent function `filter()`. The `filter()` function allows us to subset variables or dataset that meet our condition specified inside it. Specifically, we selected all the airports from the whole dataset which are large, based on the  *type* variable which contains *large_airport* observations that correspond to our airports of interest (large ones).<br/>
+So far we visualised whole datasets, now let's assume that we are only interested in the subset of our data, for instance, a specific country or the airports of a specific size only. In this section we will present two ways of subsetting **attribute-based subsetting** and **spatial subsetting**.
 
-Next, we simply visualise two datasets in a single map. In the first step we we use *africountries* inside the `tm_shape()` function to create a base map of Africa. We specify that borders should be displayed with `tm_borders()`. In the second step we add new *large_airports* dataset with `tm_shape(large_airports)` and we specify that airport (from the *large_airports* dataset) should be visualised as red dots `tm_dots(col = "red")`.
+#### Attribute subsetting
+We can achieve it using `dplyr` package which offers a function `filter()` to subset rows within the dataset. We present how this can be achieved on an example, where we aim to create a subset of data containing only large airports. Consequently we `filter` them based on their size. This process of subsetting can be decomposed into smaller steps. Firstly, we create a new dataset called *large_airports* which is based on the subset of data from the original dataset called *afriairports*. The data is subset using so-called pipe operator ` %>% ` that essentially links two arguments in the sequence. Here, ` %>% ` links our original dataset with the subsequent function `filter()`. The `filter()` function allows us to subset variables or dataset that meet our condition specified inside it. Specifically, we selected all the airports from the whole dataset which are large, based on the  *type* variable which contains *large_airport* observations that correspond to our airports of interest (large ones).<br/>
+
+Next, we simply visualise two datasets in a single map. In the first step, we use *africountries* inside the `tm_shape()` function to create a base map of Africa. We specify that borders should be displayed with `tm_borders()`. In the second step we add new *large_airports* dataset with `tm_shape(large_airports)` and we specify that airport (from the *large_airports* dataset) should be visualised as red dots `tm_dots(col = "red")`.
 
 ```{r c5-tmap-subset}
 tmap_mode("view")
@@ -347,6 +350,7 @@ tm_shape(africountries)+
 ```
 
 Another useful, subsetting example may be to visualise only information for one, specific country. This can be done using similar approach as presented above. In our example, we will focus on presenting airports of Egypt. Firstly, we take the dataset that contains all the airports (3348 observations in total) and create a new dataset called *egypt* which contains only the airports located in Egypt (66 observations in total). In the second step we create a map of the whole Africa coloured in beige and then overlay the Egyptian airports as blue dots.
+
 ```{r c5-tmap-subset-2}
 tmap_mode("plot")
 
@@ -359,7 +363,6 @@ tm_shape(africountries)+
 
 ```
 
-
 It is also possible to visualise the different sizes of airport in the subset data. It is done exactly the same way as in the case of the whole dataset, where the colour of the dots are set to column name that contains the size of the airport. The code within `tm_dots()` function adjusts the colour and size of the airport dots and adds the legend.
 
 
@@ -371,7 +374,6 @@ tm_dots(col = "type", shape = 21,size = 0.1, title = "Airport size",
         labels = c("Large", "Medium", "Small"),
         palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))
 ```
-
 
 However, it can also be observed that the view of the map is quite zoomed out and some of the airports overlap. A possible solution to this problem would be to subset both, airports of Egypt as well as the country borders so that only map of Egypt is visible. This allows for taking a closer look at location of the Egyptian airports. The rest of the code is identical to that above. The additional component of `tm_layout()` is used to control the position of the legend of the map. It is needed here as the legend was overlapping with the map in the default position (bottom, left corner).<br/>
 
@@ -389,6 +391,46 @@ tm_shape(egypt_map)+
     tm_layout(main.title = "Egypt", main.title.position = c("center", "top"), legend.position = c("right", "top"),)
 ```
 
+#### Spatial subsetting
+
+Another interesting way to subset that data is spatial subsetting which allows us to achieve similar results as above, when we do not have an attribute in the dataset that could be used for attribute-based subsetting. Spatial subsetting enables us to [here a brief description how spatial subsetting works]. 
+
+Below, we again choose Egypt as our example, however any other country from the dataset can be used instead. For the ease of use, we create a variable *country_name* that contains our chosen country. We then, create *country_polygon* variable which subsets our chosen country based on *country_name*. It can, subsequently, be used in combination with other datasets to subset them based on spatial information that both contain. For instance, we subset airports of Egypt using spatial data of this country contained in *country_polygon*. In particular, *country_airports* data frame is created where spatial condition for subsetting (*country_polygon*) is provided in square brackets and target dataset (that contains data to be subset) is defined in front of it. In a similar manner the Egyptian highways can be subset. The airports and highways of Egypt are later visualised on two separate maps using `tmap` as we did before.
+
+```{r}
+country_name = "Egypt"
+country_polygon = africountries %>% filter(name == country_name)
+
+#Spatial subset of airports
+country_airports = afriairports[country_polygon, ]
+
+#Spatial subset of highways
+country_highway <- afrihighway[country_polygon, ]
+
+
+tm_shape(country_polygon)+
+  tm_polygons()+
+tm_shape(country_airports)+
+  tm_dots()
+
+
+tm_shape(country_polygon)+
+  tm_polygons()+
+tm_shape(country_highway)+
+  tm_lines()
+
+```
+### Exercises
+
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 6**: Using the example above create maps of highways and airports for two other countries of Africa.
+</div>  
+
+
+#### Subsetting with st_bbox() function
 
 Alternatively, it is also possible to zoom the map in by cropping it along the coordinates. This can be done using `st_crop()` function where we need to specify boundary longitude and latitude in degrees along which the map will be clipped. We can obtain the boundary coordinates of our map by running `st_bbox()` function. We then specify arbitrary values along which we want to split the map in the `st_crop()` function where the min and max x correspond to longitude values and max and min y correspond to latitude. We present how this can be done in the example below where we focus only on the Western Africa.
 
@@ -518,14 +560,14 @@ tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 6**: Create an interactive map uses watercolour theme, the highways are blue and dots denoting capitals are white with black borders. Finally, add capitalnames.
+**Exercise 7**: Create an interactive map uses watercolour theme, the highways are blue and dots denoting capitals are white with black borders. Finally, add capitalnames.
 </div>  
 <br/>
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 7**: Create an interactive map of African countries which have population smaller than 10 million. Fill the polygons with the population size.
+**Exercise 8**: Create an interactive map of African countries which have population smaller than 10 million. Fill the polygons with the population size.
 </div>  
 
 ## Further resources
@@ -580,6 +622,37 @@ map_contour +
 ```
 
 - Exercise 6
+```{r}
+#Example country: Nigeria
+
+country_name = "Nigeria"
+country_polygon = africountries %>% filter(name == country_name)
+
+#Spatial subset of airports
+country_airports = afriairports[country_polygon, ]
+
+#Spatial subset of highways
+country_highway <- afrihighway[country_polygon, ]
+
+
+tm_shape(country_polygon)+
+  tm_polygons()+
+tm_shape(country_airports)+
+  tm_dots()
+
+
+tm_shape(country_polygon)+
+  tm_polygons()+
+tm_shape(country_highway)+
+  tm_lines()
+
+```
+
+
+
+
+
+- Exercise 7
 
 ```{r c5-ex-5.4.1, out.width="60%"}
 tmap_mode("view")
@@ -596,7 +669,7 @@ tm_shape(africountries)+
 
 ```
 
-- Exercise 7
+- Exercise 8
 
 ```{r c5-ex-5.4.2}
 tmap_mode("view")
