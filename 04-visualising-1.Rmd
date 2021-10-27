@@ -397,7 +397,7 @@ Another interesting way to subset that data is spatial subsetting which allows u
 
 Below, we again choose Egypt as our example, however any other country from the dataset can be used instead. For the ease of use, we create a variable *country_name* that contains our chosen country. We then, create *country_polygon* variable which subsets our chosen country based on *country_name*. It can, subsequently, be used in combination with other datasets to subset them based on spatial information that both contain. For instance, we subset airports of Egypt using spatial data of this country contained in *country_polygon*. In particular, *country_airports* data frame is created where spatial condition for subsetting (*country_polygon*) is provided in square brackets and target dataset (that contains data to be subset) is defined in front of it. In a similar manner the Egyptian highways can be subset. The airports and highways of Egypt are later visualised on two separate maps using `tmap` as we did before.
 
-```{r}
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
 country_name = "Egypt"
 country_polygon = africountries %>% filter(name == country_name)
 
@@ -420,7 +420,8 @@ tm_shape(country_highway)+
   tm_lines()
 
 ```
-### Exercises
+
+#### Exercises
 
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
