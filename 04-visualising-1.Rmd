@@ -426,7 +426,7 @@ tm_shape(country_highway)+
 
 Then, we can spatially subset several polygons at the same time. In such case, we need to slightly change the code inside the filter function, where we previously used `filter(name == country_name)` for a single polygon and now we need `%in%` operator, such that filter(name %in% country_names). `%in%` allows us to identify if there are matching values between two objects. These can be, for example, two vectors (of different lengths) and/or dataframes. Essentailly, the use of `%in%` enables us to answers the following question: *Is there any value in the first object (here **name**) that matches values in the second object (here **country_names**)?* It then gives condition for filtering operation. After that we follow the usual way of spatial subsetting.
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, out.width="50%"}
 library(dplyr)
 country_names <- c("Nigeria","Cameroon","Niger")
 country_polygons <- africountries %>% filter(name %in% 
@@ -438,6 +438,13 @@ tm_shape(country_polygons)+
   tm_polygons()+
 tm_shape(country_highways)+
   tm_lines()
+
+#Make prettier maps
+tm_shape(country_polygons)+
+  tm_polygons(col = "name", title = "Country")+
+tm_shape(country_highways)+
+  tm_lines()
+```
 ```
 #### Exercises
 
