@@ -393,12 +393,15 @@ tm_shape(egypt_map)+
 
 #### Spatial subsetting
 
-Another interesting way to subset that data is spatial subsetting which allows us to achieve similar results as above, when we do not have an attribute in the dataset that could be used for attribute-based subsetting. Spatial subsetting enables us to [here a brief description how spatial subsetting works]. 
+Another interesting way to subset that data is spatial subsetting which allows us to achieve similar results as above, when we do not have an attribute in the dataset that could be used for attribute-based subsetting. Spatial subsetting enables us to select information in one dataset (e.g. road network, rivers, airports cities ) given the spatial information from another dataset, given that both datasets cointain them. 
 
-Below, we again choose Egypt as our example, however any other country from the dataset can be used instead. For the ease of use, we create a variable *country_name* that contains our chosen country. We then, create *country_polygon* variable which subsets our chosen country based on *country_name*. It can, subsequently, be used in combination with other datasets to subset them based on spatial information that both contain. For instance, we subset airports of Egypt using spatial data of this country contained in *country_polygon*. In particular, *country_airports* data frame is created where spatial condition for subsetting (*country_polygon*) is provided in square brackets and target dataset (that contains data to be subset) is defined in front of it. In a similar manner the Egyptian highways can be subset. The airports and highways of Egypt are later visualised on two separate maps using `tmap` as we did before.
+Below, we again choose Egypt as our example but any other country from the dataset can be used instead (see exercise below). For the ease of use, we create a variable *country_name* that contains our chosen country. We then, create *country_polygon* variable which subsets our chosen country based on *country_name*. It can, subsequently, be used in combination with other datasets to subset them based on spatial information that both contain. For instance, we subset airports of Egypt using spatial data of this country contained in *country_polygon*. In particular, *country_airports* data frame is created where spatial condition for subsetting (*country_polygon*) is provided in square brackets and target dataset (that contains data to be subset) is defined in front of it. In a similar manner the Egyptian highways can be subset. The airports and highways of Egypt are later visualised on two separate maps using `tmap` as we did before.
 
-```{r, echo = FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
+#Setting country name to the country of interest
 country_name = "Egypt"
+
+#Choosing spatial information of the country of interest
 country_polygon = africountries %>% filter(name == country_name)
 
 #Spatial subset of airports
@@ -407,13 +410,13 @@ country_airports = afriairports[country_polygon, ]
 #Spatial subset of highways
 country_highway <- afrihighway[country_polygon, ]
 
-
+#Visualise airports of Egypt
 tm_shape(country_polygon)+
   tm_polygons()+
 tm_shape(country_airports)+
   tm_dots()
 
-
+#Visualise highways of Egypt
 tm_shape(country_polygon)+
   tm_polygons()+
 tm_shape(country_highway)+
