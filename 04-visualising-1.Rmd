@@ -442,13 +442,14 @@ tm_shape(country_polygons)+
 tm_shape(country_highways)+
   tm_lines()
 
-#Make prettier maps
+#Make the map clearer to read
 tm_shape(country_polygons)+
   tm_polygons(col = "name", title = "Country")+
 tm_shape(country_highways)+
   tm_lines()
 
 ```
+
 #### Exercises
 
 <style>
