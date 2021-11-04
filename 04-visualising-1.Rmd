@@ -391,17 +391,34 @@ tm_shape(egypt_map)+
 
 #### Spatial subsetting
 
-Another interesting way to subset that data is spatial subsetting which allows us to achieve similar results as above, when we do not have an attribute in the dataset that could be used for attribute-based subsetting. Spatial subsetting enables us to select information in one dataset (e.g. road network, rivers, airports cities) given the spatial information from another dataset, given that both datasets contain them. 
+Another interesting way to subset that data is spatial subsetting which allows us to achieve similar results as above, when we do not have an attribute in the dataset that could be used for attribute-based subsetting. Spatial subsetting enables us to select information in one dataset (e.g. road network, rivers, airports cities) given the spatial information from another dataset, given that both datasets contain them. Importantly, to specify the polygons of country of interest, we can use attribute-based subsetting by country name and then use them for spatial subsetting (once we have only spatial information on the selected country). The process flow has been demonstrated in the diagram and the annotation corresponding to the diagram has been used in the example below.
 
-Below, we again choose Egypt as our example but any other country from the dataset can be used instead (see exercise below). For the ease of use, we create a variable *country_name* that contains our chosen country. We then, create *country_polygon* variable which subsets our chosen country based on *country_name*. It can, subsequently, be used in combination with other datasets to subset them based on spatial information that both contain. For instance, we subset airports of Egypt using spatial data of this country contained in *country_polygon*. In particular, *country_airports* data frame is created where spatial condition for subsetting (*country_polygon*) is provided in square brackets and target dataset (that contains data to be subset) is defined in front of it. Following this pattern: *object_to_subset[ object_to_subset_by, ]*, the Egyptian highways can be subset. The airports and highways of Egypt are later visualised on two separate maps using `tmap` as we did before.
+```{r, messages = FALSE, warnings = FALSE, echo=FALSE}
+install.packages("DiagrammeR")
+library(DiagrammeR)
+DiagrammeR::grViz("digraph {
+  graph [layout = dot, rankdir = TB]
+  
+  node [style = rounded, shape = box, fillcolor = grey]        
+  node1 [ label = 'Step 1: Attribute-based subsetting of country']
+  node2 [label = 'Step 2: Spatial subsetting of data']
+
+  node1 -> node2 
+  }")
+
+```
+
+We again choose Egypt as our example but any other country from the dataset can be used instead (see exercise below). For the ease of use, we create a variable *country_name* that contains our chosen country. We then, create *country_polygon* variable which subsets our chosen country based on *country_name*. It can, subsequently, be used in combination with other datasets to subset them based on spatial information that both contain. For instance, we subset airports of Egypt using spatial data of this country contained in *country_polygon*. In particular, *country_airports* data frame is created where spatial condition for subsetting (*country_polygon*) is provided in square brackets and target dataset (that contains data to be subset) is defined in front of it. Following this pattern: *object_to_subset[ object_to_subset_by, ]*, the Egyptian highways can be subset. The airports and highways of Egypt are later visualised on two separate maps using `tmap` as we did before.
 
 ```{r, message=FALSE, warning=FALSE}
+#STEP 1:
 #Setting country name to the country of interest
 country_name = "Egypt"
 
 #Choosing spatial information of the country of interest
 country_polygon = africountries %>% filter(name == country_name)
 
+#STEP 2:
 #Spatial subset of airports
 country_airports = afriairports[country_polygon, ]
 
@@ -449,16 +466,6 @@ tm_shape(country_highways)+
   tm_lines()
 
 ```
-
-#### Exercises
-
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 6**: Using the example above create maps of highways and airports for two other countries of Africa.
-</div>  
-
 
 #### Subsetting with st_bbox() function
 
@@ -534,6 +541,15 @@ tm_shape(west_airports)+
 
 
 Finally, to control for the zoom-in level it is also possible to use an interactive map to freely zoom in and out. This will be presented in the following section of the book.
+
+#### Exercises
+
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 6**: Using spatial subsetting create maps of highways and airports for Nigeria.
+</div>  
 
 ## Interactive maps with tmap
 The `mapview` is not the only package that allows us to produce interactive maps. Another possibility is the `tmap` package that offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently, by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.
@@ -674,10 +690,6 @@ tm_shape(country_highway)+
   tm_lines()
 
 ```
-
-
-
-
 
 - Exercise 7
 
