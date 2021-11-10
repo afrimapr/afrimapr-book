@@ -183,32 +183,32 @@ tm_shape(africountries) +
 ```
 
 Another case where adjusting the breaks is key are often raster data of population due to clustered distribution of the data. To demonstrate this, let's have a look at the histogram of `afripop2020` which is a dataset containing raster data of African population. As you can see in the graph, the shape of the data distribution is exponential, with large number of data points with low population and low number of highly populated data points. This, then, has certain implications for the visualisation. 
-```{r }
+```{r, out.width= "50%"}
 hist(afripop2020)
 ```
 
 If we  the map of African population with default breaks, there is not enough differentiation for the map to be readable, as seen below.  
-```{r }
+```{r, out.width="50%"}
 data(afripop2020)
 
 tm_shape(afripop2020) +
-  tm_raster(breaks=c(0,2,20,200,2000,25000))
+  tm_raster()
 ```
 
 Therefore, manual breaks are a way to address this problem. For this, we set up breaks first, outside of the map-making code and then we use them to set up manual brakes for the map. This allows us to achieve better readable map and clarity. 
 
-```{r }
-breaks=c(0,1,10,100,1000, 25000)
+```{r, out.width="50%"}
+raster_breaks=c(0,1,10,100,1000, 25000)
 
 tm_shape(afripop2020) +
-  tm_raster(breaks=breaks)
+  tm_raster(breaks = raster_breaks)
 ```
 
-Furthermore, the differences between levels of population density represented with raster data can be further emphasised by modifying a colour palette. In the example below, we specified it using `palette` argument within `tm_raster` function.
+Furthermore, the differences between levels of population density represented with raster data can be further emphasised by modifying a colour palette. In the example below, we specified it using `palette` argument within `tm_raster` function. We take a closer look at the functionalities of palette in the next section.
 
-```{r }
+```{r, out.width="50%" }
   tm_shape(afripop2020) +   
-    tm_raster(breaks=breaks, palette = rev(viridisLite::rocket(5))) 
+    tm_raster(breaks = raster_breaks, palette = rev(viridisLite::rocket(5))) 
 ```
 
 
