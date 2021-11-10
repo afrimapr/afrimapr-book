@@ -42,6 +42,7 @@ library(sf)
 library(afrilearndata)
 library(dplyr)
 library(tmaptools)
+library(raster)
 ```
 
 ## Quick interactive maps with mapview
@@ -104,6 +105,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </div>   
 
 ## Static maps with tmap
+
 In this section we explore the potential of `tmap` in creating static maps, which is a flexible, yet user-friendly package. Its syntax is similar to `ggplot2` (plot-making package), where additional features of the map are simply built up on top of the basic structure. Before you plot the first maps you need to activate static map viewing mode and (if necessary) read in your dataset.
 
 ```{r c5-tmap-countries1, message=FALSE}
@@ -180,8 +182,29 @@ tm_shape(africountries) +
 
 ```
 
-So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable that contains information about the income level. It allows for visual grouping of countries in the same category. The names of the categories in the legend were adjusted using `labels` argument. In the similar manner you can group and present the airports of Africa depending on their size.
+Another case where adjusting the breaks is key are often raster data of population due to clustered distribution of the data. To demonstrate this, let's have a look at the histogram of `afripop2020` which is a dataset containing raster data of African population. As you can see in the graph, the shape of the data distribution is exponential, with large number of data points with low population and low number of highly populated data points. This, then, has certain implications for the visualisation. 
+```{r }
+hist(afripop2020)
+```
 
+If we  the map of African population with default breaks, there is not enough differentiation for the map to be readable, as seen below.  
+```{r }
+data(afripop2020)
+
+tm_shape(afripop2020) +
+  tm_raster(breaks=c(0,2,20,200,2000,25000))
+```
+
+Therefore, manual breaks are a way to address this problem. For this, we set up breaks first, outside of the map-making code.
+
+```{r }
+breaks=c(0,1,10,100,1000,10000,25000)
+
+tm_shape(afripop2020) +
+  tm_raster(breaks=breaks)
+```
+
+So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable that contains information about the income level. It allows for visual grouping of countries in the same category. The names of the categories in the legend were adjusted using `labels` argument. In the similar manner you can group and present the airports of Africa depending on their size.
 
 ```{r c5-tmap-countries-categorical, out.width="60%"}
 tm_shape(africountries)+
@@ -295,37 +318,6 @@ countries+
 
 ```
 
-### Exercises
-The solution to the exercises are provided at the [end of the chapter](#solutions_ch4).
-
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 2**: Plot a yellow map of Africa with transparency of 0.4 and solid line borders of width 3. 
-</div>   
-<br/>
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 3**: Plot a lightblue map of Africa with dotted, non-transparent, red borders.
-</div>  
-<br/>
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 4**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.
-</div>  
-<br/>
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 5**: Create a map with continent contour in light green colour. Then add African highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. 
-</div>  
-
 ### Visualising subsets of data
 So far we visualised whole datasets, now let's assume that we are only interested in the subset of our data, for instance, a specific country or the airports of a specific size only. In this section we will present two ways of subsetting **attribute-based subsetting** and **spatial subsetting**.
 
@@ -394,7 +386,7 @@ tm_shape(egypt_map)+
 Another interesting way to subset that data is spatial subsetting which allows us to achieve similar results as above, when we do not have an attribute in the dataset that could be used for attribute-based subsetting. Spatial subsetting enables us to select information in one dataset (e.g. road network, rivers, airports cities) given the spatial information from another dataset, given that both datasets contain them. Importantly, to specify the polygons of country of interest, we can use attribute-based subsetting by country name and then use them for spatial subsetting (once we have only spatial information on the selected country). The process flow has been demonstrated in the diagram and the annotation corresponding to the diagram has been used in the example below.
 
 ```{r, message = FALSE, warning = FALSE, echo=FALSE, fig.cap = "Process of spatial subsetting"}
-install.packages("DiagrammeR")
+#install.packages("DiagrammeR")
 library(DiagrammeR)
 DiagrammeR::grViz("digraph {
   graph [layout = dot, rankdir = TB]
@@ -543,7 +535,35 @@ tm_shape(west_airports)+
 Finally, to control for the zoom-in level it is also possible to use an interactive map to freely zoom in and out. This will be presented in the following section of the book.
 
 ### Exercises
+The solution to the exercises are provided at the [end of the chapter](#solutions_ch4).
 
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 2**: Plot a yellow map of Africa with transparency of 0.4 and solid line borders of width 3. 
+</div>   
+<br/>
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 3**: Plot a lightblue map of Africa with dotted, non-transparent, red borders.
+</div>  
+<br/>
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 4**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.
+</div>  
+<br/>
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 5**: Create a map with continent contour in light green colour. Then add African highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. 
+</div>  
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
