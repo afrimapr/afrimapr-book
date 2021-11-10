@@ -97,8 +97,7 @@ mapview(africountries, zcol = "pop_est", layer.name = "Population") +
 Finally, `mapview` supports also raster data format, and if visualised it will appear on top of the background map, as showed in the simple example below. We can adjust the transparency of raster layer using argument `alpha.region`.
 
 ```{r}
-mapview(afripop2020, alpha.region = 0.85)
-
+#mapview(afripop2020, alpha.region = 0.85)
 ```
 
 The link to full documentation is available in *Further resources* section. 
