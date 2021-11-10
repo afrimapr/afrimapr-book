@@ -208,7 +208,7 @@ Furthermore, the differences between levels of population density represented wi
 
 ```{r, out.width="50%" }
   tm_shape(afripop2020) +   
-    tm_raster(breaks = raster_breaks, palette = rev(viridisLite::rocket(5))) 
+    tm_raster(breaks = raster_breaks, palette = rev(viridisLite::plasma(5))) 
 ```
 
 
@@ -302,7 +302,7 @@ tmap_arrange(classic, beaver, albatross)
 ```
 
 ### Visualising different datasets in a single map
-The `tmap` package not only allows you to add extra layers to a single map by building on a basic structure, but it also enables you to join two separate datasets in a single map. We, first, create an object called *countries* which is a map with African countries:
+The `tmap` package not only allows you to add extra layers to a single map by building on a basic structure, but it also enables you to join two separate datasets in a single map. We, first, create an object called *countries* which is a map with African countries.
 ```{r c5-tmap-combine1, warning=FALSE, out.width="60%"}
 #read in data
 data(africountries)
@@ -313,7 +313,7 @@ countries = tm_shape(africountries)+
 countries
 ```
 
-Then we use it as an argument to merge it with a map containing the location of capitals.
+Then, we use it as an argument to merge it with a map containing the location of capitals.
 
 ```{r c5-tmap-combine2, warning=FALSE, out.width="60%"}
 #read in data with capitals
@@ -323,6 +323,18 @@ countries+
   tm_shape(africapitals)+  #uses dataset with capitals
     tm_dots(col = "red", size = 0.15)+       #adds dots on the map
       tm_layout(title = "Capital cities of Africa" , title.position = c("right", "top"), title.size = 1) #add and adjust map title
+
+```
+
+We can also mix different types of data in a single map, for example, raster and vector data. Nonetheless, here care needs to be taken in terms of the order in which we use the data. Raster data should be specified first as otherwise it would cover any subsequent data. In this regard, raster data works like a background colour. For example, we can visualise the population of Africa (raster data) and then add main highways (vector data) of the continent. In the `tm_raster` function we can specify the breaks and palette colour for the raster layer and in the the `tm_lines` we set up the colour separately for vector data, in this case highway lines.
+
+```{r}
+raster_breaks=c(0,1,10,100,1000,25000)
+
+tm_shape(afripop2020) +   
+  tm_raster(breaks = raster_breaks, palette = rev(viridisLite::rocket(5))) +
+  tm_shape(afrihighway) + 
+    tm_lines(col = "blue")
 
 ```
 
