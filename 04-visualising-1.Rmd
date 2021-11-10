@@ -552,7 +552,6 @@ tm_shape(west_airports)+
 
 ```
 
-
 Finally, to control for the zoom-in level it is also possible to use an interactive map to freely zoom in and out. This will be presented in the following section of the book.<br/>
 
 Special type of spatial subsetting is subsetting of raster data. We start similar to regular spatial subsetting where we specify the polygon that we are interested in. Then, we crop our raster data to match the polygon and using `rasterize()` function we transfer values associated with spatial object to raster cells and finally with `mask()` function we create a raster version of the subset country ([zevross.com,2015](http://zevross.com/blog/2015/03/30/map-and-analyze-raster-data-in-r/)).
@@ -570,6 +569,12 @@ raster_subset<-mask(x = cropped, mask = raster_country) #create raster version o
 #map of subset country
 tm_shape(raster_subset) +
   tm_raster()
+
+#improved visibility by the use of customised breaks
+custom_breaks = c(0,1,10,100,1000,15000,25000)
+tm_shape(raster_subset) +
+  tm_raster(breaks = custom_breaks)
+
 ```
 
 ### Exercises
@@ -602,6 +607,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 <div class = "purple">
 **Exercise 5**: Create a map with continent contour in light green colour. Then add African highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. 
 </div>  
+<br/>
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
