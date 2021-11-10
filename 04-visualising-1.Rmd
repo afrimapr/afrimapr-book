@@ -195,14 +195,22 @@ tm_shape(afripop2020) +
   tm_raster(breaks=c(0,2,20,200,2000,25000))
 ```
 
-Therefore, manual breaks are a way to address this problem. For this, we set up breaks first, outside of the map-making code.
+Therefore, manual breaks are a way to address this problem. For this, we set up breaks first, outside of the map-making code and then we use them to set up manual brakes for the map. This allows us to achieve better readable map and clarity. 
 
 ```{r }
-breaks=c(0,1,10,100,1000,10000,25000)
+breaks=c(0,1,10,100,1000, 25000)
 
 tm_shape(afripop2020) +
   tm_raster(breaks=breaks)
 ```
+
+Furthermore, the differences between levels of population density represented with raster data can be further emphasised by modifying a colour palette. In the example below, we specified it using `palette` argument within `tm_raster` function.
+
+```{r }
+  tm_shape(afripop2020) +   
+    tm_raster(breaks=breaks, palette = rev(viridisLite::rocket(5))) 
+```
+
 
 So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable that contains information about the income level. It allows for visual grouping of countries in the same category. The names of the categories in the legend were adjusted using `labels` argument. In the similar manner you can group and present the airports of Africa depending on their size.
 
@@ -386,7 +394,7 @@ tm_shape(egypt_map)+
 Another interesting way to subset that data is spatial subsetting which allows us to achieve similar results as above, when we do not have an attribute in the dataset that could be used for attribute-based subsetting. Spatial subsetting enables us to select information in one dataset (e.g. road network, rivers, airports cities) given the spatial information from another dataset, given that both datasets contain them. Importantly, to specify the polygons of country of interest, we can use attribute-based subsetting by country name and then use them for spatial subsetting (once we have only spatial information on the selected country). The process flow has been demonstrated in the diagram and the annotation corresponding to the diagram has been used in the example below.
 
 ```{r, message = FALSE, warning = FALSE, echo=FALSE, fig.cap = "Process of spatial subsetting"}
-#install.packages("DiagrammeR")
+install.packages("DiagrammeR")
 library(DiagrammeR)
 DiagrammeR::grViz("digraph {
   graph [layout = dot, rankdir = TB]
