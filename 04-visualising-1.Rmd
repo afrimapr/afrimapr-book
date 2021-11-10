@@ -553,7 +553,24 @@ tm_shape(west_airports)+
 ```
 
 
-Finally, to control for the zoom-in level it is also possible to use an interactive map to freely zoom in and out. This will be presented in the following section of the book.
+Finally, to control for the zoom-in level it is also possible to use an interactive map to freely zoom in and out. This will be presented in the following section of the book.<br/>
+
+Special type of spatial subsetting is subsetting of raster data. We start similar to regular spatial subsetting where we specify the polygon that we are interested in. Then, we crop our raster data to match the polygon and using `rasterize()` function we transfer values associated with spatial object to raster cells and finally with `mask()` function we create a raster version of the subset country ([zevross.com,2015](http://zevross.com/blog/2015/03/30/map-and-analyze-raster-data-in-r/)).
+
+```{r, warning=FALSE, message=FALSE}
+
+country_name = "Madagascar"
+country_polygon = africountries %>% filter(name %in% country_name)
+
+#raster data subsetting 
+cropped<-crop(afripop2020, country_polygon) #cropping raster data to match our polygons
+raster_country<-rasterize(country_polygon, cropped) #transfers values associated with spatial object to raster cells
+raster_subset<-mask(x = cropped, mask = raster_country) #create raster version of the country
+
+#map of subset country
+tm_shape(raster_subset) +
+  tm_raster()
+```
 
 ### Exercises
 The solution to the exercises are provided at the [end of the chapter](#solutions_ch4).
