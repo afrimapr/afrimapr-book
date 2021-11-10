@@ -303,6 +303,7 @@ tmap_arrange(classic, beaver, albatross)
 
 ### Visualising different datasets in a single map
 The `tmap` package not only allows you to add extra layers to a single map by building on a basic structure, but it also enables you to join two separate datasets in a single map. We, first, create an object called *countries* which is a map with African countries.
+
 ```{r c5-tmap-combine1, warning=FALSE, out.width="60%"}
 #read in data
 data(africountries)
@@ -328,7 +329,7 @@ countries+
 
 We can also mix different types of data in a single map, for example, raster and vector data. Nonetheless, here care needs to be taken in terms of the order in which we use the data. Raster data should be specified first as otherwise it would cover any subsequent data. In this regard, raster data works like a background colour. For example, we can visualise the population of Africa (raster data) and then add main highways (vector data) of the continent. In the `tm_raster` function we can specify the breaks and palette colour for the raster layer and in the the `tm_lines` we set up the colour separately for vector data, in this case highway lines.
 
-```{r}
+```{r, out.width="60%"}
 raster_breaks=c(0,1,10,100,1000,25000)
 
 tm_shape(afripop2020) +   
