@@ -212,7 +212,7 @@ tm_shape(afripop2020) +
 
 Furthermore, the differences between levels of population density represented with raster data can be further emphasised by modifying a colour palette. In the example below, we specified it using `palette` argument within `tm_raster` function. We take a closer look at the functionalities of palette in the next section.
 
-```{r, out.width="50%" }
+```{r, out.width="60%" }
   tm_shape(afripop2020) +   
     tm_raster(breaks = raster_breaks, palette = rev(viridisLite::plasma(5))) 
 ```
@@ -412,7 +412,7 @@ tm_shape(egypt_map)+
 
 Another interesting way to subset that data is spatial subsetting which allows us to achieve similar results as above, when we do not have an attribute in the dataset that could be used for attribute-based subsetting. Spatial subsetting enables us to select information in one dataset (e.g. road network, rivers, airports cities) given the spatial information from another dataset, given that both datasets contain them. Importantly, to specify the polygons of country of interest, we can use attribute-based subsetting by country name and then use them for spatial subsetting (once we have only spatial information on the selected country). The process flow has been demonstrated in the diagram and the annotation corresponding to the diagram has been used in the example below.
 
-```{r, message = FALSE, warning = FALSE, echo=FALSE, fig.cap = "Process of spatial subsetting"}
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap = "Process of spatial subsetting"}
 install.packages("DiagrammeR")
 library(DiagrammeR)
 DiagrammeR::grViz("
@@ -431,7 +431,7 @@ DiagrammeR::grViz("
   [1]: 'Step 1: Attribute-based subsetting of the country polygon'
   [2]: 'Step 2: Spatial subsetting of data'
   ",
-                  height = 100)
+   height = 100)
 
 ```
 
