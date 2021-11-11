@@ -415,15 +415,23 @@ Another interesting way to subset that data is spatial subsetting which allows u
 ```{r, message = FALSE, warning = FALSE, echo=FALSE, fig.cap = "Process of spatial subsetting"}
 install.packages("DiagrammeR")
 library(DiagrammeR)
-DiagrammeR::grViz("digraph {
-  graph [layout = dot, rankdir = TB]
+DiagrammeR::grViz("
+  digraph graph2 {
   
-  node [style = rounded, shape = box, fillcolor = grey]        
-  node1 [ label = 'Step 1: Attribute-based subsetting of country']
-  node2 [label = 'Step 2: Spatial subsetting of data']
+  graph [layout = dot, rankdir = LR]
+  
 
-  node1 -> node2 
-  }")
+  node [shape = box, style = rounded]
+  a [label = '@@1']
+  b [label = '@@2']
+
+  a -> b 
+  }
+  
+  [1]: 'Step 1: Attribute-based subsetting of country'
+  [2]: 'Step 2: Spatial subsetting of data'
+  ",
+                  height = 100)
 
 ```
 
