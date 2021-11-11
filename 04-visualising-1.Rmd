@@ -428,7 +428,7 @@ DiagrammeR::grViz("
   a -> b 
   }
   
-  [1]: 'Step 1: Attribute-based subsetting of country'
+  [1]: 'Step 1: Attribute-based subsetting of the country polygon'
   [2]: 'Step 2: Spatial subsetting of data'
   ",
                   height = 100)
