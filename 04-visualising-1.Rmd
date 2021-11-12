@@ -169,15 +169,23 @@ tm_shape(africountries)+
 
 Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to too much clustering of information. Instead, we might want to use `breaks` argument to set them up manually and provide more visual differentiation. For the transparency of the code, we set up the customised breaks outside of the map-making function. Alternatively, you can control number of so-called `bins` (groups) into which the *Population* is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons()` function.
 
-```{r c5-tmap-countries-breaks,warnings = FALSE, message = FALSE,out.width="60%", fig.cap="A map of African population with different breaks settings."}
+```{r c5-tmap-countries-breaks,warnings = FALSE, message = FALSE,out.width="60%", fig.cap="A map of African population with default breaks settings."}
 #default settings
 tm_shape(africountries) +
   tm_polygons(col = "pop_est", title = "Population")
+
+```
+
+```{r c5-tmap-countries-breaks2,warnings = FALSE, message = FALSE,out.width="60%", fig.cap="A map of African population with customised breaks settings."}
 
 #set up breaks manually
 custom_breaks = c(0, 1, 4, 7, 10, 30, 50, 70, 100, 120, 150, 180, 200) * 1000000
 tm_shape(africountries) +
   tm_polygons(col = "pop_est", title = "Population", breaks = custom_breaks)
+
+```
+
+```{r c5-tmap-countries-breaks3,warnings = FALSE, message = FALSE,out.width="60%", fig.cap="A map of African population with bins for breaks settings."}
 
 #set up a number of bins
 tm_shape(africountries) +
@@ -188,7 +196,7 @@ tm_shape(africountries) +
 ```
 
 Another case where adjusting the breaks is key are often raster data of population due to clustered distribution of the data. To demonstrate this, let's have a look at the histogram of `afripop2020` which is a dataset containing raster data of African population. As you can see in the graph, the shape of the data distribution is exponential, with large number of data points with low population and low number of highly populated data points. This, then, has certain implications for the visualisation. 
-```{r, out.width= "60%", fig.cap="A histogram of population data distribution."}
+```{r, out.width= "60%", fig.cap="A histogram of African population distribution."}
 hist(afripop2020)
 ```
 
@@ -259,7 +267,7 @@ tm_shape(africountries)+
 
 An important aspect of the maps, as in every visual representation, are the colours. Beyond their aesthetic function, they come from a long tradition where they served as a primary mean to encode data on the maps. Consequently, they used to be called "visual variables" as they were a key for an accurate interpretation of the information on the map ([https://morphocode.com](https://morphocode.com/the-use-of-color-in-maps/)). It is, therefore, important to find the balance when using colours to not obscure the data. Following, morphocode.com, you should take into consideration three features of the colour, namely, its hue, saturation and lightness. Hue is the mental association of a given colour e.g. we associate blue with cold and red with hot. Next, saturation can be defined as colour intensity and lightness is a relative amount of light that seems to reflect from an object compared to white elements. These perceptual dimensions of the colours have their practical functions in map-making process. Typically, hue is used to demonstrate the categorical data so that each discrete category has a different colours e.g. green, blue and red. Secondly, scalar values (e.g. from the hottest to the coldest temperature) are usually well depicted using different colour lightness and saturation (e.g. from bright red to pale red). <br/>
 
-Another important aspect in terms of colour use is the design of the map for the individuals with colour vision deficiency. They can differentiate between different lightness however specific colours used for different categories may be less accessible for them. The solution could be an addition of texture or usage of pallets which are colour-blindness friendly. In fact `tmaptools` allows for testing chosen map colours for three different types of colour blindness in its *color blindness simulator* (accessible via `tmaptools::palette_explorer()`), as seen in the Figure below.<br/>
+Another important aspect in terms of colour use is the design of the map for the individuals with colour vision deficiency. They can differentiate between different lightness however specific colours used for different categories may be less accessible for them. The solution could be an addition of texture or usage of pallets which are colour-blindness friendly. In fact `tmaptools` allows for testing chosen map colours for three different types of colour blindness in its *color blindness simulator* (accessible via `tmaptools::palette_explorer()`), as seen in the Figure 4.15.<br/>
 
 ```{r, out.width = "60%", echo=FALSE, fig.cap="The colour palette."}
 knitr::include_graphics("images/colour_blind.PNG")
