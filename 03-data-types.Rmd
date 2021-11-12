@@ -109,7 +109,7 @@ tm_shape(africapitals) + #specify the data file
 
 ```
 The `tmap` package works similar to the ggplot package. You need to first specify the data file you want to visualise using `tm_shape()`, after which the exact format of the spatial data can be specified (points, lines, polygons). As we are working with point data in this example, the `tm_dots()` function is used. As with ggplot, there is a lot of flexibility in the colouring, shapes and sizes of the dots. For example, the dots can be turned red and labelled with the name of the city. 
-```{r, warning=FALSE, message=FALSE`, out.width="60%", fig.cap="The capital cities of Africa with customised dots."}
+```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="The capital cities of Africa with customised dots."}
 
 tm_shape(africapitals) +
   tm_dots("red")+ # displaying the point geometry as red dots
