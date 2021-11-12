@@ -192,21 +192,23 @@ Another case where adjusting the breaks is key are often raster data of populati
 hist(afripop2020)
 ```
 
-If we use the default breaks in the map of African population, it is clear that there is not enough differentiation for the map to be readable, as seen below.  
+If we use the default breaks in the map of African population, it is clear that there is not enough differentiation for the map to be readable, as seen below. Outside of the map legend we included the histogram to show data distribution. 
 ```{r, out.width="60%"}
 data(afripop2020)
 
 tm_shape(afripop2020) +
-  tm_raster()
+  tm_raster(legend.hist = TRUE)+
+      tm_layout(legend.outside = TRUE)
 ```
 
-Therefore, customised breaks are a way to address this problem. For this, we set up breaks first, outside of the map-making code and then we use them within the map-making code. This allows us to achieve better readable map and clarity. 
+Therefore, customised breaks are a way to address this problem. For this, we set up breaks first, outside of the map-making code and then we use them within the map-making code. This allows us to achieve better readable map and clarity. The histogram of data is presented below the map legend.
 
 ```{r, out.width="60%"}
 raster_breaks=c(0,1,10,100,1000, 25000)
 
 tm_shape(afripop2020) +
-  tm_raster(breaks = raster_breaks)
+  tm_raster(breaks = raster_breaks, legend.hist = TRUE)+
+      tm_layout(legend.outside = TRUE)
 ```
 
 Furthermore, the differences between levels of population density represented with raster data can be further emphasised by modifying a colour palette. In the example below, we specified it using `palette` argument within `tm_raster` function. We take a closer look at the functionalities of palette in the next section.

@@ -65,7 +65,7 @@ sf_use_s2(FALSE)
 When learning to code something new it is good to start simple. "Hello World!" is often the first example used to teach a programming language - just enough code to print that welcoming message. Given the aim of this book we adapt the concept slightly, changing the geographic focus and presenting a map rather than text.  
 
 
-```{r c2-hello-africa-tmap, message=FALSE, warning=FALSE,  fig.cap=""}
+```{r c2-hello-africa-tmap, message=FALSE, warning=FALSE,  fig.cap="A map of Africa countries boundaries"}
 
 # install packages
 # install.packages("tmap")
