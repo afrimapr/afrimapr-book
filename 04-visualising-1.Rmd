@@ -102,7 +102,6 @@ Finally, `mapview` supports also raster data format, and if visualised it will a
 
 The link to full documentation is available in *Further resources* section. 
 
-### Exercises
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
@@ -591,41 +590,17 @@ tm_shape(raster_subset) +
 
 ```
 
-### Exercises
-The solution to the exercises are provided at the [end of the chapter](#solutions_ch4).
+
+The solutions to the exercises are provided at the [end of the chapter](#solutions_ch4).
 
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 2**: Plot a yellow map of Africa with transparency of 0.4 and solid line borders of width 3. 
-</div>   
-<br/>
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 3**: Plot a lightblue map of Africa with dotted, non-transparent, red borders.
-</div>  
-<br/>
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 4**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.
-</div>  
-<br/>
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 5**: Create a map with continent contour in light green colour. Then add African highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. 
-</div>  
-<br/>
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
+**Exercise 2**: Plot a yellow map of Africa with transparency of 0.4 and solid line borders of width 3. <br/>
+**Exercise 3**: Plot a light blue map of Africa with dotted, non-transparent, red borders.<br/>
+**Exercise 4**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.<br/>
+**Exercise 5**: Create a map with continent contour in light green colour. Then add African highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. <br/>
 **Exercise 6**: Using spatial subsetting create maps of highways and airports for Nigeria.
 </div>  
 
@@ -675,19 +650,13 @@ tm_dots(col = "type", shape = 21, size = 0.2, title = "Airport size",
         palette=c(large_airport='red', medium_airport='yellow', small_airport='blue'))
 ```
 
-### Exercises
 
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
-**Exercise 7**: Create an interactive map uses watercolour theme, the highways are blue and dots denoting capitals are white with black borders. Finally, add capitalnames.
-</div>  
-<br/>
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
+**Exercise 7**: Create an interactive map uses watercolour theme, the highways are blue and dots denoting capitals are white with black borders. Finally, add capital names.<br/>
+
 **Exercise 8**: Create an interactive map of African countries which have population smaller than 10 million. Fill the polygons with the population size.
 </div>  
 
@@ -699,7 +668,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 In  this chapter we looked at how to produce static and interactive maps using different packages. Specifically, we saw that the `tmap` package is a flexible tool to create maps with a stepwise approach, where we can add different layers to our maps. It is equally easy to switch between static and interactive maps. Further, `mapview` was showed to be a quick solution for creating interactive maps.
 
 
-## Exercise solutions {#solutions_ch4}
+## Exercises solutions {#solutions_ch4}
 ```{r, include = FALSE}
 tmap_mode("plot")
 ```
