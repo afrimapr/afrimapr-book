@@ -119,8 +119,6 @@ tm_shape(africapitals) +
 As you can see in the example above, the labelling makes the image messy. In these instances it is important to think about the message you are trying to convey with your map. 
 If the labelling is essential, you can look up the help section of the 'tm_text' using the help tool and play around with the different options to clean up the map further. 
 
-### Exercises
-
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
@@ -139,16 +137,12 @@ tm_shape(africapitals_filtered) +
  tm_dots("green", size=0.5)
 
 ```
-</div>  
-<br/>
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
+
 **Exercise 2**: We will now use capital and African airport data.Visualise the capitals and airports in one map, with capitals as grey large filled-in circles and airports as smaller blue not-filled triangles.<br/> 
 *Hint: if you get stuck, look at 'Add Points to a Plot' in the help section.*
 *Hint: When both points and lines are mapped, datasets need to be identified seperately in `tm_shape()` before the use of `tm_dots()`.*
-</div> 
+</div>  
+
 
 ## Lines {#episode_2_lines}
 
@@ -210,14 +204,10 @@ tm_shape(africapitals) +
     tm_shape(afrihighway_ex1)+
   tm_lines("blue")
 ```
-</div> 
-<br/>
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
+
 **Exercise 4**: Visualise the trans-African highway network, with line width associated with the length of the road. The function `st_length` is used to calculate the length of a line.
 </div> 
+
 
 ## Polygons {#episode_3_polygons}
 
@@ -313,15 +303,11 @@ https://www.google.com/url?sa=i&url=https%3A%2F%2Fcdiac.ess-dive.lbl.gov%2Fepubs
 * b. Line data
 * c. Multipolygon data
 * d. All of the above
-</div> 
-<br/>
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
+
 **Exercise 6**: Visualise the African borders of all countries with an area larger than 300.000 km^2. The function `st_area` is used to calculate the area within a polygon. <br/>
 *Hint: make sure you check the units*
 </div> 
+
 
 ## Rasters {#episode_4_raster}
 Points, lines and polygons, in their essence, consist of points with a longitude and latitude value. The data files of these vectors look very similar. Raster data are a group on their own. Raster data consist of a matrix of grid cells (pixels), with each grid cell representing a geographical location with a value illustrating a characteristic of that location. Raster data are mainly used when displaying data that are continuous across space. For example, population density, landcover variation and elevation data extracted from satellites, drones and surveys.  

@@ -598,9 +598,13 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
 **Exercise 2**: Plot a yellow map of Africa with transparency of 0.4 and solid line borders of width 3. <br/>
+
 **Exercise 3**: Plot a light blue map of Africa with dotted, non-transparent, red borders.<br/>
+
 **Exercise 4**: Plot a map that has polygons filled with gross domestic product, black borders, legend titled "GDP" and customised breaks at 0, 20000, 30000, 40000, 50000, 100000, 200000, 300000, 500000.<br/>
+
 **Exercise 5**: Create a map with continent contour in light green colour. Then add African highways by using *afrihighway* dataset. Finally, include a title on the bottom of the map. <br/>
+
 **Exercise 6**: Using spatial subsetting create maps of highways and airports for Nigeria.
 </div>  
 
