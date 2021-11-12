@@ -154,7 +154,7 @@ tm_shape(africountries)+
 
 As you already know a basic structure required to build a static map, we can now proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and add relevant title to the legend. Further, you can build on the previous map by adding labels for country names with `tm_text()` function. In a similar manner a variety of different layers can be added. Even though the possibilities are nearly endless, where large number of elements and layers can be combined in a single map, care should be take in order not to overwhelm the reader with the amount of information presented in one map and impede the clarity and readability of the map.
 
-```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labels (left) and map with added coutries names (right)"}
+```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labels (left) and map with added coutries names (right)."}
 
 tm_shape(africountries)+
  tm_polygons(col = "lastcensus", title = "Year of last census")+
@@ -167,33 +167,33 @@ tm_shape(africountries)+
 
 ```
 
-Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to too much clustering of information. Instead, we might want to use `breaks` argument to set them up manually and provide more visual differentiation. For the transparency of the code, we set up the customised breaks outside of the map-making function. Alternatively, you can control number of so-called `bins` (groups) into which the **Population** is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons()` function.
+Another useful function in `tmap` is the adjustment of the intervals in the legend, in case the default scale does not provide enough variety. For example, plotting the population of African countries on the map using default intervals (stemming from the data) is not very informative due to too much clustering of information. Instead, we might want to use `breaks` argument to set them up manually and provide more visual differentiation. For the transparency of the code, we set up the customised breaks outside of the map-making function. Alternatively, you can control number of so-called `bins` (groups) into which the *Population* is divided, by setting `n` argument to a desired number of bins inside the `tm_polygons()` function.
 
-```{r c5-tmap-countries-breaks,warnings = FALSE, message = FALSE,out.width="50%"}
+```{r c5-tmap-countries-breaks,warnings = FALSE, message = FALSE,out.width="60%", fig.cap="A map of African population with different breaks settings."}
 #default settings
 tm_shape(africountries) +
-                tm_polygons(col = "pop_est", title = "Population")
+  tm_polygons(col = "pop_est", title = "Population")
 
 #set up breaks manually
 custom_breaks = c(0, 1, 4, 7, 10, 30, 50, 70, 100, 120, 150, 180, 200) * 1000000
 tm_shape(africountries) +
-              tm_polygons(col = "pop_est", title = "Population", breaks = custom_breaks)
+  tm_polygons(col = "pop_est", title = "Population", breaks = custom_breaks)
 
 #set up a number of bins
 tm_shape(africountries) +
-            tm_polygons(col = "pop_est", title = "Population", n = 15) +
-            tm_layout(scale = 0.9)
+  tm_polygons(col = "pop_est", title = "Population", n = 15) +
+    tm_layout(scale = 0.9)
 
 
 ```
 
 Another case where adjusting the breaks is key are often raster data of population due to clustered distribution of the data. To demonstrate this, let's have a look at the histogram of `afripop2020` which is a dataset containing raster data of African population. As you can see in the graph, the shape of the data distribution is exponential, with large number of data points with low population and low number of highly populated data points. This, then, has certain implications for the visualisation. 
-```{r, out.width= "60%"}
+```{r, out.width= "60%", fig.cap="A histogram of population data distribution."}
 hist(afripop2020)
 ```
 
 If we use the default breaks in the map of African population, it is clear that there is not enough differentiation for the map to be readable, as seen below. Outside of the map legend we included the histogram to show data distribution. 
-```{r, out.width="60%"}
+```{r, out.width="60%", fig.cap="A map of African population with raster data, using default breaks settings."}
 data(afripop2020)
 
 tm_shape(afripop2020) +
@@ -203,7 +203,7 @@ tm_shape(afripop2020) +
 
 Therefore, customised breaks are a way to address this problem. For this, we set up breaks first, outside of the map-making code and then we use them within the map-making code. This allows us to achieve better readable map and clarity. The histogram of data is presented below the map legend.
 
-```{r, out.width="60%"}
+```{r, out.width="60%", fig.cap="A map of African population with raster data, using customised breaks settings."}
 raster_breaks=c(0,1,10,100,1000, 25000)
 
 tm_shape(afripop2020) +
@@ -213,7 +213,7 @@ tm_shape(afripop2020) +
 
 Furthermore, the differences between levels of population density represented with raster data can be further emphasised by modifying a colour palette. In the example below, we specified it using `palette` argument within `tm_raster` function. We take a closer look at the functionalities of palette in the next section.
 
-```{r, out.width="60%" }
+```{r, out.width="60%", fig.cap="A map of African population with raster data, using customised palette."}
   tm_shape(afripop2020) +   
     tm_raster(breaks = raster_breaks, palette = rev(viridisLite::plasma(5))) 
 ```
@@ -221,11 +221,16 @@ Furthermore, the differences between levels of population density represented wi
 
 So far, we used continuous variables to fill the polygons but it is also possible to use categorical variables for this purpose. In the example below *income_grp* variable is a categorical variable that contains information about the income level. It allows for visual grouping of countries in the same category. The names of the categories in the legend were adjusted using `labels` argument. In the similar manner you can group and present the airports of Africa depending on their size.
 
-```{r c5-tmap-countries-categorical, out.width="60%"}
+```{r c5-tmap-countries-categorical, out.width="60%", fig.cap="A map of income groups as categorical variables."}
 tm_shape(africountries)+
   tm_polygons(col = "income_grp", title = "Income levels", alpha = 0.6,
               labels = c("High", "Upper middle", "Lower middle", "Lower"))+
                 tm_layout(scale = 1.25)
+
+
+```
+
+```{r c5-tmap-countries-categorical, out.width="60%", fig.cap="The African airports - an example of categorical variables visualisation."}
 
 data(afriairports)
 tm_shape(africontinent)+
@@ -238,10 +243,11 @@ tm_shape(afriairports) +
 
 ```
 
+
 It is important to bear in mind that some information can be displayed on the map in many different ways. For example, we can make use of `tm_bubbles()` to create so-called bubbles which size is linked to the population of each country while their colour represents the income group of the country.
 
 
-```{r c5-tmap-bubbles, out.width="60%"}
+```{r c5-tmap-bubbles, out.width="60%",fig.cap="The African airports - an example of categorical variables visualisation." }
 tm_shape(africountries)+
  tm_polygons(col = "lightyellow") +
   tm_bubbles(size = "pop_est", col = "income_grp", 
@@ -255,14 +261,14 @@ An important aspect of the maps, as in every visual representation, are the colo
 
 Another important aspect in terms of colour use is the design of the map for the individuals with colour vision deficiency. They can differentiate between different lightness however specific colours used for different categories may be less accessible for them. The solution could be an addition of texture or usage of pallets which are colour-blindness friendly. In fact `tmaptools` allows for testing chosen map colours for three different types of colour blindness in its *color blindness simulator* (accessible via `tmaptools::palette_explorer()`), as seen in the Figure below.<br/>
 
-```{r, out.width = "60%", echo=FALSE}
+```{r, out.width = "60%", echo=FALSE, fig.cap="The colour palette."}
 knitr::include_graphics("images/colour_blind.PNG")
 ```
 
 Moreover, `tmap` package has a broad colour selection, not only with respect to individual colours but also map styles where you can change the default colours using `palette` argument. In the example below, we used palette called *Set1* and *plasma* but there are many other options to choose from. To view them, in your console run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow for selecting a number of colours.
 
 
-```{r c5-tmap-palette, warning=FALSE, message = FALSE, results='hide', fig.cap = "Africa's maps using different pallete options."}
+```{r c5-tmap-palette, warning=FALSE, message = FALSE, results='hide', fig.cap = "Maps of Africa using different pallete options."}
 
 set1 = tm_shape(africountries)+
          tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1")
@@ -311,7 +317,7 @@ tmap_arrange(classic, beaver, albatross)
 ### Visualising different datasets in a single map
 The `tmap` package not only allows you to add extra layers to a single map by building on a basic structure, but it also enables you to join two separate datasets in a single map. We, first, create an object called *countries* which is a map with African countries.
 
-```{r c5-tmap-combine1, warning=FALSE, out.width="60%"}
+```{r c5-tmap-combine1, warning=FALSE, out.width="60%", fig.cap="Base map with African countries."}
 #read in data
 data(africountries)
 #create an object
@@ -323,25 +329,25 @@ countries
 
 Then, we use it as an argument to merge it with a map containing the location of capitals.
 
-```{r c5-tmap-combine2, warning=FALSE, out.width="60%"}
+```{r c5-tmap-combine2, warning=FALSE, out.width="60%", fig.cap="Base map with capital cities."}
 #read in data with capitals
 data(africapitals)
 #merge two maps
-countries+
+countries +
   tm_shape(africapitals)+  #uses dataset with capitals
     tm_dots(col = "red", size = 0.15)+       #adds dots on the map
-      tm_layout(title = "Capital cities of Africa" , title.position = c("right", "top"), title.size = 1) #add and adjust map title
+      tm_layout(title = "Capital cities of Africa", title.position = c("right", "top"), title.size = 1) #add and adjust map title
 
 ```
 
 We can also mix different types of data in a single map, for example, raster and vector data. Nonetheless, here care needs to be taken in terms of the order in which we use the data. Raster data should be specified first as otherwise it would cover any subsequent data. In this regard, raster data works like a background colour. For example, we can visualise the population of Africa (raster data) and then add main highways (vector data) of the continent. In the `tm_raster` function we can specify the breaks and palette colour for the raster layer and in the the `tm_lines` we set up the colour separately for vector data, in this case highway lines.
 
-```{r, out.width="60%"}
+```{r, out.width="60%", fig.cap="Raster data and vector data visualised in a single map."}
 raster_breaks=c(0,1,10,100,1000,25000)
 
 tm_shape(afripop2020) +   
   tm_raster(breaks = raster_breaks, palette = rev(viridisLite::rocket(5))) +
-  tm_shape(afrihighway) + 
+   tm_shape(afrihighway) + 
     tm_lines(col = "blue")
 
 ```
@@ -354,7 +360,7 @@ We can achieve it using `dplyr` package which offers a function `filter()` to su
 
 Next, we simply visualise two datasets in a single map. In the first step, we use *africountries* inside the `tm_shape()` function to create a base map of Africa. We specify that borders should be displayed with `tm_borders()`. In the second step we add new *large_airports* dataset with `tm_shape(large_airports)` and we specify that airport (from the *large_airports* dataset) should be visualised as red dots `tm_dots(col = "red")`.
 
-```{r c5-tmap-subset}
+```{r, c5-tmap-subset,out.width="60%", fig.cap="Two datasets visualised in a single map."}
 tmap_mode("plot")
 data(afriairports)
 
@@ -371,7 +377,7 @@ tm_shape(africountries)+
 
 Another useful, subsetting example may be to visualise only information for one, specific country. This can be done using similar approach as presented above. In our example, we will focus on presenting airports of Egypt. Firstly, we take the dataset that contains all the airports (3348 observations in total) and create a new dataset called *egypt* which contains only the airports located in Egypt (66 observations in total). In the second step we create a map of the whole Africa coloured in beige and then overlay the Egyptian airports as blue dots.
 
-```{r c5-tmap-subset-2}
+```{r c5-tmap-subset-2,out.width="60%", fig.cap="A single country airports (Egypt) visualised on a basemap."}
 egypt = afriairports %>% filter(country_name == "Egypt")
 
 tm_shape(africountries)+
@@ -384,7 +390,7 @@ tm_shape(africountries)+
 It is also possible to visualise the different sizes of airport in the subset data. It is done exactly the same way as in the case of the whole dataset, where the colour of the dots are set to column name that contains the size of the airport. The code within `tm_dots()` function adjusts the colour and size of the airport dots and adds the legend.
 
 
-```{r}
+```{r, out.width="60%", fig.cap="Categorical variables visualised for a subset of data."}
 tm_shape(africountries)+
   tm_polygons(col = "lightyellow")+
   tm_shape(egypt) +
@@ -395,7 +401,7 @@ tm_dots(col = "type", shape = 21,size = 0.1, title = "Airport size",
 
 However, it can also be observed that the view of the map is quite zoomed out and some of the airports overlap. A possible solution to this problem would be to subset both, airports of Egypt as well as the country borders so that only map of Egypt is visible. This allows for taking a closer look at location of the Egyptian airports. The rest of the code is identical to that above. The additional component of `tm_layout()` is used to control the position of the legend of the map. It is needed here as the legend was overlapping with the map in the default position (bottom, left corner).<br/>
 
-```{r}
+```{r, out.width="60%", fig.cap="A map of Egypt (close-up view)."}
 
 egypt_map=africountries %>%
   filter(`name_long` == "Egypt")
@@ -438,7 +444,7 @@ DiagrammeR::grViz("
 
 We again choose Egypt as our example but any other country from the dataset can be used instead (see exercise below). For the ease of use, we create a variable *country_name* that contains our chosen country. We then, create *country_polygon* variable which subsets our chosen country based on *country_name*. It can, subsequently, be used in combination with other datasets to subset them based on spatial information that both contain. For instance, we subset airports of Egypt using spatial data of this country contained in *country_polygon*. In particular, *country_airports* data frame is created where spatial condition for subsetting (*country_polygon*) is provided in square brackets and target dataset (that contains data to be subset) is defined in front of it. Following this pattern: *object_to_subset[ object_to_subset_by, ]*, the Egyptian highways can be subset. The airports and highways of Egypt are later visualised on two separate maps using `tmap` as we did before.
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, out.width="60%", fig.cap="The airports of Egypt (spatially subset)."}
 #STEP 1:
 #Setting country name to the country of interest
 country_name = "Egypt"
@@ -450,15 +456,28 @@ country_polygon = africountries %>% filter(name == country_name)
 #Spatial subset of airports
 country_airports = afriairports[country_polygon, ]
 
-#Spatial subset of highways
-country_highway <- afrihighway[country_polygon, ]
-
+#STEP 3:
 #Visualise airports of Egypt
 tm_shape(country_polygon)+
   tm_polygons()+
 tm_shape(country_airports)+
   tm_dots()
 
+```
+
+```{r, message=FALSE, warning=FALSE, out.width="60%", fig.cap="The highways of Egypt (spatially subset)."}
+#STEP 1:
+#Setting country name to the country of interest
+country_name = "Egypt"
+
+#Choosing spatial information of the country of interest
+country_polygon = africountries %>% filter(name == country_name)
+
+#STEP 2:
+#Spatial subset of highways
+country_highway <- afrihighway[country_polygon, ]
+
+#STEP 3:
 #Visualise highways of Egypt
 tm_shape(country_polygon)+
   tm_polygons()+
@@ -469,7 +488,7 @@ tm_shape(country_highway)+
 
 Then, we can spatially subset several polygons at the same time. In such case, we need to slightly change the code inside the filter function, where we previously used `filter(name == country_name)` for a single polygon and now we need `%in%` operator, such that filter(name %in% country_names). `%in%` allows us to identify if there are matching values between two objects. These can be, for example, two vectors (of different lengths) and/or data frames. Essentially, the use of `%in%` enables us to answer the following question: *Is there any value in the first object (here **name**) that matches values in the second object (here **country_names**)?*. It then gives condition for filtering operation. After that we follow the usual way of spatial subsetting.
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, out.width="60%", fig.cap="An example of spatial subsetting of multiple countries simultaneously."}
 library(dplyr)
 
 #Create vector with countries of interest
@@ -499,7 +518,7 @@ tm_shape(country_highways)+
 
 Alternatively, it is also possible to zoom the map in by cropping it along the coordinates. This can be done using `st_crop()` function where we need to specify boundary longitude and latitude in degrees along which the map will be clipped. We can obtain the boundary coordinates of our map by running `st_bbox()` function. We then specify arbitrary values along which we want to split the map in the `st_crop()` function where the min and max x correspond to longitude values and max and min y correspond to latitude. We present how this can be done in the example below where we focus only on the Western Africa.
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="An example of map cropped along the coordinates."}
 st_bbox(africontinent)
 
 west <- st_crop(africountries, xmin = -17, xmax = 21,
@@ -511,7 +530,7 @@ tm_shape(west)+
 
 Similarly, it is possible to subset airport depending on their location. In the example below we aim to split African airport into four regions: north, south, east and west. 
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="Subsetting of airports using st_bbox() function."}
 west_airports <- st_crop(afriairports, xmin = -17, xmax = 21,
                 ymin = -25, ymax = 21)
 
@@ -553,7 +572,7 @@ tmap_arrange(n,s,e,w)
 Subsequently, they can be visualised on a single map and differentiated by a colour. This requires a base map with a continent shape and repetitive addition on all the layers with airports.
 
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="Subset airports in a single map."}
 tm_shape(africontinent)+
   tm_polygons()+
 tm_shape(south_airports)+
@@ -571,7 +590,7 @@ Finally, to control for the zoom-in level it is also possible to use an interact
 
 Special type of spatial subsetting is subsetting of raster data. We start similar to regular spatial subsetting where we specify the polygon that we are interested in. Then, we crop our raster data to match the polygon and using `rasterize()` function we transfer values associated with spatial object to raster cells and finally with `mask()` function we create a raster version of the subset country ([zevross.com,2015](http://zevross.com/blog/2015/03/30/map-and-analyze-raster-data-in-r/)).
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="Raster data with default breaks - subset for a single country."}
 
 country_name = "Madagascar"
 country_polygon = africountries %>% filter(name %in% country_name)
@@ -614,7 +633,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 The `mapview` is not the only package that allows us to produce interactive maps. Another possibility is the `tmap` package that offers versatility not only for creating static maps, as we have seen above, but it also allows for making customised interactive maps conveniently, by simply changing the mode of operation from static to dynamic using *plot* or *view*, respectively in `tmap_mode()` function. After the activation of an interactive mode all the maps produced with `tmap` will be interactive. Therefore, we are able to create all the maps that we have produced so far in an interactive version.
 
 
-```{r c5-tmap-interactive, warning=FALSE}
+```{r c5-tmap-interactive, warning=FALSE, out.width="60%", fig.cap="Raster data map with customised breaks."}
 #sets interactive mode
 tmap_mode("view")
 

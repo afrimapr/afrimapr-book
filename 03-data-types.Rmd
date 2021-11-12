@@ -215,7 +215,7 @@ tm_shape(africapitals) +
 Polygons are lines with the same first and last coordinate. When the polygon line is connected, the same start and end point results in a closed shape. Similar to lines, depending on the detail of the map, more or less points can be used to create a polygon. This two-dimensional data is most often used to visualise country and continent boundaries.   
 
 The continent outline of Africa is a multipolygon.
-```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="An outline map of Africa."}
+```{r, warning=FALSE, message=FALSE, out.width="90%", fig.cap="An outline map of Africa."}
 
 plot(st_geometry(africontinent), col = "lightblue")
 
