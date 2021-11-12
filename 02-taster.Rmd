@@ -108,16 +108,16 @@ We can add just a little code to each example to visualise some other data using
 
 Firstly, using `tmap` :
 
-```{r c2-hello-africa-tmap-income-grp, message=FALSE, warning=FALSE, out.width="60%", fig.cap="A map of African income groups"}
+```{r c2-hello-africa-tmap-income-grp, message=FALSE, warning=FALSE, out.width="60%", fig.cap="A map of African income groups."}
 
 # colour polygons according to income group
 tm_shape(africountries) + tm_polygons(col='income_grp')
 
 ```
 
-Secoundly, using `mapview` :
+Secondly, using `mapview` :
 
-```{r c2-hello-africa-mapview-income_grp, message=FALSE, warning=FALSE, out.width="60%", fig.cap="An interactive map of African income groups"}
+```{r c2-hello-africa-mapview-income_grp, message=FALSE, warning=FALSE, out.width="60%", fig.cap="An interactive map of African income groups."}
 
 # colour polygons according to income group
 mapview(africountries, zcol='income_grp')
@@ -139,7 +139,7 @@ The `tmap` package is frequently used in geospatial visualisations because it al
 They enables us to add and customise the map. Below we present two examples of how `tmap` is used to create simple static and interactive maps. In the code below, *africountries* is our dataset, an object of `sf` class, whereas `tm_polygons()` and `tm_lines()` are used to plot and adjust polygons and lines, respectively.
 
 ## Static maps
-```{r c2-simple-map, message=FALSE, warning=FALSE, fig.cap="An example of static maps"}
+```{r c2-simple-map, message=FALSE, warning=FALSE, fig.cap="An example of static maps."}
 
 map_1 = tm_shape(africountries) +
     tm_polygons()
@@ -158,7 +158,7 @@ tmap_arrange(map_1, map_2, map_3)
 Furthermore, the creation of an interactive map is equally convenient, where it only requires "turning on" of an interactive mode by changing from "plot" to "view" in the `tmap_mode()` function, as seen in the example below.
 
 ## Interactive maps
-```{r c2-interactive_map, fig.show="hold", out.width="60%", fig.cap="An example of interactive map"}
+```{r c2-interactive_map, fig.show="hold", out.width="60%", fig.cap="An example of interactive map."}
 tmap_mode("view")
 
 breaks=c(0,2,20,200,2000,25000)

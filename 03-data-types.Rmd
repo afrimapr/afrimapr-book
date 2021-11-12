@@ -102,14 +102,14 @@ The capitals all have one latitude and one longitude value. The geometry of the 
  
 
 Let's now visualise the African capitals by plotting their geometry using the tmap package.
-```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="The capital cities of Africa"}
+```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="The capital cities of Africa."}
 
 tm_shape(africapitals) + #specify the data file
   tm_dots() # displaying the point geometry
 
 ```
 The `tmap` package works similar to the ggplot package. You need to first specify the data file you want to visualise using `tm_shape()`, after which the exact format of the spatial data can be specified (points, lines, polygons). As we are working with point data in this example, the `tm_dots()` function is used. As with ggplot, there is a lot of flexibility in the colouring, shapes and sizes of the dots. For example, the dots can be turned red and labelled with the name of the city. 
-```{r, warning=FALSE, message=FALSE`, out.width="60%", fig.cap="The capital cities of Africa with customised dots"}
+```{r, warning=FALSE, message=FALSE`, out.width="60%", fig.cap="The capital cities of Africa with customised dots."}
 
 tm_shape(africapitals) +
   tm_dots("red")+ # displaying the point geometry as red dots
@@ -215,7 +215,7 @@ tm_shape(africapitals) +
 Polygons are lines with the same first and last coordinate. When the polygon line is connected, the same start and end point results in a closed shape. Similar to lines, depending on the detail of the map, more or less points can be used to create a polygon. This two-dimensional data is most often used to visualise country and continent boundaries.   
 
 The continent outline of Africa is a multipolygon.
-```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="An outline of Africa"}
+```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="An outline map of Africa."}
 
 plot(st_geometry(africontinent), col = "lightblue")
 
@@ -226,7 +226,7 @@ One polygon is used to visualise the mainland of Africa. An additional polygon i
 Sometimes several polygons are necessary to capture a more complex shape. The different polygons in one data row indicate either areas to include or exclude from the final image. These are called multipolygons. 
 An example of a multipolygon is the country border of South Africa. Lesotho is entirely surrounded by South Africa. If we want to visualise South Africa, we need to make sure that the Lesotho area is excluded. Visualisation of South Africa therefore requires two polygons, one to outline the outer borders and one to highlight the area to exclude (Lesotho country borders). 
 Below, the South African border is visualised.
-```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="An outline of South Africa"}
+```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="An outline map of South Africa."}
 
 africountries_ex=africountries %>%
   filter(`name` == "South Africa")
@@ -242,22 +242,27 @@ As you can see in the image, when the polygon of South Africa is visualised, a w
 
 For this example, we will look at the country borders of African countries. 
 Let's visualise the geometry of the datafile first. 
+
 ```{r, warning=FALSE, message=FALSE}
 
 print(st_geometry(africountries)) #printing information on the geometry
 
 ```
+
 The country border file contains 51 country outlines with geometry type **MULTIPOLYGON**.
 
 If we print the first 6 rows of data, we can see how each country border is stored in the database.
+
 ```{r, warning=FALSE, message=FALSE}
 
 head(africountries) #First 6 rows of data are printed
 
 ```
+
 Here, the geometry data contain a list with (multiple) polygons, with each polygon represented as a list of data points with latitude and longitude. These points are connected to form polygons, which are either used to include or exclude areas from the final image. The geometry of the multipolygon data is stored as *MULTIPOLYGON (((Latitude1, Longitude1, Latitude2, Longitude2, Latitude3, Longitude3,.. ),(Latitude1, Longitude1, ..)),(Latitude1, Longitude1, ...)))*. 
 
 Lets visualise these multipolygons with black lines.
+
 ```{r, warning=FALSE, message=FALSE}
 
 tm_shape(africountries) +
@@ -269,6 +274,7 @@ tm_shape(africountries) +
 ```
 
 Now we can add the capitals and highways from previous episodes
+
 ```{r, warning=FALSE, message=FALSE}
 
 tm_shape(africountries) +
@@ -279,7 +285,6 @@ tm_shape(afrihighway) +
   tm_lines("red") 
 
 ```
-
 
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
@@ -319,12 +324,14 @@ Points, lines and polygons, in their essence, consist of points with a longitude
 The more grid cells a raster file contains, the smoother the visualisation of the characteristic will be. However, a large number of grids also means a large heavy file, which may be difficult to run. Whenever you are working with raster files, think about your goal and objective. The highest resolution might not always be necessary. 
 
 To read in raster data, we first need to install and load the 'raster' package. 
+
 ```{r, warning=FALSE, message=FALSE}
 
 #install.packages("raster") #install raster package
 library(raster) # load raster package
 
 ```
+
 We can now start visualising raster data.  <br/>
 
 ### Example
@@ -335,27 +342,31 @@ For this example we use African population data from 2000 and 2020. Let's look a
 print(afripop2000) #printing information on the raster data file
 
 ```
+
 The population raster data from 2000 contains 434 rows, 413 columns and a total of 179242 grid cells with geometry type **RasterLayer **.
 
+
 Let's print the first 10 rows of data. 
+
 ```{r, warning=FALSE, message=FALSE}
 
 head(afripop2000) #First 6 rows of data are printed
 
 ```
+
 Why do you think all rows are empty? 
 
-You could use `getValues()` to look at all grid cell values, but that would take up a few pages of the book, so we won't do it here ! 
+You could use `getValues()` to look at all grid cell values, but that would take up a few pages of the book, so we won't do it here! 
 
 ```{r, eval=FALSE, warning=FALSE, message=FALSE}
 
 getValues(afripop2000)
 
 ```
+
 The printed matrix shows that the raster layer consists of a matrix with values. The grid cells can be empty if no data is available. This just results in no visualisation (NA or empty) at those locations. 
 
 Lets visualise the population data with the country borders. Note that population density data are highly skewed. To ensure both high and low density areas are clearly visible, we have to specify the data breaks manually.  
-
 
 ```{r, warning=FALSE, message=FALSE}
 
@@ -377,8 +388,8 @@ tm_shape(africountries) +
 
 ```
 
-
 Now we can add the capitals and highways from previous episodes. 
+
 ```{r, warning=FALSE, message=FALSE}
 
 tm_shape(afripop2000) +
@@ -413,7 +424,7 @@ If you are interested in learning more about the different spatial data types, p
 ## Summary
 The image below gives a short recap of the different data types discussed in this chapter. You should now be able to recognize, load and manipulate these data types using the `sf` and `raster` and visualise them using the `tmap` package.
 
-```{r, fig.cap ="Summary of the chapter", echo=FALSE}
+```{r, fig.cap ="Summary of the chapter.", echo=FALSE}
 knitr::include_graphics("images/chapter_4_image.png")
 ```
 

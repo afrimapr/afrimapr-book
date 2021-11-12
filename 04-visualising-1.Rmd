@@ -119,7 +119,7 @@ tmap_mode("plot") #activates static map viewing mode
 
 Next, we create an empty contour map of the continent, where `tm_shape()` function serves as a basic component containing the shape object i.e. our spatial dataset. On top of this basic element we can then add more layers using `+` operator. The advantage of `tmap` package is that it offers a large variety layers and these are named relatively intuitively to make the search and use easier. For example, we will now use layer called `tm_borders()` which defines the borders of the polygons. Further, we create an empty, border-less map using `tm_fill()` which defines the fill of the polygons. 
 
-```{r c5-tmap-countries2, fig.show='hold', out.width="50%"}
+```{r c5-tmap-countries2, fig.show='hold', out.width="50%", fig.cap="Basic types of maps."}
 
 tm_shape(africountries)+
  tm_borders()
@@ -131,7 +131,7 @@ tm_shape(africountries)+
 
 Intuitively, to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows you to achieve exactly the same result more efficiently. It draws the polygons borders and fills them at the same time. The choice of the approach will depend on type of data and information that you aim to present on your map. For example, if you plan to add a layer of road or rail network to your map later it may be a better idea to create a *base map* using polygons only (without contours) so that they do not overlap with road lines making the map more difficult to read.
 
-```{r c5-tmap-countries4,fig.show="hold", out.width="50%"}
+```{r c5-tmap-countries4,fig.show="hold", out.width="50%", fig.cap="Identical maps achieved with two different approaches."}
 
 tm_shape(africountries)+
  tm_borders()+
@@ -145,7 +145,7 @@ tm_shape(africountries)+
 Nevertheless, we can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. This approach can also be used to help distinguishing different elements of the map. Following the example from above, the lines representing region borders and roads can be coloured differently to avoid confusion. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
 
 
-```{r c5-tmap-countries5, out.width="60%"}
+```{r c5-tmap-countries5, out.width="60%", fig.cap=" A map with adjusted contours."}
 
 tm_shape(africountries)+
  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
