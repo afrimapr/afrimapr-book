@@ -108,7 +108,7 @@ We can add just a little code to each example to visualise some other data using
 
 Firstly, using `tmap` :
 
-```{r c2-hello-africa-tmap-income_grp, message=FALSE, warning=FALSE, out.width="60%", fig.cap="A map of African income groups"}
+```{r c2-hello-africa-tmap-income-grp, message=FALSE, warning=FALSE, out.width="60%", fig.cap="A map of African income groups"}
 
 # colour polygons according to income group
 tm_shape(africountries) + tm_polygons(col='income_grp')

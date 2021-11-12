@@ -92,7 +92,7 @@ print(st_geometry(africapitals)) #printing information on the geometry
 ```
 We can see from the results that the African capital data file contains 50 points (capitals) with geometry type **POINT**. 
 
-Let's print the first 6 rows of data, so we can see how the coordinates of each African captial is stored in the database.
+Let's print the first 6 rows of data, so we can see how the coordinates of each African capital is stored in the database.
 ```{r, warning=FALSE, message=FALSE}
 
 head(africapitals) #First 6 rows of data are printed
@@ -102,14 +102,14 @@ The capitals all have one latitude and one longitude value. The geometry of the 
  
 
 Let's now visualise the African capitals by plotting their geometry using the tmap package.
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="The capital cities of Africa"}
 
 tm_shape(africapitals) + #specify the data file
   tm_dots() # displaying the point geometry
 
 ```
 The `tmap` package works similar to the ggplot package. You need to first specify the data file you want to visualise using `tm_shape()`, after which the exact format of the spatial data can be specified (points, lines, polygons). As we are working with point data in this example, the `tm_dots()` function is used. As with ggplot, there is a lot of flexibility in the colouring, shapes and sizes of the dots. For example, the dots can be turned red and labelled with the name of the city. 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE`, out.width="60%", fig.cap="The capital cities of Africa with customised dots"}
 
 tm_shape(africapitals) +
   tm_dots("red")+ # displaying the point geometry as red dots
@@ -215,17 +215,18 @@ tm_shape(africapitals) +
 Polygons are lines with the same first and last coordinate. When the polygon line is connected, the same start and end point results in a closed shape. Similar to lines, depending on the detail of the map, more or less points can be used to create a polygon. This two-dimensional data is most often used to visualise country and continent boundaries.   
 
 The continent outline of Africa is a multipolygon.
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="An outline of Africa"}
 
 plot(st_geometry(africontinent), col = "lightblue")
 
 ```
+
 One polygon is used to visualise the mainland of Africa. An additional polygon is used for Madagascar. Together they represent the whole African continent. 
 
 Sometimes several polygons are necessary to capture a more complex shape. The different polygons in one data row indicate either areas to include or exclude from the final image. These are called multipolygons. 
 An example of a multipolygon is the country border of South Africa. Lesotho is entirely surrounded by South Africa. If we want to visualise South Africa, we need to make sure that the Lesotho area is excluded. Visualisation of South Africa therefore requires two polygons, one to outline the outer borders and one to highlight the area to exclude (Lesotho country borders). 
 Below, the South African border is visualised.
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, out.width="60%", fig.cap="An outline of South Africa"}
 
 africountries_ex=africountries %>%
   filter(`name` == "South Africa")
@@ -233,6 +234,7 @@ africountries_ex=africountries %>%
 plot(st_geometry(africountries_ex), col = "lightblue")
 
 ```
+
 As you can see in the image, when the polygon of South Africa is visualised, a white area is visible inside the country (representing Lesotho), which is not part of South Africa. <br/>
 
 
@@ -411,7 +413,7 @@ If you are interested in learning more about the different spatial data types, p
 ## Summary
 The image below gives a short recap of the different data types discussed in this chapter. You should now be able to recognize, load and manipulate these data types using the `sf` and `raster` and visualise them using the `tmap` package.
 
-```{r, fig.caption ="Summary of the chapter", echo=FALSE}
+```{r, fig.cap ="Summary of the chapter", echo=FALSE}
 knitr::include_graphics("images/chapter_4_image.png")
 ```
 
