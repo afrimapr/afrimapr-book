@@ -137,6 +137,7 @@ tm_shape(africapitals_filtered) +
  tm_dots("green", size=0.5)
 
 ```
+<br/>
 
 **Exercise 2**: We will now use capital and African airport data.Visualise the capitals and airports in one map, with capitals as grey large filled-in circles and airports as smaller blue not-filled triangles.<br/> 
 *Hint: if you get stuck, look at 'Add Points to a Plot' in the help section.*
@@ -277,6 +278,7 @@ tm_shape(afrihighway) +
 
 ```
 
+
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
@@ -390,18 +392,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "purple">
 
-#### Exercise 7
-
-Visualise the population data of 2000 using a different palette from the [viridisLite](https://cran.r-project.org/web/packages/viridisLite/viridisLite.pdf) package. Increase the number of breaks to six. Which breaks are most appropriate?
-```{r, warning=FALSE, message=FALSE}
-
-tm_shape(afripop2020) +
-   tm_raster(palette = rev(viridisLite::plasma(6)), breaks=c(0,2,20,200,2000,20000, 25000)) +
- tm_layout(legend.position = c("left","bottom"))+
-tm_shape(africountries) +
-   tm_borders()
-
-```
+**Exercise 7**: Visualise the population data of 2000 using a different palette from the [viridisLite](https://cran.r-project.org/web/packages/viridisLite/viridisLite.pdf) package. Increase the number of breaks to six. Which breaks are most appropriate?
 </div> 
 
 
@@ -490,6 +481,18 @@ africountries_filtered = africountries %>%
   dplyr::filter(as.numeric(africountries$area_sqkm) > 300000)
 
 tm_shape(africountries_filtered) +
+   tm_borders()
+
+```
+
+- Exercise 7
+
+```{r, warning=FALSE, message=FALSE}
+
+tm_shape(afripop2020) +
+   tm_raster(palette = rev(viridisLite::plasma(6)), breaks=c(0,2,20,200,2000,20000, 25000)) +
+ tm_layout(legend.position = c("left","bottom"))+
+tm_shape(africountries) +
    tm_borders()
 
 ```
