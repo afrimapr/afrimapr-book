@@ -131,7 +131,7 @@ tm_shape(africountries)+
 
 Intuitively, to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows you to achieve exactly the same result more efficiently. It draws the polygons borders and fills them at the same time. The choice of the approach will depend on type of data and information that you aim to present on your map. For example, if you plan to add a layer of road or rail network to your map later it may be a better idea to create a *base map* using polygons only (without contours) so that they do not overlap with road lines making the map more difficult to read.
 
-```{r c5-tmap-countries4,fig.show="hold", out.width="50%", fig.cap="Identical maps achieved with two different approaches."}
+```{r c5-tmap-countries4, fig.show="hold", out.width="50%", fig.cap="Identical maps achieved with two different approaches."}
 
 tm_shape(africountries)+
  tm_borders()+
@@ -230,7 +230,7 @@ tm_shape(africountries)+
 
 ```
 
-```{r c5-tmap-countries-categorical, out.width="60%", fig.cap="The African airports - an example of categorical variables visualisation."}
+```{r c5-tmap-countries-categorical-1, out.width="60%", fig.cap="The African airports - an example of categorical variables visualisation."}
 
 data(afriairports)
 tm_shape(africontinent)+
