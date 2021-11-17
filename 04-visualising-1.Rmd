@@ -428,7 +428,6 @@ tm_shape(egypt_map)+
 Another interesting way to subset that data is spatial subsetting which allows us to achieve similar results as above, when we do not have an attribute in the dataset that could be used for attribute-based subsetting. Spatial subsetting enables us to select information in one dataset (e.g. road network, rivers, airports cities) given the spatial information from another dataset, given that both datasets contain them. Importantly, to specify the polygons of country of interest, we can use attribute-based subsetting by country name and then use them for spatial subsetting (once we have only spatial information on the selected country). The process flow has been demonstrated in the diagram and the annotation corresponding to the diagram has been used in the example below.
 
 ```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap = "Process of spatial subsetting"}
-install.packages("DiagrammeR")
 library(DiagrammeR)
 DiagrammeR::grViz("
   digraph graph2 {
