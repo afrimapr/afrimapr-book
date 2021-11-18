@@ -129,7 +129,7 @@ tm_shape(africountries)+
 
 ```
 
-Intuitively, to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows you to achieve exactly the same result more efficiently. It draws the polygons borders and fills them at the same time. The choice of the approach will depend on type of data and information that you aim to present on your map. For example, if you plan to add a layer of road or rail network to your map later it may be a better idea to create a *base map* using polygons only (without contours) so that they do not overlap with road lines making the map more difficult to read.
+Intuitively, to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows you to achieve exactly the same result more efficiently. It draws the polygons borders and fills them at the same time. The choice of the approach will depend on type of data and information that you aim to present on your map. For example, if you plan to add a layer of road or rail network to your map later it may be a better idea to create a *base map* using polygons only (without borders) so that they do not overlap with road lines making the map more difficult to read.
 
 ```{r c5-tmap-countries4, fig.show="hold", out.width="50%", fig.cap="Identical maps achieved with two different approaches."}
 
@@ -142,26 +142,28 @@ tm_shape(africountries)+
 
 ```
 
-Nevertheless, we can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. This approach can also be used to help distinguishing different elements of the map. Following the example from above, the lines representing region borders and roads can be coloured differently to avoid confusion. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
+Nevertheless, we can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. This approach can also be used to help distinguishing different elements of the map. Following the example from above, the lines representing region borders and roads can be coloured differently to avoid confusion.
 
+Polygon colours and other aspects of their appearance can be set directly e.g. `col = "green", lty = "dotted"`.   
 
-```{r c5-tmap-countries5, out.width="60%", fig.cap=" A map with adjusted contours."}
+```{r c5-tmap-countries5, out.width="60%", fig.cap=" A map setting colour (`col`), line type (`lty`) and transparency (`alpha`)."}
 
 tm_shape(africountries)+
  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
 
 ```
 
-As you already know a basic structure required to build a static map, we can now proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and add relevant title to the legend. Further, you can build on the previous map by adding labels for country names with `tm_text()` function. In a similar manner a variety of different layers can be added. Even though the possibilities are nearly endless, where large number of elements and layers can be combined in a single map, care should be take in order not to overwhelm the reader with the amount of information presented in one map and impede the clarity and readability of the map.
+More usefully the appearance of map elements can be set according to the values stored in one of the data columns. In the case below we set the colour according to the date of the last census which is stored in the column called `lastcensus`. We do this by specifying `col="lastcensus"`. In this case the year labels in the legend get formatted with a ',' (e.g. 1,970) so we can add a `legend.format` argument to improve. Further, you can build on the previous map by adding labels for country names with `tm_text()` function. In a similar manner a variety of different layers can be added. Even though the possibilities are nearly endless, where large number of elements and layers can be combined in a single map, care should be take in order not to overwhelm the reader with the amount of information presented in one map and impede clarity and readability.
 
-```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labels (left) and map with added coutries names (right)."}
+```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labels (left) and map with added country names and formatted legend years (right)."}
 
 tm_shape(africountries)+
  tm_polygons(col = "lastcensus", title = "Year of last census")+
   tm_layout(scale = 1.25) # increases the overall size of the legend
 
 tm_shape(africountries)+
- tm_polygons(col = "lastcensus", title = "Year of last census")+
+ tm_polygons(col = "lastcensus", title = "Year of last census",
+             legend.format = list(fun = function(x) formatC(x, big.mark="")))+
  tm_text("name", size = 0.52, fontface = "bold", auto.placement = TRUE)+
   tm_layout(scale = 1.25) 
 
