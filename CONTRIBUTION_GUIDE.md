@@ -29,7 +29,7 @@ To make temporary comments for yourself and others enclose them in square bracke
 * It is worth naming code chunks so that it is easier to identify failing code in case it happens. The name can be added to the code chunk in the following way: {r code-name-without-spaces, ...}
 * You can collapse (unfold) parts of the Rmd file with the downward (upward) pointed arrow next to the line number, where this function is possible. The collapsible parts are at the section/subsection level or r code chunks. It makes it easier to navigate through the long chapter files, where finalised parts can be "hidden".
 * A keyboard shortcut Ctrl + Shift + F allows for searching of a phrase inside the all files in the project.
-* To quickly rename a .Rmd file use file.rename("old-name.Rmd", "new-name.Rmd"). The files with new names have to be added to Github before the changes are pushed. This can be done by typing "git add new-file.Rmd" in the Terminal. After that commit and push changes as usual.
+* To quickly rename a .Rmd file use file.rename("old-name.Rmd", "new-name.Rmd") in the Console. The files with new names have to be added to Github before the changes are pushed. This can be done by typing "git add new-file.Rmd" in the Terminal. After that commit and push changes as usual.
 * To hide a chapter (and stop it from rendering altogether) add an underscore _ before file name. All the files that start with an underscore are passed during rendering but they still appear in the repo.
 
 ## required packages
