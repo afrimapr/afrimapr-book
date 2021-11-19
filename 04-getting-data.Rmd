@@ -56,14 +56,6 @@ To map these data in R usually requires a 3 step process.
 
 Here we will demonstrate the 3 steps using some airport data from the excellent [ourairports](https://ourairports.com/continents/AF/airports.csv) that we have extracted and saved in the [afrilearndata](https://github.com/afrimapr/afrilearndata) package. 
 
-```{r csv-airports-setup}
-# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
-# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
-#tmap_mode("plot")
-htmlwidgets::setWidgetIdSeed(1)
-```
-
-
 ```{r csv-airports, exercise = TRUE, exercise.eval = TRUE}
 # 1. read into dataframe
 filename <- system.file("extdata","afriairports.csv", package="afrilearndata", mustWork=TRUE)
@@ -124,13 +116,6 @@ An alternative is directly to create a dataframe within R containing coordinates
 
 In the example below try changing the coordinates within the dataframe at step 1, and run to see the points change.
 
-```{r dataframe-sf-setup}
-# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
-# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
-#tmap_mode("plot")
-htmlwidgets::setWidgetIdSeed(3)
-```
-
 ```{r dataframe-sf, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 # 1. create dataframe
 mydf <- data.frame(x=c(-10,10,30),
@@ -157,12 +142,6 @@ If a colleague emails use just a single file named `*.shp` then you will not be 
 
 Shapefiles can store points, lines or polygons. The example below uses a shapefile containing polygons.
 
-```{r shp-countries-setup}
-# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
-# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
-#tmap_mode("plot")
-htmlwidgets::setWidgetIdSeed(4)
-```
 
 ```{r shp-countries, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 # read file into a spatial object
@@ -182,13 +161,6 @@ For other spatial vector formats (e.g. kml, geopackage & geojson) the same appro
 
 Here we show an example with a .kml file of the simplified African highway network.
 
-```{r kml-highways-setup}
-
-# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
-
-htmlwidgets::setWidgetIdSeed(5)
-```
-
 ```{r kml-highways, exercise = TRUE, exercise.eval = FALSE, message = FALSE, warning = FALSE}
 # filename <- system.file("extdata","trans-african-highway.kml", package="afrilearndata", mustWork=TRUE)
 # afrihighway <- sf::read_sf(filename)
@@ -202,13 +174,6 @@ htmlwidgets::setWidgetIdSeed(5)
 To read in raster data we need to use the package `raster` instead of `sf`. The reading function in `raster` is also called `raster`. To read in a file use `myrast <- raster::raster(filename)` or just `myrast <- raster(filename)`. Similar to vector formats you can also use `mapview` to give a quick view of raster objects by simply passing the object name e.g. `mapview(myrast)`.
 
 `raster(filename)` will also work with other raster formats such as ascii grids or .jpg.
-
-```{r rast1-setup}
-# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
-# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
-#tmap_mode("plot")
-htmlwidgets::setWidgetIdSeed(6)
-```
 
 ```{r rast1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 filename <- system.file("extdata","afripop2020.tif", package="afrilearndata", mustWork=TRUE)
@@ -226,13 +191,6 @@ In intro-to-spatial-r we fixed this in `tmap` using the `breaks=` argument to se
 ## Exercises solutions
 
 - Exercise 1
-```{r csv-crs-missing-setup}
-# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
-# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
-#tmap_mode("plot")
-htmlwidgets::setWidgetIdSeed(2)
-```
-
 ```{r csv-crs-missing, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 # 1. read into dataframe
 filename <- system.file("extdata","afriairports.csv", package="afrilearndata", mustWork=TRUE)
