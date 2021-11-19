@@ -1,13 +1,14 @@
 # Getting data into R {#getting}
 
 ## Overall goal of the chapter
-
+This chapter provides entry level approach to getting your own data, of different types, into R as a first step to mapping it.
 
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
 **Learning objectives**
+
 - Familiarise with different data sources and methods of reading in datasets
 - Be able to read in data of the 4 types into R from files and other sources
 
@@ -26,11 +27,222 @@ install.packages("rgdal")
 ```
 
 ```{r, results='hide', warning=FALSE, message=FALSE}
-# library(sf)               # working with vector data
-# library(afrilearndata)    # example data
-# library(raster)           # raster manipulation
-# library(mapview)          # interactive mapping
-# library(readr)            # reading text files
-# library(rgdal)            # to try to correct raster error on shinyapps
+library(sf)               # working with vector data
+library(afrilearndata)    # example data
+library(raster)           # raster manipulation
+library(mapview)          # interactive mapping
+library(readr)            # reading text files
+library(rgdal)            # to try to correct raster error on shinyapps
 ```
 
+
+## .csv, .txt or .xls file with coordinates
+
+Text files containing point data are one of the commonest file types that we see in small-scale operational mapping of data. Usually these consist of one row per record (e.g. the location of a health facility or disease case or dwelling) with two columns containing the coordinates of the location (e.g. longitude & latitude or x & y), and other columns containing attributes of that location (e.g. facility or disease type). 
+
+attribute1  | longitude | latitude
+----------- | --------- | ------------------
+location1   | -10 | 20
+location2   | 10  | 0  
+...         |     |
+
+These files can be `.csv` comma delimited, or `.txt` space delimited or various spreadsheet formats including `.xls`.
+
+To map these data in R usually requires a 3 step process.
+
+1. read the data file into an R dataframe
+1. convert the dataframe into an R spatial (package `sf`) object
+1. plot the `sf` object
+
+Here we will demonstrate the 3 steps using some airport data from the excellent [ourairports](https://ourairports.com/continents/AF/airports.csv) that we have extracted and saved in the [afrilearndata](https://github.com/afrimapr/afrilearndata) package. 
+
+```{r csv-airports-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(1)
+```
+
+
+```{r csv-airports, exercise = TRUE, exercise.eval = TRUE}
+# 1. read into dataframe
+filename <- system.file("extdata","afriairports.csv", package="afrilearndata", mustWork=TRUE)
+mydf <- readr::read_csv(filename)
+mydf <- mydf[(1:100), ] #select first 100 rows just to make quicker online
+# 2. convert to sf object & set crs
+mysf <- sf::st_as_sf(mydf, 
+                     coords=c("longitude_deg", "latitude_deg"),
+                     crs=4326)
+# 3. quick interactive plot
+mapview(mysf)    
+```
+
+**To apply the code chunk above to your own data :**
+
+* set filename to the path to your file (this might just be something like `"mydata/myfile.csv"`) 
+* replace `"longitude_deg", "latitude_deg"` with the names of the columns containing the coordinates in your data
+* you may need to change `crs=4326` as explained below
+
+### CRS
+`crs` stands for Coordinate Reference System. It determines how coordinates are converted to a location on the Earth. 
+In this case it tells `sf` what system to expect. In the majority of cases coordinates (e.g. collected from a GPS) are stored in a system represented by the code `4326`. 4326 is the EPSG code for longitude, latitude using the WGS84 datum, but you don't really need to know that. 4326 is a good number to remember !
+
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 1:** What happens when the `crs=4326` argument is not included in the code below ? Try adding it back in and see what the difference is.
+</div>  
+
+### Data structure
+
+We can look at the structure of the original dataframe and the sf object using `names()` to show the column names and `head()` which returns the first six rows. What is the difference between them ? 
+
+```{r dataframe-airports, echo=TRUE}
+# original dataframe
+names(mydf)
+# sf object
+names(mysf)  
+# original dataframe
+head(mydf)
+# sf object
+head(mysf)
+```
+
+  
+You should see that the columns containing coordinates in the original dataframe are no longer there. In the new `sf` object there is a new column called `geometry` at the end that stores the spatial information. This demonstrates that an `sf` object behaves like a dataframe in many ways.  
+
+
+### .xls files
+
+For Microsoft Excel files you just need to change step 1 of the three step approach. You can read an excel file into a dataframe using the package [readxl](https://readxl.tidyverse.org/) with something like `readxl::read_excel(filename)`. Another option is to save the sheet that you want as a .csv file from MS Excel itself.
+
+
+## Directly create an R object
+
+An alternative is directly to create a dataframe within R containing coordinates. This is similar to the approach from the previous section except that dataframe creation replaces file reading at step 1.
+
+In the example below try changing the coordinates within the dataframe at step 1, and run to see the points change.
+
+```{r dataframe-sf-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(3)
+```
+
+```{r dataframe-sf, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+# 1. create dataframe
+mydf <- data.frame(x=c(-10,10,30),
+                   y=c(20,0,-20),
+                   attribute=c("a","b","c"))
+# 2. convert to sf object
+mysf <- sf::st_as_sf(mydf, 
+                     coords=c("x", "y"),
+                     crs=4326)
+# 3. quick interactive plot
+mapview(mysf)    
+```
+  
+  
+Note that in this example the coordinates are stored in columns named x & y, which is passed to `sf::st_as_sf` as `coords=c("x", "y")`. To find out more about the arguments for any function you can type `?` and the function name e.g `?st_as_sf`
+
+## Shapefiles (.shp)
+
+Shapefiles continue to be a common format for spatial data despite the fact that they are rather old now and some things about them are not ideal. One thing that can confuse users is that a shapefile consists of a collection of files with the same name and different suffixes. If some of the files are not present then it may no longer be possible to get at the data.
+
+e.g. myfile.shp, myfile.shx, myfile.dbf, myfile.prj
+
+If a colleague emails use just a single file named `*.shp` then you will not be able to map it in R. You would need to ask them to email you all of the files.
+
+Shapefiles can store points, lines or polygons. The example below uses a shapefile containing polygons.
+
+```{r shp-countries-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(4)
+```
+
+```{r shp-countries, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+# read file into a spatial object
+filename <- system.file("extdata","africountries.shp", package="afrilearndata", mustWork=TRUE)
+africountries <- sf::read_sf(filename)
+# quick interactive plot
+mapview(africountries)
+```
+  
+  
+Because shapefiles are spatial files they can be read directly into a spatial (`sf`) object in R with `sf::read_sf(filename)`. This combines steps 1 & 2 from the csv example. In addition you don't need to specify in R which columns contain the coordinates or what the Coordinate Reference System (crs) is. This is effectively because these two steps will have been done when the file was created.
+
+
+## .kml, .gpkg & .json
+
+For other spatial vector formats (e.g. kml, geopackage & geojson) the same approach as for a shapefile usually works i.e. `sf::read_sf(filename)`.
+
+Here we show an example with a .kml file of the simplified African highway network.
+
+```{r kml-highways-setup}
+
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+
+htmlwidgets::setWidgetIdSeed(5)
+```
+
+```{r kml-highways, exercise = TRUE, exercise.eval = FALSE, message = FALSE, warning = FALSE}
+# filename <- system.file("extdata","trans-african-highway.kml", package="afrilearndata", mustWork=TRUE)
+# afrihighway <- sf::read_sf(filename)
+# #quick interactive plot
+# mapview(afrihighway)
+```
+
+
+## Raster tiff 
+
+To read in raster data we need to use the package `raster` instead of `sf`. The reading function in `raster` is also called `raster`. To read in a file use `myrast <- raster::raster(filename)` or just `myrast <- raster(filename)`. Similar to vector formats you can also use `mapview` to give a quick view of raster objects by simply passing the object name e.g. `mapview(myrast)`.
+
+`raster(filename)` will also work with other raster formats such as ascii grids or .jpg.
+
+```{r rast1-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(6)
+```
+
+```{r rast1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+filename <- system.file("extdata","afripop2020.tif", package="afrilearndata", mustWork=TRUE)
+myrast <- raster::raster(filename)
+# quick interactive plot
+mapview(myrast)
+```
+  
+Note that the map above appears mostly dark. This is the same issue we came across in the intro-to-spatial-r tutorial. This is because there are few very high density cells and a majority of cells with very low values. This is a common issue with population data. The default, equal-interval, classification doesn't work well, most of the map falls in the lowest category. If you look very closely you can see a few very high value cells e.g. in Lagos & Cairo. 
+
+In intro-to-spatial-r we fixed this in `tmap` using the `breaks=` argument to set the breakpoints between colours. In `mapview` we can achieve the same using `at=`.
+
+**To try** replace the final line above with this : `mapview(myrast, at=c(0,1,10,100,1000,10000,100000))`. Experiment with different breakpoints. 
+
+## Exercises solutions
+
+- Exercise 1
+```{r csv-crs-missing-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(2)
+```
+
+```{r csv-crs-missing, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+# 1. read into dataframe
+filename <- system.file("extdata","afriairports.csv", package="afrilearndata", mustWork=TRUE)
+mydf <- readr::read_csv(filename)
+mydf <- mydf[(1:100), ] #select first 100 rows just to make quicker online
+# 2. convert to sf object - NOTE crs missing
+mysf <- sf::st_as_sf(mydf, 
+                     coords=c("longitude_deg", "latitude_deg"))
+# 3. quick interactive plot
+mapview(mysf)    
+```
+
+You should see that when there is no `crs` argument the sf object is still created but mapview is unable to position it in the world. The points still appear but there is no map background.

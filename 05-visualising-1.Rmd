@@ -1,7 +1,7 @@
 # Visualising spatial data part 1: tmap and mapview {#visualising1}
 
 ## Overall goal of the chapter
-In the previous section we explored different types of spatial data and looked at how these can be used to create a map. In this section we will use `tmap` and `mapview` packages to create both static and interactive maps. In particular, we will focus on the goals presented below.
+In the previous chapter we explored different types of spatial data and looked at how these can be used to create a map. In this section we will use `tmap` and `mapview` packages to create both static and interactive maps. In particular, we will focus on the goals presented below.
 
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
