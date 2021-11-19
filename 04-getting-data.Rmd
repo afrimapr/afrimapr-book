@@ -1,0 +1,36 @@
+# Getting data into R {#getting}
+
+## Overall goal of the chapter
+
+
+<style>
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+**Learning objectives**
+- Familiarise with different data sources and methods of reading in datasets
+- Be able to read in data of the 4 types into R from files and other sources
+
+</div>
+
+
+This chapter requires several packages, some of them we mioght have used before. Let's install and load them.
+
+```{r, eval=FALSE}
+install.packages("sf")             
+install.packages("afrilearndata")    
+install.packages("raster")           
+install.packages("mapview")          
+install.packages("readr")            
+install.packages("rgdal") 
+```
+
+```{r, results='hide', warning=FALSE, message=FALSE}
+library(sf)               # working with vector data
+library(afrilearndata)    # example data
+library(raster)           # raster manipulation
+library(mapview)          # interactive mapping
+library(readr)            # reading text files
+library(rgdal)            # to try to correct raster error on shinyapps
+```
+

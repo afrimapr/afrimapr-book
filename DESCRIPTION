@@ -42,6 +42,10 @@ Imports:
     rdhs,
     malariaAtlas,
     DiagrammeR
+    sf
+    raster
+    readr
+    rgdal
 Suggests:
     usethis
 Remotes:
