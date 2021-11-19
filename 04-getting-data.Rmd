@@ -26,11 +26,11 @@ install.packages("rgdal")
 ```
 
 ```{r, results='hide', warning=FALSE, message=FALSE}
-library(sf)               # working with vector data
-library(afrilearndata)    # example data
-library(raster)           # raster manipulation
-library(mapview)          # interactive mapping
-library(readr)            # reading text files
-library(rgdal)            # to try to correct raster error on shinyapps
+# library(sf)               # working with vector data
+# library(afrilearndata)    # example data
+# library(raster)           # raster manipulation
+# library(mapview)          # interactive mapping
+# library(readr)            # reading text files
+# library(rgdal)            # to try to correct raster error on shinyapps
 ```
 
