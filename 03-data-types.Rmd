@@ -11,13 +11,11 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
 **Learning objectives**
-
-[andy: still thinking how best to structure these]
-
 - Be able to describe and use points, lines, polygons and raster data types
 - Understand the difference between vector and raster data
-- Know that the current best packages for manipulating spatial data are package `sf` for vector and package `raster` for raster.
-- Be comfortable visualising the four different spatial data types in R using packages `mapview` & `raster`
+- Know how to manipulate spatial data using packages `sf` for vector and `raster` for raster.
+[andy: consider whether to replace `raster` with `terra` or `stars` above]
+- Be comfortable visualising different spatial data types in R using packages `mapview` & `tmap`
 </div>
 <br/>
 
