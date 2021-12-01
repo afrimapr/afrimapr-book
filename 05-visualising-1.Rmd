@@ -155,7 +155,7 @@ tm_shape(africountries)+
 
 More usefully the appearance of map elements can be set according to the values stored in one of the data columns. In the case below we set the colour according to the date of the last census which is stored in the column called `lastcensus`. We do this by specifying `col="lastcensus"`. In this case the year labels in the legend get formatted with a ',' (e.g. 1,970) so we can add a `legend.format` argument to improve. Further, you can build on the previous map by adding labels for country names with `tm_text()` function. In a similar manner a variety of different layers can be added. Even though the possibilities are nearly endless, where large number of elements and layers can be combined in a single map, care should be take in order not to overwhelm the reader with the amount of information presented in one map and impede clarity and readability.
 
-```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labels (left) and map with added country names and formatted legend years (right)."}
+```{r c5-tmap-countries6, fig.show='hold', fig.cap="Basic map without labels (left) and map with added country names and formatted legend years (right)."}
 
 tm_shape(africountries)+
  tm_polygons(col = "lastcensus", title = "Year of last census",
@@ -283,10 +283,12 @@ Moreover, `tmap` package has a broad colour selection, not only with respect to 
 ```{r c5-tmap-palette, warning=FALSE, message = FALSE, results='hide', fig.cap = "Maps of Africa using different pallete options."}
 
 set1 = tm_shape(africountries)+
-         tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1")
+         tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1",
+                     legend.format = list(fun = function(x) formatC(x, big.mark="")))
 
 plasma = tm_shape(africountries)+
-          tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma")
+          tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma",
+                      legend.format = list(fun = function(x) formatC(x, big.mark="")))
 
 tmap_arrange(set1, plasma)
 
