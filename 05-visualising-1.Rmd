@@ -158,8 +158,10 @@ More usefully the appearance of map elements can be set according to the values 
 ```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labels (left) and map with added country names and formatted legend years (right)."}
 
 tm_shape(africountries)+
- tm_polygons(col = "lastcensus", title = "Year of last census")+
+ tm_polygons(col = "lastcensus", title = "Year of last census",
+    legend.format = list(fun = function(x) formatC(x, big.mark="")))+
   tm_layout(scale = 1.25) # increases the overall size of the legend
+
 
 tm_shape(africountries)+
  tm_polygons(col = "lastcensus", title = "Year of last census",
