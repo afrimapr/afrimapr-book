@@ -51,6 +51,13 @@ location2   | 10  | 0
 
 These files can be `.csv` comma delimited, or `.txt` space delimited or various spreadsheet formats including `.xls`.
 
+To map these data in R usually requires a 3 step process.
+
+1. read the data file into an R dataframe
+1. convert the dataframe into an R spatial (package `sf`) object
+1. plot the `sf` object
+
+
 ```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap = "Steps for mapping different data types in R."}
 library(DiagrammeR)
 DiagrammeR::grViz("
@@ -87,15 +94,6 @@ DiagrammeR::grViz("
 
 ```
 
-
-
-
-
-To map these data in R usually requires a 3 step process.
-
-1. read the data file into an R dataframe
-1. convert the dataframe into an R spatial (package `sf`) object
-1. plot the `sf` object
 
 Here we will demonstrate the 3 steps using a .csv file we downloaded from the excellent [ourairports](https://ourairports.com/continents/AF/airports.csv) and saved in the [afrilearndata](https://github.com/afrimapr/afrilearndata) package. The `afrilearndata` package also has a pre-converted `sf` object of the airports but here we will use the csv to demonstrate the conversion to `sf`.
 
