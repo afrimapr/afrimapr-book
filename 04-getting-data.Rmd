@@ -51,6 +51,46 @@ location2   | 10  | 0
 
 These files can be `.csv` comma delimited, or `.txt` space delimited or various spreadsheet formats including `.xls`.
 
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap = "Steps for mapping different data types in R."}
+library(DiagrammeR)
+DiagrammeR::grViz("
+  digraph graph2 {
+  
+  graph [layout = dot, rankdir = LR]
+  
+
+  node [shape = box, style = rounded]
+  a [label = '@@1']
+  b [label = '@@2']
+  c [label = '@@3']
+  d [label = '@@4']
+  e [label = '@@5']
+  f [label = '@@6']
+  
+  
+  a -> e 
+  b -> e 
+  c -> e 
+  d -> e 
+  e -> f 
+  
+  }
+  
+  [1]: 'txt'
+  [2]: 'csv'
+  [3]: 'xls'
+  [4]: 'direct create'
+  [5]: 'Convert to sf'
+  [6]: 'Plot sf'
+  ",
+   height = 100)
+
+```
+
+
+
+
+
 To map these data in R usually requires a 3 step process.
 
 1. read the data file into an R dataframe
@@ -96,9 +136,7 @@ The second step is a single function call to convert our existing dataframe into
 `crs` stands for Coordinate Reference System. It determines how coordinates are converted to a location on the Earth. 
 In this case it tells `sf` what system to expect. In the majority of cases coordinates (e.g. collected from a GPS) are stored in a system represented by the code `4326`. 4326 is the EPSG code for longitude, latitude using the WGS84 datum, but you don't really need to know that. 4326 is a good number to remember !
 
-The code below demonstrates what happens if the `crs=4326` argument is not included. Can you see what the difference is ?
-
-
+The code below demonstrates what happens if the `crs=4326` argument is not included. Can you see what the difference is?
 
 ```{r csv-crs-missing, message = FALSE, warning = FALSE}
 
@@ -133,7 +171,7 @@ You should see that the columns containing coordinates in the original dataframe
 
 ### To get your own coordinate text file into R
 
-Above we demonstrate how to get an example csv file containing the coordinates of airport points into R and map it. How can you modify the code above to be able to map your own text files with point coordinates ? You will probably need to change three things in the code to get it to work on your own data.
+Above we demonstrate how to get an example csv file containing the coordinates of airport points into R and map it. How can you modify the code above to be able to map your own text files with point coordinates? You will probably need to change three things in the code to get it to work on your own data.
 
 * set filename to the path to your file (this might just be something like `"mydata/myfile.csv"`) 
 * replace `"longitude_deg", "latitude_deg"` with the names of the columns containing the coordinates in your data
