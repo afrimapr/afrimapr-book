@@ -90,7 +90,7 @@ DiagrammeR::grViz("
   [5]: 'Convert to sf'
   [6]: 'Plot sf'
   ",
-   height = 100)
+   height = 400)
 
 ```
 
