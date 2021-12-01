@@ -14,7 +14,7 @@ R can do nearly anything, is free, open-source and has a great community of peop
 
 There are three main reasons that we focus on Africa : rapidly growing open-source communities, a lack of existing targeted resources and great needs in, for example, health and environment. The rapid growth in open-source communities is seen in the birth of R user-groups in many African cities and more generally in the popularity of organisations like code4Africa. Learners within these communities are likely to learn more easily when training resources use examples with which they are more familiar. We are not aware of existing training resources focussing on African examples. Some of the greatest health and environment needs occur on the African continent. Data solutions and papers in the academic literature are still often led from the North. There is a great potential for local analysts to develop solutions to local issues. Making maps can be a useful contribution and the needed R skills can also lead to more efficient general data workflows.  
 
-## Who for?
+## Who for ?
 
 The book is aimed principally at analysts who want to make maps from African data as a part of their routine work. We expect that readers will have had some limited experience of R and/or spatial data but this is not strictly required. We will take you step-by-step through code to obtain, manipulate and visualise spatial data. We focus on routine tasks and developing confidence and resilience in applying them, rather than moving to more advanced analyses.
 
@@ -25,5 +25,9 @@ For those that are interested in spatial analyses we refer you to the excellent 
 ## How the book is organised
 [recap, taster chapters etc.]
 
+Structure of the books guides the reader and subsequent chapter build on the knowledge and skills gained in the preceding ones. The level of difficulty increases as the reader progresses through the book. Therefore, it starts with taster chapter demonstrating the aims and capabilities of the book using very simple code and examples. One exception is the recap chapter, that can be found at the end of the book, which provides a recap of R fundamentals. The key chapters cover different topics such as spatial data in R, getting your own data or data visualisations. 
+
 ## Book formatting
 [exercise blocks, learning objectives etc.]
+
+Each chapter of the book follows similar, fixed structure. It begins with the presentation of chapter goals, including the list of learning objectives in a green box (hence they can be easily found in each section). Next, the core content of the chapter is split into subsections according to topics. Moreover, at the end of the subsection there is a purple box with exercises relevant for a given topic. Importantly, the solutions to the exercises are showed at the end of the chapter. The sections with core content of the chapter are followed by the small section with additional resources and links. The book also features yellow boxes that contain useful tips and shortcuts. 
