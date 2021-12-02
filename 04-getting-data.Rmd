@@ -86,7 +86,7 @@ DiagrammeR::grViz("
   [1]: 'txt'
   [2]: 'csv'
   [3]: 'xls'
-  [4]: 'direct create'
+  [4]: 'create dataframe in R'
   [5]: 'Convert to sf'
   [6]: 'Plot sf'
   ",
