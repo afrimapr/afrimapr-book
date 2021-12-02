@@ -11,6 +11,7 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "green">
 **Learning objectives**
+
 - Be able to describe and use points, lines, polygons and raster data types
 - Understand the difference between vector and raster data
 - Know how to manipulate spatial data using packages `sf` for vector and `raster` for raster.
@@ -37,15 +38,7 @@ Lines may represent physical features such as rivers or roads, or routes travell
 [andy to continue ...]
 
 
-All spatial data types require a coordinate reference system (CRS) identification to place data in the correct location on the earth. We will discuss this in more detail later. For now, just be aware that a code may need to be entered to ensure that data display in the correct place. Note also that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming at times. Don't worry we will come to these later [Andy great if we can specify exactly where this information can be found]. 
-
-
-### List of episodes {-}
-1. [Points (cities)](#episode_1_points)
-2. [Lines (roads)](#episode_2_lines)
-3. [Polygons (country boundaries)](#episode_3_polygons)
-4. [Rasters (population density)](#episode_4_raster)
-
+All spatial data types require a coordinate reference system (CRS) identification to place data in the correct location on the earth. We will discuss this in more detail later. For now, just be aware that a code may need to be entered to ensure that data display in the correct place. Note also that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming at times. Don't worry we will come to these later too. 
 
 
 ## Points {#episode_1_points}
@@ -270,7 +263,7 @@ tm_shape(africountries) +
 
 ```
 
-Now we can add the capitals and highways from previous episodes
+Now we can add the capitals and highways from earlier :
 
 ```{r, warning=FALSE, message=FALSE}
 
@@ -385,7 +378,7 @@ tm_shape(africountries) +
 
 ```
 
-Now we can add the capitals and highways from previous episodes. 
+Now we can add the capitals and highways from earlier : 
 
 ```{r, warning=FALSE, message=FALSE}
 
