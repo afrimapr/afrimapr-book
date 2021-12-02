@@ -201,8 +201,43 @@ mapview(mysf)
 ```
   
   
-Note that in this example the coordinates are stored in columns named x & y, which is passed to `sf::st_as_sf` as `coords=c("x", "y")`. To find out more about the arguments for any function you can type `?` and the function name e.g `?st_as_sf`
+In this example the coordinates are stored in columns named x & y, which is passed to `sf::st_as_sf` as `coords=c("x", "y")`. To find out more about the arguments for any function you can type `?` and the function name e.g `?st_as_sf`
 
+
+## region names in text files
+
+In the previous section we demonstrate how to get a text file containing point coordinates into R. We said that this is probably the most common use-case that we come across. In this section we will cover the second commonest use-case that we have experienced from people wanting to make operational maps from data : **mapping regions based upon data just containing the names of those regions**. Imagine a situation where an analyst has a text file containing one column with region names (this might be country names, or the names of regions within a country), and a second column containing data that they want to plot (this could be the number of cases of a disease or a population estimate). In this situation the analyst needs to combine the file containing the region names with a source of spatial information about those region names. In technical language this process of combination is called a **join**.
+
+### joining to spatial data
+
+Here is a simple first example showing how we can join a super-small dataframe onto a spatial data object and make a map from it. Below we create a dataframe with just two rows and columns, and then join this on to the `africountries` object from the `afrilearndata` package that we have seen before.
+
+
+```{r super_simple_first_join, exercise = TRUE, exercise.eval = TRUE}
+library(afrilearndata)
+library(dplyr)
+library(mapview)
+
+# create a dataframe
+mydf <- data.frame(country=c("Togo","Ghana"),
+                   language=c("French","English"))
+
+# join the dataframe onto an existing spatial object
+africa_df <- dplyr::left_join(x = africountries, 
+                              y = mydf, 
+                              by = c("name_long" = "country")
+                              )
+
+# visualise the joined data
+mapview(africa_df, zcol="language")
+
+```
+
+[TODO andy - add more about joining, explain the above, e.g. that needs to be a shared column etc.]
+
+[TODO andy decide where to add text about getting region boundaries e.g. from rgeoboundaries]
+
+[TODO andy these following sections (shp, kml, raster etc.) need editing to fit them into this chapter - or possibly removing from here ]
 
 ## Shapefiles (.shp)
 
