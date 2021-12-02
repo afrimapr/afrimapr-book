@@ -111,7 +111,7 @@ mysf <- sf::st_as_sf(mydf,
 mapview(mysf)    
 ```
 
-#### Step 1. reading the data into a dataframe
+### Step 1. reading the data into a dataframe
 
 The first step consists of two lines. The first line puts the name of the file into an R object called `filename`. It uses some tricky looking code starting with `system.file(`. This is needed because we are getting the csv file from a package. When you want to get one of your own files you won't need the `system.file(` part, you will just need to specify the path to the file, but we will come to that later.
 
@@ -125,12 +125,12 @@ names(mydf)
 ```
 We see that the `mydf` object has a few thousand rows and just over 20 columns. Importantly it includes columns named "latitude_deg" and "longitude_deg" which contain the coordinates of the airport points.
 
-#### Step 2. convert to sf object & set CRS
+### Step 2. convert to sf object & set CRS
 
 The second step is a single function call to convert our existing dataframe into an `sf` object. We can use the `st_as_sf()` function from the `sf` package and need to give it the dataframe, specify which columns contain the coordinates - in this case by specifying `coords=c("longitude_deg", "latitude_deg")` and then add this mysterious `crs=4326` argument.
 
 
-### CRS
+#### CRS
 `crs` stands for Coordinate Reference System. It determines how coordinates are converted to a location on the Earth. 
 In this case it tells `sf` what system to expect. In the majority of cases coordinates (e.g. collected from a GPS) are stored in a system represented by the code `4326`. 4326 is the EPSG code for longitude, latitude using the WGS84 datum, but you don't really need to know that. 4326 is a good number to remember !
 
@@ -150,7 +150,7 @@ mapview(mysf)
 You should see that when there is no `crs` argument the `sf` object is still created and plotted, but `mapview` is unable to position it in the world. The points still appear but there is no map background.
 
 
-### comparing sf object to original dataframe
+#### comparing sf object to original dataframe
 
 We can compare the structure of the original dataframe and the sf object using `names()` to show the column names and optionally `head()` which returns the first six rows. What is the difference between them ? 
 
