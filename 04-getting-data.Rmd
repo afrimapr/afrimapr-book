@@ -39,7 +39,7 @@ library(rgdal)            # sometimes needed for raster loading
 ```
 
 
-## .csv, .txt or .xls file with coordinates
+## coordinates in .csv, .txt, .xls or .R files
 
 Text files containing point data are one of the commonest file types that we see in small-scale operational mapping of data. Usually these consist of one row per record (e.g. the location of a health facility or disease case or dwelling) with two columns containing the coordinates of the location (e.g. longitude & latitude or x & y), and other columns containing attributes of that location (e.g. facility or disease type). 
 
@@ -150,9 +150,9 @@ mapview(mysf)
 You should see that when there is no `crs` argument the `sf` object is still created and plotted, but `mapview` is unable to position it in the world. The points still appear but there is no map background.
 
 
-### Data structure
+### comparing sf object to original dataframe
 
-We can look at the structure of the original dataframe and the sf object using `names()` to show the column names and `head()` which returns the first six rows. What is the difference between them ? 
+We can compare the structure of the original dataframe and the sf object using `names()` to show the column names and optionally `head()` which returns the first six rows. What is the difference between them ? 
 
 ```{r dataframe-airports, echo=TRUE}
 # original dataframe
@@ -160,12 +160,12 @@ names(mydf)
 # sf object
 names(mysf)  
 # original dataframe
-head(mydf)
+#head(mydf)
 # sf object
-head(mysf)
+#head(mysf)
 ```
 
-You should see that the columns containing coordinates in the original dataframe are no longer there. In the new `sf` object there is a new column called `geometry` at the end that stores the spatial information. This demonstrates that an `sf` object behaves like a dataframe in many ways.  
+You should see that the columns containing coordinates in the original dataframe are no longer there. In the new `sf` object they have been replaced by a new column called `geometry` at the end that stores the spatial information. This demonstrates that an `sf` object looks and behaves much like a dataframe with extra spatial functionality added.   
 
 ### To get your own coordinate text file into R
 
@@ -181,9 +181,9 @@ Above we demonstrate how to get an example csv file containing the coordinates o
 For Microsoft Excel files you just need to change step 1 of the three step approach. You can read an excel file into a dataframe using the package [readxl](https://readxl.tidyverse.org/) with something like `readxl::read_excel(filename)`. Another option is to save the sheet that you want as a .csv file from MS Excel itself.
 
 
-## Directly create an R object
+### Directly create an R object
 
-An alternative is directly to create a dataframe within R containing coordinates. This is similar to the approach from the previous section except that dataframe creation replaces file reading at step 1.
+An alternative way to create an `sf` object containing coordinates is to hard-code  the creation of a dataframe within an R script. This is similar to the approach from the previous section except that dataframe creation replaces file reading at step 1.
 
 In the example below try changing the coordinates within the dataframe at step 1, and run to see the points change.
 
