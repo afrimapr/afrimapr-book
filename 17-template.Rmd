@@ -1,8 +1,5 @@
 # Template chapter {#template}
 
-## Linking section 1
-This initial section of each lesson (chapter) should build a link with the previous section of the book by providing a recap of what has been previously done. It will help with locating each chapter within the context of the entire book. 
-
 ## Overall goal of the chapter
 In this section we will describe what the overall aim of this chapter and target audience including:
 
@@ -19,21 +16,10 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 - What you will be able to do at the end of this chapter
 - What you will not learn & what to read instead
 - Where to go from here
-
 </div>
 
-### List of episodes {-}
-
-[we are not decided if using episodes terminology is useful]
-
-List of 'episodes' in this chapter that will help achieve set goal with their short description and an explanation of links between them.
-
-1. [Episode 1](#episode_1_template)
-2. [Episode 2](#episode_2_template)
-3. [Episode 3](#episode_3_template)
-
-## Episode 1 (topic 1) {#episode_1_template}
-Each episode developed within the chapter should contain a narrative to give a bit of a context and again demonstrate the target audience (if needed). Beyond it should provide episode-specific learning objectives and examples, which are to be intertwined with so-called *self-check exercises* which will allow the reader to assess his comprehension of the topic so far. 
+## Section 1 (topic 1) {#episode_1_template}
+Each section developed within the chapter should contain a narrative to give a bit of a context and again demonstrate the target audience (if needed). Beyond it should provide topic-specific learning objectives and examples, which are to be intertwined with so-called *self-check exercises* which will allow the reader to assess his comprehension of the topic so far. 
 
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
@@ -43,7 +29,7 @@ div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
 </div>    
 
 
-## Episode 2 (topic 2) {#episode_2_template}
+## Section 2 (topic 2) {#episode_2_template}
 <style>
 div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 </style>
@@ -51,7 +37,7 @@ div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
 **Shortcut**: Shortcuts to be in a yellow box.
 </div>    
 
-## Episode 3 (topic 3) {#episode_3_template}
+## Section 3 (topic 3) {#episode_3_template}
 
 
 ## Further resources

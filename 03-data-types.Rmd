@@ -1,6 +1,6 @@
-
 # Spatial data in R {#data-types}
 
+## Overall goal of the chapter
 The previous chapter presented concisely the focus of this book and what the reader would be able to achieve after reading it. This chapter will focus on the fundamentals of mapping, i.e. the different types of data that can be used to make a map. 
 
 It is written for those with some knowledge of R and little experience with spatial data. If you are familiar with the different data types (points, lines, polygons and vectors), you may move on to the next chapter where visualisation of data types is explained in more detail. However you never know, you may learn something here too. 
