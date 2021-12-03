@@ -28,4 +28,26 @@ Structure of the books guides the reader and subsequent chapter build on the kno
 
 ## Book formatting
 
-Each chapter of the book follows similar, fixed structure. It begins with the presentation of chapter goals, including the list of learning objectives in a green box (hence they can be easily found in each section). Moreover, at the end of the subsection there is a purple box with exercises relevant for a given topic. Importantly, the solutions to the exercises are showed at the end of the chapter. The book also features yellow boxes that contain useful tips and shortcuts. At the end of each chapter there is also a small section with additional resources and links related to the topic.
+Each chapter of the book follows similar, fixed structure. It begins with the presentation of chapter goals, including the list of learning objectives in a green box (hence they can be easily found in each section). 
+<style>
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+**Learning objectives**
+
+- Learning objective 1
+- Learning objective 2
+- Learning objective 3
+</div>
+
+Moreover, at the end of the subsection there is a purple box with exercises relevant for a given topic. 
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 1**: <br/>
+
+**Exercise 2**: 
+</div>  
+
+Importantly, the solutions to the exercises are showed at the end of the chapter. The book also features yellow boxes that contain useful tips and shortcuts. At the end of each chapter there is also a small section with additional resources and links related to the topic.
