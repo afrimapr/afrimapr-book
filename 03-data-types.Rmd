@@ -36,7 +36,7 @@ Points can be used to represent the locations of e.g. cities, buildings, disease
 [andy work a bit more on previous paragraph]
 
 
-All spatial data types require a coordinate reference system (CRS) identification to place data in the correct location on the earth. We will discuss this in more detail later. For now, just be aware that a code may need to be entered to ensure that data display in the correct place. Note also that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming at times. Don't worry we will come to these later too. 
+All spatial data types require a coordinate reference system (CRS) identification to place data in the correct location on the Earth. We will discuss this in more detail later. For now, just be aware that a code may need to be entered to ensure that data display in the correct place. Note also that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). To learn more about the possible spatial data types go to *Chapter 4: Getting your own data into R*.
 
 
 ## Points {#episode_1_points}
