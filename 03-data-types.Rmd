@@ -12,13 +12,11 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 <div class = "green">
 **Learning objectives**
 
-[andy: still thinking how best to structure these]
-
 - Be able to describe and use points, lines, polygons and raster data types
 - Understand the difference between vector and raster data
-- Be able to read in data of the 4 types into R from files and other sources
-- Know that the current best packages for manipulating spatial data are package `sf` for vector and package `raster` for raster.
-- Be comfortable visualising the four different spatial data types in R using packages `mapview` & `raster`
+- Know how to manipulate spatial data using packages `sf` for vector and `raster` for raster.
+[andy: consider whether to replace `raster` with `terra` or `stars` above]
+- Be comfortable visualising different spatial data types in R using packages `mapview` & `tmap`
 </div>
 <br/>
 
@@ -33,27 +31,17 @@ The data that we can represent on a map can be divided into four main types :
 1. polygons
 1. rasters
 
-Points can be used to represent the locations of e.g. cities, buildings, disease cases, sample sites or wildlife records. They can be used to represent the centre of an area. Points can be chosen when the shape of the location is not important. Thus for a map representing a continent, cities can be represented by points because the area of cities would not be visible.
+Points can be used to represent the locations of e.g. cities, buildings, disease cases, sample sites or wildlife records. They can be used to represent the centre of an area. Points can be chosen when the shape of the location is not important. Thus for a map representing a continent, cities can be represented by points because the area of cities would not be visible. Lines may represent physical features such as rivers or roads, or routes travelled, or abstract links between point locations. Polygons are shapes that can represent the boundaries of countries, regions or cities or if you are zoomed in further the outline of buildings. Rasters are gridded datasets that can be used to represent anything that covers a continuous area, this could be temperature or estimates of population or landcover, most often they are derived from remote sensing and modelling.  
 
-Lines may represent physical features such as rivers or roads, or routes travelled, or abstract links between point locations.
-
-[andy to continue ...]
+[andy work a bit more on previous paragraph]
 
 
-All spatial data types require a coordinate reference system (CRS) identification to place data in the correct location on the earth. We will discuss this in more detail later. For now, just be aware that a code may need to be entered to ensure that data display in the correct place. Note also that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming at times. Don't worry we will come to these later [Andy great if we can specify exactly where this information can be found]. 
-
-
-### List of episodes {-}
-1. [Points (cities)](#episode_1_points)
-2. [Lines (roads)](#episode_2_lines)
-3. [Polygons (country boundaries)](#episode_3_polygons)
-4. [Rasters (population density)](#episode_4_raster)
-
+All spatial data types require a coordinate reference system (CRS) identification to place data in the correct location on the earth. We will discuss this in more detail later. For now, just be aware that a code may need to be entered to ensure that data display in the correct place. Note also that spatial data types can be stored in many different formats, from Shapefile (.shp + .dbf + .prj + …), to GeoPackage (.gpkg), to CSV files (.csv). This can be overwhelming at times. Don't worry we will come to these later too. 
 
 
 ## Points {#episode_1_points}
 
-Let’s take an imaginary walk outside. What do you see? Houses, cars, trees… All these objects have unique coordinates that can be used to identify their exact location. On a map, the objects can be drawn as points with their latitude and longitude coordinate indicating their exact location in relation to other objects and places. Depending on the scale of your map, points can represent anything from a house, health clinic, city or district. You, as the map creator, can decide the scale of your own map.<br/>
+Let’s take an imaginary walk outside. What do you see? Houses, cars, trees… All these objects have unique coordinates that can be used to identify their location. On a map, the objects can be drawn as points with their latitude and longitude coordinate indicating their location in relation to other objects and places. Depending on the scale of your map, points can represent anything from a house, health clinic, city or district. You, as the map creator, can decide the scale of your own map.<br/>
 
 
 ### Example
@@ -147,7 +135,7 @@ tm_shape(africapitals_filtered) +
 
 ## Lines {#episode_2_lines}
 
-In previous episode we looked at point data, such as capitals and airports. We are often interested in how these different locations on a map are connect to eachother. These connections are visualised using lines. Roads, rivers and flight pathes are just a few of the many ways that lines are used. Lines are one dimensional data which are drawn using points (and thus point data) connected to eachother in a set order. Depending on the detail of the lines, more or less point data are connected. <br/>
+In previous episode we looked at point data, such as capitals and airports. We are often interested in how these different locations on a map are connected to each other. These connections are visualised using lines. Roads, rivers and flight paths are just a few of the many ways that lines are used. Lines are one dimensional data which are drawn using points (and thus point data) connected to each other in a set order. Depending on the detail of the lines, more or less point data are connected. <br/>
 
 ### Example
 
@@ -273,7 +261,7 @@ tm_shape(africountries) +
 
 ```
 
-Now we can add the capitals and highways from previous episodes
+Now we can add the capitals and highways from earlier :
 
 ```{r, warning=FALSE, message=FALSE}
 
@@ -388,7 +376,7 @@ tm_shape(africountries) +
 
 ```
 
-Now we can add the capitals and highways from previous episodes. 
+Now we can add the capitals and highways from earlier : 
 
 ```{r, warning=FALSE, message=FALSE}
 

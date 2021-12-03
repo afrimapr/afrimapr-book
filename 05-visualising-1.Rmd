@@ -1,7 +1,7 @@
 # Visualising spatial data part 1: tmap and mapview {#visualising1}
 
 ## Overall goal of the chapter
-In the previous section we explored different types of spatial data and looked at how these can be used to create a map. In this section we will use `tmap` and `mapview` packages to create both static and interactive maps. In particular, we will focus on the goals presented below.
+In the previous chapter we explored different types of spatial data and looked at how these can be used to create a map. In this section we will use `tmap` and `mapview` packages to create both static and interactive maps. In particular, we will focus on the goals presented below.
 
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
@@ -129,7 +129,7 @@ tm_shape(africountries)+
 
 ```
 
-Intuitively, to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows you to achieve exactly the same result more efficiently. It draws the polygons borders and fills them at the same time. The choice of the approach will depend on type of data and information that you aim to present on your map. For example, if you plan to add a layer of road or rail network to your map later it may be a better idea to create a *base map* using polygons only (without contours) so that they do not overlap with road lines making the map more difficult to read.
+Intuitively, to create a map with both layers, we need to include `tm_fill()` and `tm_borders()` simultaneously. Alternatively, `tm_polygons()` function allows you to achieve exactly the same result more efficiently. It draws the polygons borders and fills them at the same time. The choice of the approach will depend on type of data and information that you aim to present on your map. For example, if you plan to add a layer of road or rail network to your map later it may be a better idea to create a *base map* using polygons only (without borders) so that they do not overlap with road lines making the map more difficult to read.
 
 ```{r c5-tmap-countries4, fig.show="hold", out.width="50%", fig.cap="Identical maps achieved with two different approaches."}
 
@@ -142,26 +142,30 @@ tm_shape(africountries)+
 
 ```
 
-Nevertheless, we can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. This approach can also be used to help distinguishing different elements of the map. Following the example from above, the lines representing region borders and roads can be coloured differently to avoid confusion. The extra parameters for changing the plot elements can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
+Nevertheless, we can further develop our map by adjusting different features of the map such as colour and transparency of the map, width and types of the border lines etc. This approach can also be used to help distinguishing different elements of the map. Following the example from above, the lines representing region borders and roads can be coloured differently to avoid confusion.
 
+Polygon colours and other aspects of their appearance can be set directly e.g. `col = "green", lty = "dotted"`.   
 
-```{r c5-tmap-countries5, out.width="60%", fig.cap=" A map with adjusted contours."}
+```{r c5-tmap-countries5, out.width="60%", fig.cap=" A map setting colour (`col`), line type (`lty`) and transparency (`alpha`)."}
 
 tm_shape(africountries)+
  tm_polygons(col = "green", lty = "dotted", alpha = 0.3)
 
 ```
 
-As you already know a basic structure required to build a static map, we can now proceed to a more advanced (and useful) example, where we fill the polygons using data on **last census** and add relevant title to the legend. Further, you can build on the previous map by adding labels for country names with `tm_text()` function. In a similar manner a variety of different layers can be added. Even though the possibilities are nearly endless, where large number of elements and layers can be combined in a single map, care should be take in order not to overwhelm the reader with the amount of information presented in one map and impede the clarity and readability of the map.
+More usefully the appearance of map elements can be set according to the values stored in one of the data columns. In the case below we set the colour according to the date of the last census which is stored in the column called `lastcensus`. We do this by specifying `col="lastcensus"`. In this case the year labels in the legend get formatted with a ',' (e.g. 1,970) so we can add a `legend.format` argument to improve. Further, you can build on the previous map by adding labels for country names with `tm_text()` function. In a similar manner a variety of different layers can be added. Even though the possibilities are nearly endless, where large number of elements and layers can be combined in a single map, care should be take in order not to overwhelm the reader with the amount of information presented in one map and impede clarity and readability.
 
-```{r c5-tmap-countries6, fig.show='hold', out.width="50%", fig.cap="Basic map without labels (left) and map with added coutries names (right)."}
+```{r c5-tmap-countries6, fig.show='hold', out.width = "60%", fig.cap="Basic map without labels (left) and map with added country names and formatted legend years (right)."}
 
 tm_shape(africountries)+
- tm_polygons(col = "lastcensus", title = "Year of last census")+
+ tm_polygons(col = "lastcensus", title = "Year of last census",
+    legend.format = list(fun = function(x) formatC(x, big.mark="")))+
   tm_layout(scale = 1.25) # increases the overall size of the legend
 
+
 tm_shape(africountries)+
- tm_polygons(col = "lastcensus", title = "Year of last census")+
+ tm_polygons(col = "lastcensus", title = "Year of last census",
+             legend.format = list(fun = function(x) formatC(x, big.mark="")))+
  tm_text("name", size = 0.52, fontface = "bold", auto.placement = TRUE)+
   tm_layout(scale = 1.25) 
 
@@ -276,13 +280,15 @@ knitr::include_graphics("images/colour_blind.PNG")
 Moreover, `tmap` package has a broad colour selection, not only with respect to individual colours but also map styles where you can change the default colours using `palette` argument. In the example below, we used palette called *Set1* and *plasma* but there are many other options to choose from. To view them, in your console run `tmaptools::palette_explorer()` which will open a new window with a wide range of palettes. Sliders on the left hand side allow for selecting a number of colours.
 
 
-```{r c5-tmap-palette, warning=FALSE, message = FALSE, results='hide', fig.cap = "Maps of Africa using different pallete options."}
+```{r c5-tmap-palette, warning=FALSE, out.width = "60%", message = FALSE, results='hide', fig.cap = "Maps of Africa using different pallete options."}
 
 set1 = tm_shape(africountries)+
-         tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1")
+         tm_polygons(col = "lastcensus", title = "Year of last census", palette = "Set1",
+                     legend.format = list(fun = function(x) formatC(x, big.mark="")))
 
 plasma = tm_shape(africountries)+
-          tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma")
+          tm_polygons(col = "lastcensus", title = "Year of last census", palette = "plasma",
+                      legend.format = list(fun = function(x) formatC(x, big.mark="")))
 
 tmap_arrange(set1, plasma)
 
@@ -428,7 +434,6 @@ tm_shape(egypt_map)+
 Another interesting way to subset that data is spatial subsetting which allows us to achieve similar results as above, when we do not have an attribute in the dataset that could be used for attribute-based subsetting. Spatial subsetting enables us to select information in one dataset (e.g. road network, rivers, airports cities) given the spatial information from another dataset, given that both datasets contain them. Importantly, to specify the polygons of country of interest, we can use attribute-based subsetting by country name and then use them for spatial subsetting (once we have only spatial information on the selected country). The process flow has been demonstrated in the diagram and the annotation corresponding to the diagram has been used in the example below.
 
 ```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap = "Process of spatial subsetting"}
-install.packages("DiagrammeR")
 library(DiagrammeR)
 DiagrammeR::grViz("
   digraph graph2 {

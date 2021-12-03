@@ -40,7 +40,8 @@ Imports:
     osmdata,
     wopr,
     rdhs,
-    malariaAtlas
+    malariaAtlas,
+    DiagrammeR
 Suggests:
     usethis
 Remotes:

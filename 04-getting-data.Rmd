@@ -1,0 +1,298 @@
+# Getting you own data into R {#getting}
+
+## Overall goal of the chapter
+This chapter provides entry level approach to getting your own data, of different types, into R as a first step to mapping it.
+
+<style>
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+**Learning objectives**
+
+- Be able to get a text file with coordinates into R
+- Be able to data with names of regions into R and map it
+- Develop troubleshooting skills to cope with common data import issues
+- Understand broadly what a CRS Coordinate Reference System is
+- Be able to read other spatial data types into R
+
+</div>
+
+
+This chapter requires several packages, some of them we might not have used before. Let's install and load them.
+
+```{r, eval=FALSE}
+install.packages("sf")             
+install.packages("afrilearndata")    
+install.packages("raster")           
+install.packages("mapview")          
+install.packages("readr")            
+install.packages("rgdal") 
+```
+
+```{r, results='hide', warning=FALSE, message=FALSE}
+library(sf)               # working with vector data
+library(afrilearndata)    # example data
+library(raster)           # raster manipulation
+library(mapview)          # interactive mapping
+library(readr)            # reading text files
+library(rgdal)            # sometimes needed for raster loading
+```
+
+
+## coordinates in .csv, .txt, .xls or .R files
+
+Text files containing point data are one of the commonest file types that we see in small-scale operational mapping of data. Usually these consist of one row per record (e.g. the location of a health facility or disease case or dwelling) with two columns containing the coordinates of the location (e.g. longitude & latitude or x & y), and other columns containing attributes of that location (e.g. facility or disease type). 
+
+attribute1  | longitude | latitude
+----------- | --------- | ------------------
+location1   | -10 | 20
+location2   | 10  | 0  
+...         |     |
+
+These files can be `.csv` comma delimited, or `.txt` space delimited or various spreadsheet formats including `.xls`.
+
+To map these data in R usually requires a 3 step process.
+
+1. read the data file into an R dataframe
+1. convert the dataframe into an R spatial (package `sf`) object
+1. plot the `sf` object
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, fig.cap = "Steps for mapping different data types in R."}
+library(DiagrammeR)
+DiagrammeR::grViz("
+  digraph graph2 {
+  
+  graph [layout = dot, rankdir = LR]
+  
+
+  node [shape = box, style = rounded]
+  a [label = '@@1']
+  b [label = '@@2']
+  c [label = '@@3']
+  d [label = '@@4']
+  e [label = '@@5']
+  f [label = '@@6']
+  
+  
+  a -> e 
+  b -> e 
+  c -> e 
+  d -> e 
+  e -> f 
+  
+  }
+  
+  [1]: 'txt'
+  [2]: 'csv'
+  [3]: 'xls'
+  [4]: 'create dataframe in R'
+  [5]: 'Convert to sf'
+  [6]: 'Plot sf'
+  ",
+   height = 400)
+
+```
+
+
+Here we will demonstrate the 3 steps using a .csv file we downloaded from the excellent [ourairports](https://ourairports.com/continents/AF/airports.csv) and saved in the [afrilearndata](https://github.com/afrimapr/afrilearndata) package. The `afrilearndata` package also has a pre-converted `sf` object of the airports but here we will use the csv to demonstrate the conversion to `sf`.
+
+Firstly here are the three steps, and the result, all together. After that we will explain each step in more detail.
+
+```{r csv-airports, message = FALSE, warning = FALSE}
+# 1. read into dataframe
+filename <- system.file("extdata","afriairports.csv", package="afrilearndata", mustWork=TRUE)
+mydf <- readr::read_csv(filename)
+# 2. convert to sf object & set crs
+mysf <- sf::st_as_sf(mydf, 
+                     coords=c("longitude_deg", "latitude_deg"),
+                     crs=4326)
+# 3. quick interactive plot
+mapview(mysf)    
+```
+
+### Step 1. reading the data into a dataframe
+
+The first step consists of two lines. The first line puts the name of the file into an R object called `filename`. It uses some tricky looking code starting with `system.file(`. This is needed because we are getting the csv file from a package. When you want to get one of your own files you won't need the `system.file(` part, you will just need to specify the path to the file, but we will come to that later.
+
+The second line reads the file specified by `filename` into an R dataframe using the `readr` package which is part of the `tidyverse`. We can use the following commands to find out about the new dataframe `mydf` that we have created.
+
+```{r inspect mydf , message = FALSE, warning = FALSE}
+#report number of rows
+nrow(mydf)
+#report column names
+names(mydf)
+```
+We see that the `mydf` object has a few thousand rows and just over 20 columns. Importantly it includes columns named "latitude_deg" and "longitude_deg" which contain the coordinates of the airport points.
+
+### Step 2. convert to sf object & set CRS
+
+The second step is a single function call to convert our existing dataframe into an `sf` object. We can use the `st_as_sf()` function from the `sf` package and need to give it the dataframe, specify which columns contain the coordinates - in this case by specifying `coords=c("longitude_deg", "latitude_deg")` and then add this mysterious `crs=4326` argument.
+
+
+#### CRS
+`crs` stands for Coordinate Reference System. It determines how coordinates are converted to a location on the Earth. 
+In this case it tells `sf` what system to expect. In the majority of cases coordinates (e.g. collected from a GPS) are stored in a system represented by the code `4326`. 4326 is the EPSG code for longitude, latitude using the WGS84 datum, but you don't really need to know that. 4326 is a good number to remember !
+
+The code below demonstrates what happens if the `crs=4326` argument is not included. Can you see what the difference is?
+
+```{r csv-crs-missing, message = FALSE, warning = FALSE}
+
+
+# 2. convert to sf object - NOTE crs missing
+mysf <- sf::st_as_sf(mydf, 
+                     coords=c("longitude_deg", "latitude_deg"))
+# 3. quick interactive plot
+mapview(mysf)    
+```
+  
+  
+You should see that when there is no `crs` argument the `sf` object is still created and plotted, but `mapview` is unable to position it in the world. The points still appear but there is no map background.
+
+
+#### comparing sf object to original dataframe
+
+We can compare the structure of the original dataframe and the sf object using `names()` to show the column names and optionally `head()` which returns the first six rows. What is the difference between them ? 
+
+```{r dataframe-airports, echo=TRUE}
+# original dataframe
+names(mydf)
+# sf object
+names(mysf)  
+# original dataframe
+#head(mydf)
+# sf object
+#head(mysf)
+```
+
+You should see that the columns containing coordinates in the original dataframe are no longer there. In the new `sf` object they have been replaced by a new column called `geometry` at the end that stores the spatial information. This demonstrates that an `sf` object looks and behaves much like a dataframe with extra spatial functionality added.   
+
+### To get your own coordinate text file into R
+
+Above we demonstrate how to get an example csv file containing the coordinates of airport points into R and map it. How can you modify the code above to be able to map your own text files with point coordinates? You will probably need to change three things in the code to get it to work on your own data.
+
+* set filename to the path to your file (this might just be something like `"mydata/myfile.csv"`) 
+* replace `"longitude_deg", "latitude_deg"` with the names of the columns containing the coordinates in your data
+* you may need to change `crs=4326` as explained above
+
+
+### .xls files
+
+For Microsoft Excel files you just need to change step 1 of the three step approach. You can read an excel file into a dataframe using the package [readxl](https://readxl.tidyverse.org/) with something like `readxl::read_excel(filename)`. Another option is to save the sheet that you want as a .csv file from MS Excel itself.
+
+
+### Directly create an R object
+
+An alternative way to create an `sf` object containing coordinates is to hard-code  the creation of a dataframe within an R script. This is similar to the approach from the previous section except that dataframe creation replaces file reading at step 1.
+
+In the example below try changing the coordinates within the dataframe at step 1, and run to see the points change.
+
+```{r dataframe-sf, message = FALSE, warning = FALSE}
+# 1. create dataframe
+mydf <- data.frame(x=c(-10,10,30),
+                   y=c(20,0,-20),
+                   attribute=c("a","b","c"))
+# 2. convert to sf object
+mysf <- sf::st_as_sf(mydf, 
+                     coords=c("x", "y"),
+                     crs=4326)
+# 3. quick interactive plot
+mapview(mysf)    
+```
+  
+  
+In this example the coordinates are stored in columns named x & y, which is passed to `sf::st_as_sf` as `coords=c("x", "y")`. To find out more about the arguments for any function you can type `?` and the function name e.g `?st_as_sf`
+
+
+## region names in text files
+
+In the previous section we demonstrate how to get a text file containing point coordinates into R. We said that this is probably the most common use-case that we come across. In this section we will cover the second commonest use-case that we have experienced from people wanting to make operational maps from data : **mapping regions based upon data just containing the names of those regions**. Imagine a situation where an analyst has a text file containing one column with region names (this might be country names, or the names of regions within a country), and a second column containing data that they want to plot (this could be the number of cases of a disease or a population estimate). In this situation the analyst needs to combine the file containing the region names with a source of spatial information about those region names. In technical language this process of combination is called a **join**.
+
+### joining to spatial data
+
+Here is a simple first example showing how we can join a super-small dataframe onto a spatial data object and make a map from it. Below we create a dataframe with just two rows and columns, and then join this on to the `africountries` object from the `afrilearndata` package that we have seen before.
+
+
+```{r super_simple_first_join, exercise = TRUE, exercise.eval = TRUE}
+library(afrilearndata)
+library(dplyr)
+library(mapview)
+
+# create a dataframe
+mydf <- data.frame(country=c("Togo","Ghana"),
+                   language=c("French","English"))
+
+# join the dataframe onto an existing spatial object
+africa_df <- dplyr::left_join(x = africountries, 
+                              y = mydf, 
+                              by = c("name_long" = "country")
+                              )
+
+# visualise the joined data
+mapview(africa_df, zcol="language")
+
+```
+
+[TODO andy - add more about joining, explain the above, e.g. that needs to be a shared column etc.]
+
+[TODO andy decide where to add text about getting region boundaries e.g. from rgeoboundaries]
+
+[TODO andy these following sections (shp, kml, raster etc.) need editing to fit them into this chapter - or possibly removing from here ]
+
+## Shapefiles (.shp)
+
+Shapefiles continue to be a common format for spatial data despite the fact that they are rather old now and some things about them are not ideal. One thing that can confuse users is that a shapefile consists of a collection of files with the same name and different suffixes. If some of the files are not present then it may no longer be possible to get at the data.
+
+e.g. myfile.shp, myfile.shx, myfile.dbf, myfile.prj
+
+If a colleague emails use just a single file named `*.shp` then you will not be able to map it in R. You would need to ask them to email you all of the files.
+
+Shapefiles can store points, lines or polygons. The example below uses a shapefile containing polygons.
+
+
+```{r shp-countries, message = FALSE, warning = FALSE}
+# read file into a spatial object
+filename <- system.file("extdata","africountries.shp", package="afrilearndata", mustWork=TRUE)
+africountries <- sf::read_sf(filename)
+# quick interactive plot
+mapview(africountries)
+```
+  
+  
+Because shapefiles are spatial files they can be read directly into a spatial (`sf`) object in R with `sf::read_sf(filename)`. This combines steps 1 & 2 from the csv example. In addition you don't need to specify in R which columns contain the coordinates or what the Coordinate Reference System (crs) is. This is effectively because these two steps will have been done when the file was created.
+
+
+## .kml, .gpkg & .json
+
+For other spatial vector formats (e.g. kml, geopackage & geojson) the same approach as for a shapefile usually works i.e. `sf::read_sf(filename)`.
+
+Here we show an example with a .kml file of the simplified African highway network.
+
+```{r kml-highways, message = FALSE, warning = FALSE}
+# TODO fix recurring flatgeobuf error here
+# filename <- system.file("extdata","trans-african-highway.kml", package="afrilearndata", mustWork=TRUE)
+# afrihighway <- sf::read_sf(filename)
+# #quick interactive plot
+# mapview(afrihighway)
+```
+
+
+## Raster tiff 
+
+To read in raster data we need to use the package `raster` instead of `sf`. The reading function in `raster` is also called `raster`. To read in a file use `myrast <- raster::raster(filename)` or just `myrast <- raster(filename)`. Similar to vector formats you can also use `mapview` to give a quick view of raster objects by simply passing the object name e.g. `mapview(myrast)`.
+
+`raster(filename)` will also work with other raster formats such as ascii grids or .jpg.
+
+```{r rast1, message = FALSE, warning = FALSE}
+filename <- system.file("extdata","afripop2020.tif", package="afrilearndata", mustWork=TRUE)
+myrast <- raster::raster(filename)
+# quick interactive plot
+mapview(myrast)
+```
+  
+Note that the map above appears mostly dark. This is because there are few very high density cells and a majority of cells with very low values. This is a common issue with population data. The default, equal-interval, classification doesn't work well, most of the map falls in the lowest category. If you look very closely you can see a few very high value cells e.g. in Lagos & Cairo. See chapter 5 for a way of solving this by specifying the breakpoints using `mapview(myrast, at=c(0,1,10,100,1000,10000,100000))`. 
+
+## Exercise solutions
+
+- Exercise 1
+
