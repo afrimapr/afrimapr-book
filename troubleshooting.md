@@ -19,8 +19,8 @@ We provide a list of typical errors that may appear as you work in R or use it f
 ## Objects
 
 - object 'x' not found 
-    -Suggest that object x does not exist in the environment. Double-check if you reference correctly to it. E.g. if the spelling is correct or the object is contained within the dataset (dataset$x)
--     
+    - Suggest that object x does not exist in the environment. Double-check if you reference correctly to it. E.g. if the spelling is correct or the object is contained within the dataset (dataset$x)
+   
 
 ## Plotting and visualisaions
 
@@ -28,9 +28,9 @@ We provide a list of typical errors that may appear as you work in R or use it f
     - Map-making code does not fully run, potentially there is a missing + after last ()
 - "Error in ...: figure margins too large"    
     - Increase the size of a plot pane to fit the map.
-- Continuous variable used as categorical in map-making.
 - Some legend labels were too wide. 
     - Increase legend.width (argument of tm_layout) to make the legend wider.
 - Error: Discrete value supplied to continuous scale    
-  - Convert the factor variable (discrete) to numeric to be able to plot it as continuous.
-- Brakes
+    - Convert the factor variable (discrete) to numeric to be able to plot it as continuous.
+- Insufficient differentiation in default brakes for map to be readable.
+    - Set up custom brakes, for more guidance please refer to section 5.3 in our book.
