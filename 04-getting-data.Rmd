@@ -208,7 +208,7 @@ In this example the coordinates are stored in columns named x & y, which is pass
 
 [andy note this is not covered in geocompr or the epiR handbook]
 
-In the above sections we have assumed that your coordinates are formatted as numbers probably decimal degrees. Sometimes coordinates may be formatted as characters. This can happen when coordinates are in a format containing degree & minutes symbols and/or the letters E & W. It can also happen when some cells in the coordinates columns contain words or letters. We will step you through how to solve these issues.
+In the above sections we have assumed that your coordinates are formatted as numbers probably decimal degrees. Sometimes coordinates may be formatted as characters. This can happen when coordinates are in a format containing degree & minutes symbols and/or the letters E & W. It can also happen when some cells in the coordinates columns contain words or letters. Another possible problem is that the x & y coordinates are in the same column. We will step you through how to solve these issues.
 
 [andy to continue ...]
 
