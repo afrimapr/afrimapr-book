@@ -34,3 +34,7 @@ We provide a list of typical errors that may appear as you work in R or use it f
     - Convert the factor variable (discrete) to numeric to be able to plot it as continuous.
 - Insufficient differentiation in default brakes for map to be readable.
     - Set up custom brakes, for more guidance please refer to section 5.3 in our book.
+    
+## Warnings
+
+- Warnings are common in R, and often (although not always !) can be ignored. If you are concerned about a particular warning it is a good idea to copy & paste it into Google &/or Stackoverflow to find out more about it.
