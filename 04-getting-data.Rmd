@@ -173,8 +173,9 @@ Above we demonstrate how to get an example csv file containing the coordinates o
 
 * set filename to the path to your file (this might just be something like `"mydata/myfile.csv"`) 
 * replace `"longitude_deg", "latitude_deg"` with the names of the columns containing the coordinates in your data
-* you may need to change `crs=4326` as explained above
+* less likely is that you may need to change `crs=4326` as explained above
 
+If the coordinates in your file are not formatted as numbers you may need an extra step. See the section below "Coping with coordinates in different formats". 
 
 ### .xls files
 
@@ -202,6 +203,14 @@ mapview(mysf)
   
   
 In this example the coordinates are stored in columns named x & y, which is passed to `sf::st_as_sf` as `coords=c("x", "y")`. To find out more about the arguments for any function you can type `?` and the function name e.g `?st_as_sf`
+
+### Coping with coordinates in different formats
+
+[andy note this is not covered in geocompr or the epiR handbook]
+
+In the above sections we have assumed that your coordinates are formatted as numbers probably decimal degrees. Sometimes coordinates may be formatted as characters. This can happen when coordinates are in a format containing degree & minutes symbols and/or the letters E & W. It can also happen when some cells in the coordinates columns contain words or letters. We will step you through how to solve these issues.
+
+[andy to continue ...]
 
 
 ## region names in text files
