@@ -1,4 +1,4 @@
-# Getting you own data into R {#getting}
+# Getting data into R {#getting}
 
 ## Overall goal of the chapter
 This chapter provides entry level approach to getting your own data, of different types, into R as a first step to mapping it.
@@ -218,10 +218,12 @@ In the above sections we have assumed that your coordinates are formatted as num
 In the previous section we demonstrate how to get a text file containing point coordinates into R. We said that this is probably the most common use-case that we come across. In this section we will cover the second commonest use-case that we have experienced from people wanting to make operational maps from data : **mapping regions based upon data just containing the names of those regions**. Imagine a situation where an analyst has a text file containing one column with region names (this might be country names, or the names of regions within a country), and a second column containing data that they want to plot (this could be the number of cases of a disease or a population estimate or any other numeric or other data). 
 
 
-```{r table_regions_example, echo=FALSE}
+```{r, table_regions_example, echo=FALSE}
 
 #TODO check why the caption displays
 #as (#tab:table_regions_example) locally rather than as expected
+#try this to fix
+library(knitr)
 
 # create a dataframe
 mydf <- data.frame(country=c("Togo","Ghana"),
@@ -230,7 +232,8 @@ mydf <- data.frame(country=c("Togo","Ghana"),
 knitr::kable(
   mydf, booktabs = TRUE,
   caption = 'Example data with only region names that an analyst may want to plot.'
-)
+) %>%
+  kableExtra::kable_styling(latex_options="scale_down")
 
 ```
 
