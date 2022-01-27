@@ -15,7 +15,7 @@ It creates a temporary file `bookdown-demo.Rmd` which collates all the code from
 ## temporary comments
 
 To make temporary comments for yourself and others enclose them in square brackets []. You can include your name or a collaborators immediately after the bracket so that you or others can search for things you still need to look at. So Andy might include :
-[andy: I haven't finished this] or [martyna: can you have a look at this?]. If it is a bigger thing we recommend submitting a Github issue.
+[andy: I haven't finished this] or [martyna: can you have a look at this?]. If it is a bigger thing we recommend submitting a Github issue. Markdown comments that will be visible in the source file but not in the created book can be enclosed with <!--- commented text --->.
 
 
 ## markdown tips
