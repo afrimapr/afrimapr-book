@@ -39,15 +39,21 @@ In-progress chapters
 1. Getting data into R \@ref(getting)
 1. Visualising spatial data part 1 : sf, mapview, tmap \@ref(visualising1)
 1. R recap - help ensure readers know foundations \@ref(rrecap)
-1. Shiny interactive map applications \@ref(shiny)
-1. Sources of data, what is open data \@ref(data-sources) 
-1. Join non-spatial data onto spatial \@ref(joining)
-1. Raster manipulation, e.g. summarising data by areas \@ref(raster)
-1. OpenStreetMap data, what they are and how to use \@ref(openstreetmap)
-1. Creating and editing spatial data \@ref(data-editing)
-1. Visualising spatial data part 2, more advanced techniques \@ref(visualising2)
-1. Case study 1 : health facility locations \@ref(case-study1)
-1. Case study 2 \@ref(case-study2)
+
+Planned chapters <!--- links commented out like this --->
+<!--- the chapter files are there but an underscore has been added to their name so they don't appear in index  --->
+<!--- todo - when chapters are moved to in progress, remove the underscore in the filename  --->
+<!--- and reinstate the link to the chapter  --->
+
+1. Shiny interactive map applications <!--- \@ref(shiny)  --->
+1. Sources of data, what is open data <!--- \@ref(data-sources)  ---> 
+1. Join non-spatial data onto spatial <!--- \@ref(joining)  --->
+1. Raster manipulation, e.g. summarising data by areas <!--- \@ref(raster)  --->
+1. OpenStreetMap data, what they are and how to use <!--- \@ref(openstreetmap)  --->
+1. Creating and editing spatial data <!--- \@ref(data-editing)  --->
+1. Visualising spatial data part 2, more advanced techniques <!--- \@ref(visualising2)  --->
+1. Case study 1 : health facility locations <!--- \@ref(case-study1)  --->
+1. Case study 2 <!--- \@ref(case-study2)  --->
 
 
 The version of the book you are currently reading was last updated at:
