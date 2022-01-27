@@ -231,9 +231,8 @@ mydf <- data.frame(country=c("Togo","Ghana"),
 
 knitr::kable(
   mydf, booktabs = TRUE,
-  caption = 'Example data with only region names that an analyst may want to plot.'
-) %>%
-  kableExtra::kable_styling(latex_options="scale_down")
+  caption = 'Example data with only region names that an analyst may want to plot.') %>%
+   kableExtra::kable_styling(fullwidth=FALSE, latex_options="scale_down")
 
 ```
 

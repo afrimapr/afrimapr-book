@@ -41,7 +41,9 @@ Imports:
     wopr,
     rdhs,
     malariaAtlas,
-    DiagrammeR
+    DiagrammeR,
+    knitr,
+    kableExtra
 Suggests:
     usethis
 Remotes:
