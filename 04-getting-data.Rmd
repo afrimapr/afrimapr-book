@@ -10,7 +10,7 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 **Learning objectives**
 
 - Be able to get a text file with coordinates into R
-- Be able to data with names of regions into R and map it
+- Be able to get data with names of regions into R and map it
 - Develop troubleshooting skills to cope with common data import issues
 - Understand broadly what a CRS Coordinate Reference System is
 - Be able to read other spatial data types into R
@@ -213,16 +213,62 @@ In the above sections we have assumed that your coordinates are formatted as num
 [andy to continue ...]
 
 
-## region names in text files
+## Region names in text files
 
-In the previous section we demonstrate how to get a text file containing point coordinates into R. We said that this is probably the most common use-case that we come across. In this section we will cover the second commonest use-case that we have experienced from people wanting to make operational maps from data : **mapping regions based upon data just containing the names of those regions**. Imagine a situation where an analyst has a text file containing one column with region names (this might be country names, or the names of regions within a country), and a second column containing data that they want to plot (this could be the number of cases of a disease or a population estimate). In this situation the analyst needs to combine the file containing the region names with a source of spatial information about those region names. In technical language this process of combination is called a **join**.
+In the previous section we demonstrate how to get a text file containing point coordinates into R. We said that this is probably the most common use-case that we come across. In this section we will cover the second commonest use-case that we have experienced from people wanting to make operational maps from data : **mapping regions based upon data just containing the names of those regions**. Imagine a situation where an analyst has a text file containing one column with region names (this might be country names, or the names of regions within a country), and a second column containing data that they want to plot (this could be the number of cases of a disease or a population estimate or any other numeric or other data). 
+
+
+```{r table_regions_example, echo=FALSE}
+
+#TODO check why the caption displays
+#as (#tab:table_regions_example) locally rather than as expected
+
+# create a dataframe
+mydf <- data.frame(country=c("Togo","Ghana"),
+                   covid_cases=c(55,77))
+
+knitr::kable(
+  mydf, booktabs = TRUE,
+  caption = 'Example data with only region names that an analyst may want to plot.'
+)
+
+```
+
+
+To be able to map the data the analyst needs to combine an object containing the region names with a source of spatial information about those region names. In technical language this process of combination is called a **join**. We want to be able to join two objects one containing the data to plot, and a second containing the information about where to plot it. In practice this second object needs to be a vector **sf** object like we have seen before, with a geometry column containing the spatial information.
+
+```{r table_region_join_example, echo=FALSE}
+
+# create a dataframe
+mydf <- data.frame(country=c("Togo","Ghana"),
+                   covid_cases=c(55,77))
+
+dfsf <- data.frame(name=c("Ghana","Togo"),
+                   geometry=c("point or polygon coords","point or polygon coords"))
+
+knitr::kable(
+  list(
+    mydf,
+    dfsf
+  ),
+  caption = 'Example of objects to join to be able to map region data.', booktabs = TRUE
+)
+
+```
+
+The example above illustrates three points :
+
+1. the names of the regions need to be *exactly* the same in the two files, including upper/lower case and accents.
+1. names of the columns containing the region names do not have to be the same
+1. rows do not have to be in the same order
+
 
 ### joining to spatial data
 
 Here is a simple first example showing how we can join a super-small dataframe onto a spatial data object and make a map from it. Below we create a dataframe with just two rows and columns, and then join this on to the `africountries` object from the `afrilearndata` package that we have seen before.
 
 
-```{r super_simple_first_join, exercise = TRUE, exercise.eval = TRUE}
+```{r super_simple_first_join}
 library(afrilearndata)
 library(dplyr)
 library(mapview)
@@ -246,7 +292,12 @@ mapview(africa_df, zcol="language")
 
 [TODO andy decide where to add text about getting region boundaries e.g. from rgeoboundaries]
 
-[TODO andy these following sections (shp, kml, raster etc.) need editing to fit them into this chapter - or possibly removing from here ]
+The example above uses country boundaries. ANother very common use-case is to be able to use administrative regions within countries. There are a number of potential sources of sub-national administrative boundaries that we can use in R.
+
+
+
+
+[TODO andy do we want these following sections (shp, kml, raster etc.) in this chapter ? or should we stick to the most common use cases ? either way they need to be edited ]
 
 ## Shapefiles (.shp)
 
