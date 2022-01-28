@@ -32,6 +32,10 @@ To make temporary comments for yourself and others enclose them in square bracke
 * To quickly rename a .Rmd file use file.rename("old-name.Rmd", "new-name.Rmd") in the Console. The files with new names have to be added to Github before the changes are pushed. This can be done by typing "git add new-file.Rmd" in the Terminal. After that commit and push changes as usual.
 * To hide a chapter (and stop it from rendering altogether) add an underscore _ before file name. All the files that start with an underscore are passed during rendering but they still appear in the repo.
 
+## Netlify deploy
+
+Stop auto-publishing & update manually from the draft.
+
 ## required packages
 
 It's best not to include evaluated code to install packages in the Rmd files. If you want to add a new package, add it to Imports in the Description file. If you want to demonstrate install you can set eval=FALSE for that chunk. You will need to have packages installed locally to build the book. 
