@@ -34,7 +34,7 @@ To make temporary comments for yourself and others enclose them in square bracke
 
 ## Netlify deploy
 
-Stop auto-publishing & update manually from the draft.
+We have stopped auto-publishing, so contact Andy to update manually from the draft after you've made a commit.
 
 ## required packages
 
