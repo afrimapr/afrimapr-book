@@ -13,7 +13,7 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 
 </div>
 
-### List of episodes {-}
+### List of topics {-}
 
 1. [R studio window](#window)
 2. [Working directory](#wd)
