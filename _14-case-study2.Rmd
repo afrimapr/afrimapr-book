@@ -1,3 +1,4 @@
 # Case study 2 {#case-study2}
+Mapping real-time COVID cases
 
-To be decided
+Hello, how are you doing.
