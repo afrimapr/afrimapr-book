@@ -2,3 +2,71 @@
 Mapping real-time COVID cases
 
 Hello, how are you doing.
+
+# Template chapter {#template}
+
+## Overall goal of the chapter
+In this section we will describe what the overall aim of this chapter and target audience including:
+
+- What they are already expected to know (their previous knowledge)
+- What are the goals of the audience
+
+<style>
+div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "green">
+**Learning objectives** 
+
+- What you will learn
+- What you will be able to do at the end of this chapter
+- What you will not learn & what to read instead
+- Where to go from here
+</div>
+
+## Section 1 (topic 1) {#episode_1_template}
+Each section developed within the chapter should contain a narrative to give a bit of a context and again demonstrate the target audience (if needed). Beyond it should provide topic-specific learning objectives and examples, which are to be intertwined with so-called *self-check exercises* which will allow the reader to assess his comprehension of the topic so far. 
+
+<style>
+div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "purple">
+**Exercise 1**: The exercise description to be in the coloured box & the small, control exercises should be placed at the end of the subsection.
+</div>    
+
+
+## Section 2 (topic 2) {#episode_2_template}
+<style>
+div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "yellow">
+**Shortcut**: Shortcuts to be in a yellow box.
+</div>    
+
+## Section 3 (topic 3) {#episode_3_template}
+
+
+## Further resources
+In this section we provide links to additional websites and sources that are useful in a given topic or package in the following way:
+
+- [R website](r-project.org)
+- [Documentation pages](rdocumentation.org)
+
+## Summary
+This closing section should show the reader what has been done in this chapter and how it links with the topics provided in the next chapter by a brief introduction to next topic.
+
+## Exercise solutions
+
+- Exercise 1
+```{r, results='hide', fig.show='hide'}
+#code to exercise 1 only, results hidden 
+```
+
+- Exercise 2
+```{r, results='hide', fig.show='hide'}
+#code to exercise 2 only, results hidden
+```
+
+## Putting into practice
+[we are not decided if these sections necessary, may be too cluttered]
+
+This final section is aimed at consolidating the knowledge and skills learned throughout the whole chapter, where the reader can put them into practice in a more complex working example with a new context. 
