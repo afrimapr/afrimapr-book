@@ -1,15 +1,13 @@
 # Case study 2 {#case-study2}
-Mapping real-time COVID cases
+Mapping real-time COVID cases: the Case of Malawi
 
-Hello, how are you doing.
 
 # Template chapter {#template}
 
 ## Overall goal of the chapter
-In this section we will describe what the overall aim of this chapter and target audience including:
+Building upon the spatial data munging skills learned from the previous chapters, this section will demonstrate how to map the COVID-19 pandemic using interactive visualization tools such as Leaflet and Plotly in R Studio. The goal is to show how such skills can be applied in the analysis of real-world pressing challenges such as COVID-19 pandemic to help raise awareness, curb misinformation and inform public health decision making, for example. 
 
-- What they are already expected to know (their previous knowledge)
-- What are the goals of the audience
+
 
 <style>
 div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
@@ -24,7 +22,9 @@ div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
 </div>
 
 ## Section 1 (topic 1) {#episode_1_template}
-Each section developed within the chapter should contain a narrative to give a bit of a context and again demonstrate the target audience (if needed). Beyond it should provide topic-specific learning objectives and examples, which are to be intertwined with so-called *self-check exercises* which will allow the reader to assess his comprehension of the topic so far. 
+The COVID-19 pandemic in Malawi is part of the worldwide pandemic of coronavirus disease 2019 (COVID-19) caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). In April 2020, cases of COVID-19 were confirmed across the cities of Blantyre and Lilongwe, and the virus has now spread to all districts of Malawi- affecting the lives of thousands of people.
+
+This section seeks to demonstrate how spatial epidemiologists and the wider mapping community can leverage interactive mapping tools to better understand the spatial patterns of a pandemic and get the message across better. 
 
 <style>
 div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
