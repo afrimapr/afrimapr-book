@@ -19,26 +19,187 @@ In 2019 the World Health Organization confirmed the worldwide coronavirus pandem
 First, let's make sure all the necessary data management packages are loaded
 ```{r, warning=FALSE, message=FALSE}
 
-library(dplyr) #load dplyr package
+# library(dplyr) #load dplyr package
+# library(readxl) # package for loading Excel files
+# library(sf)
+# library(mapview) 
+# library(rgdal)
+# library(leaflet)
+# library(leaflet.extras)
+# library(plotly) #plotting interactive graphs
+# library(htmltools)
+# library(RColorBrewer)
 
 ```
 
 Now, open the necessary data files 
 ```{r, warning=FALSE, message=FALSE}
-
-
+# # identify working directory
+# getwd()
+# 
+# # Read in district boundary shapefile for Malawi
+# malawi_districts <- readOGR("data/mw_districts.shp")
+# 
+# # Read in district level COVID-19 data 
+# covid <- read_xlsx("data/Malawi_subnational_covid_cases_Jan_2020.xlsx")
 
 ```
 
 Check that the data files are loaded properly 
+```{r}
+# covid
+# 
+# malawi_districts@data
+# 
+# plot(malawi_districts) # too basic
+# 
+# mapView(malawi_districts,  color = "transparent", label = "DISTRICT") # more polished 
+
+```
 
 
 
 ## Section 2: Data cleaning {#episode_2_cleaning}
+```{r}
+# # calculate active cases
+# covid <- covid |> 
+#   mutate(Active = Confirmed - (Deaths + Recovered))
+# covid
+# 
+# # Merge COVID-19 data with boundary data using unique identifier FID (district ID)
+# covid_by_district <- merge(malawi_districts, covid, by.x = "fid", by.y = "Fid")
+# 
+# # Check if merging has worked
+# covid_by_district@data
+```
 
 
 ## Section 3: Visualisation {#episode_3_visualisation}
 
+```{r}
+# 
+# # Create COVID-19 intercative graphs
+# bar_chart <- covid |> 
+#   filter(District != "Zomba City",
+#          District != "Lilongwe",
+#          District != "Blantyre")|> # remove redundant data
+#   plot_ly(y = ~District,
+#     x = ~Confirmed,
+#     type = "bar",
+#     orientation = "h",
+#     name = "Confirmed",
+#     marker = list(color = "purple")
+#   ) %>%
+#   plotly::add_trace(
+#     x = ~Deaths,
+#     name = "Death",
+#     marker = list(color = "red")
+#   ) %>%
+#   plotly::add_trace(
+#     x = ~Recovered,
+#     name = "Recovered",
+#     marker = list(color = "green")
+#   ) %>%
+#   plotly::add_trace(
+#     x = ~Active,
+#     name = "Active",
+#     marker = list(color = "orange")
+#   ) %>%
+#   plotly::layout(
+#     barmode = "stack",
+#     xaxis = list(title = "Total cases"),
+#     yaxis = list(title = ""),
+#     hovermode = "compare",
+#     margin = list(
+#       b = 10,
+#       t = 10,
+#       pad = 2
+#     )
+#   )
+# bar_chart
+# # Create COVID-19 interactive maps
+# 
+# bins <- c(0, 10, 50, 100, 500, 1000, 2500, 5000, 11000) # create bins based on the maximum number of COVID-19 cases
+# 
+# pal <- colorBin("YlOrRd", domain = covid_by_district, bins = bins) # Yellow, orange and red color palette for cases
+# 
+# labels <- paste("<h3 style='color:red'>Covid-19 cases</h3>",
+#                 "<b>", covid$District, "<br>",
+#                 "<b>Confirmed:</b>", covid$Confirmed, "<br>",
+#                 "<b>Deaths:</b>", covid$Deaths, "<br>",
+#                 "<b>Recovered:</b>", covid$Recovered, "<br>",
+#                 "<b>Active cases:</b>", covid$Active, "<br>",
+#                  sep = " ") # Create labels using HTML 
+# 
+# 
+# covid_map <- leaflet() |> 
+#   setView(lng = 33.7, lat = -13.9, zoom = 6) |> # zoom to area of interest using coordinates for Malawi
+#   addProviderTiles(providers$CartoDB) |> # add basemap
+#   addPolygons(data = covid_by_district,
+#               group = "Active",
+#               weight = 1,
+#               smoothFactor = 1,
+#               color = "gray",
+#               fillOpacity = 1,
+#               fillColor = ~ pal(Active),
+#               label = lapply(labels, HTML)) |> 
+#   addPolygons(data = covid_by_district,
+#               group = "Confirmed",
+#               weight = 1,
+#               smoothFactor = 1,
+#               color = "gray",
+#               fillOpacity = 1,
+#               fillColor = ~ pal(Confirmed),
+#               label = lapply(labels, HTML)) |> 
+#   addPolygons(data = covid_by_district,
+#               group = "Deaths",
+#               weight = 1,
+#               smoothFactor = 1,
+#               color = "gray",
+#               fillOpacity = 1,
+#               fillColor = ~ pal(Deaths),
+#               label = lapply(labels, HTML)) |> 
+#   addPolygons(data = covid_by_district,
+#               group = "Recovered",
+#               weight = 1,
+#               smoothFactor = 1,
+#               color = "gray",
+#               fillOpacity = 1,
+#               fillColor = ~ pal(Recovered),
+#               label = lapply(labels, HTML)) 
+# 
+# covid_map
+# 
+# # Let's add map items
+# # a) Layers control
+# covid_map |> 
+#   addLayersControl(
+#     baseGroups = c("Confirmed", "Active", "Deaths", "Recovered"),
+#     options = layersControlOptions(collapsed = FALSE)) |> 
+# # b) Legend
+#   addLegend(pal = pal,
+#             values = c(1:11000),
+#             opacity = 0.7,
+#             title = "Covid-19 Cases",
+#             position = "bottomright") |> 
+# # c) scale bar
+#   addScaleBar(position = "bottomleft")
+# # d) add map title
+# # First, let's create a title using HTML and CSS style
+# # Map title using CSS styles and HTML
+# title <- tags$style(HTML(".map-title{
+#                          transform:translate(-10%,20%);position:fixed!important;
+#                          left:10%;text-align:left;padding-left:10px;
+#                          padding-right:10px;background:rgba(255,255,255,0.75);
+#                          font-weight:bold;font-size:15px}"))
+# 
+# map_title <- tags$div(title, HTML("COVID-19 cases as of 05 January 2020"))
+# 
+# covid_map |> 
+#    addControl(map_title, position = "topleft", className = "map-title")
+# 
+# covid_map
+```
 
 ## Section 4:  {#episode_4_}
 
