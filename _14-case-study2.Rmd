@@ -1,72 +1,52 @@
-# Case study 2 {#case-study2}
-Mapping real-time COVID cases: the Case of Malawi
+# Case study 2 Mapping real-time COVID cases in Malawi {#case-study2}
 
-
-# Template chapter {#template}
 
 ## Overall goal of the chapter
-Building upon the spatial data munging skills learned from the previous chapters, this section will demonstrate how to map the COVID-19 pandemic using interactive visualization tools such as Leaflet and Plotly in R Studio. The goal is to show how such skills can be applied in the analysis of real-world pressing challenges such as COVID-19 pandemic to help raise awareness, curb misinformation and inform public health decision making, for example. 
+Building on the spatial data skills from previous chapters, this chapter will show how to map the spread of COVID-19 across Malawi using the interactive visualization tools Leaflet and Plotly in R Studio. The goal of this case study is to demonstrate how skills from this book can be applied to the analysis and visualization of real-world challenges to help raise awareness, curb misinformation and inform public health decision making.
+
+This case study seeks to demonstrate how spatial epidemiologists and the wider mapping community can use interactive mapping tools to improve understanding and communication of diseases using spatial disease patterns. This step by step description is a template for the visualization for a plethora of diseases. 
+<br/>
+
+In 2019 the World Health Organization confirmed the worldwide coronavirus pandemic (COVID-19) caused by the severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). For the first time, in April 2020, the virus was reported in the two largest cities of Malawi. Within a few months it spread from the cities of Blantyre and Lilongwe to all districts of Malawi- affecting the lives of thousands of people. Here we visualize the spread across Malawi using the steps described below. 
+
+**I don't think we need learning outcomes, as this is a case study.**
+
+<br/>
+
+
+## Section 1: Data importation {#episode_1_importation}
+
+First, let's make sure all the necessary data management packages are loaded
+```{r, warning=FALSE, message=FALSE}
+
+library(dplyr) #load dplyr package
+
+```
+
+Now, open the necessary data files 
+```{r, warning=FALSE, message=FALSE}
 
 
 
-<style>
-div.green { background-color:#e3ffd9; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "green">
-**Learning objectives** 
+```
 
-- What you will learn
-- What you will be able to do at the end of this chapter
-- What you will not learn & what to read instead
-- Where to go from here
-</div>
-
-## Section 1 (topic 1) {#episode_1_template}
-The COVID-19 pandemic in Malawi is part of the worldwide pandemic of coronavirus disease 2019 (COVID-19) caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). In April 2020, cases of COVID-19 were confirmed across the cities of Blantyre and Lilongwe, and the virus has now spread to all districts of Malawi- affecting the lives of thousands of people.
-
-This section seeks to demonstrate how spatial epidemiologists and the wider mapping community can leverage interactive mapping tools to better understand the spatial patterns of a pandemic and get the message across better. 
-
-<style>
-div.purple { background-color:#e9d0f7; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "purple">
-**Exercise 1**: The exercise description to be in the coloured box & the small, control exercises should be placed at the end of the subsection.
-</div>    
+Check that the data files are loaded properly 
 
 
-## Section 2 (topic 2) {#episode_2_template}
-<style>
-div.yellow { background-color:#fff5e6; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "yellow">
-**Shortcut**: Shortcuts to be in a yellow box.
-</div>    
 
-## Section 3 (topic 3) {#episode_3_template}
+## Section 2: Data cleaning {#episode_2_cleaning}
+
+
+## Section 3: Visualisation {#episode_3_visualisation}
+
+
+## Section 4:  {#episode_4_}
 
 
 ## Further resources
 In this section we provide links to additional websites and sources that are useful in a given topic or package in the following way:
 
-- [R website](r-project.org)
-- [Documentation pages](rdocumentation.org)
 
 ## Summary
 This closing section should show the reader what has been done in this chapter and how it links with the topics provided in the next chapter by a brief introduction to next topic.
 
-## Exercise solutions
-
-- Exercise 1
-```{r, results='hide', fig.show='hide'}
-#code to exercise 1 only, results hidden 
-```
-
-- Exercise 2
-```{r, results='hide', fig.show='hide'}
-#code to exercise 2 only, results hidden
-```
-
-## Putting into practice
-[we are not decided if these sections necessary, may be too cluttered]
-
-This final section is aimed at consolidating the knowledge and skills learned throughout the whole chapter, where the reader can put them into practice in a more complex working example with a new context. 
